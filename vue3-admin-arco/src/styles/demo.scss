@@ -1,0 +1,23 @@
+// 所有演示demo css
+.app-order-list{
+  list-style: decimal inside;
+  font-size:20px;
+  >li{
+    line-height:30px;
+    margin-bottom:20px;
+    h3{
+      margin-bottom:10px;
+      font-weight:normal;
+      font-size:16px;
+    }
+    canvas{
+      vertical-align:top;
+    }
+  }
+}
+.app-demo-images-list{
+  .img{
+    width:300px;
+    cursor: pointer;
+  }
+}

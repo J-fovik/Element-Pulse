@@ -1,0 +1,1 @@
+import{_ as t}from"./_plugin-vue_export-helper.5059d46b.js";import{o as s,e as r,w as e,r as a,a as n,i as _}from"./index.59cce389.js";const p={};function d(f,l){const o=a("a-space"),c=a("a-card");return s(),r(c,{class:"app-doc"},{default:e(()=>[n(o,null,{default:e(()=>[_("My pages form step")]),_:1})]),_:1})}const u=t(p,[["render",d]]);export{u as default};
