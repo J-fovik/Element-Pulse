@@ -195,7 +195,6 @@ export function addRoutes(menus) {
     // 定义函数
     const findAndAddRoutesByMenus = (arr) => {
         arr.forEach(e => {
-            console.log(e);
             // 遍历数组并在asyncRoutes里找到路径相同的
             let item = asyncRoutes.find(o => o.path == e.frontpath)
             // console.log(item);

@@ -43,6 +43,7 @@ const {
     right: 0;
     height: 44px;
     z-index: 100;
+    background-color: #eeeeee
 }
 
 .tag-btn {

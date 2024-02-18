@@ -32,6 +32,9 @@ import FTagList from './components/FTagList.vue';
 .el-aside {
     transition: all 0.2s;
 }
+.el-main {
+    background-color: #eeeeee !important;
+}
 
 .fade-enter-from {
     opacity: 0;

@@ -15,6 +15,7 @@
 <script setup>
 import { ref, onMounted, onBeforeUnmount } from 'vue';
 import * as echarts from 'echarts';
+// 让echarts根据屏幕响应
 import { useResizeObserver } from '@vueuse/core'
 
 import {
@@ -32,7 +33,7 @@ const options = [{
     text: "近24小时",
     value: "hour"
 }]
-
+// 切换options数据获取新数据
 const handleChoose = (type) => {
     current.value = type
     getData()
@@ -40,13 +41,15 @@ const handleChoose = (type) => {
 
 var myChart = null
 onMounted(() => {
+    // 获取实例
     var chartDom = document.getElementById('chart');
     if (chartDom) {
+        // 初始化获取实例
         myChart = echarts.init(chartDom);
         getData()
     }
 })
-
+// 离开页面之前卸载实例
 onBeforeUnmount(() => {
     if (myChart) echarts.dispose(myChart)
 })
@@ -74,8 +77,11 @@ function getData() {
     // 开启loading
     myChart.showLoading()
     getStatistics3(current.value).then(res => {
+        // 赋值X轴数据
         option.xAxis.data = res.x
+        // 赋值Y轴数据
         option.series[0].data = res.y
+        // 使用新选项更新图表，更新 ECharts 图表实例的配置选项
         myChart.setOption(option)
     }).finally(() => {
         // 关闭loading
@@ -86,6 +92,7 @@ function getData() {
 
 }
 const el = ref(null)
+// 响应页面
 useResizeObserver(el, (entries) => myChart.resize())
 
 </script>

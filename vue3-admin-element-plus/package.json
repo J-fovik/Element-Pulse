@@ -1,5 +1,5 @@
 {
-  "name": "shop-admin",
+  "name": "admin",
   "private": true,
   "version": "0.0.0",
   "scripts": {
@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@element-plus/icons-vue": "^1.1.4",
+    "@tinymce/tinymce-vue": "^5.1.1",
     "@vueuse/core": "^8.4.2",
     "@vueuse/integrations": "^8.4.1",
     "axios": "^0.27.2",
@@ -16,6 +17,7 @@
     "element-plus": "^2.1.11",
     "gsap": "^3.12.5",
     "nprogress": "^0.2.0",
+    "tinymce": "^6.8.3",
     "universal-cookie": "^4.0.4",
     "vue": "^3.2.25",
     "vue-router": "^4.0.15",

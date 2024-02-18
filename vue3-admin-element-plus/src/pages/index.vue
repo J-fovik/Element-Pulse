@@ -48,19 +48,20 @@
 
             </el-col>
         </el-row>
-
-        <IndexNavs/>
+        <!-- 导航 -->
+        <IndexNavs />
 
         <el-row :gutter="20" class="mt-5">
             <el-col :span="12" :offset="0">
-                <IndexChart v-permission="['getStatistics3,GET']"/>
+                <!-- e-chart -->
+                <IndexChart v-permission="['getStatistics3,GET']" />
             </el-col>
             <el-col :span="12" :offset="0" v-permission="['getStatistics2,GET']">
-                <IndexCard title="店铺及商品提示" tip="店铺及商品提示" :btns="goods" class="mb-3"/>
-                <IndexCard title="交易提示" tip="需要立即处理的交易订单" :btns="order"/>
+                <IndexCard title="店铺及商品提示" tip="店铺及商品提示" :btns="goods" class="mb-3" />
+                <IndexCard title="交易提示" tip="需要立即处理的交易订单" :btns="order" />
             </el-col>
         </el-row>
-        
+
 
     </div>
 </template>
@@ -83,7 +84,7 @@ getStatistics1()
 
 const goods = ref([])
 const order = ref([])
-getStatistics2().then(res=>{
+getStatistics2().then(res => {
     goods.value = res.goods
     order.value = res.order
 })
