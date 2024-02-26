@@ -1,6 +1,5 @@
 <template>
     <div class="f-tag-list" :style="{ left: $store.state.asideWidth }">
-
         <el-tabs v-model="activeTab" type="card" class="flex-1" @tab-remove="removeTab" style="min-width:100px;"
             @tab-change="changeTab">
             <!-- 路径是'/'的不可删除 -->

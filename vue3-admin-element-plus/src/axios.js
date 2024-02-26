@@ -3,8 +3,12 @@ import { toast } from '@/composables/util'
 import { getToken } from '@/composables/auth'
 import store from "./store"
 
+// const service = axios.create({
+//     baseURL:"/api"// 基本地址用/api代理http://ceshi13.dishait.cn
+// })
+// 可根据生产环境，开发环境自行匹配
 const service = axios.create({
-    baseURL:"/api"// 基本地址用/api代理http://ceshi13.dishait.cn
+  baseURL:import.meta.env.VITE_APP_BASE_API,
 })
 
 // 添加请求拦截器

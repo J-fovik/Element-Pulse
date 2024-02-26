@@ -15,7 +15,7 @@
                     <transition name="fade">
                         <!-- 缓存路由 -->
                         <keep-alive :max="10">
-                            <component :is="Component"></component>
+                            <component style="height: calc(100vh - 144px);overflow: auto;" :is="Component"></component>
                         </keep-alive>
                     </transition>
                 </router-view>

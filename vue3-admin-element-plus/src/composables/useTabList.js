@@ -1,7 +1,8 @@
 import { ref } from 'vue'
 import { useRoute, onBeforeRouteUpdate } from 'vue-router';
 import { useCookies } from '@vueuse/integrations/useCookies'
-import { router } from '@/router';
+import  {router}  from '@/router';
+
 
 export function useTabList() {
     const route = useRoute()
@@ -92,6 +93,7 @@ export function useTabList() {
                 title: '后台首页',
                 path: "/"
             }]
+            router.push({path: "/"})
         } else if (c == "clearOther") {
             // 过滤只剩下首页和当前激活
             tabList.value = tabList.value.filter(tab => tab.path == "/" || tab.path == activeTab.value)

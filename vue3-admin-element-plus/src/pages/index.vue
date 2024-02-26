@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div style="height: calc(100vh - 144px);overflow: auto;">
         <el-row :gutter="20" v-permission="['getStatistics1,GET']">
             <!-- 骨架屏 -->
             <template v-if="panels.length == 0">
@@ -48,17 +48,11 @@
 
             </el-col>
         </el-row>
-        <!-- 导航 -->
-        <IndexNavs />
 
         <el-row :gutter="20" class="mt-5">
-            <el-col :span="12" :offset="0">
+            <el-col :span="24" :offset="0">
                 <!-- e-chart -->
                 <IndexChart v-permission="['getStatistics3,GET']" />
-            </el-col>
-            <el-col :span="12" :offset="0" v-permission="['getStatistics2,GET']">
-                <IndexCard title="店铺及商品提示" tip="店铺及商品提示" :btns="goods" class="mb-3" />
-                <IndexCard title="交易提示" tip="需要立即处理的交易订单" :btns="order" />
             </el-col>
         </el-row>
 
@@ -68,12 +62,9 @@
 <script setup>
 import { ref } from "vue"
 import CountTo from "@/components/CountTo.vue";
-import IndexNavs from "@/components/IndexNavs.vue";
 import IndexChart from "@/components/IndexChart.vue";
-import IndexCard from "@/components/IndexCard.vue";
 import {
     getStatistics1,
-    getStatistics2
 } from "@/api/index.js"
 
 const panels = ref([])
@@ -81,11 +72,4 @@ getStatistics1()
     .then(res => {
         panels.value = res.panels
     })
-
-const goods = ref([])
-const order = ref([])
-getStatistics2().then(res => {
-    goods.value = res.goods
-    order.value = res.order
-})
 </script>

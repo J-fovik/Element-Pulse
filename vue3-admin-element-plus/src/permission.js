@@ -1,6 +1,5 @@
-import { router, addRoutes } from "@/router"
+import { router } from "@/router" // 后端添加路由引入 addRoutes 方法
 import { getToken } from "@/composables/auth"
-import { MENUS } from '@/composables/options' 
 import {
     toast,
     showFullLoading,
@@ -31,8 +30,8 @@ router.beforeEach(async (to, from, next) => {
         // 调用存储用户信息并结构menus菜单
         let { menus } = await store.dispatch("getinfo")
         hasGetInfo = true
-        // 动态添加路由
-        hasNewRoutes = addRoutes(menus)
+        // 根据后端返回数据动态添加路由
+        // hasNewRoutes = addRoutes(menus)
     }
 
     // 设置页面标题

@@ -1,7 +1,21 @@
-# Vue 3 + Vite
+# 路由：
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+## 一、前端控制路由：
 
-## Recommended IDE Setup
+由前端自定义路由并渲染菜单路由
 
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar)
+### 1、permission.js文件引入addRoutes方法，store.dispatch("getinfo")解构menus数组 ，最后调用传入数组addRoutes(menus)
+
+### 2、@/router文件添加路由
+
+### 3、@/layouts/components/FMenu.vue里 const afterAsideMenus = computed(() => store.state.menus)并遍历数据
+
+## 二、后端控制路由：
+
+由后端返回路由并对比前端路由渲染菜单路由
+
+### 1、permission.js
+
+### 2、@/router
+
+### 3、@/layouts/components/FMenu.vue里 import { routerArray as frontAsideMenus } from '@/router' // 导入前端控制路由数组

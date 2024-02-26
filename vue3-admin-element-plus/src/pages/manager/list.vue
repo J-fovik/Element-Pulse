@@ -1,5 +1,5 @@
 <template>
-  <el-card shadow="never" class="border-0">
+  <el-card shadow="never" class="border-0" >
     <!-- 搜索表单 -->
     <el-form :model="searchForm" label-width="80px" class="mb-3" size="small">
       <el-row :gutter="20">
@@ -93,10 +93,6 @@
           <el-switch v-model="form.status" :active-value="1" :inactive-value="0">
           </el-switch>
         </el-form-item>
-        <!-- 额外 -->
-        <el-form-item label="菜单图标" prop="icon" >
-          <IconSelect v-model="form.icon" />
-        </el-form-item>
       </el-form>
     </FormDrawer>
 
@@ -106,7 +102,6 @@
 import { ref } from "vue"
 import ListHeader from "@/components/ListHeader.vue";
 import FormDrawer from "@/components/FormDrawer.vue";
-import IconSelect from "@/components/IconSelect.vue"
 import {
   getManagerList,// 获取列表
   updateManagerStatus, // 修改状态

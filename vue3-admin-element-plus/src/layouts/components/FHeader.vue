@@ -36,6 +36,7 @@
                 <template #dropdown>
                     <el-dropdown-menu>
                         <el-dropdown-item command="rePassword">修改密码</el-dropdown-item>
+                        <el-dropdown-item command="editCropper">裁剪头像</el-dropdown-item>
                         <el-dropdown-item command="logout">退出登录</el-dropdown-item>
                     </el-dropdown-menu>
                 </template>
@@ -56,10 +57,13 @@
             </el-form-item>
         </el-form>
     </form-drawer>
+    <EditCropper ref="editCropperRef"></EditCropper>
 </template>
 <script setup>
 import FormDrawer from '@/components/FormDrawer.vue'
+import EditCropper from '@/components/EditCropper.vue'
 import { useFullscreen } from '@vueuse/core'
+import { ref } from 'vue'
 // 导入封装的修改密码和退出登录方法
 import { useRepassword, useLogout } from "@/composables/useManager"
 const {
@@ -77,7 +81,8 @@ const {
     onSubmit, // 重置提交事件
     openRePasswordForm // 打开侧边栏函数
 } = useRepassword()
-
+// 定义修改头像实例
+const editCropperRef = ref(null)
 const {
     handleLogout // 退出登录方法 
 } = useLogout()
@@ -89,6 +94,9 @@ const handleCommand = (c) => {
             break;
         case "rePassword":
             openRePasswordForm()
+            break;
+        case "editCropper":
+            editCropperRef.value.editCropper()// 调用修改头像实例方法
             break;
     }
 }
@@ -103,7 +111,12 @@ const handleRefresh = () => location.reload()
     height: 64px;
     z-index: 1000;
 }
-
+.el-dialog {
+	position: relative;
+	left: 0;
+	margin: 0 auto;
+	transform: none;
+}
 .logo {
     width: 250px;
     @apply flex justify-center items-center text-xl font-bold;

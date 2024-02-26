@@ -1,5 +1,5 @@
 <template>
-  <el-card shadow="never" class="border-0">
+  <el-card shadow="never" class="border-0" style="height: calc(100vh - 144px);overflow: auto;;">
     <!-- 新增|刷新 -->
     <div class="flex items-center justify-between mb-4">
       <el-button type="primary" size="small" @click="handleCreate">新增</el-button>

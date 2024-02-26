@@ -2,12 +2,15 @@ import { createApp } from 'vue'
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
 import App from './App.vue'
-import { router } from './router'
+import  {router}  from './router'
 import store from './store'
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
+import VueParticles from 'vue-particles'
 const app = createApp(App)
 app.use(store)
 app.use(router)
+// 使用插画
+app.use(VueParticles)
 
 app.use(ElementPlus)
 // 使用图标
@@ -19,6 +22,9 @@ import 'virtual:windi.css'
 
 // 引入权限控制白名单
 import "./permission"
+import "@/styles/index.scss";
+
+
 // 加载条
 import "nprogress/nprogress.css"
 // 全局导入自定义指令权限控制
