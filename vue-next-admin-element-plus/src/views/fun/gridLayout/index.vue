@@ -1,6 +1,6 @@
 <template>
-	<div class="grid-layout-container layout-pd">
-		<el-card shadow="hover" header="vue-grid-layout 拖拽布局演示">
+	<div class="grid-layout-container layout-padding">
+		<el-card shadow="hover" header="vue-grid-layout 拖拽布局演示" class="layout-padding-auto">
 			<grid-layout
 				v-model:layout="state.layouts"
 				:col-num="12"

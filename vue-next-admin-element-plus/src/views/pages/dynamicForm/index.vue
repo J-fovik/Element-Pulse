@@ -134,7 +134,7 @@ const state = reactive({
 			},
 		],
 		remarks: '',
-	},
+	} as any,
 });
 
 // 新增行
@@ -155,6 +155,7 @@ const onSubmitForm = (formEl: FormInstance | undefined) => {
 	formEl.validate((valid: boolean) => {
 		if (valid) {
 			ElMessage.success('验证成功');
+			console.log(state.form);
 		} else {
 			return false;
 		}

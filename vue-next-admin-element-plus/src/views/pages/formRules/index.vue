@@ -1,8 +1,14 @@
 <template>
 	<div class="form-rules-container layout-pd">
-		<el-card shadow="hover" header="表单组件1"> <FormRulesOne :data="state.formRulesOneData" ref="pagesFormRulesOneRef" /></el-card>
-		<el-card shadow="hover" header="表单组件2" class="mt15"><FormRulesTwo ref="pagesFormRulesTwoRef" /> </el-card>
-		<el-card shadow="hover" header="表单组件3" class="mt15"> <FormRulesThree ref="pagesFormRulesThreeRef" /></el-card>
+		<el-card shadow="hover" header="表单组件1">
+			<FormRulesOne :data="state.formRulesOneData" ref="pagesFormRulesOneRef" />
+		</el-card>
+		<el-card shadow="hover" header="表单组件2" class="mt15">
+			<FormRulesTwo ref="pagesFormRulesTwoRef" />
+		</el-card>
+		<el-card shadow="hover" header="表单组件3" class="mt15">
+			<FormRulesThree ref="pagesFormRulesThreeRef" />
+		</el-card>
 		<el-row class="flex mt15">
 			<div class="flex-margin">
 				<el-button size="default" @click="onResetForm">
@@ -62,6 +68,8 @@ const onSubmitForm = () => {
 		formRulesValidate(pagesFormRulesThreeRef, 'formRulesThreeRef'),
 	]).then(() => {
 		ElMessage.success('表单全部验证成功');
+		console.log(state.formRulesOneData);
+		console.log(pagesFormRulesTwoRef.value.getFormData())		
 	});
 };
 // 重置表单

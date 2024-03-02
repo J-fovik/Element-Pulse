@@ -117,10 +117,17 @@ $icon-colors: #00aced, black, #24292E, #007bb6, #e4405f;
 
 .icon-list {
   display: flex;
-  list-style-type: none;
+  align-items: center;
+  width: 100%;
+  flex-wrap: wrap;// 允许换行
 
   .icon-list__item {
-    margin: 0 40px;
+    display: flex;
+    margin:  20px;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+    flex-basis: 100px;
 
     a {
       .box {
@@ -252,7 +259,8 @@ $icon-colors: #00aced, black, #24292E, #007bb6, #e4405f;
       }
     }
   }
-}</style>
+}
+</style>
 <script setup>
 
 </script>

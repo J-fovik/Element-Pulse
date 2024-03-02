@@ -1,6 +1,6 @@
 import type { App } from 'vue';
 import { authDirective } from '/@/directive/authDirective';
-import { wavesDirective, dragDirective } from '/@/directive/customDirective';
+import { wavesDirective, dragDirective, fadeUpDirective, focusDirective,throttleDirective } from '/@/directive/customDirective';
 
 /**
  * 导出指令方法：v-xxx
@@ -15,4 +15,10 @@ export function directive(app: App) {
 	wavesDirective(app);
 	// 自定义拖动指令
 	dragDirective(app);
+	// 平滑上升
+	fadeUpDirective(app)
+	// 自动获取焦点
+	focusDirective(app)
+	// 表单防止重复提交
+	throttleDirective(app)
 }

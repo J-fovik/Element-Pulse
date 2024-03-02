@@ -3,7 +3,18 @@
  * 工具类集合，适用于平时开发
  * 新增多行注释信息，鼠标放到方法名即可查看
  */
-
+/**
+ * 验证数字
+ * @param val 当前值字符串
+ * @returns 返回处理后的布尔值
+ */
+export const numberRule = (val: string) => {
+	if(val && /^[-]?\d+$/.test(val)) {
+		return true
+	}else{
+		return false
+	};
+};
 /**
  * 验证百分比（不可以小数）
  * @param val 当前值字符串

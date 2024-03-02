@@ -74,7 +74,7 @@ const state = reactive({
 // 当前列表项点击
 const onTableItemClick = (v: FilterListType) => {
 	router.push({
-		path: '/pages/filteringDetails',
+		path: '/pages/filtering/details',
 		query: { id: v.id },
 	});
 };

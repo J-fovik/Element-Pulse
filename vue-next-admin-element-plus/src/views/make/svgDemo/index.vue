@@ -1,7 +1,7 @@
 <template>
 	<div class="svg-demo-container layout-pd">
 		<el-card shadow="hover" header="svgIcon：演示（支持本地svg）">
-			<SvgIcon name="iconfont icon-crew_feature" color="red" :size="30" />
+			<SvgIcon name="iconfont icon-yuelong" color="red" :size="30" />
 			<!-- ele图标  ele 拼接图标名称-->
 			<SvgIcon name="ele-Trophy" color="var(--el-color-primary)" :size="30" />
 			<SvgIcon name="fa fa-flag-checkered" color="#09f" :size="30" />

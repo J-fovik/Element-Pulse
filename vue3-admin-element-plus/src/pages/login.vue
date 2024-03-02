@@ -14,7 +14,6 @@
         <span class="line"></span>
       </div>
       <el-form ref="formRef" :rules="rules" :model="form" class="w-[250px]">
-        <!-- 用户名 -->
         <el-form-item prop="username">
           <el-input v-model="form.username" placeholder="请输入用户名">
             <template #prefix>
@@ -24,7 +23,6 @@
             </template>
           </el-input>
         </el-form-item>
-        <!-- 密码 -->
         <el-form-item prop="password">
           <el-input type="password" v-model="form.password" placeholder="请输入密码" show-password>
             <template #prefix>

@@ -48,7 +48,7 @@ export function wavesDirective(app: App) {
 			el.addEventListener('mousedown', onCurrentClick, false);
 		},
 		unmounted(el) {
-			el.addEventListener('mousedown', () => {});
+			el.addEventListener('mousedown', () => { });
 		},
 	});
 }
@@ -173,6 +173,113 @@ export function dragDirective(app: App) {
 					document.ontouchend = null;
 				};
 			};
+		},
+	});
+}
+
+
+/**
+ * 元素平滑上移
+ * @description  使用方式：v-fadeUp，如 `<div v-fadeUp></div>`
+ */
+export function fadeUpDirective(app: App) {
+	const DISTANCE = 150// 偏移量
+	const DURTION = 500// 动画时间
+	// 关联动画用
+	const map = new WeakMap()
+	// 创建个观察器
+	const ob = new IntersectionObserver((entries) => {
+		for (const entry of entries) {
+			if (entry.isIntersecting) {
+				// 该元素和视口相交
+				// 播放该元素的动画
+				const animation = map.get(entry.target)
+				if (animation) {
+					animation.play()
+					// 防止往上滑动也执行，取消观察
+					ob.unobserve(entry.target)
+				}
+			}
+		}
+	})
+	function isBelowViewport(el: any) {
+		const rect = el.getBoundingClientRect()
+		return rect.top - DISTANCE > window.innerHeight
+	}
+	app.directive('fadeUp', {
+		mounted(el, binding) {
+			// 辅助函数判断视口位置
+			if (!isBelowViewport(el)) {
+				return
+			}
+			// 定一个动画(动画样式，事件)
+			const animation = el.animate([
+				// 初始值
+				{
+					transform: `translateY(${DISTANCE}px)`,
+					opacity: 0.5
+				},
+				// 最终值
+				{
+					transform: `translateY(0)`,
+					opacity: 1
+				}
+			], {
+				duration: DURTION,// 动画时间
+				easing: 'ease-in-out',// 时间函数
+				fill: 'forwards',// 动画过后行为
+			})
+			animation.pause()// 动画暂停
+			ob.observe(el)// 开始观察
+			// 传入动画
+			map.set(el, animation)
+		},
+		// 元素卸载
+		unmounted(el) {
+			ob.unobserve(el)//取消观察
+		}
+	});
+
+}
+
+
+/**
+ * 自动获取焦点
+ * @description  使用方式：v-focus，如 `<input v-focus></input>`
+ */
+export function focusDirective(app: App) {
+	// 注册一个全局自定义指令 `v-focus`
+	app.directive('focus', {
+		// 当被绑定的元素插入到 DOM 中时……
+		mounted(el) {
+			// 聚焦元素
+			el.focus()  // 页面加载完成之后自动让输入框获取到焦点的小功能
+		}
+	})
+}
+
+/**
+ * 防止重复点击
+ * @description  使用方式：v-throttle，如 `<button v-throttle></button>` `<button v-throttle="2000"></button>`
+ * @description  用于表单提交以及按钮点击事件
+ */
+export function throttleDirective(app: App) {
+	app.directive('throttle', {
+		mounted(el, binding) {
+			let throttleTime = binding.value; // 节流时间
+			if (!throttleTime) { // 用户若不设置节流时间，则默认2s
+				throttleTime = 2000;
+			}
+			let cbFun: any;
+			el.addEventListener('click', (event: any) => {
+				if (!cbFun) { // 第一次执行
+					cbFun = setTimeout(() => {
+						cbFun = null;
+					}, throttleTime);
+				} else {
+					event && event.stopImmediatePropagation();
+				}
+			}, { capture: true });
 		},
 	});
 }

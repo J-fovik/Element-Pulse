@@ -2,6 +2,15 @@
 	<div class="layout-pd">
 		<el-card shadow="hover" header="正则验证（一些项目中常用的正则）">
 			<el-form :model="state.ruleForm" :rules="state.rules" class="tools-warp-form" size="default" label-position="top">
+				<el-form-item label="验证数字:" prop="a24">
+					<div class="tools-warp-form-msg">(验证是否是数字，是则true，否则false)<span class="tools-warp-form-msg-red">{{
+							state.isNumber
+						}}</span></div>
+					<div>
+						<el-input v-model="state.ruleForm.a24" @input="isNumber($event)" placeholder="请输入数字进行测试">
+						</el-input>
+					</div>
+				</el-form-item>
 				<el-form-item label="验证百分比（不可以小数）:" prop="a22">
 					<div class="tools-warp-form-msg">验证可以输入大于0小于100的数字</div>
 					<div>
@@ -218,6 +227,7 @@ import {
 	verifyPostalCode,
 	verifyUrl,
 	verifyCarNum,
+	numberRule
 } from '/@/utils/toolsValidate';
 
 // 定义变量内容
@@ -237,6 +247,7 @@ const state = reactive({
 	postalCode: false,
 	url: false,
 	carNum: false,
+	isNumber:false,
 	/**
 	 * 变量名为了方便，随便取了，
 	 * 实际中，按正常程序进行命名
@@ -265,6 +276,7 @@ const state = reactive({
 		a21: '',
 		a22: '',
 		a23: '',
+		a24:''
 	},
 	rules: {
 		a1: [
@@ -344,9 +356,15 @@ const state = reactive({
 		],
 		a22: [{ required: true, message: '请输入数字进行测试', trigger: 'change' }],
 		a23: [{ required: true, message: '请输入数字进行测试', trigger: 'change' }],
+		a24: [{ required: true, message: '请输入数字进行测试', trigger: 'change' }],
+
 	},
 });
-
+// 检测是不是数字
+const isNumber = (val: string) => {
+	state.ruleForm.a24 = verifyAndSpace(val);
+	state.isNumber = numberRule(state.ruleForm.a24);
+};
 // 验证百分比（不可以小数）
 const onVerifyNumberPercentage = (val: string) => {
 	state.ruleForm.a22 = verifyNumberPercentage(val);

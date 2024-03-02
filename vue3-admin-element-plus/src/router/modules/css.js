@@ -5,6 +5,13 @@ export default {
     },
     icon: 'Coin',
     children: [{
+        path: "/css/pulsation",
+        component: () => import('@/pages/css/pulsation/index.vue'),
+        meta: {
+            title: "脉动星球"
+        },
+        icon: 'Odometer',
+    }, {
         path: "/css/jumpBlock",
         component: () => import('@/pages/css/jumpBlock/index.vue'),
         meta: {
@@ -68,6 +75,13 @@ export default {
             title: "图片无缝滚动切换"
         },
         icon: 'Basketball',
+    },{
+        path: "/css/forms",
+        component: () => import('@/pages/css/forms/index.vue'),
+        meta: {
+            title: "登陆表单"
+        },
+        icon: 'ChatLineSquare',
     }, {
         path: "/css/waveloading",
         component: () => import('@/pages/css/waveloading/index.vue'),
@@ -75,6 +89,13 @@ export default {
             title: "水波纹loading效果"
         },
         icon: 'DishDot',
-    }
+    }, {
+        path: "/css/cursors",
+        component: () => import('@/pages/css/cursors/index.vue'),
+        meta: {
+            title: "鼠标图标"
+        },
+        icon: 'Odometer',
+    },
     ]
 }

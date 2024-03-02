@@ -10,11 +10,15 @@
 					}
 						">
 					<i class="iconfont icon-webicon318 layout-navbars-tagsview-ul-li-iconfont" v-if="isActive(v)"></i>
+					<!-- 图标 -->
 					<SvgIcon :name="v.meta.icon" v-if="!isActive(v) && getThemeConfig.isTagsviewIcon" class="pr5" />
+					<!-- 名称 -->
 					<span>{{ setTagsViewNameI18n(v) }}</span>
 					<template v-if="isActive(v)">
+						<!-- 重新加载 -->
 						<SvgIcon name="ele-RefreshRight" class="ml5 layout-navbars-tagsview-ul-li-refresh"
 							@click.stop="refreshCurrentTagsView($route.fullPath)" />
+						<!-- 关闭 -->
 						<SvgIcon name="ele-Close" class="layout-navbars-tagsview-ul-li-icon layout-icon-active"
 							v-if="!v.meta.isAffix"
 							@click.stop="closeCurrentTagsView(getThemeConfig.isShareTagsView ? v.path : v.url)" />

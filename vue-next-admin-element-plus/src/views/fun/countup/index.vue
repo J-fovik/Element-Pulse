@@ -1,6 +1,6 @@
 <template>
-	<div class="layout-pd">
-		<el-card shadow="hover" header="数字滚动演示">
+	<div class="layout-pd layout-padding">
+		<el-card shadow="hover" header="数字滚动演示" class="layout-padding-auto">
 			<el-alert title="感谢优秀的 `countup.js`，项目地址：https://github.com/inorganik/countUp.js" type="success"
 				:closable="false" class="mb15"></el-alert>
 			<el-row :gutter="20">
@@ -128,7 +128,7 @@ onMounted(() => {
 			transition: all ease 0.3s;
 		}
 	}
-
+	/* 图标 */
 	i {
 		position: absolute;
 		right: -10px;

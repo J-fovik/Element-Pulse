@@ -1,13 +1,13 @@
 <template>
-	<div class="splitpanes-container layout-pd">
-		<el-card shadow="hover" header="splitpanes 窗格拆分器">
+	<div class="splitpanes-container layout-padding">
+		<el-card shadow="hover" header="splitpanes 窗格拆分器" class="layout-padding-auto">
 			<el-alert
 				title="感谢优秀的 `splitpanes`，项目地址：https://github.com/antoniandre/splitpanes"
 				type="success"
 				:closable="false"
 				class="mb15"
 			></el-alert>
-			<splitpanes class="default-theme" @resize="paneSize = $event[0].size" style="height: 500px">
+			<splitpanes class="default-theme" @resize="paneSize = $event[0].size" style="height:800px">
 				<pane :size="32"> 1 </pane>
 				<pane :size="36">
 					<splitpanes class="default-theme" :horizontal="true">

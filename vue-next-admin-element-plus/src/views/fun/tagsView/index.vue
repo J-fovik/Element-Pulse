@@ -1,11 +1,6 @@
 <template>
-	<div class="fun-tagsview layout-pd">
-		<NoticeBar
-			text="已删除非当前页 tagsView 演示，后续有时间可以再加回来！，tagsview 支持多标签（参数不同）、单标签共用（参数不同）"
-			background="#ecf5ff"
-			color="#409eff"
-		/>
-		<el-card shadow="hover" header="tagsView 当前页演示" class="mt15">
+	<div class="fun-tagsview layout-padding">
+		<el-card shadow="hover" header="tagsView 当前页演示" class="layout-padding-auto">
 			<div class="flex-warp">
 				<div class="flex-warp-item">
 					<div class="flex-warp-item-box">
@@ -63,12 +58,8 @@
 </template>
 
 <script setup lang="ts" name="funTagsView">
-import { defineAsyncComponent } from 'vue';
 import { useRoute } from 'vue-router';
 import mittBus from '/@/utils/mitt';
-
-// 引入组件
-const NoticeBar = defineAsyncComponent(() => import('/@/components/noticeBar/index.vue'));
 
 // 定义变量内容
 const route = useRoute();

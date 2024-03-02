@@ -1,22 +1,12 @@
 <template>
-	<div class="system-user-container layout-padding">
-		<el-card shadow="hover" class="layout-padding-auto">
-			
+	<div class="layout-padding">
+		<el-card shadow="hover" class="h100">
+
 		</el-card>
 	</div>
 </template>
+<script setup lang="ts">
 
+</script>
 
-<style scoped lang="scss">
-.system-user-container {
-	:deep(.el-card__body) {
-		display: flex;
-		flex-direction: column;
-		flex: 1;
-		overflow: auto;
-		.el-table {
-			flex: 1;
-		}
-	}
-}
-</style>
+<style scoped lang="scss"></style>

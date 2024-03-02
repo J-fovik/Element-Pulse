@@ -32,7 +32,7 @@
 						</div>
 						<Scan v-if="state.isScan" />
 						<div class="login-content-main-sacn" @click="state.isScan = !state.isScan">
-							<i class="iconfont" :class="state.isScan ? 'icon-diannao1' : 'icon-barcode-qr'"></i>
+							<i class="iconfont" :class="state.isScan ? 'icon-diannao' : 'icon-erweima'"></i>
 							<div class="login-content-main-sacn-delta"></div>
 						</div>
 					</div>
@@ -47,7 +47,7 @@ import { defineAsyncComponent, onMounted, reactive, computed } from 'vue';
 import { storeToRefs } from 'pinia';
 import { useThemeConfig } from '/@/stores/themeConfig';
 import { NextLoading } from '/@/utils/loading';
-import logoMini from '/@/assets/logo-mini.svg';
+import logoMini from '/@/assets/allosaurus.svg';
 import loginMain from '/@/assets/login-main.svg';
 import loginBg from '/@/assets/login-bg.svg';
 

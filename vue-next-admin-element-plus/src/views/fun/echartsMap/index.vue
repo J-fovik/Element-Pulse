@@ -19,12 +19,14 @@ const state = reactive({
 	echartsMapList,
 	echartsMapData,
 });
-
+interface EchartsMapData {
+	[key: string]: number[];
+}
 // echartsMap 将坐标信息和对应物理量的值合在一起
 const convertData = (data: EmptyObjectType[]) => {
 	let res = [];
 	for (let i = 0; i < data.length; i++) {
-		let geoCoord = state.echartsMapData[data[i].name];
+		let geoCoord = (state.echartsMapData as EchartsMapData)[data[i].name];
 		if (geoCoord) {
 			res.push({
 				name: data[i].name,

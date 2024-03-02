@@ -1,6 +1,6 @@
 <template>
-	<div class="editor-container layout-pd">
-		<el-card shadow="hover" header="wangeditor富文本编辑器">
+	<div class="editor-container layout-padding">
+		<el-card shadow="hover" header="wangeditor富文本编辑器" class="layout-padding-auto">
 			<el-alert
 				title="感谢优秀的 `wangeditor`，项目地址：https://github.com/wangeditor-team/wangEditor"
 				type="success"
@@ -14,7 +14,6 @@
 
 <script setup lang="ts" name="funWangEditor">
 import { defineAsyncComponent, reactive } from 'vue';
-
 // 引入组件
 const Editor = defineAsyncComponent(() => import('/@/components/editor/index.vue'));
 

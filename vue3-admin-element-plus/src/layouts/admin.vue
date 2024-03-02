@@ -10,15 +10,15 @@
             </el-aside>
             <el-main>
                 <f-tag-list />
-                <router-view v-slot="{ Component }">
-                    <!-- 动画 -->
-                    <transition name="fade">
-                        <!-- 缓存路由 -->
-                        <keep-alive :max="10">
-                            <component style="height: calc(100vh - 144px);overflow: auto;" :is="Component"></component>
-                        </keep-alive>
-                    </transition>
-                </router-view>
+                <div style="padding-left: 10px;padding-right: 10px;">
+                    <router-view v-slot="{ Component }">
+                        <transition name="fade">
+                            <keep-alive :max="10">
+                                <component style="height: calc(100vh - 114px);overflow: auto;" :is="Component"></component>
+                            </keep-alive>
+                        </transition>
+                    </router-view>
+                </div>
             </el-main>
         </el-container>
     </el-container>
@@ -32,8 +32,10 @@ import FTagList from './components/FTagList.vue';
 .el-aside {
     transition: all 0.2s;
 }
+
 .el-main {
     background-color: #eeeeee !important;
+    padding: 0px !important;
 }
 
 .fade-enter-from {
@@ -59,4 +61,5 @@ import FTagList from './components/FTagList.vue';
 
 .fade-enter-active {
     transition-delay: 0.3s;
-}</style>
+}
+</style>

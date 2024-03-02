@@ -144,7 +144,7 @@ export function isMobile() {
 
 /**
  * 判断数组对象中所有属性是否为空，为空则删除当前行对象
- * @description @感谢大黄
+ * @description 
  * @param list 数组对象
  * @returns 删除空值后的数组对象
  */

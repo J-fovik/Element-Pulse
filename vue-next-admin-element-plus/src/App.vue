@@ -74,7 +74,7 @@ onMounted(() => {
 			setingsRef.value.openDrawer();
 		});
 		// 获取缓存中的布局配置
-		if (Local.get('themeConfig')) {			
+		if (Local.get('themeConfig')) {
 			storesThemeConfig.setThemeConfig({ themeConfig: Local.get('themeConfig') });
 			document.documentElement.style.cssText = Local.get('themeConfigStyle');
 		}
@@ -86,7 +86,7 @@ onMounted(() => {
 });
 // 页面销毁时，关闭监听布局配置/i18n监听
 onUnmounted(() => {
-	mittBus.off('openSetingsDrawer', () => {});
+	mittBus.off('openSetingsDrawer', () => { });
 });
 // 监听路由的变化，设置网站标题
 watch(

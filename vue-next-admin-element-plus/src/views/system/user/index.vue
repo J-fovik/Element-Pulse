@@ -14,9 +14,6 @@
 		flex-direction: column;
 		flex: 1;
 		overflow: auto;
-		.el-table {
-			flex: 1;
-		}
 	}
 }
 </style>

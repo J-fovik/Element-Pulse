@@ -1,7 +1,7 @@
 // 字体图标 url
-// //at.alicdn.com/t/c/font_   +  (项目唯一标识)  + .css
 const cssCdnUrlList: Array<string> = [
 	'//at.alicdn.com/t/c/font_2298093_rnp72ifj3ba.css',
+	'//at.alicdn.com/t/c/font_4443631_dsalwwumvhl.css',
 	'//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css',
 ];
 // 第三方 js url

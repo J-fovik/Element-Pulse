@@ -9,7 +9,7 @@
 				</el-col>
 				<el-col :xs="24" :sm="12" :md="8" :lg="6" :xl="4" class="mb20">
 					<el-form-item label="修改用户" prop="editUser">
-						<el-input v-model="state.form.editUser" placeholder="请输入修改用户" clearable></el-input>
+						<el-input v-focus v-model="state.form.editUser"  placeholder="请输入修改用户" clearable></el-input>
 					</el-form-item>
 				</el-col>
 				<el-col :xs="24" :sm="12" :md="8" :lg="6" :xl="4" class="mb20">

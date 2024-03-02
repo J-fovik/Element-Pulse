@@ -1,6 +1,7 @@
 <template>
 	<div class="form-rules-two-container">
-		<el-form :model="state.form" :rules="state.rules" ref="formRulesTwoRef" size="default" label-width="100px" class="mt35">
+		<el-form :model="state.form" :rules="state.rules" ref="formRulesTwoRef" size="default" label-width="100px"
+			class="mt35">
 			<el-row :gutter="35">
 				<el-col :xs="24" :sm="12" :md="8" :lg="6" :xl="4" class="mb20">
 					<el-form-item label="手机" prop="phone">
@@ -8,7 +9,7 @@
 					</el-form-item>
 				</el-col>
 				<el-col :xs="24" :sm="12" :md="8" :lg="6" :xl="4" class="mb20">
-					<el-form-item label="性别">
+					<el-form-item label="性别" prop="sex">
 						<el-select v-model="state.form.sex" placeholder="请选择性别" clearable class="w100">
 							<el-option label="男" value="1"></el-option>
 							<el-option label="女" value="2"></el-option>
@@ -40,6 +41,14 @@ const state = reactive({
 		phone: { required: true, message: '请输入手机', trigger: 'blur' },
 		password: { required: true, message: '请输入登录密码', trigger: 'blur' },
 		auth: { required: true, message: '请输入权限角色', trigger: 'blur' },
+		sex: { required: true, message: '请选择性别', trigger: 'blur' }
 	},
 });
+const getFormData = () => {
+	return state.form
+};
+// 向父组件暴露以下方法
+defineExpose({
+	getFormData
+})
 </script>
