@@ -9,8 +9,9 @@
         </el-card>
     </div>
 </template>
-<script lang="ts" setup >
 
+<script lang="ts" setup name="fadeUp">
+// 
 
 
 </script>
@@ -84,4 +85,5 @@
 
 .item:nth-child(15) {
     background-color: #1afa29;
-}</style>
+}
+</style>
