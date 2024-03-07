@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup>
 const list = new Array(5).fill(0);
 </script>
 
@@ -90,7 +90,8 @@ const list = new Array(5).fill(0);
         top: $lineWidth;
         left: $lineWidth;
         background-color: $backgroundColor;
-        clip-path: polygon(0% 25%,
+        clip-path: polygon(
+            0% 25%,
             0% 75%,
             50% 100%,
             100% 75%,

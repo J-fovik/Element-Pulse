@@ -44,18 +44,6 @@ import DisplayTextInSmoke from "./components/DisplayTextInSmoke.vue";
 import TextOutlineAnimation from "./components/TextOutlineAnimation.vue"
 import MobiusBand from "./components/MobiusBand.vue"
 
-
-
-
-
-
-
-
-
-
-
-
-
 </script>
 
 <style lang="scss">
