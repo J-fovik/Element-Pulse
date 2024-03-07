@@ -75,7 +75,7 @@ export default {
             title: "图片无缝滚动切换"
         },
         icon: 'Basketball',
-    },{
+    }, {
         path: "/css/forms",
         component: () => import('@/pages/css/forms/index.vue'),
         meta: {
@@ -96,6 +96,26 @@ export default {
             title: "鼠标图标"
         },
         icon: 'Odometer',
-    },
-    ]
+    }, {
+        path: "/css/componentBoxs",
+        component: () => import('@/pages/css/componentBoxs/index.vue'),
+        meta: {
+            title: "样式组件"
+        },
+        icon: 'More',
+    },{
+        path: "/css/generateRegularPolygon",
+        component: () => import('@/pages/css/generateRegularPolygon/index.vue'),
+        meta: {
+            title: "生成多边形"
+        },
+        icon: 'Edit',
+    },{
+        path: "/css/codeBgWall",
+        component: () => import('@/pages/css/codeBgWall/index.vue'),
+        meta: {
+            title: "代码墙"
+        },
+        icon: 'Film',
+    }]
 }

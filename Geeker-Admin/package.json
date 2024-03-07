@@ -20,6 +20,7 @@
     "sass": "^1.71.0",
     "scss": "^0.2.4",
     "tinymce": "^6.8.3",
+    "typed.js": "^2.1.0",
     "universal-cookie": "^4.0.4",
     "vue": "^3.2.25",
     "vue-cropper": "^1.1.1",
