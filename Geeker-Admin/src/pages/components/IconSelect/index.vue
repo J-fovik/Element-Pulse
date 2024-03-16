@@ -5,7 +5,7 @@
 </template>
 <script setup>
 import IconSelect from "@/components/IconSelect.vue"
-import { reactive,watch } from "vue";
+import { reactive, watch } from "vue";
 const form = reactive({})
 watch(() => form.icon, (newValue, oldValue) => {
     console.log(newValue);

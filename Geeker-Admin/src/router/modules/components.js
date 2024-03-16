@@ -12,5 +12,12 @@ export default
             title: "筛选图标"
         },
         icon: 'Shop',
-    }]
+    },{
+      path: "/components/PanThumb",
+      component: () => import('@/pages/components/PanThumb/index.vue'),
+      meta: {
+          title: "图片hover效果"
+      },
+      icon: 'Shop',
+  }]
   }

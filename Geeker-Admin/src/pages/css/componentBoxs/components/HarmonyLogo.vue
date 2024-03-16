@@ -1,5 +1,5 @@
 <template>
-  <div style="width: 100%">
+  <div class="w-full">
     <div class="container">
       <div class="content">
         <div class="top">

@@ -22,7 +22,7 @@ const onceAgain = () => {
 </script>
 
 <template>
-  <div style="width: 100%">
+  <div class="w-full">
     <div class="container">
       <video muted autoPlay preload="true" x5-video-player-fullscreen="true" x5-playsinline="true" playsInline
         webkit-playsinline="true" ref="videoRef">
@@ -52,6 +52,7 @@ const onceAgain = () => {
   height: 500px;
   display: flex;
   flex: 1;
+  width: 100%;
   align-items: center;
   justify-content: center;
   background-color: #000;

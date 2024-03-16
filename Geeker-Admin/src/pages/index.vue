@@ -1,5 +1,5 @@
 <template>
-    <div style="height: calc(100vh - 144px);overflow: auto;">
+    <div class='rounded  maxHeight'>
         <el-row :gutter="20" v-permission="['getStatistics1,GET']">
             <!-- 骨架屏 -->
             <template v-if="panels.length == 0">

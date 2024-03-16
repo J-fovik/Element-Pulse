@@ -117,5 +117,12 @@ export default {
             title: "代码墙"
         },
         icon: 'Film',
+    },{
+        path: "/css/flexContainer",
+        component: () => import('@/pages/css/flexContainer/index.vue'),
+        meta: {
+            title: "弹性盒布局"
+        },
+        icon: 'Grid',
     }]
 }

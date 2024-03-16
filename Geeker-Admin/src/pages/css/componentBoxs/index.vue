@@ -1,25 +1,27 @@
 <template>
-    <MixBlendMode class="marginTop" />
-    <HoverEnlargement class="marginTop" />
-    <TypedOne class="marginTop" />
-    <TypedTwo class="marginTop" />
-    <TextWrap class="marginTop" />
-    <Honeycomb class="marginTop" />
-    <SudokuImageAnimation class="marginTop" />
-    <HarmonyLogo class="marginTop" />
-    <WaterDropLogin class="marginTop" />
-    <Preserve3D class="marginTop" />
-    <HexagonalRadar class="marginTop" />
-    <TweakCube class="marginTop" />
-    <OrientationSenseCard class="marginTop" />
-    <BoxReflect class="marginTop" />
-    <TextAnimation class="marginTop" />
-    <TextSearchlight class="marginTop" />
-    <WaveFont class="marginTop" />
-    <DisplayTextInSmoke class="marginTop" />
-    <TextOutlineAnimation class="marginTop" />
-    <MobiusBand class="marginTop" />
-
+    <div class="rounded bg-white" style="height: calc(100vh - 144px);overflow: auto;">
+        <MixBlendMode class="marginTop" />
+        <HoverEnlargement class="marginTop" />
+        <TypedOne class="marginTop" />
+        <TypedTwo class="marginTop" />
+        <TextWrap class="marginTop" />
+        <Honeycomb class="marginTop" />
+        <SudokuImageAnimation class="marginTop" />
+        <WaterDropLogin class="marginTop" />
+        <Preserve3D class="marginTop" />
+        <HexagonalRadar class="marginTop" />
+        <TweakCube class="marginTop" />
+        <OrientationSenseCard class="marginTop" />
+        <BoxReflect class="marginTop" />
+        <TextAnimation class="marginTop" />
+        <TextSearchlight class="marginTop" />
+        <WaveFont class="marginTop" />
+        <DisplayTextInSmoke class="marginTop" />
+        <TextOutlineAnimation class="marginTop" />
+        <MobiusBand class="marginTop" />
+        <BackdropFilter class="marginTop" />
+        <!-- <HarmonyLogo class="marginTop" />  -->
+    </div>
 </template>
 
 <script setup>
@@ -43,6 +45,8 @@ import WaveFont from "./components/WaveFont.vue";
 import DisplayTextInSmoke from "./components/DisplayTextInSmoke.vue";
 import TextOutlineAnimation from "./components/TextOutlineAnimation.vue"
 import MobiusBand from "./components/MobiusBand.vue"
+import BackdropFilter from "./components/BackdropFilter.vue"
+
 </script>
 
 <style lang="scss">

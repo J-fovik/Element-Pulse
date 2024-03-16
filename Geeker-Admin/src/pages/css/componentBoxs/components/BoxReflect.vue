@@ -2,7 +2,7 @@
 </script>
 
 <template>
-  <div style="width: 100%">
+  <div class="w-full">
     <div class="container">
       <div class="content">
         <div class="btn1">Reflect</div>
@@ -20,6 +20,7 @@
   justify-content: center;
   background-color: #000;
   position: relative;
+  width: 100%;
 
   .content {
     width: 400px;

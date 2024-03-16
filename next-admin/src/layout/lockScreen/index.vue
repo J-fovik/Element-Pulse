@@ -4,8 +4,9 @@
 		<div class="layout-lock-screen-mask"></div>
 		<div class="layout-lock-screen-img" :class="{ 'layout-lock-screen-filter': state.isShowLoockLogin }"></div>
 		<div class="layout-lock-screen">
-			<div class="layout-lock-screen-date" ref="layoutLockScreenDateRef" @mousedown="onDownPc" @mousemove="onMovePc"
-				@mouseup="onEnd" @touchstart.stop="onDownApp" @touchmove.stop="onMoveApp" @touchend.stop="onEnd">
+			<div class="layout-lock-screen-date" ref="layoutLockScreenDateRef" @mousedown="onDownPc"
+				@mousemove="onMovePc" @mouseup="onEnd" @touchstart.stop="onDownApp" @touchmove.stop="onMoveApp"
+				@touchend.stop="onEnd">
 				<div class="layout-lock-screen-date-box">
 					<div class="layout-lock-screen-date-box-time">
 						{{ state.time.hm }}<span class="layout-lock-screen-date-box-minutes">{{ state.time.s }}</span>
@@ -26,10 +27,12 @@
 						</div>
 						<div class="layout-lock-screen-login-box-name">crush</div>
 						<div class="layout-lock-screen-login-box-value">
-							<el-form ref="layoutLockScreenInputRef"  :model="state.form" :rules="state.rules" status-icon>
-								<el-form-item  prop="lockScreenPassword">
+							<el-form ref="layoutLockScreenInputRef" :model="state.form" :rules="state.rules"
+								status-icon>
+								<el-form-item prop="lockScreenPassword">
 									<el-input placeholder="请输入密码" type="password"
-										v-model="state.form.lockScreenPassword" @keyup.enter.native.stop="onLockScreenSubmit(layoutLockScreenInputRef)">
+										v-model="state.form.lockScreenPassword"
+										@keyup.enter.native.stop="onLockScreenSubmit(layoutLockScreenInputRef)">
 										<template #append>
 											<el-button @click="onLockScreenSubmit">
 												<el-icon class="el-input__icon">
@@ -81,7 +84,7 @@ const state = reactive({
 	setIntervalTime: 0,
 	isShowLockScreen: false,
 	isShowLockScreenIntervalTime: 0,
-	form:{
+	form: {
 		lockScreenPassword: '',
 	},
 	rules: {
@@ -180,16 +183,16 @@ const setLocalThemeConfig = () => {
 	Local.set('themeConfig', themeConfig.value);
 };
 // 密码输入点击事件
-const onLockScreenSubmit = async(formEl: FormInstance | undefined) => {
+const onLockScreenSubmit = async (formEl: FormInstance | undefined) => {
 	// if (state.form.lockScreenPassword == '') return
 	if (!formEl) return
-  await formEl.validate((valid, fields) => {
-    if (valid) {
-      console.log('submit!')
-    } else {
-      console.log('error submit!', fields)
-    }
-  })
+	await formEl.validate((valid, fields) => {
+		if (valid) {
+			console.log('submit!')
+		} else {
+			console.log('error submit!', fields)
+		}
+	})
 	themeConfig.value.isLockScreen = false;
 	themeConfig.value.lockScreenTime = 30;
 	setLocalThemeConfig();
@@ -225,10 +228,10 @@ onUnmounted(() => {
 	@extend .layout-lock-screen-fixed;
 	z-index: 9999990;
 }
-
+/* https://i.hd-r.cn/e4a19d84364f185266666765ac21a5db.jpg */
 .layout-lock-screen-img {
 	@extend .layout-lock-screen-fixed;
-	background-image: url('https://i.hd-r.cn/e4a19d84364f185266666765ac21a5db.jpg');
+	background-image: url('https://biyecc.oss-cn-beijing.aliyuncs.com/feedbackImg/75ccd2c5d96c4feb8270c7289fd93533.jpg');
 	background-size: 100% 100%;
 	z-index: 9999991;
 }

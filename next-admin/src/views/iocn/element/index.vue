@@ -1,9 +1,10 @@
 <template>
 	<div class="element-container layout-pd">
-		<el-card shadow="hover" :header="`element plus 字体图标(自动载入，增加了 ele- 前缀，使用时：ele-Aim)：${state.sheetsIconList.length}个`">
+		<el-card shadow="hover"
+			:header="`element plus 字体图标(自动载入，增加了 ele- 前缀，使用时：ele-Aim)：${state.sheetsIconList.length}个`">
 			<el-row class="iconfont-row">
-				<el-col class="icon-parent" :xs="12" :sm="8" :md="6" :lg="4" :xl="2" v-for="(v, k) in state.sheetsIconList"
-					:key="k">
+				<el-col class="icon-parent" :xs="12" :sm="8" :md="6" :lg="4" :xl="2"
+					v-for="(v, k) in state.sheetsIconList" :key="k">
 					<div class=" icon-wrapper">
 						<div class="iconfont-warp-value">
 							<SvgIcon :name="v" :size="25" />
@@ -85,4 +86,5 @@ onMounted(() => {
 			text-align: center;
 		}
 	}
-}</style>
+}
+</style>

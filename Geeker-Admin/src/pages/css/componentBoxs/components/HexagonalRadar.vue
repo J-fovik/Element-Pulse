@@ -3,7 +3,7 @@ const list = new Array(5).fill(0);
 </script>
 
 <template>
-  <div style="width: 100%">
+  <div class="w-full">
     <div class="container">
       <div class="content">
         <div v-for="(_, index) in list" :key="index" class="item" />

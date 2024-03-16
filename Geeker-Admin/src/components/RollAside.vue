@@ -10,7 +10,7 @@
     <!-- 因为新增是在本页面所以抽屉写在本页面比较合适 -->
     <FormDrawer :title="drawerTitle" ref="formDrawerRef" @submit="handleSubmit">
         <el-form :model="form" ref="formRef" :rules="rules" label-width="80px" :inline="false">
-            
+
         </el-form>
     </FormDrawer>
 </template>
