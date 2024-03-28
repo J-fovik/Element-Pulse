@@ -64,7 +64,7 @@ const state = reactive<TableRulesState>({
 			{ prop: 'a4', width: '', label: '四级分类', isRequired: true, type: 'date' },
 			{ prop: 'a5', width: '', label: '五级分类', isRequired: true, type: 'input' },
 			{ prop: 'a6', width: '', label: '六级分类', isTooltip: true, type: 'dialog' },
-			{ prop: 'a7', width: '', label: '演示级分类', type: 'input' },
+			{ prop: 'a7', width: '', label: '演示级分类',isRequired:true, type: 'input' },
 			{ prop: 'a8', width: '', label: '颜色是分类', type: 'input' },
 		],
 		option: [
