@@ -37,6 +37,7 @@ export default {
 		mapBaidu: 'baidu',
 		mapGaode: 'gaode',
 		mapEcharts: 'EchartsMap',
+		chartEcharts:'chart Echarts',
 		pagesIndex: 'pages',
 		pagesFadeUp: 'Fade up',
 		pagesTableRules: 'pagesTableRules',

@@ -37,6 +37,7 @@ export default {
 		mapBaidu: '百度地图',
 		mapGaode: '高德地图',
 		mapEcharts: '地理坐标/地图',
+		chartEcharts:'数据图表',
 		pagesIndex: '页面',
 		pagesFadeUp: '平滑上升效果',
 		pagesTableRules: '表单表格验证',
