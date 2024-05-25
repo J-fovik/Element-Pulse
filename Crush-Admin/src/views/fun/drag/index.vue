@@ -32,6 +32,11 @@
 				</div>
 			</div>
 		</el-card>
+		<el-card shadow="hover" header="父元素内拖拽" class="mt15">
+			<div class="father-box" style="height: 300px; background-color: aqua">
+				<div class="drag-box" v-draggable style="height: 30px; width: 30px; background-color: red">拖拽</div>
+			</div>
+		</el-card>
 	</div>
 </template>
 
@@ -51,5 +56,8 @@ const state = reactive({
 			display: inline-block;
 		}
 	}
+}
+.father-box {
+	position: relative;
 }
 </style>

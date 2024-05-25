@@ -1,6 +1,6 @@
 <template>
 	<div class="layout-padding">
-		<div class="p15 layout-padding-view layout-padding-auto">
+		<div class="layout-padding-view layout-padding-auto">
 			<CustomTable fold :table-columns="columnsData" @reset-search="resetForm" @search="resetData">
 				<template #form>
 					<el-form :model="form" label-position="left">
@@ -57,17 +57,17 @@
 				</template>
 				<template #operate>
 					<el-space>
-						<el-button type="success" size="default" @click="setActiveKey('AddEditor')" plain>
+						<el-button type="success" size="default" @click="setActiveKey('AddEditor')">
 							<el-icon><ele-DocumentAdd /></el-icon>新增
 						</el-button>
 						<el-popconfirm width="175" title="确定删除已选数据？" @confirm="handleDelete">
 							<template #reference>
-								<el-button type="danger" size="default" :disabled="tableBaseOptions.selectedKeys.length == 0" plain>
+								<el-button type="danger" size="default" :disabled="tableBaseOptions.selectedKeys.length == 0">
 									<el-icon><ele-Delete /></el-icon> 删除
 								</el-button>
 							</template>
 						</el-popconfirm>
-						<el-button type="warning" size="default" @click="exportExcel" v-throttle="2000" plain>
+						<el-button type="warning" size="default" @click="exportExcel" v-throttle="2000">
 							<SvgIcon name="iconfont icon-yunxiazai_o" :size="22" />XLSX导出</el-button
 						>
 						<el-button
@@ -76,11 +76,10 @@
 							:disabled="tableBaseOptions.selectedKeys.length == 0"
 							@click="exportSelectExcel"
 							v-throttle="2000"
-							plain
 						>
 							<SvgIcon name="iconfont icon-yunxiazai_o" :size="22" />XLSX导出选中</el-button
 						>
-						<el-button type="warning" size="default" @click="tableExcel" v-throttle="2000" plain>
+						<el-button type="warning" size="default" @click="tableExcel" v-throttle="2000">
 							<SvgIcon name="iconfont icon-yunxiazai_o" :size="22" />table2excel导出</el-button
 						>
 						<el-button
@@ -89,7 +88,6 @@
 							:disabled="tableBaseOptions.selectedKeys.length == 0"
 							@click="tableSelectExcel"
 							v-throttle="2000"
-							plain
 						>
 							<SvgIcon name="iconfont icon-yunxiazai_o" :size="22" />table2excel导出选中</el-button
 						>

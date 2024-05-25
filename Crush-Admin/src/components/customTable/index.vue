@@ -1,6 +1,6 @@
 <template>
-	<div class="flex flex-col layout-main" style="background-color: #fff">
-		<div class="flex">
+	<div class="flex flex-col layout-main">
+		<div class="flex px15 pt15">
 			<div :class="collapsed ? 'flex-1' : 'formHeight'">
 				<slot name="form"></slot>
 			</div>
@@ -31,13 +31,13 @@
 			</div>
 		</div>
 		<el-divider />
-		<div style="margin: 0 0 20px" class="flex items-center">
+		<div style="margin: 0 0 20px" class="flex items-center px15">
 			<slot name="operate"></slot>
 		</div>
 		<div class="table-container mt10">
 			<slot name="table"></slot>
 		</div>
-		<div class="flex items-center justify-between mt15">
+		<div class="flex items-center justify-between p15">
 			<slot name="pagination"></slot>
 			<div>
 				<el-popover
