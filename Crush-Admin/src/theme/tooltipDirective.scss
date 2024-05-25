@@ -1,0 +1,77 @@
+// 自定义提示指令样式
+// .tooltip {
+// 	position: absolute;
+// 	background-color: rgba(0, 0, 0, 0.75); /* 半透明黑色背景 */
+// 	color: #fff; /* 白色字体 */
+// 	padding: 8px; /* 内边距 */
+// 	border-radius: 4px; /* 圆角边框 */
+// 	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3); /* 阴影效果 */
+// 	font-size: 14px; /* 字体大小 */
+// 	white-space: nowrap; /* 禁止换行 */
+// 	z-index: 1000; /* 确保提示在最上层 */
+// }
+
+// .tooltip-arrow {
+// 	width: 0;
+// 	height: 0;
+// 	border-left: 5px solid transparent;
+// 	border-right: 5px solid transparent;
+// 	border-top: 5px solid rgba(0, 0, 0, 0.75); /* 与工具提示背景相同的颜色 */
+// 	position: absolute;
+// 	top: 100%; /* 放置在工具提示下方 */
+// 	left: 50%;
+// 	transform: translateX(-50%);
+// }
+.tooltip {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.75); /* 半透明黑色背景 */
+    color: #fff; /* 白色字体 */
+    padding: 8px; /* 内边距 */
+    border-radius: 4px; /* 圆角边框 */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3); /* 阴影效果 */
+    font-size: 14px; /* 字体大小 */
+    white-space: nowrap; /* 禁止换行 */
+    z-index: 1000; /* 确保提示在最上层 */
+  }
+  
+  .tooltip-arrow {
+    width: 0;
+    height: 0;
+    position: absolute;
+  }
+  
+  .tooltip-arrow-top {
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 5px solid rgba(0, 0, 0, 0.75); /* 与工具提示背景相同的颜色 */
+  }
+  
+  .tooltip-arrow-bottom {
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid rgba(0, 0, 0, 0.75); /* 与工具提示背景相同的颜色 */
+  }
+  
+  .tooltip-arrow-left {
+    right: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-right: 5px solid rgba(0, 0, 0, 0.75); /* 与工具提示背景相同的颜色 */
+  }
+  
+  .tooltip-arrow-right {
+    left: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-left: 5px solid rgba(0, 0, 0, 0.75); /* 与工具提示背景相同的颜色 */
+  }
