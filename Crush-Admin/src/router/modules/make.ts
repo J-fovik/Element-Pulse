@@ -89,5 +89,20 @@ export default {
 				icon: 'ele-MessageBox',
 			},
 		},
+		{
+			path: '/make/selectFilter',
+			name: 'makeSelectFilter',
+			component: () => import('/@/views/make/selectFilter/index.vue'),
+			meta: {
+				title: 'message.router.makeSelectFilter',
+				isLink: '',
+				isHide: false,
+				isKeepAlive: true,
+				isAffix: false,
+				isIframe: false,
+				roles: ['admin', 'common'],
+				icon: 'ele-MessageBox',
+			},
+		},
 	],
 };

@@ -59,6 +59,7 @@ export default {
 		makeSvgDemo: 'svgIcon 演示',
 		makeTableDemo: '表格封装演示',
 		makeFormDrawer: '抽屉封装演示',
+		makeSelectFilter: '分类筛选器',
 		paramsIndex: '路由参数',
 		paramsCommon: '普通路由',
 		paramsDynamic: '动态路由',

@@ -1,5 +1,5 @@
 <template>
-	<div class="flex flex-col layout-main">
+	<div class="flex flex-col layout-main bg-table">
 		<div class="flex px15 pt15">
 			<div :class="collapsed ? 'flex-1' : 'formHeight'">
 				<slot name="form"></slot>
@@ -94,6 +94,9 @@ const [collapsed, setCollapsed] = useBasicsState<boolean>(props.isCollapsed);
 const emits = defineEmits(['resetSearch', 'search']);
 </script>
 <style lang="scss">
+.bg-table{
+	background-color: var(--next-bg-table-color) !important
+}
 .formHeight {
 	height: 40px;
 	overflow: hidden;

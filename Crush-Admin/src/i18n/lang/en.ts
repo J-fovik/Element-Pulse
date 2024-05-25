@@ -59,6 +59,7 @@ export default {
 		makeSvgDemo: 'Svgicon demo',
 		makeTableDemo: 'table demo',
 		makeFormDrawer: 'form drawer',
+		makeSelectFilter:'select filter',
 		paramsIndex: 'Routing parameters',
 		paramsCommon: 'General routing',
 		paramsDynamic: 'Dynamic routing',
