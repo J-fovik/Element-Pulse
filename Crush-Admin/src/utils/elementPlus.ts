@@ -52,7 +52,7 @@ export function toast(
 	});
 }
 /**
- * 模态框提示函数
+ * 确认模态框
  * @param content 提示内容
  * @param type 类型
  * @param title 模态框标题

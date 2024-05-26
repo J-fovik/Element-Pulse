@@ -62,7 +62,10 @@
 	padding: 15px !important;
 	box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.02);
 }
-
+/* table层级设置 */
+.el-table .el-table__cell {
+	z-index: initial !important;
+}
 /* NavMenu 导航菜单
 ------------------------------- */
 // 鼠标 hover 时颜色

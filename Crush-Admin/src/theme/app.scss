@@ -376,7 +376,7 @@ div:focus {
 .cursor-move {
 	cursor: move !important;
 }
-
+// 显示省略号
 .text-ellipsis {
 	white-space: nowrap;
 	/* 让文本不换行 */
@@ -457,10 +457,7 @@ div:focus {
 	font-size: 70%;
 	margin-right: 4rpx;
 }
-// table层级设置
-.el-table .el-table__cell {
-	z-index: initial !important;
-}
+
 /* 字体大小全局样式
 ------------------------------- */
 @for $i from 10 through 50 {

@@ -1,5 +1,4 @@
-import { useWindowSize } from '@vueuse/core'
-// 暂未使用
+import { useWindowSize } from '@vueuse/core';
 /**
  * 响应式布局容器固定宽度
  *
@@ -8,9 +7,9 @@ import { useWindowSize } from '@vueuse/core'
  * 小屏（>=768px）
  */
 export default function () {
-  const { width } = useWindowSize()
-  const isDesktop = computed(() => width.value > 992)
-  const isMobile = computed(() => !isDesktop.value)
+	const { width } = useWindowSize();
+	const isDesktop = computed(() => width.value > 992);
+	const isMobile = computed(() => !isDesktop.value);
 
-  return { isMobile, isDesktop }
+	return { isMobile, isDesktop };
 }

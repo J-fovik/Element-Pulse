@@ -7,4 +7,6 @@ export { useBasicsState, useBasicsSet, useBasicsMap } from './modules/useBase'; 
 export { useAsyncData, useAsyncNoInitData, useAsyncWatchData } from './modules/useAsyncRequest'; // 异步请求封装
 export { useForm, useTable } from './modules/useTable'; // 表格表单
 export { curryingRequest } from './modules/useRequest'; // 请求封装
+export { useHandleData } from './modules/useHandleData'; // 操作前确认提示
+export { useOnline } from './modules/useOnline'; // 网络是否可用
 export { useCreateScript, useGray, useDevice, useEcharts };
