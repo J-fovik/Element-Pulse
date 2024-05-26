@@ -30,9 +30,9 @@
 					:parser="(value: string) => value.replace(/,/g, '')"
 				/>
 			</el-form-item>
-			<!-- <el-form-item label="数量:" prop="num" required>
-				<el-input-number v-model="form.num" placeholder="请输入数量" :precision="2" :min="0" :max="100000000" />
-			</el-form-item> -->
+			<el-form-item label="手机号:" prop="phone" required>
+				<el-input v-model="form.phone" placeholder="请输入手机号" />
+			</el-form-item>
 		</el-form>
 		<template #footer>
 			<div class="dialog-footer">
@@ -51,7 +51,7 @@
 
 <script lang="ts" setup name="tableDemoOperate">
 import type { FormInstance } from 'element-plus';
-import { moneyFormatComma, verifyNumberInteger } from '/@/utils/toolsValidate'; // 校验工具
+import { moneyFormatComma, verifyNumberInteger, checkPhoneNumber } from '/@/utils/toolsValidate'; // 校验工具
 import { useForm, useBasicsState, useAsyncData, useTable, curryingRequest } from '/@/hooks';
 // import { addApi,editApi } from '/@/api/test';
 // 接受父组件参数
@@ -74,6 +74,7 @@ const rules = {
 		{ required: true, message: '请输入姓名', trigger: 'blur' },
 		{ min: 3, max: 19, message: '请输入3-5个字', trigger: 'change' },
 	],
+	phone: [{ required: true, validator: checkPhoneNumber, trigger: 'blur' }],
 	// 自定义校验
 	address: [
 		{
