@@ -1,5 +1,5 @@
 <template>
-	<div class="layout-padding" style="background-color: #ffffff">
+	<div class="layout-padding">
 		<div ref="container" style="height: 100%; width: 100%"></div>
 	</div>
 </template>

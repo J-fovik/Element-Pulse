@@ -7,7 +7,7 @@
 						<div class="iconfont-warp-value">
 							<SvgIcon :name="v" :size="25" />
 						</div>
-						<div class="mt10 text-center text-ellipsis" style="width: 150px">{{ v }}</div>
+						<div class="mt10 text-center" v-ellipsis:single="[110, 1]">{{ v }}</div>
 						<div class="copy" @click="copyText(v)">复制</div>
 					</div>
 				</el-col>

@@ -7,7 +7,7 @@
 						<div class="iconfont-warp-value">
 							<i :class="v" class="fa"></i>
 						</div>
-						<div class="mt10 text-center text-ellipsis" style="width: 150px">{{ v }}</div>
+						<div class="mt10 text-center" v-ellipsis:single="[110, 1]">{{ v }}</div>
 						<div class="copy" @click="copyText(v)">复制</div>
 					</div>
 				</el-col>

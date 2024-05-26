@@ -2,14 +2,13 @@
 	<div class="iconfont-container layout-pd">
 		<el-card shadow="hover" :header="`iconfont 字体图标(自动载入)：${state.sheetsIconList.length}个`">
 			<el-row class="iconfont-row">
-				<el-col class="icon-parent" :xs="12" :sm="8" :md="6" :lg="4" :xl="2" v-for="(v, k) in state.sheetsIconList"
-					:key="k">
-					<div class=" icon-wrapper">
+				<el-col class="icon-parent" :xs="12" :sm="8" :md="6" :lg="4" :xl="2" v-for="(v, k) in state.sheetsIconList" :key="k">
+					<div class="icon-wrapper">
 						<div class="iconfont-warp-value">
 							<i :class="v" class="iconfont"></i>
 						</div>
-						<div class="mt10 text-center text-ellipsis  " style="width: 150px;">{{ v }}</div>
-						<div class="copy" @click="copyText(v)"> 复制 </div>
+						<div class="mt10 text-center" v-ellipsis:single="[110, 1]">{{ v }}</div>
+						<div class="copy" @click="copyText(v)">复制</div>
 					</div>
 				</el-col>
 			</el-row>
@@ -37,7 +36,7 @@ onMounted(() => {
 </script>
 
 <style scoped lang="scss">
-.iconfont{
+.iconfont {
 	font-size: 25px;
 }
 .icon-parent {
@@ -85,4 +84,5 @@ onMounted(() => {
 			text-align: center;
 		}
 	}
-}</style>
+}
+</style>
