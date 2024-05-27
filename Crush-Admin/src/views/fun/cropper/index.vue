@@ -36,9 +36,9 @@
 				</el-button>
 			</div>
 		</el-card>
+		<CropperJs ref="cropperJsRef" @updateImg="updateCropperJsImg" />
+		<VueCropper ref="vueCropperRef" :imgSrc="state.vueCropperImg" @updateImg="updateVueCropperImg" />
 	</div>
-	<CropperJs ref="cropperJsRef" @updateImg="updateCropperJsImg" />
-	<VueCropper ref="vueCropperRef" :imgSrc="state.vueCropperImg" @updateImg="updateVueCropperImg" />
 </template>
 
 <script setup lang="ts" name="funCropper">
