@@ -19,9 +19,9 @@ import zhcnLocale from 'element-plus/lib/locale/lang/zh-cn';
 import zhtwLocale from 'element-plus/lib/locale/lang/zh-tw';
 
 // 定义变量内容
-const messages = {};
-const element = { en: enLocale, 'zh-cn': zhcnLocale, 'zh-tw': zhtwLocale };
-const itemize = { en: [], 'zh-cn': [], 'zh-tw': [] };
+const messages = {} as any;
+const element = { en: enLocale, 'zh-cn': zhcnLocale, 'zh-tw': zhtwLocale } as any;
+const itemize = { en: [], 'zh-cn': [], 'zh-tw': [] } as any;
 const modules: Record<string, any> = import.meta.glob('./**/*.ts', { eager: true });
 
 // 对自动引入的 modules 进行分类 en、zh-cn、zh-tw
@@ -33,7 +33,7 @@ for (const path in modules) {
 }
 
 // 合并数组对象（非标准数组对象，数组中对象的每项 key、value 都不同）
-function mergeArrObj<T>(list: T, key: string) {
+function mergeArrObj(list: any, key: string) {
 	let obj = {};
 	list[key].forEach((i: EmptyObjectType) => {
 		obj = Object.assign({}, obj, i);
