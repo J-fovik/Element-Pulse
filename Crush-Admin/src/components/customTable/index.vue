@@ -50,7 +50,7 @@
 					:persistent="false"
 				>
 					<template #reference>
-						<SvgIcon name="iconfont icon-quanjushezhi_o" :size="22" title="设置" />
+						<SvgIcon name="iconfont icon-quanjushezhi_o" :size="22" v-tooltip="{ text: '设置', position: 'left' }" />
 					</template>
 					<template #default>
 						<el-scrollbar>
@@ -94,8 +94,8 @@ const [collapsed, setCollapsed] = useBasicsState<boolean>(props.isCollapsed);
 const emits = defineEmits(['resetSearch', 'search']);
 </script>
 <style lang="scss">
-.bg-table{
-	background-color: var(--next-bg-table-color) !important
+.bg-table {
+	background-color: var(--next-bg-table-color) !important;
 }
 .formHeight {
 	height: 40px;

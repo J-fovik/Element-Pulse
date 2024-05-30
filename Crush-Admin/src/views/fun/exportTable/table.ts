@@ -10,15 +10,6 @@ export const createTableColumns = (): TableCustomColumnData[] => {
 	const { moneyFormat, textFormat, scaleFormat, dayjsFormat } = commonFunction();
 	return [
 		{
-			title: '序号',
-			key: 'sortTableNo',
-			width: 80,
-			show: true,
-			tooltip: true,
-			align: 'center',
-			headerAlign: 'center',
-		},
-		{
 			title: '名称',
 			key: 'name',
 			show: true,
@@ -40,7 +31,7 @@ export const createTableColumns = (): TableCustomColumnData[] => {
 				return h(ElTag, { type: 'success' }, { default: () => textFormat(record.id) });
 			},
 		},
-		
+
 		{
 			title: '金额',
 			key: 'money',
