@@ -17,6 +17,7 @@ export default {
 		funColorExtractor: '取色器',
 		funTyped: '打字效果',
 		funScreenshot: '截屏',
+		funExportTable:'导出表格',
 		iocnfont: '图标管理',
 		iocnIocnfont: 'ali 字体图标',
 		iocnElement: 'ele 字体图标',

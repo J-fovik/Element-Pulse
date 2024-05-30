@@ -230,5 +230,20 @@ export default {
 				icon: 'ele-Crop',
 			},
 		},
+		{
+			path: '/fun/exportTable',
+			name: 'funExportTable',
+			component: () => import('/@/views/fun/exportTable/index.vue'),
+			meta: {
+				title: 'message.router.funExportTable',
+				isLink: '',
+				isHide: false,
+				isKeepAlive: true,
+				isAffix: false,
+				isIframe: false,
+				roles: ['admin'],
+				icon: 'iconfont icon-yunxiazai_o',
+			},
+		},
 	],
 };

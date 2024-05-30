@@ -67,30 +67,6 @@
 								</el-button>
 							</template>
 						</el-popconfirm>
-						<el-button type="warning" size="default" @click="exportExcel" v-throttle="2000">
-							<SvgIcon name="iconfont icon-yunxiazai_o" :size="22" />XLSX导出</el-button
-						>
-						<el-button
-							type="warning"
-							size="default"
-							:disabled="tableBaseOptions.selectedKeys.length == 0"
-							@click="exportSelectExcel"
-							v-throttle="2000"
-						>
-							<SvgIcon name="iconfont icon-yunxiazai_o" :size="22" />XLSX导出选中</el-button
-						>
-						<el-button type="warning" size="default" @click="tableExcel" v-throttle="2000">
-							<SvgIcon name="iconfont icon-yunxiazai_o" :size="22" />table2excel导出</el-button
-						>
-						<el-button
-							type="warning"
-							size="default"
-							:disabled="tableBaseOptions.selectedKeys.length == 0"
-							@click="tableSelectExcel"
-							v-throttle="2000"
-						>
-							<SvgIcon name="iconfont icon-yunxiazai_o" :size="22" />table2excel导出选中</el-button
-						>
 					</el-space>
 				</template>
 				<template #table>
@@ -193,9 +169,7 @@
 	</div>
 </template>
 <script setup lang="ts" name="makeTableDemo2">
-// onActivated 可用于跳转页面返回刷新列表 ，执行initData
-import XLSX from 'xlsx';
-import table2excel from 'js-table2excel';
+// onActivated 可用于跳转页面返回刷新列表 ，最好用 useAsyncNoInitData 请求数据 执行initData
 import { useForm, useTable, useBasicsState, useAsyncData, curryingRequest, useAsyncWatchData } from '/@/hooks';
 import { createTableColumns } from './table'; // 表头配置
 // import { getTableList, getTypeList, getSexList } from '/@/api/test';// 模拟接口
@@ -294,51 +268,4 @@ const {
 		})
 	); // 处理数据
 });
-// xlsx导出Excel
-const exportExcel = () => {
-	// const workSheet = XLSX.utils.table_to_sheet((tableRef.value as any).$el);// 导出实例
-	const data = tableData.value.map((it: any) => {
-		return [it.sortTableNo, it.name, it.id, it.status == '1' ? '已完成' : '未完成', it.money ? it.money : '0'];
-	});
-	data.unshift(['序号', '名称', 'ID', '状态', '金额']);
-	const workSheet = XLSX.utils.aoa_to_sheet(data);
-	const workBook = XLSX.utils.book_new();
-	XLSX.utils.book_append_sheet(workBook, workSheet, '数据报表');
-	XLSX.writeFile(workBook, 'tale-list.xlsx');
-};
-// xlsx导出选中Excel
-const exportSelectExcel = () => {
-	const data = tableBaseOptions.selectedKeys.map((it: any) => {
-		return [it.sortTableNo, it.name, it.id, it.status == '1' ? '已完成' : '未完成', it.money ? it.money : '0'];
-	});
-	data.unshift(['序号', '名称', 'ID', '状态', '金额']);
-	const workSheet = XLSX.utils.aoa_to_sheet(data);
-	const workBook = XLSX.utils.book_new();
-	XLSX.utils.book_append_sheet(workBook, workSheet, '数据报表');
-	XLSX.writeFile(workBook, 'table-list.xlsx');
-};
-// table2excel导出Excel
-const tableExcel = () => {
-	// 可再加过滤操作
-	const data = tableData.value.map((it: any) => {
-		it.status = it.status == '1' ? '已完成' : '未完成';
-		it.money = it.money ? it.money : '0';
-		it.address = it.address ? it.address : '-';
-		return it;
-	});
-	// 表格名称默认 xls 格式
-	table2excel(visibleColumnsData.value, data, `表格名称`);
-};
-// table2excel导出选中Excel
-const tableSelectExcel = () => {
-	// 可再加过滤操作
-	const data = tableBaseOptions.selectedKeys.map((it: any) => {
-		it.status = it.status == '1' ? '已完成' : '未完成';
-		it.money = it.money ? it.money : '0';
-		it.address = it.address ? it.address : '-';
-		return it;
-	});
-	// 表格名称可选 xlsx 格式
-	table2excel(visibleColumnsData.value, data, `表格名称.xlsx`);
-};
 </script>

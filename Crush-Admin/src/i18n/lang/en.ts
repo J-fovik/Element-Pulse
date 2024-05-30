@@ -17,6 +17,7 @@ export default {
 		funColorExtractor: 'Color extractor',
 		funTyped: 'typed',
 		funScreenshot: 'screenshot',
+		funExportTable:'export table',
 		iocnfont: 'icon',
 		iocnIocnfont: 'iconfont icon',
 		iocnElement: 'element icon',

@@ -157,7 +157,7 @@
 </template>
 <script setup lang="ts" name="makeTableDemo">
 import { toast } from '/@/utils/elementPlus';
-// onActivated 可用于跳转页面返回刷新列表 ，执行 initData
+// onActivated 可用于跳转页面返回刷新列表 ，最好用 useAsyncNoInitData 请求数据 执行 initData
 import { useForm, useTable, useBasicsState, useAsyncData, curryingRequest, useAsyncWatchData } from '/@/hooks';
 import { createTableColumns } from './table'; // 表头配置
 // import { getTableList, getTypeList, getSexList } from '/@/api/test';// 模拟接口
