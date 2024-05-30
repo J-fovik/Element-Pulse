@@ -6,7 +6,7 @@
 	</div>
 </template>
 
-<script setup lang="ts" name="mapEcharts">
+<script setup lang="ts" name="visualizationMapEcharts">
 import * as echarts from 'echarts';
 import 'echarts/extension/bmap/bmap';
 import { echartsMapList, echartsMapData } from './mock';

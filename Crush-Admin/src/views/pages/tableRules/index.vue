@@ -6,6 +6,7 @@
 					max-height="200">
 					<el-table-column v-for="(item, index) in state.tableData.header" :key="index" show-overflow-tooltip
 						:prop="item.prop" :width="item.width" :label="item.label">
+						<!-- 头部插槽 -->
 						<template v-slot:header>
 							<span v-if="item.isRequired" class="color-danger">*</span>
 							<span class="pl5">{{ item.label }}</span>

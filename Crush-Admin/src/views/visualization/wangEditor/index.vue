@@ -12,7 +12,7 @@
 	</div>
 </template>
 
-<script setup lang="ts" name="funWangEditor">
+<script setup lang="ts" name="visualizationWangEditor">
 // 定义变量内容
 const state = reactive({
 	editor: {

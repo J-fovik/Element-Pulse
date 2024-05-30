@@ -4,7 +4,7 @@
 	</div>
 </template>
 
-<script lang="ts" name="mapBaidu">
+<script lang="ts" name="visualizationBaidu">
 import { useScriptTag } from '@vueuse/core';
 
 const SCRIPT_URL = 'http://api.map.baidu.com/getscript?v=3.0&ak=WxbQmaOc3bvSGSaKWcyeFSf8fnYCWpKd&services=&t=' + new Date().getTime();

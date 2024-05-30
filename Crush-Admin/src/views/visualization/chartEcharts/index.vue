@@ -44,7 +44,7 @@
 
 <script lang="ts">
 export default defineComponent({
-	name: 'chartEcharts',
+	name: 'visualizationChartEcharts',
 	setup() {
 		const options1 = {
 			xAxis: {

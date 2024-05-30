@@ -14,11 +14,19 @@
 								<br />
 								<div>
 									4、 <a href="https://gitee.com/q7but" target="_black">感谢@q7but</a>、
-									<a href="https://gitee.com/lyt-top/vue-next-admin/pulls/22/files" target="_black">!22 add 添加自定义 tagVIewName 拓展,支持国际化</a>
+									<a href="https://gitee.com/lyt-top/vue-next-admin/pulls/22/files" target="_black"
+										>!22 add 添加自定义 tagVIewName 拓展,支持国际化</a
+									>
 								</div>
 							</template>
 						</el-alert>
-						<el-input v-model="state.tagsViewName" placeholder="请输入tagsView 名称" clearable class="mb15" style="width: 400px"></el-input>
+						<el-input
+							v-model="state.tagsViewName"
+							placeholder="请输入tagsView 名称"
+							clearable
+							class="mb15"
+							style="width: 400px"
+						></el-input>
 						<el-input v-model="state.value" placeholder="请输入路由参数 id 值" clearable style="width: 400px"></el-input>
 						<el-button type="primary" size="default" class="mt15" @click="onGoDetailsClick">
 							<SvgIcon name="iconfont icon-putong" />
@@ -52,7 +60,7 @@ const state = reactive<ParamsState>({
  * 传不同的 tagsViewName 值
  */
 const onGoDetailsClick = () => {
-	const params: EmptyObjectType = { id: state.value };
+	const params: EmptyObjectType = { id: state.value, other: JSON.stringify([1, 2, 3]) };
 	if (state.tagsViewName) params.tagsViewName = state.tagsViewName;
 	router.push({
 		path: '/params/common/details',

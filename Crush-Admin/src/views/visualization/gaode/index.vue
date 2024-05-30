@@ -4,7 +4,7 @@
 	</div>
 </template>
 
-<script lang="ts" name="mapGaode">
+<script lang="ts" name="visualizationGaode">
 import { useCreateScript } from '/@/hooks';
 const SCRIPT_URL = 'https://webapi.amap.com/maps?v=1.4.15&key=9f2d3fcc4b12a7c915fded4b55902e21';
 export default defineComponent({

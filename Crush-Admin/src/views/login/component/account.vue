@@ -95,6 +95,7 @@ const currentTime = computed(() => {
 // 登录
 const onSignIn = async () => {
 	state.loading.signIn = true;
+	/* 这里调登录接口 */ 
 	// 存储 token 到浏览器缓存
 	const token =
 		'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyaWQiOiIxYzVmZTRhNDI0Mzk0YjdiYWFjNWM5OWIzYzMyMTYyOSIsImV4cCI6MTcxNTE0MjAxNH0.rkiWaSYGo3Vmk8F2BLjZVOuuoRboZKRFAEoMISfqSp0';

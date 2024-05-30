@@ -45,21 +45,6 @@ export default {
 			},
 		},
 		{
-			path: '/fun/wangEditor',
-			name: 'funWangEditor',
-			component: () => import('/@/views/fun/wangEditor/index.vue'),
-			meta: {
-				title: 'message.router.funWangEditor',
-				isLink: '',
-				isHide: false,
-				isKeepAlive: true,
-				isAffix: false,
-				isIframe: false,
-				roles: ['admin', 'common'],
-				icon: 'iconfont icon-fuwenbenkuang',
-			},
-		},
-		{
 			path: '/fun/cropper',
 			name: 'funCropper',
 			component: () => import('/@/views/fun/cropper/index.vue'),

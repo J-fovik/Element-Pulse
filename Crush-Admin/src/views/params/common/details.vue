@@ -12,7 +12,7 @@
 
 <script setup lang="ts" name="paramsCommonDetails">
 import { useRoute } from 'vue-router';
-
 // 定义变量内容
 const route = useRoute();
+// 对象或数组JSON转换：JSON.parse(route.query.other as any)
 </script>

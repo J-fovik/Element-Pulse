@@ -1,101 +1,76 @@
 <template>
-	<div class="layout-padding">
-		<div class="layout-padding-view layout-padding-auto">
-			<CustomTable fold :table-columns="columnsData" @reset-search="resetForm" @search="resetData">
-				<template #form>
-					<el-form :model="form" label-position="left">
-						<div class="grid">
-							<div class="grid-item">
-								<el-form-item label="名称:" label-width="80">
-									<el-input v-model.trim="form.name" placeholder="请输入名称" />
-								</el-form-item>
-							</div>
-							<div class="grid-item">
-								<el-form-item label="地点:" label-width="80">
-									<el-input v-model.trim="form.address" placeholder="请输入地点" />
-								</el-form-item>
-							</div>
-							<div class="grid-item">
-								<el-form-item label="状态:" label-width="80">
-									<el-select v-model="form.status" filterable placeholder="请输入状态">
-										<el-option
-											v-for="item in [...ALL_OPTIONS, ...STATUS_OPTIONS]"
-											:key="item.label"
-											:label="item.label"
-											:value="item.value"
-											:disabled="item.disabled"
-										/>
-									</el-select>
-								</el-form-item>
-							</div>
-							<div class="grid-item">
-								<el-form-item label="性别:" label-width="80">
-									<el-select v-model="form.sex" filterable placeholder="请选择性别">
-										<el-option v-for="item in sexList" :key="item.value" :label="item.label" :value="item.value" />
-									</el-select>
-								</el-form-item>
-							</div>
-							<div class="grid-item">
-								<el-form-item label="类型:" label-width="80">
-									<el-select v-model="form.type" filterable placeholder="请选择类型" :disabled="typeList.length == 0">
-										<el-option v-for="item in typeList" :key="item.value" :label="item.label" :value="item.value" />
-									</el-select>
-								</el-form-item>
-							</div>
-							<div class="grid-item">
-								<el-form-item label="金额:" label-width="80">
-									<el-input v-model.trim="form.money" placeholder="请输入金额" />
-								</el-form-item>
-							</div>
-							<div class="grid-item">
-								<el-form-item label="数量:" label-width="80">
-									<el-input v-model.trim="form.num" placeholder="请输入数量" />
-								</el-form-item>
-							</div>
+	<div class="layout-pd">
+		<CustomTableMould fold :table-columns="columnsData" @reset-search="resetForm" @search="resetData">
+			<template #form>
+				<el-form :model="form" label-position="left">
+					<div class="grid">
+						<div class="grid-item">
+							<el-form-item label="名称:" label-width="80">
+								<el-input v-model.trim="form.name" placeholder="请输入名称" />
+							</el-form-item>
 						</div>
-					</el-form>
-				</template>
-				<template #operate>
-					<el-space>
-						<el-button type="success" size="default" @click="setActiveKey('AddEditor')">
-							<el-icon><ele-DocumentAdd /></el-icon>新增
-						</el-button>
-						<el-popconfirm width="175" title="确定删除已选数据？" @confirm="handleDelete">
-							<template #reference>
-								<el-button type="danger" size="default" :disabled="tableBaseOptions.selectedKeys.length == 0">
-									<el-icon><ele-Delete /></el-icon> 删除
-								</el-button>
-							</template>
-						</el-popconfirm>
-						<el-button type="warning" size="default" @click="exportExcel" v-throttle="2000">
-							<SvgIcon name="iconfont icon-yunxiazai_o" :size="22" />XLSX导出</el-button
-						>
-						<el-button
-							type="warning"
-							size="default"
-							:disabled="tableBaseOptions.selectedKeys.length == 0"
-							@click="exportSelectExcel"
-							v-throttle="2000"
-						>
-							<SvgIcon name="iconfont icon-yunxiazai_o" :size="22" />XLSX导出选中</el-button
-						>
-						<el-button type="warning" size="default" @click="tableExcel" v-throttle="2000">
-							<SvgIcon name="iconfont icon-yunxiazai_o" :size="22" />table2excel导出</el-button
-						>
-						<el-button
-							type="warning"
-							size="default"
-							:disabled="tableBaseOptions.selectedKeys.length == 0"
-							@click="tableSelectExcel"
-							v-throttle="2000"
-						>
-							<SvgIcon name="iconfont icon-yunxiazai_o" :size="22" />table2excel导出选中</el-button
-						>
-					</el-space>
-				</template>
-				<template #table>
-					<!-- 方式一 -->
-					<!-- <el-table ref="tableRef" :data="tableData" @selection-change="handleSelectionChange" v-loading="loading">
+						<div class="grid-item">
+							<el-form-item label="地点:" label-width="80">
+								<el-input v-model.trim="form.address" placeholder="请输入地点" />
+							</el-form-item>
+						</div>
+						<div class="grid-item">
+							<el-form-item label="状态:" label-width="80">
+								<el-select v-model="form.status" filterable placeholder="请输入状态">
+									<el-option
+										v-for="item in [...ALL_OPTIONS, ...STATUS_OPTIONS]"
+										:key="item.label"
+										:label="item.label"
+										:value="item.value"
+										:disabled="item.disabled"
+									/>
+								</el-select>
+							</el-form-item>
+						</div>
+						<div class="grid-item">
+							<el-form-item label="性别:" label-width="80">
+								<el-select v-model="form.sex" filterable placeholder="请选择性别">
+									<el-option v-for="item in sexList" :key="item.value" :label="item.label" :value="item.value" />
+								</el-select>
+							</el-form-item>
+						</div>
+						<div class="grid-item">
+							<el-form-item label="类型:" label-width="80">
+								<el-select v-model="form.type" filterable placeholder="请选择类型" :disabled="typeList.length == 0">
+									<el-option v-for="item in typeList" :key="item.value" :label="item.label" :value="item.value" />
+								</el-select>
+							</el-form-item>
+						</div>
+						<div class="grid-item">
+							<el-form-item label="金额:" label-width="80">
+								<el-input v-model.trim="form.money" placeholder="请输入金额" />
+							</el-form-item>
+						</div>
+						<div class="grid-item">
+							<el-form-item label="数量:" label-width="80">
+								<el-input v-model.trim="form.num" placeholder="请输入数量" />
+							</el-form-item>
+						</div>
+					</div>
+				</el-form>
+			</template>
+			<template #operate>
+				<el-space>
+					<el-button type="success" size="default" @click="setActiveKey('AddEditor')">
+						<el-icon><ele-DocumentAdd /></el-icon>新增
+					</el-button>
+					<el-popconfirm width="175" title="确定删除已选数据？" @confirm="handleDelete">
+						<template #reference>
+							<el-button type="danger" size="default" :disabled="tableBaseOptions.selectedKeys.length == 0">
+								<el-icon><ele-Delete /></el-icon> 删除
+							</el-button>
+						</template>
+					</el-popconfirm>
+				</el-space>
+			</template>
+			<template #table>
+				<!-- 方式一 -->
+				<!-- <el-table ref="tableRef" :data="tableData" @selection-change="handleSelectionChange" v-loading="loading">
 						<el-table-column type="selection" width="55" />
 						<el-table-column
 							v-for="(item, index) in visibleColumnsData"
@@ -131,76 +106,62 @@
 						</template>
 					</el-table> -->
 
-					<!-- 方式二 -->
-					<TablePlus
-						ref="tableRef"
-						:tableData="tableData"
-						:selection="visibleColumnsData.length > 0 ? true : false"
-						:loading="loading"
-						:visibleColumnsData="visibleColumnsData"
-						@selectKeys="handleSelectionChange"
-					>
-						<template #status="{ row }">
-							<el-switch v-model="row.status" active-value="1" inactive-value="0"> </el-switch>
-						</template>
-						<template #image="{ row }">
-							<el-image
-								v-if="row.image"
-								:preview-src-list="[row.image]"
-								style="width: 100px; height: 100px"
-								:src="row.image"
-								fit="cover"
-							/>
-							<div v-else>--</div>
-						</template>
-						<template #operate="{ row }">
-							<el-space>
-								<el-button type="success" text @click="$router.push(`/params/common/details?id=${row.id}`)">详情</el-button>
-								<el-button type="primary" text @click="setSelectRow(row, () => setActiveKey('AddEditor'))">编辑</el-button>
-								<el-popconfirm width="175" title="确定删除当前数据？" @confirm="handleDelete(row)">
-									<template #reference>
-										<el-button type="danger" text>删除</el-button>
-									</template>
-								</el-popconfirm>
-							</el-space>
-						</template>
-					</TablePlus>
-				</template>
-				<!-- 分页 -->
-				<template #pagination>
-					<el-pagination
-						v-model:current-page="tableBaseOptions.pagination.current"
-						v-model:page-size="tableBaseOptions.pagination.pageSize"
-						:total="tableBaseOptions.pagination.total"
-						:pager-count="tableBaseOptions.pagination.pagerCount"
-						:page-sizes="tableBaseOptions.pagination.sizeList"
-						background
-						layout="total, sizes, prev, pager, next, jumper"
-						@size-change="onPageSizeChange"
-						@current-change="onCurrentChange"
-					/>
-				</template>
-			</CustomTable>
-			<!-- 新增编辑模态框 -->
-			<!-- 实现逻辑就是模态框一直打开状态，根据activeKey控制展示或者销毁，必须用v-if -->
-			<Operate
-				v-if="activeKey === 'AddEditor'"
-				:data="selectRow"
-				@success="initData"
-				@close="setSelectRow({}, () => setActiveKey(null))"
-			></Operate>
-		</div>
+				<!-- 方式二 -->
+				<TablePlus
+					ref="tableRef"
+					:tableData="tableData"
+					:selection="visibleColumnsData.length > 0 ? true : false"
+					:loading="loading"
+					:visibleColumnsData="visibleColumnsData"
+					@selectKeys="handleSelectionChange"
+				>
+					<template #status="{ row }">
+						<el-switch v-model="row.status" active-value="1" inactive-value="0"> </el-switch>
+					</template>
+					<template #image="{ row }">
+						<el-image v-if="row.image" :preview-src-list="[row.image]" style="width: 100px; height: 100px" :src="row.image" fit="cover" />
+						<div v-else>--</div>
+					</template>
+					<template #operate="{ row }">
+						<el-space>
+							<el-button type="success" text @click="$router.push(`/params/common/details?id=${row.id}`)">详情</el-button>
+							<el-button type="primary" text @click="setSelectRow(row, () => setActiveKey('AddEditor'))">编辑</el-button>
+							<el-popconfirm width="175" title="确定删除当前数据？" @confirm="handleDelete(row)">
+								<template #reference>
+									<el-button type="danger" text>删除</el-button>
+								</template>
+							</el-popconfirm>
+						</el-space>
+					</template>
+				</TablePlus>
+			</template>
+			<!-- 分页 -->
+			<template #pagination>
+				<el-pagination
+					v-model:current-page="tableBaseOptions.pagination.current"
+					v-model:page-size="tableBaseOptions.pagination.pageSize"
+					:total="tableBaseOptions.pagination.total"
+					:pager-count="tableBaseOptions.pagination.pagerCount"
+					:page-sizes="tableBaseOptions.pagination.sizeList"
+					background
+					layout="total, sizes, prev, pager, next, jumper"
+					@size-change="onPageSizeChange"
+					@current-change="onCurrentChange"
+				/>
+			</template>
+		</CustomTableMould>
+		<!-- 新增编辑模态框 -->
+		<!-- 实现逻辑就是模态框一直打开状态，根据activeKey控制展示或者销毁，必须用v-if -->
+		<Operate v-if="activeKey === 'AddEditor'" :data="selectRow" @success="initData" @close="setSelectRow({}, () => setActiveKey(null))"></Operate>
 	</div>
 </template>
 <script setup lang="ts" name="makeTableDemo">
-// onActivated 可用于跳转页面返回刷新列表 ，执行initData
-import XLSX from 'xlsx';
-import table2excel from 'js-table2excel';
+import { toast } from '/@/utils/elementPlus';
+// onActivated 可用于跳转页面返回刷新列表 ，执行 initData
 import { useForm, useTable, useBasicsState, useAsyncData, curryingRequest, useAsyncWatchData } from '/@/hooks';
 import { createTableColumns } from './table'; // 表头配置
 // import { getTableList, getTypeList, getSexList } from '/@/api/test';// 模拟接口
 import { ALL_OPTIONS } from '/@/utils/options'; // 全部
-import { toast } from '/@/utils/elementPlus';
 import { TABLE_DATA, SEX_OPTIONS, TYPES_A_OPTIONS, TYPES_B_OPTIONS, STATUS_OPTIONS } from './options'; // 模拟接口数据
 const Operate = defineAsyncComponent(() => import('./components/index.vue'));
 // 页面唯一元素控制
@@ -289,55 +250,9 @@ const {
 	return extendTableList(
 		TABLE_DATA.tableData.map((o: any) => {
 			o.num = o.num * 1; // 转数字
+			o.disabled = o.status == '0';
 			return o;
 		})
 	); // 处理数据
 });
-// xlsx导出Excel
-const exportExcel = () => {
-	// const workSheet = XLSX.utils.table_to_sheet((tableRef.value as any).$el);// 导出实例
-	const data = tableData.value.map((it: any) => {
-		return [it.sortTableNo, it.name, it.id, it.status == '1' ? '已完成' : '未完成', it.money ? it.money : '0'];
-	});
-	data.unshift(['序号', '名称', 'ID', '状态', '金额']);
-	const workSheet = XLSX.utils.aoa_to_sheet(data);
-	const workBook = XLSX.utils.book_new();
-	XLSX.utils.book_append_sheet(workBook, workSheet, '数据报表');
-	XLSX.writeFile(workBook, 'tale-list.xlsx');
-};
-// xlsx导出选中Excel
-const exportSelectExcel = () => {
-	const data = tableBaseOptions.selectedKeys.map((it: any) => {
-		return [it.sortTableNo, it.name, it.id, it.status == '1' ? '已完成' : '未完成', it.money ? it.money : '0'];
-	});
-	data.unshift(['序号', '名称', 'ID', '状态', '金额']);
-	const workSheet = XLSX.utils.aoa_to_sheet(data);
-	const workBook = XLSX.utils.book_new();
-	XLSX.utils.book_append_sheet(workBook, workSheet, '数据报表');
-	XLSX.writeFile(workBook, 'table-list.xlsx');
-};
-// table2excel导出Excel
-const tableExcel = () => {
-	// 可再加过滤操作
-	const data = tableData.value.map((it: any) => {
-		it.status = it.status == '1' ? '已完成' : '未完成';
-		it.money = it.money ? it.money : '0';
-		it.address = it.address ? it.address : '-';
-		return it;
-	});
-	// 表格名称默认 xls 格式
-	table2excel(visibleColumnsData.value, data, `表格名称`);
-};
-// table2excel导出选中Excel
-const tableSelectExcel = () => {
-	// 可再加过滤操作
-	const data = tableBaseOptions.selectedKeys.map((it: any) => {
-		it.status = it.status == '1' ? '已完成' : '未完成';
-		it.money = it.money ? it.money : '0';
-		it.address = it.address ? it.address : '-';
-		return it;
-	});
-	// 表格名称可选 xlsx 格式
-	table2excel(visibleColumnsData.value, data, `表格名称.xlsx`);
-};
 </script>

@@ -18,3 +18,4 @@ const getColor = (e) => {
 	colorValue.value = e;
 };
 </script>
+
