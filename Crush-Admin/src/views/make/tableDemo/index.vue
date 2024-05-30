@@ -233,11 +233,11 @@ const {
 	data: tableData,
 	loading,
 	initData,
-} = useAsyncNoInitData(async () => {
+} = useAsyncData(async () => {
 	console.log('表单参数', form.value);
 	toast('当前页：' + tableBaseOptions.pagination.current + '，每页数量' + tableBaseOptions.pagination.pageSize);
 	// const { res, err } = await curryingRequest(() =>
-	// getTableList({
+	// 	getTableList({
 	// 		...form.value,
 	// 		currentPage: tableBaseOptions.pagination.current,
 	// 		pageSize: tableBaseOptions.pagination.pageSize,
@@ -257,7 +257,4 @@ const {
 	); // 处理数据
 });
 // onActivated 可用于跳转页面返回刷新列表
-onActivated(() => {
-	initData();
-});
 </script>
