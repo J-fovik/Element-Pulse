@@ -38,15 +38,8 @@
 		</div>
 		<el-divider />
 		<!-- 操作插槽 -->
-		<div class="flex items-center">
+		<div class="flex items-center justify-between">
 			<slot name="operate"></slot>
-		</div>
-		<div class="mt20">
-			<slot name="table"></slot>
-		</div>
-		<!-- 分页插槽 -->
-		<div class="flex items-center justify-between p15">
-			<slot name="pagination"></slot>
 			<div>
 				<el-popover
 					placement="top-end"
@@ -77,6 +70,13 @@
 					</template>
 				</el-popover>
 			</div>
+		</div>
+		<div class="mt20">
+			<slot name="table"></slot>
+		</div>
+		<!-- 分页插槽 -->
+		<div class="flex items-center justify-between p15">
+			<slot name="pagination"></slot>
 		</div>
 	</el-card>
 </template>

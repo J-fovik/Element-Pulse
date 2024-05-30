@@ -60,13 +60,9 @@
 						<el-button type="success" size="default" @click="setActiveKey('AddEditor')">
 							<el-icon><ele-DocumentAdd /></el-icon>新增
 						</el-button>
-						<el-popconfirm width="175" title="确定删除已选数据？" @confirm="handleDelete">
-							<template #reference>
-								<el-button type="danger" size="default" :disabled="tableBaseOptions.selectedKeys.length == 0">
-									<el-icon><ele-Delete /></el-icon> 删除
-								</el-button>
-							</template>
-						</el-popconfirm>
+						<el-button type="danger" size="default" :disabled="tableBaseOptions.selectedKeys.length == 0" @click="handleDelete">
+							<el-icon><ele-Delete /></el-icon> 删除
+						</el-button>
 					</el-space>
 				</template>
 				<template #table>
@@ -133,11 +129,7 @@
 							<el-space>
 								<el-button type="success" text @click="$router.push(`/params/common/details?id=${row.id}`)">详情</el-button>
 								<el-button type="primary" text @click="setSelectRow(row, () => setActiveKey('AddEditor'))">编辑</el-button>
-								<el-popconfirm width="175" title="确定删除当前数据？" @confirm="handleDelete(row)">
-									<template #reference>
-										<el-button type="danger" text>删除</el-button>
-									</template>
-								</el-popconfirm>
+								<el-button type="danger" text @click="handleDelete(row)">删除</el-button>
 							</el-space>
 						</template>
 					</TablePlus>
@@ -169,13 +161,13 @@
 	</div>
 </template>
 <script setup lang="ts" name="makeTableDemo2">
-// onActivated 可用于跳转页面返回刷新列表 ，最好用 useAsyncNoInitData 请求数据 执行initData
-import { useForm, useTable, useBasicsState, useAsyncData, curryingRequest, useAsyncWatchData } from '/@/hooks';
+import { useForm, useTable, useBasicsState, curryingRequest, useAsyncData, useAsyncNoInitData, useAsyncWatchData } from '/@/hooks';
 import { createTableColumns } from './table'; // 表头配置
 // import { getTableList, getTypeList, getSexList } from '/@/api/test';// 模拟接口
 import { ALL_OPTIONS } from '/@/utils/options'; // 全部
 import { toast } from '/@/utils/elementPlus';
 import { TABLE_DATA, SEX_OPTIONS, TYPES_A_OPTIONS, TYPES_B_OPTIONS, STATUS_OPTIONS } from './options'; // 模拟接口数据
+import { showModal } from '/@/utils/elementPlus';
 const Operate = defineAsyncComponent(() => import('./components/index.vue'));
 // 页面唯一元素控制
 const [activeKey, setActiveKey] = useBasicsState<string | null>(null);
@@ -232,20 +224,27 @@ const { data: typeList } = useAsyncWatchData<Array<any>>(
 );
 // 删除功能
 const handleDelete = (row: any) => {
-	// 如果传递 row 参数并且有id，表示点击的当前列删除，删除成功后记得执行 initData() 重新请求列表
+	const title = ref('');
+	const isRow = ref(false);
 	if (row && row.id) {
-		toast('删除当前列' + row.id);
+		title.value = '确定删除当前数据？';
+		isRow.value = true;
 	} else {
-		// 否则点击的批量删除，删除成功后记得清空 tableBaseOptions.selectedKeys 再执行 initData() 重新请求列表
-		toast('删除选择列' + tableBaseOptions.selectedKeys.map((o: any) => o.id));
+		title.value = '确定删除已选数据？';
+		isRow.value = false;
 	}
+	showModal(title.value).then((res) => {
+		isRow.value ? toast('删除当前列' + row.id) : toast('删除选择列' + tableBaseOptions.selectedKeys.map((o: any) => o.id));
+		// 调用接口删除成功后清空已选
+		tableBaseOptions.selectedKeys = [];
+	});
 };
 // 获取表格列表
 const {
 	data: tableData,
 	loading,
 	initData,
-} = useAsyncData(async () => {
+} = useAsyncNoInitData(async () => {
 	console.log('表单参数', form.value);
 	toast('当前页：' + tableBaseOptions.pagination.current + '，每页数量' + tableBaseOptions.pagination.pageSize);
 	// const { res, err } = await curryingRequest(() =>
@@ -267,5 +266,9 @@ const {
 			return o;
 		})
 	); // 处理数据
+});
+// onActivated 可用于跳转页面返回刷新列表
+onActivated(() => {
+	initData();
 });
 </script>

@@ -157,8 +157,7 @@
 </template>
 <script setup lang="ts" name="makeTableDemo">
 import { toast } from '/@/utils/elementPlus';
-// onActivated 可用于跳转页面返回刷新列表 ，最好用 useAsyncNoInitData 请求数据 执行 initData
-import { useForm, useTable, useBasicsState, useAsyncData, curryingRequest, useAsyncWatchData } from '/@/hooks';
+import { useForm, useTable, useBasicsState, curryingRequest, useAsyncData, useAsyncNoInitData, useAsyncWatchData } from '/@/hooks';
 import { createTableColumns } from './table'; // 表头配置
 // import { getTableList, getTypeList, getSexList } from '/@/api/test';// 模拟接口
 import { ALL_OPTIONS } from '/@/utils/options'; // 全部
@@ -226,13 +225,15 @@ const handleDelete = (row: any) => {
 		// 否则点击的批量删除，删除成功后记得清空 tableBaseOptions.selectedKeys 再执行 initData() 重新请求列表
 		toast('删除选择列' + tableBaseOptions.selectedKeys.map((o: any) => o.id));
 	}
+	// 调用接口删除成功后清空已选
+	tableBaseOptions.selectedKeys = [];
 };
 // 获取表格列表
 const {
 	data: tableData,
 	loading,
 	initData,
-} = useAsyncData(async () => {
+} = useAsyncNoInitData(async () => {
 	console.log('表单参数', form.value);
 	toast('当前页：' + tableBaseOptions.pagination.current + '，每页数量' + tableBaseOptions.pagination.pageSize);
 	// const { res, err } = await curryingRequest(() =>
@@ -254,5 +255,9 @@ const {
 			return o;
 		})
 	); // 处理数据
+});
+// onActivated 可用于跳转页面返回刷新列表
+onActivated(() => {
+	initData();
 });
 </script>
