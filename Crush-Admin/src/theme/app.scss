@@ -12,6 +12,7 @@
 	--next-bg-main-color: #f8f8f8;
 	--next-bg-table-color: #ffffff;
 	--next-bg-color: #f5f5ff;
+	--next-table-header-bg-color: #f8f8f8;
 	--next-border-color-light: #f1f2f3;
 	--next-color-primary-lighter: #ecf5ff;
 	--next-color-success-lighter: #f0f9eb;
@@ -247,6 +248,10 @@ div:focus {
 }
 .el-select {
 	width: 100% !important;
+}
+.el-table .el-table__header th,
+.table-main .el-table .el-table__header th {
+	background-color: var(--next-table-header-bg-color);
 }
 /* nprogress 进度条跟随主题颜色
 ------------------------------- */

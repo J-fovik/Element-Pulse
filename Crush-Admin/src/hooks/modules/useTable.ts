@@ -40,16 +40,16 @@ export const useTable = (columns: TableCustomColumnData[], callBack: () => void)
 		// 回调获取数据
 		callBack();
 	};
-	// 多选
-	const handleSelectionChange = (e: any) => {
-		tableBaseOptions.selectedKeys = e;
-	};
 	// 改变页码数量
 	const onPageSizeChange = (size: number) => {
 		tableBaseOptions.pagination.current = 1;
 		tableBaseOptions.pagination.pageSize = size;
 		// 回调获取数据
 		callBack();
+	};
+	// 多选
+	const handleSelectionChange = (e: any) => {
+		tableBaseOptions.selectedKeys = e;
 	};
 	// 可见的表格头
 	const visibleColumnsData = computed(() => columnsData.value.filter((item) => !!item.show));
