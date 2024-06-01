@@ -160,7 +160,7 @@
 		</div>
 	</div>
 </template>
-<script setup lang="ts" name="makeTableDemo2">
+<script setup lang="ts" name="pagesTableDemo2">
 import { useForm, useTable, useBasicsState, curryingRequest, useAsyncData, useAsyncNoInitData, useAsyncWatchData } from '/@/hooks';
 import { createTableColumns } from './table'; // 表头配置
 // import { getTableList, getTypeList, getSexList } from '/@/api/test';// 模拟接口

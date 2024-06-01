@@ -245,7 +245,9 @@ div:focus {
 		background-color: rgb(230, 230, 230);
 	}
 }
-
+.el-select {
+	width: 100% !important;
+}
 /* nprogress 进度条跟随主题颜色
 ------------------------------- */
 #nprogress {

@@ -27,7 +27,7 @@
 						</el-icon>
 						查询
 					</el-button>
-					<el-button type="primary" :class="collapsed ? 'marginStyle' : ''" size="default" @click="emits('resetSearch')">
+					<el-button type="info" :class="collapsed ? 'marginStyle' : ''" size="default" @click="emits('resetSearch')">
 						<el-icon>
 							<ele-Refresh />
 						</el-icon>
@@ -89,17 +89,17 @@ const route = useRoute();
 const props = withDefaults(
 	defineProps<{
 		fold?: boolean; // 是否开启折叠控制
-		isCollapsed?: boolean; // 是否开启折叠控制
 		tableColumns?: Array<any>; // 列展示
 	}>(),
 	{
 		fold: false,
-		isCollapsed: false,
 		tableColumns: () => [],
 	}
 );
+// 展开折叠控制
+const isCollapsed = ref(false);
 // 控制折叠
-const [collapsed, setCollapsed] = useBasicsState<boolean>(props.isCollapsed);
+const [collapsed, setCollapsed] = useBasicsState<boolean>(isCollapsed.value);
 // 父组件方法
 const emits = defineEmits(['resetSearch', 'search']);
 </script>

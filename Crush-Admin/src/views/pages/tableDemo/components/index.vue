@@ -7,7 +7,7 @@
 		:close-on-click-modal="false"
 		@close="emits('close')"
 	>
-		<el-form ref="formRef" :model="form" label-align="left" size="large" auto-label-width :rules="rules">
+		<el-form ref="formRef" :model="form" label-align="left" size="large" :rules="rules" label-width="auto">
 			<el-form-item label="姓名:" prop="name" required>
 				<el-input v-model="form.name" placeholder="请输入姓名" />
 			</el-form-item>

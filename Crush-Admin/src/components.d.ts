@@ -24,6 +24,7 @@ declare module 'vue' {
     NoticeBar: typeof import('./components/noticeBar/index.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    SearchItem: typeof import('./components/searchItem/index.vue')['default']
     SelectFilter: typeof import('./components/selectFilter/index.vue')['default']
     SvgIcon: typeof import('./components/svgIcon/index.vue')['default']
     TablePlus: typeof import('./components/tablePlus/index.vue')['default']

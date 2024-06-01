@@ -18,7 +18,9 @@
 							<el-form-item
 								:label="val.label"
 								:prop="val.prop"
-								:rules="[{ required: val.required, message: `${val.label}不能为空`, trigger: val.type === 'input' ? 'blur' : 'change' }]"
+								:rules="[
+									{ required: val.required, message: `${val.label}不能为空`, trigger: val.type === 'input' ? 'blur' : 'change' },
+								]"
 								v-if="val.type !== ''"
 							>
 								<el-input
@@ -58,10 +60,15 @@
 								></el-input>
 							</el-form-item>
 						</template>
+						<!-- 重要部分 -->
 						<template v-else>
 							<el-row :gutter="35" v-for="(v, k) in state.form.list" :key="k">
 								<el-col :xs="24" :sm="12" :md="8" :lg="8" :xl="6" class="mb20">
-									<el-form-item label="年度" :prop="`list[${k}].year`" :rules="[{ required: true, message: `年度不能为空`, trigger: 'blur' }]">
+									<el-form-item
+										label="年度"
+										:prop="`list[${k}].year`"
+										:rules="[{ required: true, message: `年度不能为空`, trigger: 'blur' }]"
+									>
 										<template #label>
 											<el-button type="primary" circle size="small" @click="onAddRow" v-if="k === 0">
 												<el-icon>
@@ -79,12 +86,20 @@
 									</el-form-item>
 								</el-col>
 								<el-col :xs="24" :sm="12" :md="8" :lg="8" :xl="6" class="mb20">
-									<el-form-item label="月度" :prop="`list[${k}].month`" :rules="[{ required: true, message: `月度不能为空`, trigger: 'blur' }]">
+									<el-form-item
+										label="月度"
+										:prop="`list[${k}].month`"
+										:rules="[{ required: true, message: `月度不能为空`, trigger: 'blur' }]"
+									>
 										<el-input v-model="state.form.list[k].month" style="width: 100%" placeholder="请输入"> </el-input>
 									</el-form-item>
 								</el-col>
 								<el-col :xs="24" :sm="12" :md="8" :lg="8" :xl="6" class="mb20">
-									<el-form-item label="日度" :prop="`list[${k}].day`" :rules="[{ required: true, message: `日度不能为空`, trigger: 'blur' }]">
+									<el-form-item
+										label="日度"
+										:prop="`list[${k}].day`"
+										:rules="[{ required: true, message: `日度不能为空`, trigger: 'blur' }]"
+									>
 										<el-input v-model="state.form.list[k].day" style="width: 100%" placeholder="请输入"> </el-input>
 									</el-form-item>
 								</el-col>
