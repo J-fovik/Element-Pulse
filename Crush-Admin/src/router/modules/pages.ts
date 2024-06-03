@@ -11,7 +11,7 @@ export default {
 		isAffix: false,
 		isIframe: false,
 		roles: ['admin', 'common'],
-		icon: 'iconfont icon-fuzhiyemian',
+		icon: 'ele-DocumentCopy',
 	},
 	children: [
 		{

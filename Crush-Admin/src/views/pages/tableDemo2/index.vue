@@ -4,55 +4,41 @@
 			<CustomTable fold :table-columns="columnsData" @reset-search="resetForm" @search="resetData">
 				<template #form>
 					<el-form :model="form" label-position="left">
-						<div class="grid">
-							<div class="grid-item">
-								<el-form-item label="名称:" label-width="80">
-									<el-input v-model.trim="form.name" placeholder="请输入名称" />
-								</el-form-item>
-							</div>
-							<div class="grid-item">
-								<el-form-item label="地点:" label-width="80">
-									<el-input v-model.trim="form.address" placeholder="请输入地点" />
-								</el-form-item>
-							</div>
-							<div class="grid-item">
-								<el-form-item label="状态:" label-width="80">
-									<el-select v-model="form.status" filterable placeholder="请输入状态">
-										<el-option
-											v-for="item in [...ALL_OPTIONS, ...STATUS_OPTIONS]"
-											:key="item.label"
-											:label="item.label"
-											:value="item.value"
-											:disabled="item.disabled"
-										/>
-									</el-select>
-								</el-form-item>
-							</div>
-							<div class="grid-item">
-								<el-form-item label="性别:" label-width="80">
-									<el-select v-model="form.sex" filterable placeholder="请选择性别">
-										<el-option v-for="item in sexList" :key="item.value" :label="item.label" :value="item.value" />
-									</el-select>
-								</el-form-item>
-							</div>
-							<div class="grid-item">
-								<el-form-item label="类型:" label-width="80">
-									<el-select v-model="form.type" filterable placeholder="请选择类型" :disabled="typeList.length == 0">
-										<el-option v-for="item in typeList" :key="item.value" :label="item.label" :value="item.value" />
-									</el-select>
-								</el-form-item>
-							</div>
-							<div class="grid-item">
-								<el-form-item label="金额:" label-width="80">
-									<el-input v-model.trim="form.money" placeholder="请输入金额" />
-								</el-form-item>
-							</div>
-							<div class="grid-item">
-								<el-form-item label="数量:" label-width="80">
-									<el-input v-model.trim="form.num" placeholder="请输入数量" />
-								</el-form-item>
-							</div>
-						</div>
+						<el-row :gutter="24">
+						<SearchItem label="名称:" class="mb5">
+							<el-input v-model.trim="form.name" placeholder="请输入名称" />
+						</SearchItem>
+						<SearchItem label="地点:" class="mb5">
+							<el-input v-model.trim="form.address" placeholder="请输入地点" />
+						</SearchItem>
+						<SearchItem label="状态:" class="mb5">
+							<el-select v-model="form.status" filterable placeholder="请输入状态">
+								<el-option
+									v-for="item in [...ALL_OPTIONS, ...STATUS_OPTIONS]"
+									:key="item.label"
+									:label="item.label"
+									:value="item.value"
+									:disabled="item.disabled"
+								/>
+							</el-select>
+						</SearchItem>
+						<SearchItem label="性别:" class="mb5">
+							<el-select v-model="form.sex" filterable placeholder="请选择性别">
+								<el-option v-for="item in sexList" :key="item.value" :label="item.label" :value="item.value" />
+							</el-select>
+						</SearchItem>
+						<SearchItem label="类型:" class="mb5">
+							<el-select v-model="form.type" filterable placeholder="请选择类型" :disabled="typeList.length == 0">
+								<el-option v-for="item in typeList" :key="item.value" :label="item.label" :value="item.value" />
+							</el-select>
+						</SearchItem>
+						<SearchItem label="金额:" class="mb5">
+							<el-input v-model.trim="form.money" placeholder="请输入金额" />
+						</SearchItem>
+						<SearchItem label="数量:" class="mb5">
+							<el-input v-model.trim="form.num" placeholder="请输入数量" />
+						</SearchItem>
+					</el-row>
 					</el-form>
 				</template>
 				<template #operate>

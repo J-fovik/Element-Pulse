@@ -1,5 +1,6 @@
 <template>
 	<div class="flex flex-col layout-main bg-table">
+		<div class="ml10 mt10">{{ $t(route.meta.title as any) }}</div>
 		<div class="flex px15 pt15">
 			<div :class="collapsed ? 'flex-1' : 'formHeight'">
 				<slot name="form"></slot>
@@ -74,26 +75,28 @@
 </template>
 
 <script lang="ts" setup name="customTable">
+import { useRoute } from 'vue-router';
 import { useBasicsState } from '/@/hooks';
+const route = useRoute();
 // 父组件参数
 const props = withDefaults(
 	defineProps<{
 		fold?: boolean; // 是否开启折叠控制
-		isCollapsed?: boolean; // 是否开启折叠控制
 		tableColumns?: Array<any>; // 列展示
 	}>(),
 	{
 		fold: false,
-		isCollapsed: false,
 		tableColumns: () => [],
 	}
 );
+// 展开折叠控制
+const isCollapsed = ref(false);
 // 控制折叠
-const [collapsed, setCollapsed] = useBasicsState<boolean>(props.isCollapsed);
+const [collapsed, setCollapsed] = useBasicsState<boolean>(isCollapsed.value);
 // 父组件方法
 const emits = defineEmits(['resetSearch', 'search']);
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 .bg-table {
 	background-color: var(--next-bg-table-color) !important;
 }

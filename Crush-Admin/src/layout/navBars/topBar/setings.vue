@@ -36,7 +36,8 @@
 				<div class="layout-breadcrumb-seting-bar-flex">
 					<div class="layout-breadcrumb-seting-bar-flex-label">{{ $t('message.layout.twoTopBarColor') }}</div>
 					<div class="layout-breadcrumb-seting-bar-flex-value">
-						<el-color-picker v-model="getThemeConfig.topBarColor" size="default" @change="onBgColorPickerChange('topBarColor')"> </el-color-picker>
+						<el-color-picker v-model="getThemeConfig.topBarColor" size="default" @change="onBgColorPickerChange('topBarColor')">
+						</el-color-picker>
 					</div>
 				</div>
 				<div class="layout-breadcrumb-seting-bar-flex mt10">
@@ -51,13 +52,15 @@
 				<div class="layout-breadcrumb-seting-bar-flex">
 					<div class="layout-breadcrumb-seting-bar-flex-label">{{ $t('message.layout.twoMenuBar') }}</div>
 					<div class="layout-breadcrumb-seting-bar-flex-value">
-						<el-color-picker v-model="getThemeConfig.menuBar" size="default" @change="onBgColorPickerChange('menuBar')"> </el-color-picker>
+						<el-color-picker v-model="getThemeConfig.menuBar" size="default" @change="onBgColorPickerChange('menuBar')">
+						</el-color-picker>
 					</div>
 				</div>
 				<div class="layout-breadcrumb-seting-bar-flex">
 					<div class="layout-breadcrumb-seting-bar-flex-label">{{ $t('message.layout.twoMenuBarColor') }}</div>
 					<div class="layout-breadcrumb-seting-bar-flex-value">
-						<el-color-picker v-model="getThemeConfig.menuBarColor" size="default" @change="onBgColorPickerChange('menuBarColor')"> </el-color-picker>
+						<el-color-picker v-model="getThemeConfig.menuBarColor" size="default" @change="onBgColorPickerChange('menuBarColor')">
+						</el-color-picker>
 					</div>
 				</div>
 				<div class="layout-breadcrumb-seting-bar-flex">
@@ -282,8 +285,8 @@
 				</div>
 				<div class="layout-breadcrumb-seting-bar-flex mt14">
 					<div class="layout-breadcrumb-seting-bar-flex-label">{{ $t('message.layout.fourWartermarkText') }}</div>
-					<div class="layout-breadcrumb-seting-bar-flex-value">
-						<el-input v-model="getThemeConfig.wartermarkText" size="default" style="width: 90px" @input="onWartermarkTextInput"></el-input>
+					<div class="layout-breadcrumb-seting-bar-flex-value" style="width: 90px">
+						<el-input v-model="getThemeConfig.wartermarkText" size="default" @input="onWartermarkTextInput"></el-input>
 					</div>
 				</div>
 
@@ -291,8 +294,8 @@
 				<el-divider content-position="left">{{ $t('message.layout.fiveTitle') }}</el-divider>
 				<div class="layout-breadcrumb-seting-bar-flex mt15">
 					<div class="layout-breadcrumb-seting-bar-flex-label">{{ $t('message.layout.fiveTagsStyle') }}</div>
-					<div class="layout-breadcrumb-seting-bar-flex-value">
-						<el-select v-model="getThemeConfig.tagsStyle" placeholder="请选择" size="default" style="width: 90px" @change="setLocalThemeConfig">
+					<div class="layout-breadcrumb-seting-bar-flex-value" style="width: 90px">
+						<el-select v-model="getThemeConfig.tagsStyle" placeholder="请选择" size="default" @change="setLocalThemeConfig">
 							<el-option label="风格1" value="tags-style-one"></el-option>
 							<el-option label="风格4" value="tags-style-four"></el-option>
 							<el-option label="风格5" value="tags-style-five"></el-option>
@@ -301,8 +304,8 @@
 				</div>
 				<div class="layout-breadcrumb-seting-bar-flex mt15">
 					<div class="layout-breadcrumb-seting-bar-flex-label">{{ $t('message.layout.fiveAnimation') }}</div>
-					<div class="layout-breadcrumb-seting-bar-flex-value">
-						<el-select v-model="getThemeConfig.animation" placeholder="请选择" size="default" style="width: 90px" @change="setLocalThemeConfig">
+					<div class="layout-breadcrumb-seting-bar-flex-value" style="width: 90px">
+						<el-select v-model="getThemeConfig.animation" placeholder="请选择" size="default" @change="setLocalThemeConfig">
 							<el-option label="slide-right" value="slide-right"></el-option>
 							<el-option label="slide-left" value="slide-left"></el-option>
 							<el-option label="opacitys" value="opacitys"></el-option>
@@ -311,12 +314,11 @@
 				</div>
 				<div class="layout-breadcrumb-seting-bar-flex mt15" :style="{ opacity: getThemeConfig.layout !== 'columns' ? 0.5 : 1 }">
 					<div class="layout-breadcrumb-seting-bar-flex-label">{{ $t('message.layout.fiveColumnsAsideStyle') }}</div>
-					<div class="layout-breadcrumb-seting-bar-flex-value">
+					<div class="layout-breadcrumb-seting-bar-flex-value" style="width: 90px">
 						<el-select
 							v-model="getThemeConfig.columnsAsideStyle"
 							placeholder="请选择"
 							size="default"
-							style="width: 90px"
 							:disabled="getThemeConfig.layout !== 'columns' ? true : false"
 							@change="setLocalThemeConfig"
 						>
@@ -327,12 +329,11 @@
 				</div>
 				<div class="layout-breadcrumb-seting-bar-flex mt15 mb27" :style="{ opacity: getThemeConfig.layout !== 'columns' ? 0.5 : 1 }">
 					<div class="layout-breadcrumb-seting-bar-flex-label">{{ $t('message.layout.fiveColumnsAsideLayout') }}</div>
-					<div class="layout-breadcrumb-seting-bar-flex-value">
+					<div class="layout-breadcrumb-seting-bar-flex-value" style="width: 90px">
 						<el-select
 							v-model="getThemeConfig.columnsAsideLayout"
 							placeholder="请选择"
 							size="default"
-							style="width: 90px"
 							:disabled="getThemeConfig.layout !== 'columns' ? true : false"
 							@change="setLocalThemeConfig"
 						>
@@ -362,7 +363,10 @@
 					</div>
 					<!-- classic 布局 -->
 					<div class="layout-drawer-content-item" @click="onSetLayout('classic')">
-						<section class="el-container is-vertical el-circular" :class="{ 'drawer-layout-active': getThemeConfig.layout === 'classic' }">
+						<section
+							class="el-container is-vertical el-circular"
+							:class="{ 'drawer-layout-active': getThemeConfig.layout === 'classic' }"
+						>
 							<header class="el-header" style="height: 10px"></header>
 							<section class="el-container">
 								<aside class="el-aside" style="width: 20px"></aside>
@@ -379,7 +383,10 @@
 					</div>
 					<!-- transverse 布局 -->
 					<div class="layout-drawer-content-item" @click="onSetLayout('transverse')">
-						<section class="el-container is-vertical el-circular" :class="{ 'drawer-layout-active': getThemeConfig.layout === 'transverse' }">
+						<section
+							class="el-container is-vertical el-circular"
+							:class="{ 'drawer-layout-active': getThemeConfig.layout === 'transverse' }"
+						>
 							<header class="el-header" style="height: 10px"></header>
 							<section class="el-container">
 								<section class="el-container is-vertical">
