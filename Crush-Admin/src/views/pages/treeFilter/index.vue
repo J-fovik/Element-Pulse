@@ -18,6 +18,9 @@
 </template>
 <script setup lang="ts" name="pagesTreeFilter">
 import addressJson from './address.json';
+import { useRoute } from 'vue-router';
+const route = useRoute();
+console.log(route);
 // 默认配置
 const defaultProps = {
 	children: 'children',
