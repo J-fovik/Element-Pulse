@@ -6,11 +6,18 @@
 					<div class="tree-head-check"><el-checkbox v-model="state.treeCheckAll" @change="onCheckAllChange"></el-checkbox></div>
 					<div class="tree-head-one">商品 ID</div>
 					<div style="flex: 1; display: flex">
-						<div class="tree-head-two">商品名称</div>
-						<div class="tree-head-three">描述</div>
+						<div class="tree-head-other">商品名称</div>
+						<div class="tree-head-other">描述</div>
 					</div>
 				</div>
-				<el-tree :data="state.treeTableData" show-checkbox node-key="id" ref="treeTableRef" :props="state.treeDefaultProps" @check="onCheckTree">
+				<el-tree
+					:data="state.treeTableData"
+					show-checkbox
+					node-key="id"
+					ref="treeTableRef"
+					:props="state.treeDefaultProps"
+					@check="onCheckTree"
+				>
 					<template #default="{ node, data }">
 						<span class="tree-custom-node">
 							<span style="flex: 1">{{ node.label }}</span>
@@ -30,21 +37,20 @@
 	</div>
 </template>
 
-<script setup lang="ts" name="pagesTree">
+<script setup lang="ts" name="pagesTreeTable">
 import { ElMessage } from 'element-plus';
-
 // 定义变量内容
 const treeTableRef = ref();
 const state = reactive({
-	treeCheckAll: false,
-	treeLoading: false,
-	treeTableData: [] as RowTreeType[],
+	treeCheckAll: false, // 全选状态
+	treeLoading: false, // loading
+	treeTableData: [] as RowTreeType[], // 表格数据
 	treeDefaultProps: {
 		children: 'children',
 		label: 'label',
-	},
-	treeSelArr: [] as RowTreeType[],
-	treeLength: 0,
+	}, // 树形节点默认配置
+	treeSelArr: [] as RowTreeType[], // 选中数组
+	treeLength: 0, // 数组总和长度
 });
 
 // 初始化树的长度
@@ -59,16 +65,22 @@ const initTreeLengh = (arr: RowTreeType[]) => {
 };
 // 全选改变时
 const onCheckAllChange = () => {
+	// 点击全选时全部勾选否则全部清空
 	if (state.treeCheckAll) {
 		treeTableRef.value.setCheckedNodes(state.treeTableData);
 	} else {
 		treeTableRef.value.setCheckedKeys([]);
 	}
+	// 赋值勾选数据
+	state.treeSelArr = treeTableRef.value.getCheckedNodes();
+	console.log(state.treeSelArr);
 };
 // 节点选中状态发生变化时的回调
 const onCheckTree = () => {
 	state.treeSelArr = [];
+	// 赋值勾选数据
 	state.treeSelArr = treeTableRef.value.getCheckedNodes();
+	// 选中数据数组 和 表格数据判断 ,若相等将全选为true ，否则为false
 	state.treeSelArr.length == state.treeLength ? (state.treeCheckAll = true) : (state.treeCheckAll = false);
 };
 // 选择元素按钮
@@ -185,8 +197,7 @@ onBeforeMount(() => {
 			text-align: right;
 		}
 		.tree-head-one,
-		.tree-head-two,
-		.tree-head-three {
+		.tree-head-other {
 			flex: 1;
 		}
 		.tree-head-one {

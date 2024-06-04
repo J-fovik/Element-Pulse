@@ -1,6 +1,6 @@
 <template>
-	<div class="grid-layout-container layout-padding">
-		<el-card shadow="hover" header="vue-grid-layout 拖拽布局演示" class="layout-padding-auto">
+	<div class="grid-layout-container layout-flexBox">
+		<el-card shadow="hover" header="vue-grid-layout 拖拽布局演示" class="layout-flexBox-auto">
 			<el-alert
 				title="方式一：感谢优秀的 `vue-grid-layout`，项目地址：https://www.npmjs.com/package/vue-grid-layout/v/2.3.7`"
 				type="success"

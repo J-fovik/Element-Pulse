@@ -28,6 +28,7 @@ declare module 'vue' {
     SelectFilter: typeof import('./components/selectFilter/index.vue')['default']
     SvgIcon: typeof import('./components/svgIcon/index.vue')['default']
     TablePlus: typeof import('./components/tablePlus/index.vue')['default']
+    TreeFilter: typeof import('./components/treeFilter/index.vue')['default']
     VueCropper: typeof import('./components/vueCropper/index.vue')['default']
     WangEditor: typeof import('./components/wangEditor/index.vue')['default']
   }
