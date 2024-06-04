@@ -44,17 +44,18 @@ const treeTableRef = ref();
 const state = reactive({
 	treeCheckAll: false, // 全选状态
 	treeLoading: false, // loading
-	treeTableData: [] as RowTreeType[], // 表格数据
+	treeTableData: [] as any[], // 表格数据
 	treeDefaultProps: {
 		children: 'children',
 		label: 'label',
+		disabled: 'disabled',
 	}, // 树形节点默认配置
-	treeSelArr: [] as RowTreeType[], // 选中数组
+	treeSelArr: [] as any[], // 选中数组
 	treeLength: 0, // 数组总和长度
 });
 
 // 初始化树的长度
-const initTreeLengh = (arr: RowTreeType[]) => {
+const initTreeLengh = (arr: any[]) => {
 	let count = 0;
 	arr.map((item) => {
 		if (item.children) {
@@ -109,6 +110,7 @@ const getTreeData = () => {
 					label1: '好滋好味鸡蛋仔',
 					label2: '荷兰优质淡奶，奶香浓而不腻',
 					isShow: true,
+					disabled: true,
 				},
 				{
 					id: 12,
