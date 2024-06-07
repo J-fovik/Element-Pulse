@@ -165,6 +165,22 @@ export default {
 			},
 		},
 		{
+			path: '/pages/tableDemo2/operate',
+			name: 'pagesTableDemo2Operate',
+			component: () => import('/@/views/pages/tableDemo2/operate/index.vue'),
+			meta: {
+				title: 'message.router.pagesTableDemo2Operate',
+				superiorName: 'pagesTableDemo2',
+				isLink: '',
+				isHide: true,
+				isKeepAlive: true,
+				isAffix: false,
+				isIframe: false,
+				roles: ['admin', 'common'],
+				icon: 'iconfont icon-huoyuedu-',
+			},
+		},
+		{
 			path: '/pages/treeFilter',
 			name: 'pagesTreeFilter',
 			component: () => import('/@/views/pages/treeFilter/index.vue'),

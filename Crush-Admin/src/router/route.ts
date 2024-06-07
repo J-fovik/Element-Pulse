@@ -14,6 +14,8 @@ import { RouteRecordRaw } from 'vue-router';
 		meta: {
 			// 菜单标题（国际化写法）
 			title: 'message.router.home',
+			// 详情页配置的上级name，用于返回上级页面
+			superiorName:""
 			// 菜单外链链接
 			// 开启外链条件，`1、isLink: true 2、链接地址不为空（meta.isLink） 3、isIframe: false`
 			isLink: '',
@@ -35,10 +37,10 @@ import { RouteRecordRaw } from 'vue-router';
 	}
 */
 /**
-	 * 打开内置全屏
-	 * component 都为 `() => import('/@/layout/routerView/link.vue')`
-	 * isLink 链接为内置的路由地址，地址为 staticRoutes 中定义
-*/
+ * 打开内置全屏
+ * component 都为 `() => import('/@/layout/routerView/link.vue')`
+ * isLink 链接为内置的路由地址，地址为 staticRoutes 中定义
+ */
 // 扩展 RouteMeta 接口
 declare module 'vue-router' {
 	interface RouteMeta {
@@ -53,10 +55,10 @@ declare module 'vue-router' {
 	}
 }
 // 使用 import.meta.globEager 导入所有模块文件
-const modules = import.meta.glob('./modules/*.ts', { eager: true, import: 'default' })
+const modules = import.meta.glob('./modules/*.ts', { eager: true, import: 'default' });
 // 处理模块
 export const routerArray = Object.keys(modules).map((key) => {
-    return (modules[key] as any);
+	return modules[key] as any;
 });
 /**
  * 定义动态路由
@@ -74,9 +76,7 @@ export const dynamicRoutes: Array<RouteRecordRaw> = [
 		meta: {
 			isKeepAlive: true,
 		},
-		children: [
-			...routerArray,
-		],
+		children: [...routerArray],
 	},
 ];
 

@@ -10,6 +10,7 @@
 :root {
 	--next-color-white: #ffffff;
 	--next-bg-main-color: #f8f8f8;
+	--next-bg-menu-color: #545c64;
 	--next-bg-table-color: #ffffff;
 	--next-bg-color: #f5f5ff;
 	--next-table-header-bg-color: #f8f8f8;
@@ -176,7 +177,13 @@ div:focus {
 			overflow-y: auto;
 		}
 	}
-
+	// 新增编辑底部操作
+	.footerCard {
+		position: fixed;
+		left: 0;
+		right: 0;
+		bottom: 0;
+	}
 	// 用于界面高度自适应，主视图区 main 的内边距，用于 iframe
 	.layout-padding-unset {
 		padding: 0 !important;
@@ -279,6 +286,10 @@ div:focus {
 .el-table .el-table__header th,
 .table-main .el-table .el-table__header th {
 	background-color: var(--next-table-header-bg-color);
+}
+.el-date-editor.el-input,
+.el-date-editor.el-input__wrapper {
+	width: 100% !important;
 }
 /* nprogress 进度条跟随主题颜色
 ------------------------------- */

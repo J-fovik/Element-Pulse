@@ -12,6 +12,7 @@ declare module 'vue' {
     Auths: typeof import('./components/auth/auths.vue')['default']
     Chart: typeof import('./components/chart/index.vue')['default']
     ColorExtractor: typeof import('./components/colorExtractor/index.vue')['default']
+    Content: typeof import('./components/content/index.vue')['default']
     copy: typeof import('./components/customTable copy/index.vue')['default']
     CountUp: typeof import('./components/countUp/index.vue')['default']
     CropperJs: typeof import('./components/cropperJs/index.vue')['default']

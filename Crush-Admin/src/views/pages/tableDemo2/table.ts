@@ -91,7 +91,6 @@ export const createTableColumns = (): TableCustomColumnData[] => {
 		{
 			title: '图片',
 			width: 100,
-			slotName: 'image',
 			key: 'image',
 			show: true,
 			align: 'center',
@@ -100,7 +99,6 @@ export const createTableColumns = (): TableCustomColumnData[] => {
 			title: '操作',
 			width: 150,
 			key: 'operate',
-			slotName: 'operate',
 			show: true,
 			align: 'center',
 		},

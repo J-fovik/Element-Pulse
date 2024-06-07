@@ -67,7 +67,6 @@
 <script setup lang="ts" name="pagesTableRules">
 import { ElMessage } from 'element-plus';
 import type { FormInstance } from 'element-plus';
-import { useRoute } from 'vue-router';
 // 定义变量内容
 const tableRulesRef = ref<FormInstance>();
 const tableRef = ref();

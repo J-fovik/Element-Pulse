@@ -3,7 +3,7 @@
 	<el-menu
 		router
 		:default-active="state.defaultActive"
-		background-color="transparent"
+		:background-color="getThemeConfig.isIsDark ? 'var(--next-bg-main)' : 'transparent'"
 		:collapse="state.isCollapse"
 		:unique-opened="getThemeConfig.isUniqueOpened"
 		:collapse-transition="false"
@@ -57,7 +57,6 @@ const state = reactive({
 	defaultActive: route.meta.isDynamic ? route.meta.isDynamicPath : route.path,
 	isCollapse: false,
 });
-
 // 获取父级菜单数据
 const menuLists = computed(() => {
 	return <RouteItems>props.menuList;

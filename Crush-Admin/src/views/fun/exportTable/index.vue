@@ -28,7 +28,7 @@
 			>
 		</el-card>
 
-		<el-card shadow="hover" header="表格">
+		<el-card shadow="hover" header="表格" class="mt10">
 			<!-- 表格 -->
 			<el-table ref="tableRef" :data="tableData" @selection-change="handleSelectionChange">
 				<el-table-column type="selection" width="55" />

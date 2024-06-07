@@ -43,6 +43,7 @@ export default {
 		pagesWorkflow: 'Workflow',
 		pagesTableDemo: 'table demo',
 		pagesTableDemo2: 'table demo2',
+		pagesTableDemo2Operate:'table demo2 Operate',
 		pagesTreeFilter:'tree filter',
 		paramsIndex: 'Routing parameters',
 		paramsCommon: 'General routing',

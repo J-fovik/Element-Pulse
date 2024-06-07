@@ -7,9 +7,6 @@
 						<SearchItem label="名称:" class="mb5">
 							<el-input v-model.trim="form.name" placeholder="请输入名称" />
 						</SearchItem>
-						<SearchItem label="地点:" class="mb5">
-							<el-input v-model.trim="form.address" placeholder="请输入地点" />
-						</SearchItem>
 						<SearchItem label="状态:" class="mb5">
 							<el-select v-model="form.status" filterable placeholder="请输入状态">
 								<el-option
@@ -31,11 +28,14 @@
 								<el-option v-for="item in typeList" :key="item.value" :label="item.label" :value="item.value" />
 							</el-select>
 						</SearchItem>
-						<SearchItem label="金额:" class="mb5">
-							<el-input v-model.trim="form.money" placeholder="请输入金额" />
-						</SearchItem>
-						<SearchItem label="数量:" class="mb5">
-							<el-input v-model.trim="form.num" placeholder="请输入数量" />
+						<SearchItem label="日期:" class="mb5">
+							<el-date-picker
+								v-model="form.date"
+								type="date"
+								placeholder="请选择开始时间"
+								format="YYYY/MM/DD"
+								value-format="YYYY-MM-DD"
+							/>
 						</SearchItem>
 					</el-row>
 				</el-form>
@@ -109,7 +109,9 @@
 					</template>
 					<template #operate="{ row }">
 						<el-space>
-							<el-button type="success" text @click="$router.push(`/params/common/details?id=${row.id}`)">详情</el-button>
+							<el-button type="success" text @click="setSelectRow({ ...row, isReadOnly: true }, () => setActiveKey('AddEditor'))"
+								>详情</el-button
+							>
 							<el-button type="primary" text @click="setSelectRow(row, () => setActiveKey('AddEditor'))">编辑</el-button>
 							<el-popconfirm width="175" title="确定删除当前数据？" @confirm="handleDelete(row)">
 								<template #reference>
@@ -137,7 +139,12 @@
 		</CustomTableMould>
 		<!-- 新增编辑模态框 -->
 		<!-- 实现逻辑就是模态框一直打开状态，根据activeKey控制展示或者销毁，必须用v-if -->
-		<Operate v-if="activeKey === 'AddEditor'" :data="selectRow" @success="initData" @close="setSelectRow({}, () => setActiveKey(null))"></Operate>
+		<Operation
+			v-if="activeKey === 'AddEditor'"
+			:data="selectRow"
+			@success="initData"
+			@close="setSelectRow({}, () => setActiveKey(null))"
+		></Operation>
 	</div>
 </template>
 <script setup lang="ts" name="pagesTableDemo">
@@ -147,23 +154,24 @@ import { createTableColumns } from './table'; // 表头配置
 // import { getTableList, getTypeList, getSexList } from '/@/api/test';// 模拟接口
 import { ALL_OPTIONS } from '/@/utils/options'; // 全部
 import { TABLE_DATA, SEX_OPTIONS, TYPES_A_OPTIONS, TYPES_B_OPTIONS, STATUS_OPTIONS } from './options'; // 模拟接口数据
-const Operate = defineAsyncComponent(() => import('./components/index.vue'));
-// 页面唯一元素控制
+import commonFunction from '/@/utils/commonFunction';
+const Operation = defineAsyncComponent(() => import('./components/index.vue'));
+const { sleep } = commonFunction();
+
+/* 页面唯一元素控制 */
 const [activeKey, setActiveKey] = useBasicsState<string | null>(null);
-// 表单hooks
+/* 表单hooks */
 const { form, resetForm } = useForm(
 	() => ({
 		name: '', // 姓名
-		address: '', // 地点
 		status: '', // 状态
 		sex: '', // 性别
 		type: '', // 类型
-		money: '', // 金额
-		num: '', // 数量
+		date: '', // 日期
 	}),
 	() => resetData()
 );
-// 表格hooks
+/* 表格hooks */
 const {
 	tableRef, // 表格实例
 	selectRow, // 当前选中的值
@@ -179,7 +187,7 @@ const {
 	handleSelectionChange, // 多选
 } = useTable(createTableColumns(), () => initData());
 
-// 获取性别列表
+/* 获取性别列表 */
 const { data: sexList } = useAsyncData(async () => {
 	// const { res, err } = await curryingRequest(() => getSexList({}));
 	// 处理错误
@@ -187,7 +195,7 @@ const { data: sexList } = useAsyncData(async () => {
 	// 返回处理后的数据
 	return SEX_OPTIONS;
 });
-// 监听性别变换获取类型
+/* 监听性别变换获取类型 */
 const { data: typeList } = useAsyncWatchData<Array<any>>(
 	async () => {
 		// const { res, err } = await curryingRequest(() => getTypeList({}));
@@ -201,7 +209,7 @@ const { data: typeList } = useAsyncWatchData<Array<any>>(
 	},
 	{ watchSource: () => form.value.sex, defaultValue: [] }
 );
-// 删除功能
+/* 删除功能 */
 const handleDelete = (row: any) => {
 	// 如果传递 row 参数并且有id，表示点击的当前列删除，删除成功后记得执行 initData() 重新请求列表
 	if (row && row.id) {
@@ -213,12 +221,13 @@ const handleDelete = (row: any) => {
 	// 调用接口删除成功后清空已选
 	tableBaseOptions.selectedKeys = [];
 };
-// 获取表格列表
+/* 获取表格列表 */
 const {
 	data: tableData,
 	loading,
 	initData,
 } = useAsyncData(async () => {
+	await sleep(1000);
 	console.log('表单参数', form.value);
 	toast('当前页：' + tableBaseOptions.pagination.current + '，每页数量' + tableBaseOptions.pagination.pageSize);
 	// const { res, err } = await curryingRequest(() =>
@@ -241,5 +250,4 @@ const {
 		})
 	); // 处理数据
 });
-// onActivated 可用于跳转页面返回刷新列表
 </script>

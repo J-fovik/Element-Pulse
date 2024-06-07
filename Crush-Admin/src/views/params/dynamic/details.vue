@@ -7,13 +7,14 @@
 				<div>参数：params: {{ route.params }}</div>
 			</div>
 		</div>
-		<el-button @click="router.back()">返回</el-button>
+		<el-button @click="jumpTabName()">返回</el-button>
 	</div>
 </template>
 
 <script setup lang="ts" name="paramsDynamicDetails">
-import { useRoute, useRouter } from 'vue-router';
+import { useRoute } from 'vue-router';
+import { useTabStore } from '/@/stores/jumpTab';
 // 定义变量内容
 const route = useRoute();
-const router = useRouter();
+const { jumpTabName } = useTabStore();
 </script>

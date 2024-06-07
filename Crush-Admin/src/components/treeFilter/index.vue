@@ -1,12 +1,13 @@
 <template>
 	<div class="filter" :style="{ width }">
-		<h4 v-if="title" class="title text-ellipsis">
+		<h4 v-if="title" class="title text-ellipsis" v-tooltip="{ text: title, position: 'top' }">
 			{{ title }}
 		</h4>
 		<el-input v-model="filterText" placeholder="输入关键字进行过滤" clearable />
 		<el-tree
 			ref="treeRef"
 			accordion
+			:icon="icon"
 			:node-key="id"
 			:data="data"
 			:show-checkbox="multiple"
@@ -21,10 +22,10 @@
 			@node-click="handleNodeClick"
 			@check="handleCheckChange"
 		>
-			<template #default="scope">
+			<template #default="{ node, data }">
 				<span class="el-tree-node__label">
-					<slot :row="scope">
-						{{ scope.node.label }}
+					<slot :row="{ node, data }">
+						{{ node.label }}
 					</slot>
 				</span>
 			</template>
@@ -43,8 +44,8 @@ const props = withDefaults(
 		multiple?: boolean; // 是否为多选 ==> 非必传，默认为 false
 		title?: string; // treeFilter 标题 ==> 非必传
 		id?: string; // 选择的id ==> 非必传，默认为 “id”
-		label?: string; // 显示的label ==> 非必传，默认为 “label”
 		width?: string; // 组件宽度 ==> 非必传，默认为 “220px”
+		icon?: string; // 节点图标 ==> 非必传
 	}>(),
 	{
 		data: () => [],
@@ -56,8 +57,8 @@ const props = withDefaults(
 		multiple: false,
 		title: '',
 		id: 'id',
-		label: 'label',
 		width: '220px',
+		icon: '',
 	}
 );
 // 树形控件实例
