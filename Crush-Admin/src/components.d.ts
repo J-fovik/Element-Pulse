@@ -17,6 +17,8 @@ declare module 'vue' {
     CropperJs: typeof import('./components/cropperJs/index.vue')['default']
     CustomTable: typeof import('./components/customTable/index.vue')['default']
     CustomTableMould: typeof import('./components/customTableMould/index.vue')['default']
+    DargBoard: typeof import('./components/dargBoard/index.vue')['default']
+    DargSelect: typeof import('./components/dargSelect/index.vue')['default']
     FlopTime: typeof import('./components/flopTime/index.vue')['default']
     FormDrawer: typeof import('./components/formDrawer/index.vue')['default']
     IconSelector: typeof import('./components/iconSelector/index.vue')['default']

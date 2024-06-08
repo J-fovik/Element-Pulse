@@ -58,7 +58,7 @@ const dialogVisible = ref(false);
 const selectIcon = (item: any) => {
 	dialogVisible.value = false;
 	valueIcon.value = item.name;
-	emit('update:modelValue', 'ele-' + item.name);
+	emit('update:modelValue', item.name);
 	setTimeout(() => inputRef.value.blur(), 0);
 };
 

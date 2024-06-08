@@ -89,5 +89,20 @@ export default {
 				icon: 'ele-Postcard',
 			},
 		},
+		{
+			path: '/make/dargSelect',
+			name: 'makeDargSelect',
+			component: () => import('/@/views/make/dargSelect/index.vue'),
+			meta: {
+				title: 'message.router.makeDargSelect',
+				isLink: '',
+				isHide: false,
+				isKeepAlive: true,
+				isAffix: false,
+				isIframe: false,
+				roles: ['admin', 'common'],
+				icon: 'ele-Sort',
+			},
+		},
 	],
 };

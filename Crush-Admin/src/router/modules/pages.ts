@@ -195,5 +195,20 @@ export default {
 				icon: 'ele-Cherry',
 			},
 		},
+		{
+			path: '/pages/dargBoard',
+			name: 'pagesDargBoard',
+			component: () => import('/@/views/pages/dargBoard/index.vue'),
+			meta: {
+				title: 'message.router.pagesDargBoard',
+				isLink: '',
+				isHide: false,
+				isKeepAlive: true,
+				isAffix: false,
+				isIframe: false,
+				roles: ['admin', 'common'],
+				icon: 'ele-Cherry',
+			},
+		},
 	],
 };
