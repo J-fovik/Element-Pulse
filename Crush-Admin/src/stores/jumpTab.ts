@@ -16,7 +16,12 @@ export const useTabStore = defineStore('tabStore', () => {
 		if (name) {
 			router.replace({ name });
 		} else {
-			router.replace({ name: (route.meta.superiorName as string) ?? 'home' });
+			// 需保证路由配置此name
+			if (route.query.name) {
+				router.replace({ name: route.query.name as string });
+			} else {
+				router.replace({ name: (route.meta.superiorName as string) ?? 'home' });
+			}
 		}
 	};
 	// 暴露API
