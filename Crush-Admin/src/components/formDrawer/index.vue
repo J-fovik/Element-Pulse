@@ -68,9 +68,9 @@ defineExpose({
 .formDrawer .body {
 	flex: 1;
 	position: absolute;
-	top: 0;
-	left: 0;
-	right: 0;
+	top: 20px;
+	left: 20px;
+	right: 20px;
 	bottom: 50px;
 	overflow-y: auto;
 }

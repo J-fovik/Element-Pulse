@@ -207,7 +207,7 @@ export default {
 				isAffix: false,
 				isIframe: false,
 				roles: ['admin', 'common'],
-				icon: 'ele-Cherry',
+				icon: 'ele-DataBoard',
 			},
 		},
 	],

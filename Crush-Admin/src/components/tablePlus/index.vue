@@ -24,7 +24,7 @@
 	</el-table>
 </template>
 <script setup lang="ts" name="tablePlus">
-// 父组件参数
+// 接受父组件参数
 const props = withDefaults(
 	defineProps<{
 		loading?: boolean; // loading
@@ -39,7 +39,9 @@ const props = withDefaults(
 		visibleColumnsData: () => [],
 	}
 );
+// 给父组件传参
 const emits = defineEmits(['selectKeys']);
+// 多选
 const handleSelectionChange = (e: any) => {
 	emits('selectKeys', e);
 };

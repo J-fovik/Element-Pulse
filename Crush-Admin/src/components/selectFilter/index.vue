@@ -46,14 +46,17 @@ interface SelectFilterProps {
 	data?: SelectDataProps[]; // 选择的列表数据
 	defaultValues?: { [key: string]: any }; // 默认值
 }
-
+// 接受父组件参数
 const props = withDefaults(defineProps<SelectFilterProps>(), {
 	data: () => [],
 	defaultValues: () => ({}),
 });
+// 给父组件传参
+const emits = defineEmits(['change']);
 
 // 重新接收默认值
 const selected = ref<{ [key: string]: any }>({});
+// 监听默认值变化
 watch(
 	() => props.defaultValues,
 	() => {
@@ -64,8 +67,6 @@ watch(
 	},
 	{ deep: true, immediate: true }
 );
-
-const emits = defineEmits(['change']);
 
 /**
  * @description 选择筛选项
@@ -97,7 +98,6 @@ const select = (item: SelectDataProps, option: OptionsProps) => {
 	emits('change', selected.value);
 };
 </script>
-
 <style scoped lang="scss">
 .select-filter {
 	width: 100%;

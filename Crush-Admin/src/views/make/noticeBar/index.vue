@@ -48,7 +48,6 @@
 </template>
 
 <script setup lang="ts" name="makeNoticeBar">
-
 // 定义变量内容
 const state = reactive({
 	noticeList: ['🎉🎉🔥基于vue3.x 、Typescript、vite、Element plus等', '适配手机、平板、pc的后台开源免费模板库'],

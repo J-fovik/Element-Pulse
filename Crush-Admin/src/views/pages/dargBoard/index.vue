@@ -10,6 +10,7 @@
 	</div>
 </template>
 <script setup lang="ts" name="pagesDargBoard">
+// 可拖拽到其他看板
 const group = ref('mission');
 const list1 = ref([
 	{ name: 'aaa', id: 1 },
@@ -29,14 +30,6 @@ const list3 = ref([
 ]);
 </script>
 <style lang="scss">
-.board {
-	width: 1000px;
-	margin-left: 20px;
-	display: flex;
-	justify-content: space-around;
-	flex-direction: row;
-	align-items: flex-start;
-}
 .kanban {
 	&.todo {
 		.board-column-header {
