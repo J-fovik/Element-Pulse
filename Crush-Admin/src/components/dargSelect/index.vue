@@ -4,7 +4,7 @@
 	</el-select>
 </template>
 
-<script setup name="DragSelect">
+<script setup name="dargSelect">
 import Sortable from 'sortablejs';
 // 接受父组件参数
 const props = defineProps({

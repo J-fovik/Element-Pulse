@@ -1,7 +1,7 @@
 <template>
 	<div class="layout-flexBox">
 		<el-card shadow="hover" class="layout-flexBox-left">
-			<TreeFilter
+			<TreeSelector
 				:data="addressJson.address"
 				id="code"
 				icon="ele-Grape"
@@ -11,10 +11,10 @@
 				:default-props="defaultProps"
 				@change="changeTreeFilterSingle"
 			>
-			</TreeFilter>
+			</TreeSelector>
 		</el-card>
 		<el-card shadow="hover" class="layout-flexBox-left">
-			<TreeFilter
+			<TreeSelector
 				:data="addressJson.address"
 				id="code"
 				multiple
@@ -25,7 +25,7 @@
 				:default-props="defaultProps"
 				@change="changeTreeFilterMany"
 			>
-			</TreeFilter>
+			</TreeSelector>
 		</el-card>
 
 		<el-card shadow="hover" header="右侧展示数据" class="layout-flexBox-auto">
@@ -34,7 +34,7 @@
 		</el-card>
 	</div>
 </template>
-<script setup lang="ts" name="pagesTreeFilter">
+<script setup lang="ts" name="pagesTreeSelector">
 import addressJson from '/@/assets/json/address.json';
 // 默认配置
 const defaultProps = {

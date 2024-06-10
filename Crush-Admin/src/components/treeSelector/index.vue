@@ -1,5 +1,5 @@
 <template>
-	<div class="filter" :style="{ width }">
+	<div class="treeSelector" :style="{ width }">
 		<h4 v-if="title" class="title text-ellipsis" v-tooltip="{ text: title, position: 'top' }">
 			{{ title }}
 		</h4>
@@ -33,7 +33,7 @@
 	</div>
 </template>
 
-<script setup lang="ts" name="TreeFilter">
+<script setup lang="ts" name="treeSelector">
 import { ElTree } from 'element-plus';
 // 父组件参数
 const props = withDefaults(
@@ -116,7 +116,7 @@ defineExpose({ treeRef });
 </script>
 
 <style scoped lang="scss">
-.filter {
+.treeSelector {
 	box-sizing: border-box;
 	height: 100%;
 	.title {

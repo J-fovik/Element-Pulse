@@ -6,7 +6,7 @@
 import { useEcharts } from '/@/hooks';
 import { EChartsCoreOption } from 'echarts/core';
 export default defineComponent({
-	name: 'eChartChart',
+	name: 'chart',
 	props: {
 		id: {
 			type: Number,

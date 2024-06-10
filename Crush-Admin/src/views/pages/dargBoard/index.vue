@@ -1,12 +1,12 @@
 <template>
 	<div class="layout-flexBox">
-		<el-card shadow="hover" class="layout-flexBox-auto" header="可拖动看板">
+		<Content class="layout-flexBox-auto">
 			<div class="flex justify-around">
 				<DargBoard :key="1" :list="list1" :group="group" class="kanban todo" title="Todo" />
 				<DargBoard :key="2" :list="list2" :group="group" class="kanban working" title="Working" />
 				<DargBoard :key="3" :list="list3" :group="group" class="kanban done" title="Done" />
 			</div>
-		</el-card>
+		</Content>
 	</div>
 </template>
 <script setup lang="ts" name="pagesDargBoard">

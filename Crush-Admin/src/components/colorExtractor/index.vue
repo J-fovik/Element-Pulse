@@ -5,7 +5,7 @@
         </el-button>
     </template>
 </template>
-<script lang="ts" setup>
+<script lang="ts" setup name="colorExtractor">
 import { useEyeDropper } from '@vueuse/core'
 const { isSupported, open, sRGBHex } = useEyeDropper()
 const emit = defineEmits(['color']);

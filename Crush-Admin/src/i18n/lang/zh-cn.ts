@@ -45,7 +45,7 @@ export default {
 		pagesTableDemo: '表格封装演示',
 		pagesTableDemo2: '表格封装演示2',
 		pagesTableDemo2Operate: '表格封装演示2维护',
-		pagesTreeFilter: '树形控件封裝演示',
+		pagesTreeSelector: '树形控件封裝演示',
 		pagesDargBoard:'可拖动看板',
 		paramsIndex: '路由参数',
 		paramsCommon: '普通路由',

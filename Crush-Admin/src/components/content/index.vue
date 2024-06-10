@@ -1,6 +1,6 @@
 <template>
-	<el-card>
-		<template shadow="hover" #header>
+	<el-card shadow="hover">
+		<template #header>
 			<div class="flex items-center justify-between">
 				<div>{{ $t(route.meta.title as any) }}</div>
 			</div>

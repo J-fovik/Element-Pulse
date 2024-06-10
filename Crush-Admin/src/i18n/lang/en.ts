@@ -45,7 +45,7 @@ export default {
 		pagesTableDemo: 'table demo',
 		pagesTableDemo2: 'table demo2',
 		pagesTableDemo2Operate:'table demo2 Operate',
-		pagesTreeFilter:'tree filter',
+		pagesTreeSelector:'tree selector',
 		pagesDargBoard:'darg board',
 		paramsIndex: 'Routing parameters',
 		paramsCommon: 'General routing',

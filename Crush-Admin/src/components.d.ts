@@ -19,6 +19,7 @@ declare module 'vue' {
     CustomTableMould: typeof import('./components/customTableMould/index.vue')['default']
     DargBoard: typeof import('./components/dargBoard/index.vue')['default']
     DargSelect: typeof import('./components/dargSelect/index.vue')['default']
+    Dot: typeof import('./components/dot/index.vue')['default']
     FlopTime: typeof import('./components/flopTime/index.vue')['default']
     FormDrawer: typeof import('./components/formDrawer/index.vue')['default']
     IconSelector: typeof import('./components/iconSelector/index.vue')['default']
@@ -31,7 +32,9 @@ declare module 'vue' {
     SelectIcon: typeof import('./components/selectIcon/index.vue')['default']
     SvgIcon: typeof import('./components/svgIcon/index.vue')['default']
     TablePlus: typeof import('./components/tablePlus/index.vue')['default']
+    TagInput: typeof import('./components/tagInput/index.vue')['default']
     TreeFilter: typeof import('./components/treeFilter/index.vue')['default']
+    TreeSelector: typeof import('./components/treeSelector/index.vue')['default']
     VueCropper: typeof import('./components/vueCropper/index.vue')['default']
     WangEditor: typeof import('./components/wangEditor/index.vue')['default']
   }

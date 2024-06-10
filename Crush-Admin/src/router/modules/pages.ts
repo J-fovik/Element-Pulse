@@ -181,11 +181,11 @@ export default {
 			},
 		},
 		{
-			path: '/pages/treeFilter',
-			name: 'pagesTreeFilter',
-			component: () => import('/@/views/pages/treeFilter/index.vue'),
+			path: '/pages/treeSelector',
+			name: 'pagesTreeSelector',
+			component: () => import('/@/views/pages/treeSelector/index.vue'),
 			meta: {
-				title: 'message.router.pagesTreeFilter',
+				title: 'message.router.pagesTreeSelector',
 				isLink: '',
 				isHide: false,
 				isKeepAlive: true,

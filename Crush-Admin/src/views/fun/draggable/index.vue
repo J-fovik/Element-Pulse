@@ -1,6 +1,6 @@
 <template>
 	<div class="layout-pd">
-		<el-card header="拖动更换图标位置">
+		<el-card shadow="hover" header="拖动更换图标位置">
 			<el-button size="small" type="primary" style="margin-bottom: 10px" @click="initGetStyleSheets">重置元素位置</el-button>
 			<draggable :list="iconList" animation="500" @start="drag = true" @end="drag = false" item-key="id" tag="ul">
 				<template #item="{ element }">

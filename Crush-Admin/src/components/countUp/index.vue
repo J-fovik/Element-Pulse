@@ -2,7 +2,7 @@
 	<!-- 保留整数 -->
 	{{ initial.num.toFixed(0) }}
 </template>
-<script setup>
+<script setup name="countUp">
 import gsap from 'gsap';
 // 接受父组件参数
 const props = defineProps({

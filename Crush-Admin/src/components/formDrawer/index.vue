@@ -11,7 +11,7 @@
 		</div>
 	</el-drawer>
 </template>
-<script setup>
+<script setup name="formDrawer">
 const showDrawer = ref(false);
 const props = defineProps({
 	title: String, // 名称

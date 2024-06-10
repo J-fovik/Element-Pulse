@@ -15,7 +15,7 @@
 	</div>
 </template>
 
-<script setup lang="ts" name="wngEditor">
+<script setup lang="ts" name="wangEditor">
 // https://www.wangeditor.com/v5/for-frame.html#vue3
 import '@wangeditor/editor/dist/css/style.css';
 import { IDomEditor } from '@wangeditor/editor';

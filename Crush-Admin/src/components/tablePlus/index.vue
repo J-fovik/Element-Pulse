@@ -29,7 +29,7 @@ const props = withDefaults(
 	defineProps<{
 		loading?: boolean; // loading
 		selection?: boolean; // 是否多选
-		tableData?: Array<any>; //数据
+		tableData?: Array<any>; //表格数据
 		visibleColumnsData: Array<any>; // 可视表头
 	}>(),
 	{

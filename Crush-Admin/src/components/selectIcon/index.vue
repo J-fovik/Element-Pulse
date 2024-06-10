@@ -30,7 +30,7 @@
 	</div>
 </template>
 
-<script setup lang="ts" name="SelectIcon">
+<script setup lang="ts" name="selectIcon">
 import * as Icons from '@element-plus/icons-vue';
 // 接受父组件数据
 const props = withDefaults(

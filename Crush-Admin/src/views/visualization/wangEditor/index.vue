@@ -7,7 +7,7 @@
 				:closable="false"
 				class="mb15"
 			></el-alert>
-			<wangEditor v-model:get-html="state.editor.htmlVal" v-model:get-text="state.editor.textVal" :disable="state.editor.disable" />
+			<WangEditor v-model:get-html="state.editor.htmlVal" v-model:get-text="state.editor.textVal" :disable="state.editor.disable" />
 		</el-card>
 	</div>
 </template>
