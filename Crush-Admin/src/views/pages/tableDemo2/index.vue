@@ -228,7 +228,7 @@ const {
 } = useAsyncNoInitData(async () => {
 	await sleep(1000);
 	console.log('表单参数', form.value);
-	toast('当前页：' + tableBaseOptions.pagination.current + '，每页数量' + tableBaseOptions.pagination.pageSize);
+	console.log('当前页：' + tableBaseOptions.pagination.current + '，每页数量' + tableBaseOptions.pagination.pageSize);
 	// const { res, err } = await curryingRequest(() =>
 	// getTableList({
 	// 		...form.value,

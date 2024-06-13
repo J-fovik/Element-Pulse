@@ -394,7 +394,10 @@ export function verifyEmail(val: string) {
 	// true: 邮箱正确
 	else return true;
 }
-
+// 邮箱验证
+export const emailRule = (value: string) => {
+	return value && /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/.test(value);
+};
 /**
  * 身份证
  * @param val 当前值字符串

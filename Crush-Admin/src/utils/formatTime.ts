@@ -13,6 +13,17 @@ export const formatDayjs = (value: string, format: string, empty = '-') => {
 	}
 	return empty;
 };
+/**
+ * 获取过去时间
+ * @param num 时间，数量
+ * @param unit dayjs.ManipulateType的格式，可悬停在dayjs.ManipulateType上查看
+ * @param format 需要转换的格式
+ * @description format格式，请查看：https://dayjs.fenxianglu.cn/category/display.html#%E6%A0%BC%E5%BC%8F%E5%8C%96
+ * @returns 返回字符串时间
+ */
+export const getPastTime = (num: number, unit: dayjs.ManipulateType, format = 'YYYY-MM-DD') => {
+	return dayjs().subtract(num, unit).format(format);
+};
 
 /**
  * 时间日期转换

@@ -1,5 +1,7 @@
 import type { FormInstance } from 'element-plus';
 import type { UnwrapRef } from 'vue';
+import { useRoute } from 'vue-router';
+
 // 定义类型
 export interface TableCustomColumnData {
 	show?: boolean;
@@ -103,8 +105,11 @@ export const useForm = <T = any>(
 	form: Ref<UnwrapRef<T>>; // 表单
 	formRef: Ref<any>; // 表单实例
 	resetForm: () => void; // 重置表单
-	restoreValidationForm: () => void; // 校验表单
+	formPlaceholder: (value: string, queryName?: string) => string; // 表单占位提示
+	restoreValidationForm: () => void; // 清除验证
 } => {
+	// 查看路由信息
+	const route = useRoute();
 	// 响应式的form
 	const form = ref(originalForm());
 	// formRef
@@ -113,6 +118,12 @@ export const useForm = <T = any>(
 	const resetForm = () => {
 		form.value = originalForm() as UnwrapRef<T>;
 		if (callback) callback();
+	};
+	// 表单占位符控制(用于禁用时不展示占位符)
+	const formPlaceholder = (value: string, queryName?: string) => {
+		// 默认query参数为 isReadOnly
+		queryName = queryName || 'isReadOnly';
+		return !!route.query[queryName] ? '' : value;
 	};
 	// 清除验证
 	const restoreValidationForm = () => {
@@ -123,6 +134,7 @@ export const useForm = <T = any>(
 		form,
 		formRef,
 		resetForm,
+		formPlaceholder,
 		restoreValidationForm,
 	};
 };

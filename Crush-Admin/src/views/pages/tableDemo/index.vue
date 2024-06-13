@@ -157,7 +157,6 @@ import { TABLE_DATA, SEX_OPTIONS, TYPES_A_OPTIONS, TYPES_B_OPTIONS, STATUS_OPTIO
 import commonFunction from '/@/utils/commonFunction';
 const Operation = defineAsyncComponent(() => import('./components/index.vue'));
 const { sleep } = commonFunction();
-
 /* 页面唯一元素控制 */
 const [activeKey, setActiveKey] = useBasicsState<string | null>(null);
 /* 表单hooks */
@@ -229,7 +228,7 @@ const {
 } = useAsyncData(async () => {
 	await sleep(1000);
 	console.log('表单参数', form.value);
-	toast('当前页：' + tableBaseOptions.pagination.current + '，每页数量' + tableBaseOptions.pagination.pageSize);
+	console.log('当前页：' + tableBaseOptions.pagination.current + '，每页数量' + tableBaseOptions.pagination.pageSize);
 	// const { res, err } = await curryingRequest(() =>
 	// 	getTableList({
 	// 		...form.value,

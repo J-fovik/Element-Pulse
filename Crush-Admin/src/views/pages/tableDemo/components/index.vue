@@ -140,8 +140,8 @@ const validateData = (formEl: FormInstance | undefined) => {
 	if (!formEl) return;
 	formEl.validate((valid) => {
 		if (valid) {
-			/**可加其他特殊校验 */
-			/**有id则表示修改，没有则表示新增*/
+			/* 可加其他特殊校验 */
+			/* 有id则表示修改，没有则表示新增 */
 			if (props.data.id) submitData('editApi');
 			else submitData('addApi');
 		} else return false;
@@ -149,8 +149,8 @@ const validateData = (formEl: FormInstance | undefined) => {
 };
 /* 提交数据 */
 const submitData = async (type: 'addApi' | 'editApi') => {
-	console.log('接口', type);
-	console.log('参数', form.value);
+	console.log('提交接口', type);
+	console.log('提交参数', form.value);
 	// const { res,err } = await curryingRequest(() => type(form.value), {
 	// 	before: () => setActiveKey('okLoading'),// 设置loading
 	// 	after: () => setActiveKey(null),// 关闭loading
@@ -165,7 +165,7 @@ const submitData = async (type: 'addApi' | 'editApi') => {
 };
 /*  查询详情信息 */
 const getDetail = async () => {
-	console.log('查询详情', form.value.id);
+	console.log('查询详情id', form.value.id);
 	// const { res, err } = await curryingRequest(() => detailApi({ id: form.value.id }));
 	// if (err) return;
 	// form.value = res?.data;

@@ -3,6 +3,7 @@
 		<div class="ml10 mt10">{{ $t(route.meta.title as any) }}</div>
 		<div class="flex px15 pt15">
 			<div :class="collapsed ? 'flex-1' : 'formHeight'">
+				<!-- 表单插槽 -->
 				<slot name="form"></slot>
 			</div>
 			<!-- 间隔线 -->
@@ -33,12 +34,15 @@
 		</div>
 		<el-divider />
 		<div style="margin: 0 0 20px" class="flex items-center px15">
+			<!-- 操作插槽 -->
 			<slot name="operate"></slot>
 		</div>
 		<div class="table-container mt10">
+			<!-- 表格插槽 -->
 			<slot name="table"></slot>
 		</div>
 		<div class="flex items-center justify-between p15">
+			<!-- 分页插槽 -->
 			<slot name="pagination"></slot>
 			<div>
 				<el-popover

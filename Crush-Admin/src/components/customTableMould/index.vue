@@ -12,66 +12,75 @@
 				</template>
 			</div>
 		</template>
-		<div class="flex">
-			<!-- 表单插槽 -->
-			<div :class="collapsed ? 'flex-1' : 'formHeight'">
-				<slot name="form"></slot>
-			</div>
-			<!-- 间隔线 -->
-			<div style="width: 1px; margin: 0 20px; background-color: #e5e6eb"></div>
-			<div class="flex items-center flex-col">
-				<div class="flex items-center justify-center" :class="collapsed ? 'flex-col marginStyle' : ''">
-					<el-button type="primary" size="default" @click="emits('search')">
-						<el-icon>
-							<ele-Search />
-						</el-icon>
-						查询
-					</el-button>
-					<el-button type="info" :class="collapsed ? 'marginStyle' : ''" size="default" @click="emits('resetSearch')">
-						<el-icon>
-							<ele-Refresh />
-						</el-icon>
-						重置
-					</el-button>
+		<!-- 表单模块 -->
+		<template v-if="isQueryControl">
+			<div class="flex">
+				<!-- 表单插槽 -->
+				<div :class="collapsed ? 'flex-1' : 'formHeight'">
+					<slot name="form"></slot>
+				</div>
+				<!-- 间隔线 -->
+				<div style="width: 1px; margin: 0 20px; background-color: #e5e6eb"></div>
+				<div class="flex items-center flex-col">
+					<div class="flex items-center justify-center" :class="collapsed ? 'flex-col marginStyle' : ''">
+						<el-button type="primary" size="default" @click="emits('search')">
+							<el-icon>
+								<ele-Search />
+							</el-icon>
+							查询
+						</el-button>
+						<el-button type="info" :class="collapsed ? 'marginStyle' : ''" size="default" @click="emits('resetSearch')">
+							<el-icon>
+								<ele-Refresh />
+							</el-icon>
+							重置
+						</el-button>
+					</div>
 				</div>
 			</div>
-		</div>
-		<el-divider />
-		<!-- 操作插槽 -->
-		<div class="flex items-center justify-between">
-			<slot name="operate"></slot>
-			<div>
-				<el-popover
-					placement="top-end"
-					title="列展示"
-					trigger="click"
-					transition="el-zoom-in-top"
-					popper-class="table-tool-popper"
-					:width="200"
-					:persistent="false"
-				>
-					<template #reference>
-						<SvgIcon name="iconfont icon-quanjushezhi_o" :size="22" v-tooltip="{ text: '设置', position: 'left' }" />
-					</template>
-					<template #default>
-						<el-scrollbar>
-							<div ref="toolSetRef" class="tool-sortable">
-								<div class="tool-sortable-item" v-for="(v, i) in tableColumns" :key="v.key" :data-key="v.key">
-									<SvgIcon name="iconfont icon-8_round_solid" :size="16" title="列展示" />
-									<el-checkbox
-										v-model="v.show"
-										size="default"
-										class="ml12"
-										:label="v.title.length > 8 ? v.title.substring(0, 8) + '...' : v.title"
-									/>
+			<el-divider />
+		</template>
+		<!-- 表单模块 -->
+		<!-- 操作模块 -->
+		<template v-if="isOperateControl">
+			<div class="flex items-center justify-between">
+				<!-- 操作插槽 -->
+				<slot name="operate"></slot>
+				<div>
+					<el-popover
+						placement="top-end"
+						title="列展示"
+						trigger="click"
+						transition="el-zoom-in-top"
+						popper-class="table-tool-popper"
+						:width="200"
+						:persistent="false"
+					>
+						<template #reference>
+							<SvgIcon name="iconfont icon-quanjushezhi_o" :size="22" v-tooltip="{ text: '设置', position: 'left' }" />
+						</template>
+						<template #default>
+							<el-scrollbar>
+								<div ref="toolSetRef" class="tool-sortable">
+									<div class="tool-sortable-item" v-for="(v, i) in tableColumns" :key="v.key" :data-key="v.key">
+										<SvgIcon name="iconfont icon-8_round_solid" :size="16" title="列展示" />
+										<el-checkbox
+											v-model="v.show"
+											size="default"
+											class="ml12"
+											:label="v.title.length > 8 ? v.title.substring(0, 8) + '...' : v.title"
+										/>
+									</div>
 								</div>
-							</div>
-						</el-scrollbar>
-					</template>
-				</el-popover>
+							</el-scrollbar>
+						</template>
+					</el-popover>
+				</div>
 			</div>
-		</div>
+		</template>
+		<!-- 操作模块 -->
 		<div class="mt20">
+			<!-- 表格插槽 -->
 			<slot name="table"></slot>
 		</div>
 		<!-- 分页插槽 -->
@@ -89,10 +98,14 @@ const route = useRoute();
 const props = withDefaults(
 	defineProps<{
 		fold?: boolean; // 是否开启折叠控制
+		isQueryControl?: boolean; // 是否展示表单模块
+		isOperateControl?: boolean; // 是否展示操作模块
 		tableColumns?: Array<any>; // 列展示
 	}>(),
 	{
 		fold: false,
+		isQueryControl: true,
+		isOperateControl: true,
 		tableColumns: () => [],
 	}
 );
