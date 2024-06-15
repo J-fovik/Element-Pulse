@@ -1,40 +1,40 @@
 <template>
 	<div class="layout-pd">
 		<el-card shadow="hover" header="折线图" :body-style="{ padding: '10px' }" :header-style="{ padding: '10px' }">
-			<el-row>
-				<el-col :xs="24" :sm="12" :md="8" :lg="8" :xl="8" style="height: 180px">
+			<el-row  :gutter="24">
+				<el-col :xs="24" :sm="12" :md="12" :lg="8" :xl="8" class="mt10" style="height: 180px">
 					<Chart :options="options1" />
 				</el-col>
-				<el-col :xs="24" :sm="12" :md="8" :lg="8" :xl="8" style="height: 180px">
+				<el-col :xs="24" :sm="12" :md="12" :lg="8" :xl="8" class="mt10" style="height: 180px">
 					<Chart :options="options2" />
 				</el-col>
-				<el-col :xs="24" :sm="12" :md="8" :lg="8" :xl="8" style="height: 180px">
+				<el-col :xs="24" :sm="12" :md="12" :lg="8" :xl="8" class="mt10" style="height: 180px">
 					<Chart :options="options3" />
 				</el-col>
 			</el-row>
 		</el-card>
 		<el-card shadow="hover" header="柱状图" :body-style="{ padding: '10px' }" :header-style="{ padding: '10px' }" class="mt2 mb2">
-			<el-row responsive="screen">
-				<el-col :xs="24" :sm="12" :md="8" :lg="8" :xl="8" style="height: 180px">
+			<el-row  :gutter="24">
+				<el-col :xs="24" :sm="12" :md="12" :lg="8" :xl="8" class="mt10" style="height: 180px">
 					<Chart :options="options4" />
 				</el-col>
-				<el-col :xs="24" :sm="12" :md="8" :lg="8" :xl="8" style="height: 180px">
+				<el-col :xs="24" :sm="12" :md="12" :lg="8" :xl="8" class="mt10" style="height: 180px">
 					<Chart :options="options5" />
 				</el-col>
-				<el-col :xs="24" :sm="12" :md="8" :lg="8" :xl="8" style="height: 180px">
+				<el-col :xs="24" :sm="12" :md="12" :lg="8" :xl="8" class="mt10" style="height: 180px">
 					<Chart :options="options6" />
 				</el-col>
 			</el-row>
 		</el-card>
 		<el-card shadow="hover" header="饼状图" :content-style="{ padding: '10px' }" :header-style="{ padding: '10px' }">
-			<el-row x-gap="10" y-gap="10" cols="xs:1 s:2 m:3 l:3 xl:3" responsive="screen">
-				<el-col :xs="24" :sm="12" :md="8" :lg="8" :xl="8" style="height: 180px">
+			<el-row  :gutter="24">
+				<el-col :xs="24" :sm="12" :md="12" :lg="8" :xl="8" class="mt10" style="height: 180px">
 					<Chart :options="options7" />
 				</el-col>
-				<el-col :xs="24" :sm="12" :md="8" :lg="8" :xl="8" style="height: 180px">
+				<el-col :xs="24" :sm="12" :md="12" :lg="8" :xl="8" class="mt10" style="height: 180px">
 					<Chart :options="options8" />
 				</el-col>
-				<el-col :xs="24" :sm="12" :md="8" :lg="8" :xl="8" style="height: 180px">
+				<el-col :xs="24" :sm="12" :md="12" :lg="8" :xl="8" class="mt10" style="height: 180px">
 					<Chart :options="options9" />
 				</el-col>
 			</el-row>

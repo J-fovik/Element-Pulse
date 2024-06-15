@@ -1,36 +1,40 @@
 <template>
-	<div ref="eChartContainer" style="height: 100%; width: 100%"></div>
+	<div ref="eChartRef" style="height: 100%; width: 100%"></div>
 </template>
 
-<script lang="ts">
-import { useEcharts } from '/@/hooks';
+<script setup lang="ts" name="chart">
+import * as echarts from 'echarts';
+// 让echarts根据屏幕响应
+import { useResizeObserver } from '@vueuse/core';
 import { EChartsCoreOption } from 'echarts/core';
-export default defineComponent({
-	name: 'chart',
-	props: {
-		id: {
-			type: Number,
-			default: 0,
-		},
-		options: {
-			type: Object,
-			default: () => ({}),
-		},
+// 接受父组件参数
+const props = defineProps({
+	options: {
+		type: Object,
+		default: () => ({}),
 	},
-	setup(prop) {
-		const eChartContainer = ref<HTMLDivElement | null>(null);
-		onMounted(() => {
-			// 赋值数据
-			const options = toRef(prop, 'options');
-			// 定义实例
-			const instance = useEcharts(eChartContainer.value as HTMLDivElement);
-			// 配置
-			instance.setOption(options.value as EChartsCoreOption);
-			instance.resize();
-		});
-		return {
-			eChartContainer,
-		};
-	},
+});
+const eChartRef = ref<HTMLDivElement | null>(null);
+// 定义实例
+let instance: any;
+onMounted(() => {
+	// 响应式数据
+	const options = toRef(props, 'options');
+	// 确保获取到ref
+	if (eChartRef.value) {
+		instance = echarts.init(eChartRef.value as HTMLDivElement);
+		// 配置
+		instance.setOption(options.value as EChartsCoreOption);
+	}
+});
+// 离开页面之前卸载实例
+onBeforeUnmount(() => {
+	if (instance) echarts.dispose(instance);
+});
+// 使用useResizeObserver监听容器大小变化
+useResizeObserver(eChartRef, () => {
+	if (instance) {
+		instance.resize();
+	}
 });
 </script>
