@@ -7,5 +7,4 @@
 <script setup lang="ts" name="docs"></script>
 
 <style scoped lang="scss">
-@import "./index.scss";
 </style>

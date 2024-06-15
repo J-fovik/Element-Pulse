@@ -379,108 +379,6 @@
       ]
     },
     {
-      "path": "/dashboard",
-      "name": "dashboard",
-      "redirect": "/dashboard/dataVisualize",
-      "meta": {
-        "icon": "Odometer",
-        "title": "Dashboard",
-        "isLink": "",
-        "isHide": false,
-        "isFull": false,
-        "isAffix": false,
-        "isKeepAlive": true
-      },
-      "children": [
-        {
-          "path": "/dashboard/dataVisualize",
-          "name": "dataVisualize",
-          "component": "/dashboard/dataVisualize/index",
-          "meta": {
-            "icon": "Menu",
-            "title": "数据可视化",
-            "isLink": "",
-            "isHide": false,
-            "isFull": false,
-            "isAffix": false,
-            "isKeepAlive": true
-          }
-        }
-      ]
-    },
-    {
-      "path": "/form",
-      "name": "form",
-      "redirect": "/form/proForm",
-      "meta": {
-        "icon": "Tickets",
-        "title": "表单 Form",
-        "isLink": "",
-        "isHide": false,
-        "isFull": false,
-        "isAffix": false,
-        "isKeepAlive": true
-      },
-      "children": [
-        {
-          "path": "/form/proForm",
-          "name": "proForm",
-          "component": "/form/proForm/index",
-          "meta": {
-            "icon": "Menu",
-            "title": "超级 Form",
-            "isLink": "",
-            "isHide": false,
-            "isFull": false,
-            "isAffix": false,
-            "isKeepAlive": true
-          }
-        },
-        {
-          "path": "/form/basicForm",
-          "name": "basicForm",
-          "component": "/form/basicForm/index",
-          "meta": {
-            "icon": "Menu",
-            "title": "基础 Form",
-            "isLink": "",
-            "isHide": false,
-            "isFull": false,
-            "isAffix": false,
-            "isKeepAlive": true
-          }
-        },
-        {
-          "path": "/form/validateForm",
-          "name": "validateForm",
-          "component": "/form/validateForm/index",
-          "meta": {
-            "icon": "Menu",
-            "title": "校验 Form",
-            "isLink": "",
-            "isHide": false,
-            "isFull": false,
-            "isAffix": false,
-            "isKeepAlive": true
-          }
-        },
-        {
-          "path": "/form/dynamicForm",
-          "name": "dynamicForm",
-          "component": "/form/dynamicForm/index",
-          "meta": {
-            "icon": "Menu",
-            "title": "动态 Form",
-            "isLink": "",
-            "isHide": false,
-            "isFull": false,
-            "isAffix": false,
-            "isKeepAlive": true
-          }
-        }
-      ]
-    },
-    {
       "path": "/echarts",
       "name": "echarts",
       "redirect": "/echarts/waterChart",
@@ -681,138 +579,6 @@
       ]
     },
     {
-      "path": "/menu",
-      "name": "menu",
-      "redirect": "/menu/menu1",
-      "meta": {
-        "icon": "List",
-        "title": "菜单嵌套",
-        "isLink": "",
-        "isHide": false,
-        "isFull": false,
-        "isAffix": false,
-        "isKeepAlive": true
-      },
-      "children": [
-        {
-          "path": "/menu/menu1",
-          "name": "menu1",
-          "component": "/menu/menu1/index",
-          "meta": {
-            "icon": "Menu",
-            "title": "菜单1",
-            "isLink": "",
-            "isHide": false,
-            "isFull": false,
-            "isAffix": false,
-            "isKeepAlive": true
-          }
-        },
-        {
-          "path": "/menu/menu2",
-          "name": "menu2",
-          "redirect": "/menu/menu2/menu21",
-          "meta": {
-            "icon": "Menu",
-            "title": "菜单2",
-            "isLink": "",
-            "isHide": false,
-            "isFull": false,
-            "isAffix": false,
-            "isKeepAlive": true
-          },
-          "children": [
-            {
-              "path": "/menu/menu2/menu21",
-              "name": "menu21",
-              "component": "/menu/menu2/menu21/index",
-              "meta": {
-                "icon": "Menu",
-                "title": "菜单2-1",
-                "isLink": "",
-                "isHide": false,
-                "isFull": false,
-                "isAffix": false,
-                "isKeepAlive": true
-              }
-            },
-            {
-              "path": "/menu/menu2/menu22",
-              "name": "menu22",
-              "redirect": "/menu/menu2/menu22/menu221",
-              "meta": {
-                "icon": "Menu",
-                "title": "菜单2-2",
-                "isLink": "",
-                "isHide": false,
-                "isFull": false,
-                "isAffix": false,
-                "isKeepAlive": true
-              },
-              "children": [
-                {
-                  "path": "/menu/menu2/menu22/menu221",
-                  "name": "menu221",
-                  "component": "/menu/menu2/menu22/menu221/index",
-                  "meta": {
-                    "icon": "Menu",
-                    "title": "菜单2-2-1",
-                    "isLink": "",
-                    "isHide": false,
-                    "isFull": false,
-                    "isAffix": false,
-                    "isKeepAlive": true
-                  }
-                },
-                {
-                  "path": "/menu/menu2/menu22/menu222",
-                  "name": "menu222",
-                  "component": "/menu/menu2/menu22/menu222/index",
-                  "meta": {
-                    "icon": "Menu",
-                    "title": "菜单2-2-2",
-                    "isLink": "",
-                    "isHide": false,
-                    "isFull": false,
-                    "isAffix": false,
-                    "isKeepAlive": true
-                  }
-                }
-              ]
-            },
-            {
-              "path": "/menu/menu2/menu23",
-              "name": "menu23",
-              "component": "/menu/menu2/menu23/index",
-              "meta": {
-                "icon": "Menu",
-                "title": "菜单2-3",
-                "isLink": "",
-                "isHide": false,
-                "isFull": false,
-                "isAffix": false,
-                "isKeepAlive": true
-              }
-            }
-          ]
-        },
-        {
-          "path": "/menu/menu3",
-          "name": "menu3",
-          "component": "/menu/menu3/index",
-          "meta": {
-            "icon": "Menu",
-            "title": "菜单3",
-            "isLink": "",
-            "isHide": false,
-            "isFull": false,
-            "isAffix": false,
-            "isKeepAlive": true
-          }
-        }
-      ]
-    },
-    {
       "path": "/system",
       "name": "system",
       "redirect": "/system/accountManage",
@@ -827,96 +593,12 @@
       },
       "children": [
         {
-          "path": "/system/accountManage",
-          "name": "accountManage",
-          "component": "/system/accountManage/index",
-          "meta": {
-            "icon": "Menu",
-            "title": "账号管理",
-            "isLink": "",
-            "isHide": false,
-            "isFull": false,
-            "isAffix": false,
-            "isKeepAlive": true
-          }
-        },
-        {
-          "path": "/system/roleManage",
-          "name": "roleManage",
-          "component": "/system/roleManage/index",
-          "meta": {
-            "icon": "Menu",
-            "title": "角色管理",
-            "isLink": "",
-            "isHide": false,
-            "isFull": false,
-            "isAffix": false,
-            "isKeepAlive": true
-          }
-        },
-        {
           "path": "/system/menuMange",
           "name": "menuMange",
           "component": "/system/menuMange/index",
           "meta": {
             "icon": "Menu",
             "title": "菜单管理",
-            "isLink": "",
-            "isHide": false,
-            "isFull": false,
-            "isAffix": false,
-            "isKeepAlive": true
-          }
-        },
-        {
-          "path": "/system/departmentManage",
-          "name": "departmentManage",
-          "component": "/system/departmentManage/index",
-          "meta": {
-            "icon": "Menu",
-            "title": "部门管理",
-            "isLink": "",
-            "isHide": false,
-            "isFull": false,
-            "isAffix": false,
-            "isKeepAlive": true
-          }
-        },
-        {
-          "path": "/system/dictManage",
-          "name": "dictManage",
-          "component": "/system/dictManage/index",
-          "meta": {
-            "icon": "Menu",
-            "title": "字典管理",
-            "isLink": "",
-            "isHide": false,
-            "isFull": false,
-            "isAffix": false,
-            "isKeepAlive": true
-          }
-        },
-        {
-          "path": "/system/timingTask",
-          "name": "timingTask",
-          "component": "/system/timingTask/index",
-          "meta": {
-            "icon": "Menu",
-            "title": "定时任务",
-            "isLink": "",
-            "isHide": false,
-            "isFull": false,
-            "isAffix": false,
-            "isKeepAlive": true
-          }
-        },
-        {
-          "path": "/system/systemLog",
-          "name": "systemLog",
-          "component": "/system/systemLog/index",
-          "meta": {
-            "icon": "Menu",
-            "title": "系统日志",
             "isLink": "",
             "isHide": false,
             "isFull": false,
@@ -955,34 +637,6 @@
           }
         },
         {
-          "path": "/link/gitee",
-          "name": "gitee",
-          "component": "/link/gitee/index",
-          "meta": {
-            "icon": "Menu",
-            "title": "Gitee 仓库",
-            "isLink": "https://gitee.com/HalseySpicy/Geeker-Admin",
-            "isHide": false,
-            "isFull": false,
-            "isAffix": false,
-            "isKeepAlive": true
-          }
-        },
-        {
-          "path": "/link/github",
-          "name": "github",
-          "component": "/link/github/index",
-          "meta": {
-            "icon": "Menu",
-            "title": "GitHub 仓库",
-            "isLink": "https://github.com/HalseySpicy/Geeker-Admin",
-            "isHide": false,
-            "isFull": false,
-            "isAffix": false,
-            "isKeepAlive": true
-          }
-        },
-        {
           "path": "/link/docs",
           "name": "docs",
           "component": "/link/docs/index",
@@ -995,36 +649,8 @@
             "isAffix": false,
             "isKeepAlive": true
           }
-        },
-        {
-          "path": "/link/juejin",
-          "name": "juejin",
-          "component": "/link/juejin/index",
-          "meta": {
-            "icon": "Menu",
-            "title": "掘金主页",
-            "isLink": "https://juejin.cn/user/3263814531551816/posts",
-            "isHide": false,
-            "isFull": false,
-            "isAffix": false,
-            "isKeepAlive": true
-          }
         }
       ]
-    },
-    {
-      "path": "/about/index",
-      "name": "about",
-      "component": "/about/index",
-      "meta": {
-        "icon": "InfoFilled",
-        "title": "关于项目",
-        "isLink": "",
-        "isHide": false,
-        "isFull": false,
-        "isAffix": false,
-        "isKeepAlive": true
-      }
     }
   ],
   "msg": "成功"
