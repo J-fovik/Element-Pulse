@@ -1,37 +1,37 @@
-import { type LoadingOptions, ElLoading, ElNotification, ElMessageBox, ElMessage } from 'element-plus';
-interface LoadingInstance {
-	close: () => void;
-}
+import { ElLoading, ElNotification, ElMessageBox } from 'element-plus';
 
-// loading
-export const elLoading = () => {
-	// 默认配置
-	const defaultOptions = {
+/* ****************************   全局请求 loading   *********************************/
+let loadingInstance: ReturnType<typeof ElLoading.service>;
+// 开启 Loading
+const startLoading = () => {
+	loadingInstance = ElLoading.service({
+		fullscreen: true,
 		lock: true,
-		text: '加载中...',
-	};
-	// loading实例
-	let loadingInstance: LoadingInstance | null = null;
-	// 开启loading
-	const openElLoading = (options: LoadingOptions = {}) => {
-		loadingInstance = ElLoading.service({
-			...defaultOptions,
-			...options,
-		});
-	};
-	// 关闭loading
-	const closeElLoading = () => {
-		if (loadingInstance) {
-			loadingInstance.close();
-			loadingInstance = null;
-		}
-	};
-	// 暴漏打开关闭loading方法
-	return {
-		openElLoading,
-		closeElLoading,
-	};
+		text: 'Loading',
+		background: 'rgba(0, 0, 0, 0.7)',
+	});
 };
+// 结束 Loading
+const endLoading = () => {
+	loadingInstance.close();
+};
+// 显示全屏加载
+let needLoadingRequestCount = 0;
+export const showFullScreenLoading = () => {
+	if (needLoadingRequestCount === 0) {
+		startLoading();
+	}
+	needLoadingRequestCount++;
+};
+// 隐藏全屏加载
+export const tryHideFullScreenLoading = () => {
+	if (needLoadingRequestCount <= 0) return;
+	needLoadingRequestCount--;
+	if (needLoadingRequestCount === 0) {
+		endLoading();
+	}
+};
+/* ****************************   全局请求 loading   *********************************/
 
 /**
  * 消息提示函数
