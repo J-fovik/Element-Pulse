@@ -86,7 +86,7 @@ export const useThemeConfig = defineStore('themeConfig', {
 			// 是否开启 Breadcrumb 图标
 			isBreadcrumbIcon: false,
 			// 是否开启 Tagsview 图标
-			isTagsviewIcon: false,
+			isTagsviewIcon: true,
 			// 是否开启 TagsView 缓存
 			isCacheTagsView: true,
 			// 是否开启 TagsView 拖拽

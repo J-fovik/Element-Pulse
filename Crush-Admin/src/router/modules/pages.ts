@@ -2,7 +2,7 @@ export default {
 	path: '/pages',
 	name: 'pagesIndex',
 	component: () => import('/@/layout/routerView/parent.vue'),
-	redirect: '/pages/filtering',
+	redirect: '/pages/fadeUp',
 	meta: {
 		title: 'message.router.pagesIndex',
 		isLink: '',

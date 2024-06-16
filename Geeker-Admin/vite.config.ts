@@ -5,6 +5,8 @@ import { createProxy } from "./build/proxy";
 import { createVitePlugins } from "./build/plugins";
 import pkg from "./package.json";
 import dayjs from "dayjs";
+import Components from "unplugin-vue-components/vite"; // 全部注册组件
+import AutoImport from "unplugin-auto-import/vite"; // 自动引入
 
 const { dependencies, devDependencies, name, version } = pkg;
 const __APP_INFO__ = {
@@ -45,7 +47,21 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
       // Load proxy configuration from .env.development
       proxy: createProxy(viteEnv.VITE_PROXY)
     },
-    plugins: createVitePlugins(viteEnv),
+    plugins: [
+      createVitePlugins(viteEnv),
+      AutoImport({
+        // 自动导入vue相关函数，如: ref、reactive、toRef等
+        imports: ["vue", "vue-router"],
+        dts: "src/auto-import.d.ts"
+      }),
+      Components({
+        // 指定组件位置，默认是 src/components 自动导入自定义组件
+        dirs: ["src/components"],
+        extensions: ["vue", "tsx"],
+        // 配置文件生成位置
+        dts: "src/components.d.ts"
+      })
+    ],
     esbuild: {
       pure: viteEnv.VITE_DROP_CONSOLE ? ["console.log", "debugger"] : []
     },

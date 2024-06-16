@@ -249,4 +249,9 @@ const {
 		})
 	); // 处理数据
 });
+// // onActivated 可用于跳转页面返回刷新列表
+// onActivated(() => {
+// 	console.log('onActivated,请求数据了');
+// 	initData();
+// });
 </script>

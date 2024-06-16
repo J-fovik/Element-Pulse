@@ -97,15 +97,12 @@ router.beforeEach(async (to, from, next) => {
 	const token = Session.get('token');
 	if (to.path === '/login' && !token) {
 		next();
-		NProgress.done();
 	} else {
 		if (!token) {
 			next(`/login?redirect=${to.path}&params=${JSON.stringify(to.query ? to.query : to.params)}`);
 			Session.clear();
-			NProgress.done();
 		} else if (token && to.path === '/login') {
 			next('/home');
-			NProgress.done();
 		} else {
 			const storesRoutesList = useRoutesList(pinia);
 			const { routesList } = storeToRefs(storesRoutesList);
