@@ -1,6 +1,8 @@
 <template>
   <div class="tool-bar-lf">
+    <!-- 折叠 -->
     <CollapseIcon id="collapseIcon" />
+    <!-- 面包屑 -->
     <Breadcrumb v-show="globalStore.breadcrumb" id="breadcrumb" />
   </div>
 </template>

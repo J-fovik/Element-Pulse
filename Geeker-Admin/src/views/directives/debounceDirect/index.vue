@@ -10,8 +10,8 @@ import { ElMessage } from "element-plus";
 const debounceClick = () => {
   ElMessage.success("我是防抖按钮触发的事件 🍍🍓🍌");
 };
+console.log(1);
 </script>
-
 <style scoped lang="scss">
 @import "./index.scss";
 </style>

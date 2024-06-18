@@ -1,20 +1,26 @@
 <template>
   <div class="tool-bar-ri">
     <div class="header-icon">
+      <!-- 组件大小 -->
       <AssemblySize id="assemblySize" />
+      <!-- 语言 -->
       <Language id="language" />
+      <!-- 搜索菜单 -->
       <SearchMenu id="searchMenu" />
+      <!-- 全局设置 -->
       <ThemeSetting id="themeSetting" />
+      <!-- 消息 -->
       <Message id="message" />
+      <!-- 全屏 -->
       <Fullscreen id="fullscreen" />
     </div>
     <span class="username">{{ username }}</span>
+    <!-- 头像 -->
     <Avatar />
   </div>
 </template>
 
 <script setup lang="ts">
-import { computed } from "vue";
 import { useUserStore } from "@/stores/modules/user";
 import AssemblySize from "./components/AssemblySize.vue";
 import Language from "./components/Language.vue";

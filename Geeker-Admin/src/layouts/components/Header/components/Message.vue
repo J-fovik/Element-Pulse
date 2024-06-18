@@ -1,4 +1,5 @@
 <template>
+  <!-- 消息通知 -->
   <div class="message">
     <el-popover placement="bottom" :width="310" trigger="click">
       <template #reference>
@@ -64,7 +65,6 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
 const activeName = ref("first");
 </script>
 

@@ -26,17 +26,17 @@ export const useAuthStore = defineStore({
     breadcrumbListGet: state => getAllBreadcrumbList(state.authMenuList)
   },
   actions: {
-    // Get AuthButtonList
+    // 获取按钮权限
     async getAuthButtonList() {
       const { data } = await getAuthButtonListApi();
       this.authButtonList = data;
     },
-    // Get AuthMenuList
+    // 获取菜单权限
     async getAuthMenuList() {
       const { data } = await getAuthMenuListApi();
       this.authMenuList = data;
     },
-    // Set RouteName
+    // 设置当前路由名称
     async setRouteName(name: string) {
       this.routeName = name;
     }

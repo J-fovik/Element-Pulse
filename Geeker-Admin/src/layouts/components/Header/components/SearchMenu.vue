@@ -1,4 +1,5 @@
 <template>
+  <!-- 菜单搜索 -->
   <div class="menu-search-dialog">
     <i :class="'iconfont icon-sousuo'" class="toolBar-icon" @click="handleOpen"></i>
     <el-dialog v-model="isShowSearch" destroy-on-close :modal="false" :show-close="false" fullscreen @click="closeSearch">
@@ -28,14 +29,14 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, nextTick } from "vue";
 import { Search } from "@element-plus/icons-vue";
 import { useRouter } from "vue-router";
 import { useAuthStore } from "@/stores/modules/auth";
 const router = useRouter();
 const authStore = useAuthStore();
+// 过滤隐藏菜单
 const menuList = computed(() => authStore.flatMenuListGet.filter(item => !item.meta.isHide));
-
+// 搜索菜单
 const searchMenuList = (queryString: string, cb: Function) => {
   const results = queryString ? menuList.value.filter(filterNodeMethod(queryString)) : menuList.value;
   cb(results);
@@ -43,8 +44,11 @@ const searchMenuList = (queryString: string, cb: Function) => {
 
 // 打开搜索框
 const isShowSearch = ref(false);
+// 搜索实例
 const menuInputRef = ref();
+// 搜索菜单名称
 const searchMenu = ref("");
+// 点击打开搜索
 const handleOpen = () => {
   isShowSearch.value = true;
   nextTick(() => {

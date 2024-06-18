@@ -35,7 +35,6 @@
 </template>
 
 <script setup lang="ts" name="TreeFilter">
-import { ref, watch, onBeforeMount, nextTick } from "vue";
 import { ElTree } from "element-plus";
 
 // 接收父组件参数并设置默认值
@@ -48,12 +47,13 @@ interface TreeFilterProps {
   multiple?: boolean; // 是否为多选 ==> 非必传，默认为 false
   defaultValue?: any; // 默认选中的值 ==> 非必传
 }
+// 接收父组件参数并设置默认值
 const props = withDefaults(defineProps<TreeFilterProps>(), {
   id: "id",
   label: "label",
   multiple: false
 });
-
+// 默认配置
 const defaultProps = {
   children: "children",
   label: props.label
@@ -62,8 +62,9 @@ const defaultProps = {
 const treeRef = ref<InstanceType<typeof ElTree>>();
 const treeData = ref<{ [key: string]: any }[]>([]);
 const treeAllData = ref<{ [key: string]: any }[]>([]);
-
+// 选中值
 const selected = ref();
+// 设置选中值
 const setSelected = () => {
   if (props.multiple) selected.value = Array.isArray(props.defaultValue) ? props.defaultValue : [props.defaultValue];
   else selected.value = typeof props.defaultValue === "string" ? props.defaultValue : "";
@@ -95,7 +96,7 @@ watch(
   },
   { deep: true, immediate: true }
 );
-
+// 文本过滤
 const filterText = ref("");
 watch(filterText, val => {
   treeRef.value!.filter(val);
@@ -136,5 +137,42 @@ defineExpose({ treeData, treeAllData, treeRef });
 </script>
 
 <style scoped lang="scss">
-@import "./index.scss";
+.filter {
+  box-sizing: border-box;
+  width: 220px;
+  height: 100%;
+  padding: 18px;
+  margin-right: 10px;
+  .title {
+    margin: 0 0 15px;
+    font-size: 18px;
+    font-weight: bold;
+    color: var(--el-color-info-dark-2);
+    letter-spacing: 0.5px;
+  }
+  .el-input {
+    margin: 0 0 15px;
+  }
+  .el-scrollbar {
+    :deep(.el-tree) {
+      height: 80%;
+      overflow: auto;
+      .el-tree-node__content {
+        height: 33px;
+      }
+    }
+    :deep(.el-tree--highlight-current) {
+      .el-tree-node.is-current > .el-tree-node__content {
+        background-color: var(--el-color-primary);
+        .el-tree-node__label,
+        .el-tree-node__expand-icon {
+          color: white;
+        }
+        .is-leaf {
+          color: transparent;
+        }
+      }
+    }
+  }
+}
 </style>

@@ -1,4 +1,5 @@
 <template>
+  <!-- 组件大小 -->
   <el-dropdown trigger="click" @command="setAssemblySize">
     <i :class="'iconfont icon-contentright'" class="toolBar-icon"></i>
     <template #dropdown>
@@ -17,19 +18,18 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from "vue";
 import { useGlobalStore } from "@/stores/modules/global";
 import { AssemblySizeType } from "@/stores/interface";
 
 const globalStore = useGlobalStore();
 const assemblySize = computed(() => globalStore.assemblySize);
-
+// 组件大小配置
 const assemblySizeList = [
   { label: "默认", value: "default" },
   { label: "大型", value: "large" },
   { label: "小型", value: "small" }
 ];
-
+// 设置组件大小
 const setAssemblySize = (item: AssemblySizeType) => {
   if (assemblySize.value === item) return;
   globalStore.setGlobalState("assemblySize", item);

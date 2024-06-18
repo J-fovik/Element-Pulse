@@ -1,4 +1,5 @@
 <template>
+  <!-- 展开折叠 -->
   <el-icon class="collapse-icon" @click="changeCollapse">
     <component :is="globalStore.isCollapse ? 'expand' : 'fold'"></component>
   </el-icon>
@@ -8,6 +9,7 @@
 import { useGlobalStore } from "@/stores/modules/global";
 
 const globalStore = useGlobalStore();
+// 改变展开或折叠
 const changeCollapse = () => globalStore.setGlobalState("isCollapse", !globalStore.isCollapse);
 </script>
 

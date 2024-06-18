@@ -6,7 +6,6 @@
 
 <script setup lang="ts" name="pieChart">
 import { ECOption } from "@/components/ECharts/config";
-import ECharts from "@/components/ECharts/index.vue";
 
 const option: ECOption = {
   tooltip: {
@@ -63,6 +62,4 @@ const option: ECOption = {
 };
 </script>
 
-<style scoped lang="scss">
-@import "./index.scss";
-</style>
+<style scoped lang="scss"></style>

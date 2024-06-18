@@ -10,11 +10,11 @@ export const useUserStore = defineStore({
   }),
   getters: {},
   actions: {
-    // Set Token
+    // 设置token
     setToken(token: string) {
       this.token = token;
     },
-    // Set setUserInfo
+    // 设置用户信息
     setUserInfo(userInfo: UserState["userInfo"]) {
       this.userInfo = userInfo;
     }

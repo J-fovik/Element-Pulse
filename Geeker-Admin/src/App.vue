@@ -5,7 +5,6 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, reactive, computed } from "vue";
 import { useI18n } from "vue-i18n";
 import { getBrowserLang } from "@/utils";
 import { useTheme } from "@/hooks/useTheme";
@@ -17,11 +16,11 @@ import zhCn from "element-plus/es/locale/lang/zh-cn";
 
 const globalStore = useGlobalStore();
 
-// init theme
+// 初始化设置主题
 const { initTheme } = useTheme();
 initTheme();
 
-// init language
+// 初始化设置语言
 const i18n = useI18n();
 onMounted(() => {
   const language = globalStore.language ?? getBrowserLang();

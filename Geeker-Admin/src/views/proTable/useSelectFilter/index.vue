@@ -47,10 +47,9 @@ import { useHandleData } from "@/hooks/useHandleData";
 import { useDownload } from "@/hooks/useDownload";
 import { genderType, userStatus } from "@/utils/dict";
 import ProTable from "@/components/ProTable/index.vue";
-import TreeFilter from "@/components/TreeFilter/index.vue";
+
 import ImportExcel from "@/components/ImportExcel/index.vue";
 import UserDrawer from "@/views/proTable/components/UserDrawer.vue";
-import SelectFilter from "@/components/SelectFilter/index.vue";
 import { ProTableInstance, ColumnProps } from "@/components/ProTable/interface";
 import { CirclePlus, Delete, EditPen, Pointer, Download, Upload, View, Refresh } from "@element-plus/icons-vue";
 import {

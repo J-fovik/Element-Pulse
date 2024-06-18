@@ -28,8 +28,6 @@
 </template>
 
 <script setup lang="ts">
-import { ref, reactive, onMounted } from "vue";
-import { useRouter } from "vue-router";
 import { HOME_URL } from "@/config";
 import { getTimeState } from "@/utils";
 import { Login } from "@/api/interface";
@@ -112,5 +110,14 @@ onMounted(() => {
 </script>
 
 <style scoped lang="scss">
-@import "../index.scss";
+.login-btn {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 40px;
+  white-space: nowrap;
+  .el-button {
+    width: 185px;
+  }
+}
 </style>

@@ -19,6 +19,10 @@ declare namespace Menu {
     isKeepAlive: boolean;
   }
 }
+type Dispatch<A> = (value: A) => void;
+interface AnyObject {
+  [key: string]: any;
+}
 
 /* FileType */
 declare namespace File {

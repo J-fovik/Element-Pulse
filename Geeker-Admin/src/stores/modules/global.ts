@@ -44,7 +44,7 @@ export const useGlobalStore = defineStore({
   }),
   getters: {},
   actions: {
-    // Set GlobalState
+    // 设置全局配置=>setGlobalState（key,value)
     setGlobalState(...args: ObjToKeyValArray<GlobalState>) {
       this.$patch({ [args[0]]: args[1] });
     }

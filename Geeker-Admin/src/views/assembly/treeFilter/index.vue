@@ -34,8 +34,6 @@
 import { reactive } from "vue";
 import { ElMessage } from "element-plus";
 import { getUserDepartment } from "@/api/modules/user";
-import TreeFilter from "@/components/TreeFilter/index.vue";
-
 const treeFilterValue = reactive({ departmentId: "1" });
 const changeTreeFilter = (val: string) => {
   ElMessage.success(`你选择了 id 为 ${val} 的数据🤔`);
@@ -50,5 +48,16 @@ const changeTreeFilter1 = (val: string[]) => {
 </script>
 
 <style scoped lang="scss">
-@import "./index.scss";
+.content-box {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  .descriptions-box {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+  }
+}
 </style>

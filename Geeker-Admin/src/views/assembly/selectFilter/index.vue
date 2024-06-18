@@ -12,7 +12,6 @@
 
 <script setup lang="ts" name="selectFilter">
 import { ref } from "vue";
-import SelectFilter from "@/components/SelectFilter/index.vue";
 
 const filterResult = ref({ state: "1", type: ["1", "3"] });
 
@@ -87,5 +86,10 @@ const filterData = [
 </script>
 
 <style scoped lang="scss">
-@import "./index.scss";
+.result {
+  margin-top: 20px;
+  font-size: 17px;
+  font-weight: bold;
+  color: var(--el-text-color-regular);
+}
 </style>
