@@ -5,7 +5,7 @@
 <script setup lang="ts" name="chart">
 import * as echarts from 'echarts';
 // 让echarts根据屏幕响应
-import { useResizeObserver } from '@vueuse/core';
+import { useDebounceFn, useResizeObserver } from '@vueuse/core';
 import { EChartsCoreOption } from 'echarts/core';
 // 接受父组件参数
 const props = defineProps({
@@ -17,6 +17,14 @@ const props = defineProps({
 const eChartRef = ref<HTMLDivElement | null>(null);
 // 定义实例
 let instance: any;
+// 节流
+const debounceFn = useDebounceFn(() => {
+	instance.resize({
+		animation: {
+			duration: 500,
+		},
+	});
+}, 500);
 onMounted(() => {
 	// 响应式数据
 	const options = toRef(props, 'options');
@@ -34,7 +42,7 @@ onBeforeUnmount(() => {
 // 使用useResizeObserver监听容器大小变化
 useResizeObserver(eChartRef, () => {
 	if (instance) {
-		instance.resize();
+		debounceFn();
 	}
 });
 </script>
