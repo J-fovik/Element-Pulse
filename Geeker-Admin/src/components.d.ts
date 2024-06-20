@@ -11,6 +11,7 @@ declare module 'vue' {
     404: typeof import('./components/ErrorMessage/404.vue')['default']
     500: typeof import('./components/ErrorMessage/500.vue')['default']
     ColSetting: typeof import('./components/ProTable/components/ColSetting.vue')['default']
+    CustomTableMould: typeof import('./components/CustomTableMould/index.vue')['default']
     ECharts: typeof import('./components/ECharts/index.vue')['default']
     Grid: typeof import('./components/Grid/index.vue')['default']
     GridItem: typeof import('./components/Grid/components/GridItem.vue')['default']
@@ -29,6 +30,7 @@ declare module 'vue' {
     SvgIcon: typeof import('./components/SvgIcon/index.vue')['default']
     SwitchDark: typeof import('./components/SwitchDark/index.vue')['default']
     TableColumn: typeof import('./components/ProTable/components/TableColumn.vue')['default']
+    TablePlus: typeof import('./components/TablePlus/index.vue')['default']
     TreeFilter: typeof import('./components/TreeFilter/index.vue')['default']
     WangEditor: typeof import('./components/WangEditor/index.vue')['default']
   }

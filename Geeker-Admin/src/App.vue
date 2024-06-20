@@ -7,7 +7,7 @@
 <script setup lang="ts">
 import { useI18n } from "vue-i18n";
 import { getBrowserLang } from "@/utils";
-import { useTheme } from "@/hooks/useTheme";
+import { useTheme } from "@/hooks";
 import { ElConfigProvider } from "element-plus";
 import { LanguageType } from "./stores/interface";
 import { useGlobalStore } from "@/stores/modules/global";

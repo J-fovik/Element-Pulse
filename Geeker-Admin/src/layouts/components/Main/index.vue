@@ -1,6 +1,9 @@
 <template>
+  <!-- 退出最大化 -->
   <Maximize v-show="maximize" />
+  <!-- 标签栏 -->
   <Tabs v-show="tabs" />
+  <!-- 主体 -->
   <el-main>
     <router-view v-slot="{ Component, route }">
       <transition appear name="fade-transform" mode="out-in">
@@ -10,6 +13,7 @@
       </transition>
     </router-view>
   </el-main>
+  <!-- 页脚 -->
   <el-footer v-show="footer">
     <Footer />
   </el-footer>
@@ -30,7 +34,6 @@ const { maximize, isCollapse, layout, tabs, footer } = storeToRefs(globalStore);
 
 const keepAliveStore = useKeepAliveStore();
 const { keepAliveName } = storeToRefs(keepAliveStore);
-
 // 注入刷新页面方法
 const isRouterShow = ref(true);
 const refreshCurrentPage = (val: boolean) => (isRouterShow.value = val);
@@ -84,5 +87,14 @@ onBeforeUnmount(() => {
 </script>
 
 <style scoped lang="scss">
-@import "./index.scss";
+.el-main {
+  box-sizing: border-box;
+  padding: 10px 12px;
+  overflow-x: hidden;
+  background-color: var(--el-bg-color-page);
+}
+.el-footer {
+  height: auto;
+  padding: 0;
+}
 </style>

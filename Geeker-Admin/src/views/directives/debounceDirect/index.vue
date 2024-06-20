@@ -12,6 +12,4 @@ const debounceClick = () => {
 };
 console.log(1);
 </script>
-<style scoped lang="scss">
-@import "./index.scss";
-</style>
+<style scoped lang="scss"></style>

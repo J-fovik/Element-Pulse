@@ -12,6 +12,7 @@ export const useTabsStore = defineStore({
   state: (): TabsState => ({
     tabsMenuList: []
   }),
+  getters: {},
   actions: {
     // Add Tabs
     async addTabs(tabItem: TabsMenuProps) {

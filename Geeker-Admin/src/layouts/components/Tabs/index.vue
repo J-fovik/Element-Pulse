@@ -1,4 +1,5 @@
 <template>
+  <!-- 标签页 -->
   <div class="tabs-box">
     <div class="tabs-menu">
       <el-tabs v-model="tabsMenuValue" type="card" @tab-click="tabClick" @tab-remove="tabRemove">
@@ -11,6 +12,7 @@
           </template>
         </el-tab-pane>
       </el-tabs>
+      <!-- 更多按钮 -->
       <MoreButton />
     </div>
   </div>
@@ -91,13 +93,13 @@ const tabsDrop = () => {
   });
 };
 
-// Tab Click
+// 点击标签跳转页面
 const tabClick = (tabItem: TabsPaneContext) => {
   const fullPath = tabItem.props.name as string;
   router.push(fullPath);
 };
 
-// Remove Tab
+// 点击删除标签
 const tabRemove = (fullPath: TabPaneName) => {
   tabStore.removeTabs(fullPath as string, fullPath == route.fullPath);
 };

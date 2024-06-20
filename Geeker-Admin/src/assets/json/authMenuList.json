@@ -44,6 +44,37 @@
       },
       "children": [
         {
+          "path": "/proTable/useTableDemo",
+          "name": "useTableDemo",
+          "component": "/proTable/useTableDemo/index",
+          "meta": {
+            "icon": "Menu",
+            "title": "超级表格Demo",
+            "isLink": "",
+            "isHide": false,
+            "isFull": false,
+            "isAffix": false,
+            "isKeepAlive": true
+          },
+          "children": [
+            {
+              "path": "/proTable/useTableDemo/detail/:id",
+              "name": "useTableDemoDetail",
+              "component": "/proTable/useTableDemo/detail",
+              "meta": {
+                "icon": "Menu",
+                "title": "超级表格Demo详情",
+                "activeMenu": "/proTable/useTableDemo",
+                "isLink": "",
+                "isHide": true,
+                "isFull": false,
+                "isAffix": false,
+                "isKeepAlive": true
+              }
+            }
+          ]
+        },
+        {
           "path": "/proTable/useProTable",
           "name": "useProTable",
           "component": "/proTable/useProTable/index",
@@ -581,7 +612,7 @@
     {
       "path": "/system",
       "name": "system",
-      "redirect": "/system/accountManage",
+      "redirect": "/system/menuMange",
       "meta": {
         "icon": "Tools",
         "title": "系统管理",

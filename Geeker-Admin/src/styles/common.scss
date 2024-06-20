@@ -1,3 +1,73 @@
+/* 
+  页面高度自适应 ：card + content-box样式;
+  页面滚动: 用el-card组件
+*/
+/* mask image */
+.mask-image {
+  padding-right: 50px;
+  mask-image: linear-gradient(90deg, #000000 0%, #000000 calc(100% - 50px), transparent);
+}
+
+/* custom card */
+.card {
+  box-sizing: border-box;
+  padding: 20px;
+  overflow-x: hidden;
+  background-color: var(--el-bg-color);
+  border: 1px solid var(--el-border-color-light);
+  border-radius: 6px;
+  box-shadow: 0 0 12px rgb(0 0 0 / 5%);
+}
+
+/* ProTable 不需要 card 样式（在组件内使用 ProTable 会使用到） */
+.no-card {
+  .card {
+    padding: 0;
+    background-color: transparent;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+  }
+  .table-search {
+    padding: 18px 0 0 !important;
+    margin-bottom: 0 !important;
+  }
+}
+
+/* content-box (常用内容盒子) */
+.content-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  .text {
+    margin: 20px 0 30px;
+    font-size: 23px;
+    font-weight: bold;
+    color: var(--el-text-color-regular);
+  }
+  .el-descriptions {
+    width: 100%;
+    padding: 40px 0 0;
+    .el-descriptions__title {
+      font-size: 18px;
+    }
+    .el-descriptions__label {
+      width: 200px;
+    }
+  }
+}
+
+/* main-box (树形表格 treeFilter 页面会使用，左右布局 flex) */
+.main-box {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  .table-box {
+    // 这里减去的 230px 是 treeFilter 组件宽度
+    width: calc(100% - 230px);
+  }
+}
 /* flex */
 .flx-center {
   display: flex;
@@ -12,6 +82,84 @@
 .flx-align-center {
   display: flex;
   align-items: center;
+}
+.flex {
+  display: flex;
+}
+
+.flex-auto {
+  flex: 1;
+  overflow: hidden;
+}
+
+.flex-margin {
+  margin: auto;
+}
+
+.flex-row {
+  flex-direction: row;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.flex-1 {
+  flex: 1;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.justify-around {
+  justify-content: space-around;
+}
+
+.justify-end {
+  justify-content: flex-end;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.items-stretch {
+  align-items: stretch;
+}
+
+.items-end {
+  align-items: flex-end;
+}
+
+.self-end {
+  align-self: flex-end;
+}
+
+.grow {
+  flex-grow: 1;
+}
+
+.grow-0 {
+  flex-grow: 0;
+}
+
+.text-center {
+  text-align: center;
+}
+
+/* 价格设置 */
+.text-red {
+  color: red;
+}
+.text-price::before {
+  content: "¥";
+  font-size: 70%;
+  margin-right: 4rpx;
 }
 
 /* clearfix */
@@ -93,8 +241,16 @@
     0 0 10px var(--el-color-primary),
     0 0 5px var(--el-color-primary) !important;
 }
+/* 字体大小全局样式
+------------------------------- */
+@for $i from 1 through 100 {
+  .font#{$i} {
+    font-size: #{$i}px !important;
+  }
+}
 
-/* 外边距、内边距全局样式 */
+/* 外边距、内边距全局样式
+------------------------------- */
 @for $i from 0 through 100 {
   .mt#{$i} {
     margin-top: #{$i}px !important;
@@ -108,6 +264,14 @@
   .ml#{$i} {
     margin-left: #{$i}px !important;
   }
+  .mx#{$i} {
+    margin-left: #{$i}px !important;
+    margin-right: #{$i}px !important;
+  }
+  .my#{$i} {
+    margin-top: #{$i}px !important;
+    margin-bottom: #{$i}px !important;
+  }
   .pt#{$i} {
     padding-top: #{$i}px !important;
   }
@@ -119,5 +283,13 @@
   }
   .pl#{$i} {
     padding-left: #{$i}px !important;
+  }
+  .px#{$i} {
+    padding-left: #{$i}px !important;
+    padding-right: #{$i}px !important;
+  }
+  .py#{$i} {
+    padding-top: #{$i}px !important;
+    padding-bottom: #{$i}px !important;
   }
 }

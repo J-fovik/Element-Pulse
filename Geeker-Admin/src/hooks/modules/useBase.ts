@@ -1,5 +1,4 @@
 import type { Ref, UnwrapRef } from "vue";
-import { ref } from "vue";
 
 export const useBasicsState = <T>(
   value: T, // 默认值

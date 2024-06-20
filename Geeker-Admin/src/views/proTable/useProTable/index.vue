@@ -50,10 +50,9 @@
 <script setup lang="tsx" name="useProTable">
 import { ref, reactive } from "vue";
 import { useRouter } from "vue-router";
-import { User } from "@/api/interface";
 import { useHandleData } from "@/hooks/useHandleData";
 import { useDownload } from "@/hooks/useDownload";
-import { useAuthButtons } from "@/hooks/useAuthButtons";
+import { useAuthButtons } from "@/hooks";
 import { ElMessage, ElMessageBox } from "element-plus";
 import ProTable from "@/components/ProTable/index.vue";
 import ImportExcel from "@/components/ImportExcel/index.vue";
@@ -111,7 +110,7 @@ const getTableList = (params: any) => {
 const { BUTTONS } = useAuthButtons();
 
 // 自定义渲染表头（使用tsx语法）
-const headerRender = (scope: HeaderRenderScope<User.ResUserList>) => {
+const headerRender = (scope: any) => {
   return (
     <el-button type="primary" onClick={() => ElMessage.success("我是通过 tsx 语法渲染的表头")}>
       {scope.column.label}
@@ -120,7 +119,7 @@ const headerRender = (scope: HeaderRenderScope<User.ResUserList>) => {
 };
 
 // 表格配置项
-const columns = reactive<ColumnProps<User.ResUserList>[]>([
+const columns = reactive<any>([
   { type: "selection", fixed: "left", width: 70 },
   { type: "sort", label: "Sort", width: 80 },
   { type: "expand", label: "Expand", width: 85 },
@@ -215,7 +214,7 @@ const sortTable = ({ newIndex, oldIndex }: { newIndex?: number; oldIndex?: numbe
 };
 
 // 删除用户信息
-const deleteAccount = async (params: User.ResUserList) => {
+const deleteAccount = async (params: any) => {
   await useHandleData(deleteUser, { id: [params.id] }, `删除【${params.username}】用户`);
   proTable.value?.getTableList();
 };
@@ -228,13 +227,13 @@ const batchDelete = async (id: string[]) => {
 };
 
 // 重置用户密码
-const resetPass = async (params: User.ResUserList) => {
+const resetPass = async (params: any) => {
   await useHandleData(resetUserPassWord, { id: params.id }, `重置【${params.username}】用户密码`);
   proTable.value?.getTableList();
 };
 
 // 切换用户状态
-const changeStatus = async (row: User.ResUserList) => {
+const changeStatus = async (row: any) => {
   await useHandleData(changeUserStatus, { id: row.id, status: row.status == 1 ? 0 : 1 }, `切换【${row.username}】用户状态`);
   proTable.value?.getTableList();
 };
@@ -260,7 +259,7 @@ const batchAdd = () => {
 
 // 打开 drawer(新增、查看、编辑)
 const drawerRef = ref<InstanceType<typeof UserDrawer> | null>(null);
-const openDrawer = (title: string, row: Partial<User.ResUserList> = {}) => {
+const openDrawer = (title: string, row: Partial<any> = {}) => {
   const params = {
     title,
     isView: title === "查看",

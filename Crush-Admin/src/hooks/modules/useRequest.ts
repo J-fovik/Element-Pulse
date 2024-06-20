@@ -1,4 +1,4 @@
-import { toast } from '/@/utils/elementPlus';
+import { ElMessage } from "element-plus";
 export interface HttpResponse<T = unknown> {
 	status: number;
 	msg: string;
@@ -37,7 +37,7 @@ export const curryingRequest = async <T = any>(
 	// 请求之后
 	if (options?.after) options.after();
 	// 请求成功提示
-	if (!params.err && options?.successMsg) toast(options.successMsg);
+	if (!params.err && options?.successMsg) ElMessage.success(options.successMsg);
 	// 返回结果
 	return params;
 };

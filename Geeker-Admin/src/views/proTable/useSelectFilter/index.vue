@@ -41,7 +41,6 @@
 </template>
 <script setup lang="ts" name="useSelectFilter">
 import { ref, reactive, onMounted, watch } from "vue";
-import { User } from "@/api/interface";
 import { ElMessage, ElMessageBox } from "element-plus";
 import { useHandleData } from "@/hooks/useHandleData";
 import { useDownload } from "@/hooks/useDownload";
@@ -68,7 +67,7 @@ import {
 const proTable = ref<ProTableInstance>();
 
 // 表格配置项
-const columns = reactive<ColumnProps<User.ResUserList>[]>([
+const columns = reactive<ColumnProps<any>[]>([
   { type: "radio", label: "单选", width: 80 },
   { type: "index", label: "#", width: 80 },
   { prop: "username", label: "用户姓名", width: 120 },
@@ -138,13 +137,13 @@ watch(
 );
 
 // 删除用户信息
-const deleteAccount = async (params: User.ResUserList) => {
+const deleteAccount = async (params: any) => {
   await useHandleData(deleteUser, { id: [params.id] }, `删除【${params.username}】用户`);
   proTable.value?.getTableList();
 };
 
 // 重置用户密码
-const resetPass = async (params: User.ResUserList) => {
+const resetPass = async (params: any) => {
   await useHandleData(resetUserPassWord, { id: params.id }, `重置【${params.username}】用户密码`);
   proTable.value?.getTableList();
 };
@@ -170,7 +169,7 @@ const batchAdd = () => {
 
 // 打开 drawer(新增、查看、编辑)
 const drawerRef = ref<InstanceType<typeof UserDrawer> | null>(null);
-const openDrawer = (title: string, row: Partial<User.ResUserList> = {}) => {
+const openDrawer = (title: string, row: any = {}) => {
   const params = {
     title,
     isView: title === "查看",

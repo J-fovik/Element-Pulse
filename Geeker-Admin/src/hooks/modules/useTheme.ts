@@ -1,5 +1,5 @@
 import { storeToRefs } from "pinia";
-import { Theme } from "./interface";
+import { Theme } from "../interface";
 import { ElMessage } from "element-plus";
 import { DEFAULT_PRIMARY } from "@/config";
 import { useGlobalStore } from "@/stores/modules/global";

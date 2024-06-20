@@ -17,7 +17,7 @@ import { LayoutType } from "@/stores/interface";
 import { useGlobalStore } from "@/stores/modules/global";
 import Loading from "@/components/Loading/index.vue";
 import ThemeDrawer from "./components/ThemeDrawer/index.vue";
-
+// 整合组件
 const LayoutComponents: Record<LayoutType, Component> = {
   vertical: defineAsyncComponent(() => import("./LayoutVertical/index.vue")),
   classic: defineAsyncComponent(() => import("./LayoutClassic/index.vue")),

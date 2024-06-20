@@ -15,3 +15,7 @@ export const userStatus = [
   { label: "启用", value: 1, tagType: "success" },
   { label: "禁用", value: 0, tagType: "danger" }
 ];
+// 默认导出，找到匹配的元素
+export default (options: Array<any>, value: string) => {
+  return options.find(item => item.value === value);
+};

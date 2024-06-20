@@ -1,21 +1,5 @@
 # Geeker-Admin
 
-
-
-- **Lint：**
-
-```text
-# eslint 检测代码
-pnpm lint:eslint
-
-# prettier 格式化代码
-pnpm lint:prettier
-
-# stylelint 格式化样式
-pnpm lint:stylelint
-```
-
-
 ### 文件资源目录 📚
 
 ```text
@@ -30,7 +14,6 @@ Geeker-Admin
 │  ├─ components           # 全局组件
 │  ├─ config               # 全局配置项
 │  ├─ directives           # 全局指令文件
-│  ├─ enums                # 项目常用枚举
 │  ├─ hooks                # 常用 Hooks 封装
 │  ├─ languages            # 语言国际化 i18n
 │  ├─ layouts              # 框架布局模块
@@ -41,6 +24,8 @@ Geeker-Admin
 │  ├─ utils                # 常用工具库
 │  ├─ views                # 项目所有页面
 │  ├─ App.vue              # 项目主组件
+│  ├─ auto-import.d.ts     # 自动引入
+│  ├─ components.d.ts      # 全局注册组件
 │  ├─ main.ts              # 项目入口文件
 │  └─ vite-env.d.ts        # 指定 ts 识别 vue
 ├─ .editorconfig           # 统一不同编辑器的编码风格
@@ -55,10 +40,8 @@ Geeker-Admin
 ├─ .prettierrc.cjs         # Prettier 格式化配置
 ├─ .stylelintignore        # 忽略 stylelint 格式化
 ├─ .stylelintrc.cjs        # stylelint 样式格式化配置
-├─ CHANGELOG.md            # 项目更新日志
 ├─ commitlint.config.cjs   # git 提交规范配置
 ├─ index.html              # 入口 html
-├─ LICENSE                 # 开源协议文件
 ├─ lint-staged.config.cjs  # lint-staged 配置文件
 ├─ package-lock.json       # 依赖包包版本锁
 ├─ package.json            # 依赖包管理
@@ -68,3 +51,36 @@ Geeker-Admin
 └─ vite.config.ts          # vite 全局配置文件
 ```
 
+### 路由配置
+/** 路由参数简介 */
+interface RouteRecordRaw {
+	/** 路由访问路径 */
+	path: string;
+	/** 路由 name (对应页面组件 name, 可用作 KeepAlive 缓存标识 && 按钮权限筛选) */
+	name: string;
+	/** 路由重定向地址 */
+	redirect: string;
+	/** 视图文件路径 */
+	component: string | (() => Promise<unknown>);
+	/** 路由元信息 */
+	meta: {
+		/** 菜单和面包屑对应的图标 */
+		icon: string;
+		/** 路由标题 (用作 document.title || 菜单的名称) */
+		title: string;
+		/** 是否在菜单中隐藏, 需要高亮的 path (通常用作详情页高亮父级菜单) */
+		activeMenu: string;
+		/** 路由外链时填写的访问地址 */
+		isLink: string;
+		/** 是否在菜单中隐藏 (通常列表详情页需要隐藏) */
+		isHide: boolean;
+		/** 菜单是否全屏 (示例：数据大屏页面) */
+		isFull: boolean;
+		/** 菜单是否固定在标签页中 (首页通常是固定项) */
+		isAffix: boolean;
+		/** 当前路由是否缓存 */
+		isKeepAlive: boolean;
+	};
+	/** 多级路由嵌套 */
+	children: RouteRecordRaw[];
+}

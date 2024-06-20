@@ -35,7 +35,7 @@
 </template>
 
 <script setup lang="ts" name="authButton">
-import { useAuthButtons } from "@/hooks/useAuthButtons";
+import { useAuthButtons } from "@/hooks";
 import { CirclePlus, Delete, EditPen, Download, Upload } from "@element-plus/icons-vue";
 
 const { BUTTONS } = useAuthButtons();

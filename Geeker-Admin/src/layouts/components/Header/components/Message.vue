@@ -1,7 +1,7 @@
 <template>
   <!-- 消息通知 -->
   <div class="message">
-    <el-popover placement="bottom" :width="310" trigger="click">
+    <el-popover placement="bottom" :width="310" trigger="click" :persistent="false">
       <template #reference>
         <el-badge :value="5" class="item">
           <i :class="'iconfont icon-xiaoxi'" class="toolBar-icon"></i>
@@ -66,8 +66,8 @@
 
 <script setup lang="ts">
 const activeName = ref("first");
+console.log(1);
 </script>
-
 <style scoped lang="scss">
 .message-empty {
   display: flex;

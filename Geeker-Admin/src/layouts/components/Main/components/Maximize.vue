@@ -1,4 +1,5 @@
 <template>
+  <!-- 退出最大化 -->
   <div class="maximize" @click="exitMaximize">
     <i :class="'iconfont icon-tuichu'"></i>
   </div>
@@ -6,8 +7,9 @@
 
 <script setup lang="ts">
 import { useGlobalStore } from "@/stores/modules/global";
-
+// 获取仓库
 const globalStore = useGlobalStore();
+// 点击退出最大化
 const exitMaximize = () => {
   globalStore.setGlobalState("maximize", false);
 };

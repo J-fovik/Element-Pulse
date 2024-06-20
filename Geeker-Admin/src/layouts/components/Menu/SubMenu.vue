@@ -1,4 +1,5 @@
 <template>
+  <!-- 菜单 -->
   <template v-for="subItem in menuList" :key="subItem.path">
     <el-sub-menu v-if="subItem.children?.length" :index="subItem.path">
       <template #title>
@@ -26,6 +27,7 @@ import { useRouter } from "vue-router";
 defineProps<{ menuList: Menu.MenuOptions[] }>();
 
 const router = useRouter();
+// 点击切换菜单
 const handleClickMenu = (subItem: Menu.MenuOptions) => {
   if (subItem.meta.isLink) return window.open(subItem.meta.isLink, "_blank");
   router.push(subItem.path);

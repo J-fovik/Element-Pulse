@@ -22,7 +22,7 @@ const routerMode = {
  * @param meta ==> 路由菜单元信息
  * @param meta.icon ==> 菜单和面包屑对应的图标
  * @param meta.title ==> 路由标题 (用作 document.title || 菜单的名称)
- * @param meta.activeMenu ==> 当前路由为详情页时，需要高亮的菜单
+ * @param meta.activeMenu ==> 当前路由为详情页时，需要高亮的菜单*保证返回上级路由*
  * @param meta.isLink ==> 路由外链时填写的访问地址
  * @param meta.isHide ==> 是否在菜单中隐藏 (通常列表详情页需要隐藏)
  * @param meta.isFull ==> 菜单是否全屏 (示例：数据大屏页面)
