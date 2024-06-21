@@ -42,9 +42,15 @@ const state = reactive<ParentViewState>({
 const setTransitionName = computed(() => {
 	return themeConfig.value.animation;
 });
+const cachedViewList = ref([] as any);
 // 获取组件缓存列表(name值)
 const getKeepAliveNames = computed(() => {
-	return themeConfig.value.isTagsview ? cachedViews.value : state.keepAliveNameList;
+	if (Session.get('tagsViewList') && themeConfig.value.isCacheTagsView) {
+		cachedViewList.value = Session.get('tagsViewList')
+			.filter((o: any) => o.meta.isKeepAlive == true)
+			.map((v: any) => v.name);
+	}
+	return themeConfig.value.isCacheTagsView ? cachedViewList.value : state.keepAliveNameList;
 });
 // 设置 iframe 显示/隐藏
 const isIframePage = computed(() => {

@@ -225,7 +225,7 @@ const {
 	data: tableData,
 	loading,
 	initData,
-} = useAsyncData(async () => {
+} = useAsyncNoInitData(async () => {
 	await sleep(1000);
 	console.log('表单参数', form.value);
 	console.log('当前页：' + tableBaseOptions.pagination.current + '，每页数量' + tableBaseOptions.pagination.pageSize);

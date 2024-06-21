@@ -1,4 +1,7 @@
 import { defineStore } from 'pinia';
+import { Session } from '/@/utils/storage';
+import { useThemeConfig } from './themeConfig';
+
 /**
  * 路由缓存列表,根据路由表： isKeepAlive
  * @methods setCacheKeepAlive 设置要缓存的路由 names（开启 Tagsview）

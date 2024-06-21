@@ -3,12 +3,21 @@
 	<div class="layout-navbars-tagsview" :class="{ 'layout-navbars-tagsview-shadow': getThemeConfig.layout === 'classic' }">
 		<el-scrollbar ref="scrollbarRef" @wheel.prevent="onHandleScroll">
 			<ul class="layout-navbars-tagsview-ul" :class="setTagsStyle" ref="tagsUlRef">
-				<li v-for="(v, k) in state.tagsViewList" :key="k" class="layout-navbars-tagsview-ul-li" :data-url="v.url"
-					:class="{ 'is-active': isActive(v) }" @contextmenu.prevent="onContextmenu(v, $event)"
-					@mousedown="onMousedownMenu(v, $event)" @click="onTagsClick(v, k)" :ref="(el) => {
-						if (el) tagsRefs[k] = el;
-					}
-						">
+				<li
+					v-for="(v, k) in state.tagsViewList"
+					:key="k"
+					class="layout-navbars-tagsview-ul-li"
+					:data-url="v.url"
+					:class="{ 'is-active': isActive(v) }"
+					@contextmenu.prevent="onContextmenu(v, $event)"
+					@mousedown="onMousedownMenu(v, $event)"
+					@click="onTagsClick(v, k)"
+					:ref="
+						(el) => {
+							if (el) tagsRefs[k] = el;
+						}
+					"
+				>
 					<i class="iconfont icon-webicon318 layout-navbars-tagsview-ul-li-iconfont" v-if="isActive(v)"></i>
 					<!-- 图标 -->
 					<SvgIcon :name="v.meta.icon" v-if="!isActive(v) && getThemeConfig.isTagsviewIcon" class="pr5" />
@@ -16,16 +25,25 @@
 					<span>{{ setTagsViewNameI18n(v) }}</span>
 					<template v-if="isActive(v)">
 						<!-- 重新加载 -->
-						<SvgIcon name="ele-RefreshRight" class="ml5 layout-navbars-tagsview-ul-li-refresh"
-							@click.stop="refreshCurrentTagsView($route.fullPath)" />
+						<SvgIcon
+							name="ele-RefreshRight"
+							class="ml5 layout-navbars-tagsview-ul-li-refresh"
+							@click.stop="refreshCurrentTagsView($route.fullPath)"
+						/>
 						<!-- 关闭 -->
-						<SvgIcon name="ele-Close" class="layout-navbars-tagsview-ul-li-icon layout-icon-active"
+						<SvgIcon
+							name="ele-Close"
+							class="layout-navbars-tagsview-ul-li-icon layout-icon-active"
 							v-if="!v.meta.isAffix"
-							@click.stop="closeCurrentTagsView(getThemeConfig.isShareTagsView ? v.path : v.url)" />
+							@click.stop="closeCurrentTagsView(getThemeConfig.isShareTagsView ? v.path : v.url)"
+						/>
 					</template>
-					<SvgIcon name="ele-Close" class="layout-navbars-tagsview-ul-li-icon layout-icon-three"
+					<SvgIcon
+						name="ele-Close"
+						class="layout-navbars-tagsview-ul-li-icon layout-icon-three"
 						v-if="!v.meta.isAffix"
-						@click.stop="closeCurrentTagsView(getThemeConfig.isShareTagsView ? v.path : v.url)" />
+						@click.stop="closeCurrentTagsView(getThemeConfig.isShareTagsView ? v.path : v.url)"
+					/>
 				</li>
 			</ul>
 		</el-scrollbar>
@@ -235,7 +253,11 @@ const closeCurrentTagsView = (path: string) => {
 				storesKeepALiveNames.delCachedView(v);
 				state.tagsViewList.splice(k, 1);
 				setTimeout(() => {
-					if (state.tagsViewList.length === k && getThemeConfig.value.isShareTagsView ? state.routePath === path : state.routeActive === path) {
+					if (
+						state.tagsViewList.length === k && getThemeConfig.value.isShareTagsView
+							? state.routePath === path
+							: state.routeActive === path
+					) {
 						// 最后一个且高亮时
 						if (arr[arr.length - 1].meta.isDynamic) {
 							// 动态路由（xxx/:id/:name"）
@@ -248,7 +270,11 @@ const closeCurrentTagsView = (path: string) => {
 						}
 					} else {
 						// 非最后一个且高亮时，跳转到下一个
-						if (state.tagsViewList.length !== k && getThemeConfig.value.isShareTagsView ? state.routePath === path : state.routeActive === path) {
+						if (
+							state.tagsViewList.length !== k && getThemeConfig.value.isShareTagsView
+								? state.routePath === path
+								: state.routeActive === path
+						) {
 							if (arr[k].meta.isDynamic) {
 								// 动态路由（xxx/:id/:name"）
 								router.push({ name: arr[k].name, params: arr[k].params });
@@ -537,11 +563,11 @@ onBeforeMount(() => {
 // 页面卸载时
 onUnmounted(() => {
 	// 取消非本页面调用监听
-	mittBus.off('onCurrentContextmenuClick', () => { });
+	mittBus.off('onCurrentContextmenuClick', () => {});
 	// 取消监听布局配置界面开启/关闭拖拽
-	mittBus.off('openOrCloseSortable', () => { });
+	mittBus.off('openOrCloseSortable', () => {});
 	// 取消监听布局配置开启 TagsView 共用
-	mittBus.off('openShareTagsView', () => { });
+	mittBus.off('openShareTagsView', () => {});
 	// 取消窗口 resize 监听
 	window.removeEventListener('resize', onSortableResize);
 });
