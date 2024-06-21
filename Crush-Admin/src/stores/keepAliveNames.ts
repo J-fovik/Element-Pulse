@@ -1,6 +1,4 @@
 import { defineStore } from 'pinia';
-import { Session } from '/@/utils/storage';
-import { useThemeConfig } from './themeConfig';
 
 /**
  * 路由缓存列表,根据路由表： isKeepAlive
