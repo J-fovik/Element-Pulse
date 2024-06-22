@@ -1,23 +1,23 @@
 <template>
-  <div class="tool-bar-ri">
-    <div class="header-icon">
-      <!-- 组件大小 -->
-      <AssemblySize id="assemblySize" />
-      <!-- 语言 -->
-      <Language id="language" />
-      <!-- 搜索菜单 -->
-      <SearchMenu id="searchMenu" />
-      <!-- 全局设置 -->
-      <ThemeSetting id="themeSetting" />
-      <!-- 消息 -->
-      <Message id="message" />
-      <!-- 全屏 -->
-      <Fullscreen id="fullscreen" />
+    <div class="tool-bar-ri">
+        <div class="header-icon">
+            <!-- 组件大小 -->
+            <AssemblySize id="assemblySize" />
+            <!-- 语言 -->
+            <Language id="language" />
+            <!-- 搜索菜单 -->
+            <SearchMenu id="searchMenu" />
+            <!-- 全局设置 -->
+            <ThemeSetting id="themeSetting" />
+            <!-- 消息 -->
+            <Message id="message" />
+            <!-- 全屏 -->
+            <Fullscreen id="fullscreen" />
+        </div>
+        <span class="username">{{ username }}</span>
+        <!-- 头像 -->
+        <Avatar />
     </div>
-    <span class="username">{{ username }}</span>
-    <!-- 头像 -->
-    <Avatar />
-  </div>
 </template>
 
 <script setup lang="ts">
@@ -36,22 +36,22 @@ const username = computed(() => userStore.userInfo.name);
 
 <style scoped lang="scss">
 .tool-bar-ri {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding-right: 25px;
-  .header-icon {
     display: flex;
     align-items: center;
-    & > * {
-      margin-left: 21px;
-      color: var(--el-header-text-color);
+    justify-content: center;
+    padding-right: 25px;
+    .header-icon {
+        display: flex;
+        align-items: center;
+        & > * {
+            margin-left: 21px;
+            color: var(--el-header-text-color);
+        }
     }
-  }
-  .username {
-    margin: 0 20px;
-    font-size: 15px;
-    color: var(--el-header-text-color);
-  }
+    .username {
+        margin: 0 20px;
+        font-size: 15px;
+        color: var(--el-header-text-color);
+    }
 }
 </style>

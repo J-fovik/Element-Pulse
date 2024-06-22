@@ -11,6 +11,7 @@ export interface TableCustomColumnData {
   align?: string;
   headerAlign?: string;
   slotName?: string;
+  fixed?:string;
   formatter?: (record: any) => any;
 }
 

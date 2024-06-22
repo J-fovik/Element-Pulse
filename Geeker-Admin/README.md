@@ -33,19 +33,13 @@ Geeker-Admin
 ├─ .env.development        # 开发环境配置
 ├─ .env.production         # 生产环境配置
 ├─ .env.test               # 测试环境配置
-├─ .eslintignore           # 忽略 Eslint 校验
-├─ .eslintrc.cjs           # Eslint 校验配置文件
 ├─ .gitignore              # 忽略 git 提交
-├─ .prettierignore         # 忽略 Prettier 格式化
-├─ .prettierrc.cjs         # Prettier 格式化配置
-├─ .stylelintignore        # 忽略 stylelint 格式化
 ├─ .stylelintrc.cjs        # stylelint 样式格式化配置
 ├─ commitlint.config.cjs   # git 提交规范配置
 ├─ index.html              # 入口 html
 ├─ lint-staged.config.cjs  # lint-staged 配置文件
 ├─ package-lock.json       # 依赖包包版本锁
 ├─ package.json            # 依赖包管理
-├─ postcss.config.cjs      # postcss 配置
 ├─ README.md               # README 介绍
 ├─ tsconfig.json           # typescript 全局配置
 └─ vite.config.ts          # vite 全局配置文件
