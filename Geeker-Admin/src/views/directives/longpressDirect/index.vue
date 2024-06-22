@@ -1,8 +1,8 @@
 <template>
-  <div class="card content-box">
+  <el-card shadow="hover" header="长按指令">
     <span class="text">长按指令 🍇🍇🍇🍓🍓🍓</span>
     <el-button v-longpress="longpress" type="primary"> 长按2秒触发事件 </el-button>
-  </div>
+  </el-card>
 </template>
 
 <script setup lang="ts" name="longpressDirect">

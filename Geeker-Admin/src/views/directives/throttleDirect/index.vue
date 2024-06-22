@@ -1,8 +1,8 @@
 <template>
-  <div class="card content-box">
+  <el-card shadow="hover" header="节流指令">
     <span class="text">节流指令 🍇🍇🍇🍓🍓🍓</span>
     <el-button v-throttle="throttleClick" type="primary"> 节流按钮 (每隔1S秒后执行) </el-button>
-  </div>
+  </el-card>
 </template>
 
 <script setup lang="ts" name="throttleDirect">

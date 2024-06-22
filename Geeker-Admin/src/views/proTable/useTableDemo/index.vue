@@ -1,11 +1,11 @@
 <template>
-  <div>
+  <div class="aaa">
     <CustomTableMould fold :table-columns="columnsData" @reset-search="resetForm" @search="resetData">
       <template #form>
-        <!-- <el-form :model="form" label-position="left">
+        <el-form :model="form" label-position="left">
           <el-row :gutter="24">
             <SearchItem label="名称:" class="mb5">
-              <el-input v-model.trim="form.name" placeholder="请输入名称" />
+              <el-input v-model.trim="form.username" placeholder="请输入名称" />
             </SearchItem>
             <SearchItem label="状态:" class="mb5">
               <el-select v-model="form.status" filterable placeholder="请输入状态">
@@ -19,8 +19,8 @@
               </el-select>
             </SearchItem>
             <SearchItem label="性别:" class="mb5">
-              <el-select v-model="form.sex" filterable placeholder="请选择性别">
-                <el-option v-for="item in sexList" :key="item.value" :label="item.label" :value="item.value" />
+              <el-select v-model="form.gender" filterable placeholder="请选择性别">
+                <el-option v-for="item in genderList" :key="item.value" :label="item.label" :value="item.value" />
               </el-select>
             </SearchItem>
             <SearchItem label="类型:" class="mb5">
@@ -38,12 +38,12 @@
               />
             </SearchItem>
           </el-row>
-        </el-form> -->
+        </el-form>
       </template>
       <template #operate>
         <el-space>
           <el-button type="success" size="default" @click="$router.push(`/pages/tableDemo2/operate`)">
-            <el-icon><ele-DocumentAdd /></el-icon>新增
+            <el-icon><DocumentAdd /></el-icon>新增
           </el-button>
           <!-- <el-button type="danger" size="default" :disabled="tableBaseOptions.selectedKeys.length == 0" @click="handleDelete">
             <el-icon><ele-Delete /></el-icon> 删除
@@ -102,6 +102,8 @@
 </template>
 <script setup lang="ts" name="useTableDemo">
 import { useForm, useTable, useBasicsState, curryingRequest, useAsyncData, useAsyncNoInitData, useAsyncWatchData } from "@/hooks";
+import { ALL_OPTIONS } from "@/utils/options"; // 全部
+import { TABLE_DATA, GENDER_OPTIONS, TYPES_A_OPTIONS, TYPES_B_OPTIONS, STATUS_OPTIONS } from "./options"; // 模拟接口数据
 import { createTableColumns } from "./table"; // 表头配置
 import {
   getUserList
@@ -120,15 +122,11 @@ const [activeKey, setActiveKey] = useBasicsState<string | null>(null);
 // 表单hooks
 const { form, resetForm } = useForm(
   () => ({
-    username: "", // 用户姓名
+    username: "", // 姓名
+    status: "", // 状态
     gender: "", // 性别
-    maxAge: "", // 最大年龄
-    minAge: "", // 最小年龄
-    idCard: "", // 身份证
     type: "", // 类型
-    startTime: "", // 创建时间
-    endTime: "", // 结束时间
-    status: "" // 用户状态
+    date: "" // 日期
   }),
   () => resetData()
 );
@@ -145,7 +143,28 @@ const {
   extendTableList, // 处理表格数据
   handleSelectionChange // 多选
 } = useTable(createTableColumns(), () => initData());
-
+// 获取性别列表
+const { data: genderList } = useAsyncData(async () => {
+  // const { res, err } = await curryingRequest(() => getSexList({}));
+  // 处理错误
+  // if (err) return;
+  // 返回处理后的数据
+  return GENDER_OPTIONS;
+});
+// 监听性别变换获取类型
+const { data: typeList } = useAsyncWatchData<Array<any>>(
+  async () => {
+    // const { res, err } = await curryingRequest(() => getTypeList({}));
+    // 处理错误
+    // if (err) return;
+    // 每次请求将其赋空
+    form.value.type = "";
+    // 模拟变化参数后端返回不同数据
+    if (form.value.gender == "1") return TYPES_A_OPTIONS;
+    else return TYPES_B_OPTIONS;
+  },
+  { watchSource: () => form.value.gender, defaultValue: [] }
+);
 // 获取表格列表
 const {
   data: tableData,
@@ -161,16 +180,9 @@ const {
   );
   // 处理错误
   if (err) return;
-  //   // 设置分页信息
-  //   tableBaseOptions.pagination.total = TABLE_DATA.total; // 赋值总页数
-  //   // 可直接返回数据 或 返回处理后数据
-  //   return extendTableList(
-  //     TABLE_DATA.tableData.map((o: any) => {
-  //       o.num = o.num * 1; // 转数字
-  //       o.disabled = o.status == "0";
-  //       return o;
-  //     })
-  //   ); // 处理数据
+  // 赋值总页数
+  tableBaseOptions.pagination.total = res?.data.total;
+  return extendTableList(res?.data.list); // 处理数据
 });
 // onActivated 可用于跳转页面返回刷新列表
 onActivated(() => {

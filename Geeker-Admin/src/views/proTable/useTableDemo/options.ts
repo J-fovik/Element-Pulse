@@ -137,7 +137,7 @@ export const STATUS_OPTIONS: Array<any> = [
   }
 ];
 // 性别
-export const SEX_OPTIONS: Array<any> = [
+export const GENDER_OPTIONS: Array<any> = [
   {
     label: "女",
     value: "2"

@@ -1,5 +1,5 @@
 <template>
-  <div class="card content-box">
+  <el-card shadow="hover" header="复制指令">
     <span class="text">复制指令 🍇🍇🍇🍓🍓🍓</span>
     <div class="box-content">
       <el-input v-model="data" placeholder="请输入内容" style="width: 500px">
@@ -8,16 +8,11 @@
         </template>
       </el-input>
     </div>
-  </div>
+  </el-card>
 </template>
 
 <script setup lang="ts" name="copyDirect">
-import { ref, onActivated } from "vue";
-
 const data = ref<string>("我是被复制的内容 🍒 🍉 🍊");
-onActivated(() => {
-  console.log("onActivated", 1);
-});
 </script>
 
 <style scoped lang="scss"></style>

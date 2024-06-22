@@ -28,10 +28,6 @@
     border-radius: 0;
     box-shadow: none;
   }
-  .table-search {
-    padding: 18px 0 0 !important;
-    margin-bottom: 0 !important;
-  }
 }
 
 /* content-box (常用内容盒子) */
@@ -40,22 +36,6 @@
   flex-direction: column;
   align-items: center;
   height: 100%;
-  .text {
-    margin: 20px 0 30px;
-    font-size: 23px;
-    font-weight: bold;
-    color: var(--el-text-color-regular);
-  }
-  .el-descriptions {
-    width: 100%;
-    padding: 40px 0 0;
-    .el-descriptions__title {
-      font-size: 18px;
-    }
-    .el-descriptions__label {
-      width: 200px;
-    }
-  }
 }
 
 /* main-box (树形表格 treeFilter 页面会使用，左右布局 flex) */
@@ -272,6 +252,12 @@
     margin-top: #{$i}px !important;
     margin-bottom: #{$i}px !important;
   }
+  .m#{$i} {
+    margin-top: #{$i}px !important;
+    margin-bottom: #{$i}px !important;
+    margin-left: #{$i}px !important;
+    margin-right: #{$i}px !important;
+  }
   .pt#{$i} {
     padding-top: #{$i}px !important;
   }
@@ -291,5 +277,11 @@
   .py#{$i} {
     padding-top: #{$i}px !important;
     padding-bottom: #{$i}px !important;
+  }
+  .p#{$i} {
+    padding-top: #{$i}px !important;
+    padding-bottom: #{$i}px !important;
+    padding-left: #{$i}px !important;
+    padding-right: #{$i}px !important;
   }
 }

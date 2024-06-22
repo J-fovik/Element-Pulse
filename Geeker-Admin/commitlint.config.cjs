@@ -50,7 +50,6 @@ module.exports = {
       body: 'Provide a LONGER description of the change (optional). Use "|" to break new line:\n',
       breaking: 'List any BREAKING CHANGES (optional). Use "|" to break new line:\n',
       footerPrefixsSelect: "Select the ISSUES type of changeList by this change (optional):",
-      customFooterPrefixs: "Input ISSUES prefix:",
       footer: "List any ISSUES by this change. E.g.: #31, #34:\n",
       confirmCommit: "Are you sure you want to proceed with the commit above?"
       // 中文版

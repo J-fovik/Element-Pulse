@@ -25,6 +25,7 @@ declare module 'vue' {
     RouterView: typeof import('vue-router')['RouterView']
     SearchForm: typeof import('./components/SearchForm/index.vue')['default']
     SearchFormItem: typeof import('./components/SearchForm/components/SearchFormItem.vue')['default']
+    SearchItem: typeof import('./components/SearchItem/index.vue')['default']
     SelectFilter: typeof import('./components/SelectFilter/index.vue')['default']
     SelectIcon: typeof import('./components/SelectIcon/index.vue')['default']
     SvgIcon: typeof import('./components/SvgIcon/index.vue')['default']

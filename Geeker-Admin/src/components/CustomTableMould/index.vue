@@ -2,11 +2,11 @@
   <el-card shadow="hover">
     <template #header>
       <div class="flex items-center justify-between">
-        <div>{{ $t(route.meta.title as any) }}</div>
+        <div>{{ route.meta.title as any }}</div>
         <!-- 折叠按钮 -->
         <template v-if="fold">
           <el-button type="primary" link size="small" @click="setCollapsed(!collapsed)">
-            <el-icon><ele-ArrowUpBold v-if="collapsed" /> <ele-ArrowDownBold v-else /></el-icon>
+            <el-icon class="mr5"><ArrowUpBold v-if="collapsed" /><ArrowDownBold v-else /> </el-icon>
             {{ collapsed ? "折叠" : "展开" }}
           </el-button>
         </template>
@@ -25,13 +25,13 @@
           <div class="flex items-center justify-center" :class="collapsed ? 'flex-col marginStyle' : ''">
             <el-button type="primary" size="default" @click="emits('search')">
               <el-icon>
-                <ele-Search />
+                <Search />
               </el-icon>
               查询
             </el-button>
             <el-button type="info" :class="collapsed ? 'marginStyle' : ''" size="default" @click="emits('resetSearch')">
               <el-icon>
-                <ele-Refresh />
+                <Refresh />
               </el-icon>
               重置
             </el-button>
@@ -123,9 +123,9 @@ const emits = defineEmits(["resetSearch", "search"]);
   padding: 0 20px 0;
 }
 /* 表格样式 */
-.bg-table {
+/* .bg-table {
   background-color: var(--next-bg-table-color) !important;
-}
+} */
 .formHeight {
   height: 40px;
   overflow: hidden;

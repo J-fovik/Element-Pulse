@@ -20,20 +20,19 @@ export const createTableColumns = (): TableCustomColumnData[] => {
     },
     {
       title: "名称",
-      key: "name",
+      key: "username",
       show: true,
       tooltip: true,
       align: "center",
       headerAlign: "center",
       formatter: record => {
-        return textFormat(record.name ? record.name : "暂无姓名");
+        return textFormat(record.username ? record.username : "暂无姓名");
       }
     },
     {
       title: "ID",
       key: "id",
       show: true,
-      tooltip: true,
       align: "center",
       headerAlign: "center",
       formatter: record => {

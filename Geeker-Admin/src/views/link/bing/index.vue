@@ -1,11 +1,17 @@
 <template>
   <div class="card content-box">
-    <iframe src="https://cn.bing.com/" frameborder="0" class="full-iframe"></iframe>
+    <iframe src="https://element-plus.org/zh-CN/component/icon.html" frameborder="0" class="full-iframe"></iframe>
   </div>
 </template>
 
 <script setup lang="ts" name="bing"></script>
 
 <style scoped lang="scss">
-@import "./index.scss";
+.full-iframe {
+  width: 100%;
+  height: 100%;
+}
+.card {
+  padding: 0 !important;
+}
 </style>

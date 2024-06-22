@@ -4,12 +4,6 @@
   </div>
 </template>
 
-<script setup lang="ts" name="watermarkDirect">
-import { onActivated } from "vue";
-
-onActivated(() => {
-  console.log("onActivated", 1);
-});
-</script>
+<script setup lang="ts" name="watermarkDirect"></script>
 
 <style scoped lang="scss"></style>
