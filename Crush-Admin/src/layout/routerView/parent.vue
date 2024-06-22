@@ -49,6 +49,8 @@ const getKeepAliveNames = computed(() => {
 		cachedViewList.value = Session.get('tagsViewList')
 			.filter((o: any) => o.meta.isKeepAlive == true)
 			.map((v: any) => v.name);
+	} else {
+		cachedViewList.value = state.keepAliveNameList;
 	}
 	return themeConfig.value.isCacheTagsView ? cachedViewList.value : state.keepAliveNameList;
 });
