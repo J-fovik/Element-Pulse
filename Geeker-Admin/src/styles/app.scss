@@ -2,6 +2,7 @@
 @import "./element.scss";
 // 自定义 element dark css
 @import "./element-dark.scss";
+
 * {
     box-sizing: border-box;
 }
@@ -12,7 +13,7 @@ body,
     height: 100%;
     margin: 0;
     padding: 0;
-    font-size: 14px;
+    font-size: 16px;
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
 }
@@ -21,17 +22,17 @@ body,
 :-webkit-any(article, aside, nav, section) h1 {
     font-size: 2em;
 }
-
-/* 
-  页面高度自适应 ：card + content-box样式;
-  页面滚动: 用el-card组件
-*/
 /* mask image */
 .mask-image {
     padding-right: 50px;
     mask-image: linear-gradient(90deg, #000000 0%, #000000 calc(100% - 50px), transparent);
 }
 
+/* 
+  布局：
+  页面高度自适应 ：card + container样式;
+  页面滚动: 用el-card组件
+*/
 /* custom card */
 .card {
     box-sizing: border-box;
@@ -42,26 +43,13 @@ body,
     border-radius: 6px;
     box-shadow: 0 0 12px rgb(0 0 0 / 5%);
 }
-
-/* ProTable 不需要 card 样式（在组件内使用 ProTable 会使用到） */
-.no-card {
-    .card {
-        padding: 0;
-        background-color: transparent;
-        border: none;
-        border-radius: 0;
-        box-shadow: none;
-    }
-}
-
-/* content-box (常用内容盒子) */
-.content-box {
+/* container (常用内容盒子) */
+.container {
     display: flex;
     flex-direction: column;
     align-items: center;
     height: 100%;
 }
-
 /* main-box (树形表格 treeFilter 页面会使用，左右布局 flex) */
 .main-box {
     display: flex;
@@ -72,7 +60,7 @@ body,
         width: calc(100% - 230px);
     }
 }
-/* flex */
+/*********************** flex **********************/
 .flx-center {
     display: flex;
     align-items: center;
@@ -155,6 +143,7 @@ body,
 .text-center {
     text-align: center;
 }
+/*********************** flex **********************/
 
 /* 价格设置 */
 .text-red {
@@ -194,6 +183,13 @@ body,
 .break-word {
     word-break: break-all;
     word-wrap: break-word;
+}
+// 新增编辑底部操作
+.footerCard {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
 }
 
 /* fade-transform */

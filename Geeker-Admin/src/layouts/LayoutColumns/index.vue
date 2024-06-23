@@ -91,7 +91,6 @@ watch(
 
 // 切换菜单
 const changeSubMenu = (item: Menu.MenuOptions) => {
-  console.log(item);
   splitActive.value = item.path;
   // 更新当前激活的菜单项
   if (item.children?.length) {

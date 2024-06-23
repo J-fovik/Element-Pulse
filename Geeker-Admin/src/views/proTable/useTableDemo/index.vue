@@ -1,11 +1,11 @@
 <template>
-    <div class="aaa">
+    <div>
         <CustomTableMould fold :table-columns="columnsData" @reset-search="resetForm" @search="resetData">
             <template #form>
                 <el-form :model="form" label-position="left">
                     <el-row :gutter="24">
                         <SearchItem label="名称:" class="mb5">
-                            <el-input v-model.trim="form.username" placeholder="请输入名称" />
+                            <el-input v-model.trim="form.name" placeholder="请输入名称" />
                         </SearchItem>
                         <SearchItem label="状态:" class="mb5">
                             <el-select v-model="form.status" filterable placeholder="请输入状态">
@@ -42,48 +42,42 @@
             </template>
             <template #operate>
                 <el-space>
-                    <el-button type="success" size="default" @click="$router.push(`/pages/tableDemo2/operate`)">
-                        <el-icon><DocumentAdd /></el-icon>新增
+                    <el-button type="primary" :icon="CirclePlus" @click="$router.push(`/proTable/useTableDemo/detail/index`)"
+                        >新增</el-button
+                    >
+                    <el-button type="danger" :icon="Delete" plain :disabled="tableBaseOptions.selectedKeys.length == 0">
+                        删除
                     </el-button>
-                    <!-- <el-button type="danger" size="default" :disabled="tableBaseOptions.selectedKeys.length == 0" @click="handleDelete">
-            <el-icon><ele-Delete /></el-icon> 删除
-          </el-button> -->
                 </el-space>
             </template>
             <template #table>
                 <TablePlus
                     ref="tableRef"
                     :tableData="tableData"
-                    :selection="false"
+                    :selection="visibleColumnsData.length > 0 ? true : false"
                     :loading="loading"
+                    :selectable="selectable"
                     :visibleColumnsData="visibleColumnsData"
                     @select-keys="handleSelectionChange"
                 >
                     <template #status="{ row }">
                         <el-switch v-model="row.status" active-value="1" inactive-value="0"> </el-switch>
                     </template>
-                    <template #image="{ row }">
-                        <el-image
-                            v-if="row.image"
-                            :preview-src-list="[row.image]"
-                            style="width: 100px; height: 100px"
-                            :src="row.image"
-                            fit="cover"
-                        />
-                        <div v-else>--</div>
-                    </template>
                     <template #operate="{ row }">
                         <el-space>
                             <el-button
                                 type="success"
                                 text
-                                @click="$router.push(`/pages/tableDemo2/operate?id=${row.id}&isReadOnly=true`)"
+                                @click="$router.push(`/proTable/useTableDemo/detail/index?id=${row.id}&isReadOnly=true`)"
                                 >详情</el-button
                             >
-                            <el-button type="primary" text @click="$router.push(`/pages/tableDemo2/operate?id=${row.id}`)"
+                            <el-button
+                                type="primary"
+                                text
+                                @click="$router.push(`/proTable/useTableDemo/detail/index?id=${row.id}`)"
                                 >编辑</el-button
                             >
-                            <!-- <el-button type="danger" text @click="handleDelete(row)">删除</el-button> -->
+                            <el-button type="danger" text>删除</el-button>
                         </el-space>
                     </template>
                 </TablePlus>
@@ -106,6 +100,7 @@
     </div>
 </template>
 <script setup lang="ts" name="useTableDemo">
+import { CirclePlus, Delete } from "@element-plus/icons-vue";
 import { useForm, useTable, useBasicsState, curryingRequest, useAsyncData, useAsyncNoInitData, useAsyncWatchData } from "@/hooks";
 import { ALL_OPTIONS } from "@/utils/options"; // 全部
 import { TABLE_DATA, GENDER_OPTIONS, TYPES_A_OPTIONS, TYPES_B_OPTIONS, STATUS_OPTIONS } from "./options"; // 模拟接口数据
@@ -128,7 +123,7 @@ const [activeKey, setActiveKey] = useBasicsState<string | null>(null);
 // 表单hooks
 const { form, resetForm } = useForm(
     () => ({
-        username: "", // 姓名
+        name: "", // 姓名
         status: "", // 状态
         gender: "", // 性别
         type: "", // 类型
@@ -171,29 +166,31 @@ const { data: typeList } = useAsyncWatchData<Array<any>>(
     },
     { watchSource: () => form.value.gender, defaultValue: [] }
 );
+// 判断当前列是否可以选择
+const selectable = (row: any) => {
+    return row.status !== "1";
+};
 // 获取表格列表
 const {
     data: tableData,
     loading,
     initData,
 } = useAsyncNoInitData(async () => {
-    const { res, err } = await curryingRequest(() =>
-        getUserList({
-            ...form.value,
-            currentPage: tableBaseOptions.pagination.current,
-            pageSize: tableBaseOptions.pagination.pageSize,
-        })
-    );
-    // 处理错误
-    if (err) return;
+    // const { res, err } = await curryingRequest(() =>
+    //     getUserList({
+    //         ...form.value,
+    //         currentPage: tableBaseOptions.pagination.current,
+    //         pageSize: tableBaseOptions.pagination.pageSize,
+    //     })
+    // );
+    // // 处理错误
+    // if (err) return;
     // 赋值总页数
-    tableBaseOptions.pagination.total = res?.data.total;
-    return extendTableList(res?.data.list); // 处理数据
+    tableBaseOptions.pagination.total = TABLE_DATA.total;
+    return extendTableList(TABLE_DATA.tableData); // 处理数据
 });
 // onActivated 可用于跳转页面返回刷新列表
 onActivated(() => {
-    console.log(99);
-
     initData();
 });
 </script>

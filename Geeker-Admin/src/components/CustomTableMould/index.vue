@@ -23,21 +23,12 @@
                 <div style="width: 1px; margin: 0 20px; background-color: #e5e6eb"></div>
                 <div class="flex items-center flex-col">
                     <div class="flex items-center justify-center" :class="collapsed ? 'flex-col marginStyle' : ''">
-                        <el-button type="primary" size="default" @click="emits('search')">
-                            <el-icon>
-                                <Search />
-                            </el-icon>
-                            查询
-                        </el-button>
+                        <el-button type="primary"  :icon="Search" @click="emits('search')"> 查询 </el-button>
                         <el-button
-                            type="info"
                             :class="collapsed ? 'marginStyle' : ''"
-                            size="default"
+                            :icon="Delete"
                             @click="emits('resetSearch')"
                         >
-                            <el-icon>
-                                <Refresh />
-                            </el-icon>
                             重置
                         </el-button>
                     </div>
@@ -51,6 +42,36 @@
             <div class="flex items-center justify-between">
                 <!-- 操作插槽 -->
                 <slot name="operate"></slot>
+                <div>
+                    <el-popover
+                        placement="top-end"
+                        title="列展示"
+                        trigger="click"
+                        transition="el-zoom-in-top"
+                        popper-class="table-tool-popper"
+                        :width="200"
+                        :persistent="false"
+                    >
+                        <template #reference>
+                            <el-icon><Tools /></el-icon>
+                        </template>
+                        <template #default>
+                            <el-scrollbar>
+                                <div ref="toolSetRef" class="tool-sortable">
+                                    <div class="tool-sortable-item" v-for="(v, i) in tableColumns" :key="v.key" :data-key="v.key">
+                                        <el-icon><Menu /></el-icon>
+                                        <el-checkbox
+                                            v-model="v.show"
+                                            size="default"
+                                            class="ml12"
+                                            :label="v.title.length > 8 ? v.title.substring(0, 8) + '...' : v.title"
+                                        />
+                                    </div>
+                                </div>
+                            </el-scrollbar>
+                        </template>
+                    </el-popover>
+                </div>
             </div>
         </template>
         <!-- 操作模块 -->
@@ -66,6 +87,7 @@
 </template>
 
 <script lang="ts" setup name="customTableMould">
+import { Delete, Search } from "@element-plus/icons-vue";
 import { useBasicsState } from "@/hooks";
 const route = useRoute();
 // 父组件参数
@@ -97,10 +119,6 @@ const emits = defineEmits(["resetSearch", "search"]);
 :deep(.el-card__body) {
     padding: 0 20px 0;
 }
-/* 表格样式 */
-/* .bg-table {
-  background-color: var(--next-bg-table-color) !important;
-} */
 .formHeight {
     height: 40px;
     overflow: hidden;

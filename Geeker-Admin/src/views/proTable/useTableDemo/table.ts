@@ -1,4 +1,5 @@
-import { ElTag } from "element-plus";
+import { ElTag, ElImage } from "element-plus";
+import { h } from "vue";
 import type { TableCustomColumnData } from "@/hooks";
 import commonFunction from "@/utils/commonFunction";
 import findOption from "@/utils/dict"; // 根据value查label
@@ -14,19 +15,18 @@ export const createTableColumns = (): TableCustomColumnData[] => {
             key: "sortTableNo",
             width: 80,
             show: true,
-            tooltip: true,
             align: "center",
             headerAlign: "center",
         },
         {
             title: "名称",
-            key: "username",
+            key: "name",
             show: true,
             tooltip: true,
             align: "center",
             headerAlign: "center",
             formatter: (record) => {
-                return textFormat(record.username ? record.username : "暂无姓名");
+                return textFormat(record.name ? record.name : "暂无姓名");
             },
         },
         {
@@ -37,6 +37,9 @@ export const createTableColumns = (): TableCustomColumnData[] => {
             headerAlign: "center",
             formatter: (record) => {
                 return h(ElTag, { type: "success" }, { default: () => textFormat(record.id) });
+            },
+            renderHeader: (record) => {
+                return h(ElTag, { type: "success" }, { default: () => "ID" });
             },
         },
         {
@@ -89,15 +92,28 @@ export const createTableColumns = (): TableCustomColumnData[] => {
         },
         {
             title: "图片",
-            width: 100,
+            width: 120,
             key: "image",
             show: true,
             align: "center",
+            formatter: (record) => {
+                if (record.image) {
+                    // 如果有图片，则使用 ElImage 组件并设置 preview-src-list
+                    return h(ElImage, {
+                        src: record.image,
+                        previewSrcList: [record.image], // 设置预览图片列表
+                        style: { width: "100px", height: "100px" },
+                    });
+                } else {
+                    // 如果没有图片，则返回一个占位符
+                    return h("span", "-");
+                }
+            },
         },
         {
             title: "操作",
             fixed: "right",
-            width: 150,
+            width: 220,
             key: "operate",
             show: true,
             align: "center",

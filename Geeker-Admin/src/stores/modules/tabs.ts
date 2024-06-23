@@ -8,70 +8,70 @@ import piniaPersistConfig from "@/stores/helper/persist";
 const keepAliveStore = useKeepAliveStore();
 
 export const useTabsStore = defineStore({
-  id: "geeker-tabs",
-  state: (): TabsState => ({
-    tabsMenuList: []
-  }),
-  getters: {},
-  actions: {
-    // Add Tabs
-    async addTabs(tabItem: TabsMenuProps) {
-      if (this.tabsMenuList.every(item => item.path !== tabItem.path)) {
-        this.tabsMenuList.push(tabItem);
-      }
-      // add keepalive
-      if (!keepAliveStore.keepAliveName.includes(tabItem.name) && tabItem.isKeepAlive) {
-        keepAliveStore.addKeepAliveName(tabItem.path);
-      }
+    id: "geeker-tabs",
+    state: (): TabsState => ({
+        tabsMenuList: [],
+    }),
+    getters: {},
+    actions: {
+        // 添加标签
+        async addTabs(tabItem: TabsMenuProps) {
+            if (this.tabsMenuList.every((item) => item.path !== tabItem.path)) {
+                this.tabsMenuList.push(tabItem);
+            }
+            // 添加缓存
+            if (!keepAliveStore.keepAliveName.includes(tabItem.name) && tabItem.isKeepAlive) {
+                keepAliveStore.addKeepAliveName(tabItem.path);
+            }
+        },
+        // 删除标签
+        async removeTabs(tabPath: string, isCurrent: boolean = true) {
+            if (isCurrent) {
+                this.tabsMenuList.forEach((item, index) => {
+                    if (item.path !== tabPath) return;
+                    const nextTab = this.tabsMenuList[index + 1] || this.tabsMenuList[index - 1];
+                    if (!nextTab) return;
+                    router.push(nextTab.path);
+                });
+            }
+            // 删除缓存
+            const tabItem = this.tabsMenuList.find((item) => item.path === tabPath);
+            tabItem?.isKeepAlive && keepAliveStore.removeKeepAliveName(tabItem.path);
+            // 设置标签
+            this.tabsMenuList = this.tabsMenuList.filter((item) => item.path !== tabPath);
+        },
+        // 清除左右标签
+        async closeTabsOnSide(path: string, type: "left" | "right") {
+            const currentIndex = this.tabsMenuList.findIndex((item) => item.path === path);
+            if (currentIndex !== -1) {
+                const range = type === "left" ? [0, currentIndex] : [currentIndex + 1, this.tabsMenuList.length];
+                this.tabsMenuList = this.tabsMenuList.filter((item, index) => {
+                    return index < range[0] || index >= range[1] || !item.close;
+                });
+            }
+            // 设置缓存
+            const KeepAliveList = this.tabsMenuList.filter((item) => item.isKeepAlive);
+            keepAliveStore.setKeepAliveName(KeepAliveList.map((item) => item.path));
+        },
+        // 关闭其他标签
+        async closeMultipleTab(tabsMenuValue?: string) {
+            this.tabsMenuList = this.tabsMenuList.filter((item) => {
+                return item.path === tabsMenuValue || !item.close;
+            });
+            // 设置缓存
+            const KeepAliveList = this.tabsMenuList.filter((item) => item.isKeepAlive);
+            keepAliveStore.setKeepAliveName(KeepAliveList.map((item) => item.path));
+        },
+        // 设置标签
+        async setTabs(tabsMenuList: TabsMenuProps[]) {
+            this.tabsMenuList = tabsMenuList;
+        },
+        // 设置标签标题
+        async setTabsTitle(title: string) {
+            this.tabsMenuList.forEach((item) => {
+                if (item.path == getUrlWithParams()) item.title = title;
+            });
+        },
     },
-    // Remove Tabs
-    async removeTabs(tabPath: string, isCurrent: boolean = true) {
-      if (isCurrent) {
-        this.tabsMenuList.forEach((item, index) => {
-          if (item.path !== tabPath) return;
-          const nextTab = this.tabsMenuList[index + 1] || this.tabsMenuList[index - 1];
-          if (!nextTab) return;
-          router.push(nextTab.path);
-        });
-      }
-      // remove keepalive
-      const tabItem = this.tabsMenuList.find(item => item.path === tabPath);
-      tabItem?.isKeepAlive && keepAliveStore.removeKeepAliveName(tabItem.path);
-      // set tabs
-      this.tabsMenuList = this.tabsMenuList.filter(item => item.path !== tabPath);
-    },
-    // Close Tabs On Side
-    async closeTabsOnSide(path: string, type: "left" | "right") {
-      const currentIndex = this.tabsMenuList.findIndex(item => item.path === path);
-      if (currentIndex !== -1) {
-        const range = type === "left" ? [0, currentIndex] : [currentIndex + 1, this.tabsMenuList.length];
-        this.tabsMenuList = this.tabsMenuList.filter((item, index) => {
-          return index < range[0] || index >= range[1] || !item.close;
-        });
-      }
-      // set keepalive
-      const KeepAliveList = this.tabsMenuList.filter(item => item.isKeepAlive);
-      keepAliveStore.setKeepAliveName(KeepAliveList.map(item => item.path));
-    },
-    // Close MultipleTab
-    async closeMultipleTab(tabsMenuValue?: string) {
-      this.tabsMenuList = this.tabsMenuList.filter(item => {
-        return item.path === tabsMenuValue || !item.close;
-      });
-      // set keepalive
-      const KeepAliveList = this.tabsMenuList.filter(item => item.isKeepAlive);
-      keepAliveStore.setKeepAliveName(KeepAliveList.map(item => item.path));
-    },
-    // Set Tabs
-    async setTabs(tabsMenuList: TabsMenuProps[]) {
-      this.tabsMenuList = tabsMenuList;
-    },
-    // Set Tabs Title
-    async setTabsTitle(title: string) {
-      this.tabsMenuList.forEach(item => {
-        if (item.path == getUrlWithParams()) item.title = title;
-      });
-    }
-  },
-  persist: piniaPersistConfig("geeker-tabs")
+    persist: piniaPersistConfig("geeker-tabs"),
 });
