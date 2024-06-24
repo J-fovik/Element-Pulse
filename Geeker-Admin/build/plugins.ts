@@ -32,7 +32,7 @@ export const createVitePlugins = (viteEnv: ViteEnv): (PluginOption | PluginOptio
         }),
         // 使用 svg 图标
         createSvgIconsPlugin({
-            iconDirs: [resolve(process.cwd(), "src/assets/icons")],
+            iconDirs: [resolve(process.cwd(), "src/assets/svgIcons")],
             symbolId: "icon-[dir]-[name]",
         }),
         // vitePWA

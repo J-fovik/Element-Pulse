@@ -21,11 +21,7 @@ import pinia from '@/stores';
 // 全局错误
 import errorHandler from '@/utils/errorHandler';
 // 自定义样式
-import '@/styles/app.scss';
-// 阿里图标 css
-import '@/assets/iconfont/iconfont.scss';
-// 字体 css
-import '@/assets/fonts/font.scss';
+import '@/assets/styles/app.scss';
 const app = createApp(App);
 
 app.config.errorHandler = errorHandler;

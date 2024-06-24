@@ -598,36 +598,6 @@
 			]
 		},
 		{
-			"path": "/system",
-			"name": "system",
-			"redirect": "/system/menuMange",
-			"meta": {
-				"icon": "Tools",
-				"title": "系统管理",
-				"isLink": "",
-				"isHide": false,
-				"isFull": false,
-				"isAffix": false,
-				"isKeepAlive": true
-			},
-			"children": [
-				{
-					"path": "/system/menuMange",
-					"name": "menuMange",
-					"component": "/system/menuMange/index",
-					"meta": {
-						"icon": "Menu",
-						"title": "菜单管理",
-						"isLink": "",
-						"isHide": false,
-						"isFull": false,
-						"isAffix": false,
-						"isKeepAlive": true
-					}
-				}
-			]
-		},
-		{
 			"path": "/link",
 			"name": "link",
 			"redirect": "/link/embedded",

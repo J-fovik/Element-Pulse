@@ -1,5 +1,7 @@
 <template>
-  <div class="home card"></div>
+	<div class="card container justify-center items-center">
+		<FlopTime></FlopTime>
+	</div>
 </template>
 
 <script setup lang="ts" name="home"></script>
