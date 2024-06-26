@@ -78,7 +78,7 @@
 					<el-icon><QuestionFilled /></el-icon>
 				</el-tooltip>
 			</span>
-			<el-switch v-model="asideInverted" @change="setAsideTheme" />
+			<el-switch v-model="asideInverted" :disabled="isDark" @change="setAsideTheme" />
 		</div>
 		<div class="theme-item mb50">
 			<span>
@@ -87,7 +87,7 @@
 					<el-icon><QuestionFilled /></el-icon>
 				</el-tooltip>
 			</span>
-			<el-switch v-model="headerInverted" @change="setHeaderTheme" />
+			<el-switch v-model="headerInverted" :disabled="isDark" @change="setHeaderTheme" />
 		</div>
 
 		<!-- 全局主题 -->
@@ -167,6 +167,7 @@ const {
 	primary,
 	isGrey,
 	isWeak,
+	isDark,
 	asideInverted,
 	headerInverted,
 	isCollapse,

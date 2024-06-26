@@ -90,6 +90,9 @@ window.addEventListener('resize', listeningWindow, false);
 onBeforeUnmount(() => {
 	window.removeEventListener('resize', listeningWindow);
 });
+onMounted(() => {
+	console.log(11);
+});
 </script>
 
 <style scoped lang="scss">
