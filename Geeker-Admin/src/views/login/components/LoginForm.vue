@@ -37,7 +37,7 @@ import { loginApi } from "@/api/modules/login";
 import { useUserStore } from "@/stores/modules/user";
 import { useTabsStore } from "@/stores/modules/tabs";
 import { useKeepAliveStore } from "@/stores/modules/keepAlive";
-import { initDynamicRouter } from "@/routers/modules/dynamicRouter";
+import { initDynamicRouter } from "@/routers/dynamicRouter";
 import { CircleClose, UserFilled } from "@element-plus/icons-vue";
 import { useForm, useBasicsState, curryingRequest } from "@/hooks";
 // form

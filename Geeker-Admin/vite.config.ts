@@ -5,6 +5,7 @@ import { createProxy } from './build/proxy';
 import { createVitePlugins } from './build/plugins';
 import pkg from './package.json';
 import dayjs from 'dayjs';
+import vueSetupExtend from 'vite-plugin-vue-setup-extend';
 import Components from 'unplugin-vue-components/vite'; // 全部注册组件
 import AutoImport from 'unplugin-auto-import/vite'; // 自动引入
 
@@ -24,6 +25,7 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
 		base: viteEnv.VITE_PUBLIC_PATH,
 		root,
 		resolve: {
+			// 路径别名
 			alias: {
 				'@': resolve(__dirname, './src'),
 				'vue-i18n': 'vue-i18n/dist/vue-i18n.cjs.js',
@@ -33,6 +35,7 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
 			__APP_INFO__: JSON.stringify(__APP_INFO__),
 		},
 		css: {
+			// 配置全局变量
 			preprocessorOptions: {
 				scss: {
 					additionalData: `@import "@/assets/styles/var.scss";`,
@@ -40,29 +43,40 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
 			},
 		},
 		server: {
+			// 服务器监听的地址（允许您的服务器被外部访问）
 			host: '0.0.0.0',
+			// 服务器监听的端口
 			port: viteEnv.VITE_PORT,
+			// 启动时是否自动打开浏览器
 			open: viteEnv.VITE_OPEN,
+			// 是否启用 CORS，接受跨域请求
 			cors: true,
-			// Load proxy configuration from .env.development
+			// 本地环境代理配置
 			proxy: createProxy(viteEnv.VITE_PROXY),
 		},
 		plugins: [
+			vueSetupExtend(),
+			// 配置 Vite 插件
 			createVitePlugins(viteEnv),
+			// 自动导入vue相关函数，如: ref、reactive、toRef等
 			AutoImport({
-				// 自动导入vue相关函数，如: ref、reactive、toRef等
+				// 自动引入的文件
 				imports: ['vue', 'vue-router'],
+				// 配置文件生成位置
 				dts: 'src/auto-import.d.ts',
 			}),
+			// 指定组件位置，默认是 src/components 自动导入自定义组件
 			Components({
-				// 指定组件位置，默认是 src/components 自动导入自定义组件
+				// 本地指定组件位置路径
 				dirs: ['src/components'],
+				// 文件类型
 				extensions: ['vue', 'tsx'],
 				// 配置文件生成位置
 				dts: 'src/components.d.ts',
 			}),
 		],
 		esbuild: {
+			// 打包时删除
 			pure: viteEnv.VITE_DROP_CONSOLE ? ['console.log', 'debugger'] : [],
 		},
 		build: {

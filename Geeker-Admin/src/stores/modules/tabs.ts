@@ -69,7 +69,7 @@ export const useTabsStore = defineStore({
 		async setTabs(tabsMenuList: TabsMenuProps[]) {
 			this.tabsMenuList = tabsMenuList;
 		},
-		// 设置标签标题
+		// 设置当前标签标题
 		async setTabsTitle(title: string) {
 			this.tabsMenuList.forEach((item) => {
 				if (item.path == getUrlWithParams()) item.title = title;

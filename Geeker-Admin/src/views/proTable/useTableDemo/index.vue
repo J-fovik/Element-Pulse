@@ -240,7 +240,7 @@ const {
 });
 // onActivated 可用于跳转页面返回刷新列表
 onActivated(() => {
-	console.log('onActivated', 11);
+	console.log('onActivated', 88);
 	initData();
 });
 </script>
