@@ -98,17 +98,13 @@ export const createTableColumns = (): TableCustomColumnData[] => {
 			show: true,
 			align: 'center',
 			formatter: (record) => {
-				if (record.image) {
-					// 如果有图片，则使用 ElImage 组件并设置 preview-src-list
-					return h(ElImage, {
-						src: record.image,
-						previewSrcList: [record.image], // 设置预览图片列表
-						style: { width: '100px', height: '100px' },
-					});
-				} else {
-					// 如果没有图片，则返回一个占位符
-					return h('span', '-');
-				}
+				return record.image
+					? h(ElImage, {
+							src: record.image,
+							previewSrcList: [record.image],
+							width: 100,
+					  })
+					: '-';
 			},
 		},
 		{

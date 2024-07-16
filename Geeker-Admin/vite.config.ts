@@ -5,9 +5,6 @@ import { createProxy } from './build/proxy';
 import { createVitePlugins } from './build/plugins';
 import pkg from './package.json';
 import dayjs from 'dayjs';
-import vueSetupExtend from 'vite-plugin-vue-setup-extend';
-import Components from 'unplugin-vue-components/vite'; // 全部注册组件
-import AutoImport from 'unplugin-auto-import/vite'; // 自动引入
 
 const { dependencies, devDependencies, name, version } = pkg;
 const __APP_INFO__ = {
@@ -55,25 +52,8 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
 			proxy: createProxy(viteEnv.VITE_PROXY),
 		},
 		plugins: [
-			vueSetupExtend(),
 			// 配置 Vite 插件
 			createVitePlugins(viteEnv),
-			// 自动导入vue相关函数，如: ref、reactive、toRef等
-			AutoImport({
-				// 自动引入的文件
-				imports: ['vue', 'vue-router'],
-				// 配置文件生成位置
-				dts: 'src/auto-import.d.ts',
-			}),
-			// 指定组件位置，默认是 src/components 自动导入自定义组件
-			Components({
-				// 本地指定组件位置路径
-				dirs: ['src/components'],
-				// 文件类型
-				extensions: ['vue', 'tsx'],
-				// 配置文件生成位置
-				dts: 'src/components.d.ts',
-			}),
 		],
 		esbuild: {
 			// 打包时删除

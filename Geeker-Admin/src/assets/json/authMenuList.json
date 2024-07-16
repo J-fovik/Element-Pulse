@@ -236,34 +236,6 @@
 					}
 				},
 				{
-					"path": "/assembly/uploadFile",
-					"name": "uploadFile",
-					"component": "/assembly/uploadFile/index",
-					"meta": {
-						"icon": "Menu",
-						"title": "文件上传",
-						"isLink": "",
-						"isHide": false,
-						"isFull": false,
-						"isAffix": false,
-						"isKeepAlive": true
-					}
-				},
-				{
-					"path": "/assembly/batchImport",
-					"name": "batchImport",
-					"component": "/assembly/batchImport/index",
-					"meta": {
-						"icon": "Menu",
-						"title": "批量添加数据",
-						"isLink": "",
-						"isHide": false,
-						"isFull": false,
-						"isAffix": false,
-						"isKeepAlive": true
-					}
-				},
-				{
 					"path": "/assembly/wangEditor",
 					"name": "wangEditor",
 					"component": "/assembly/wangEditor/index",
