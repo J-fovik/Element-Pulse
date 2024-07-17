@@ -137,7 +137,9 @@ type ListType = {
 	label: string;
 	value: string;
 };
-
+type ArrayItem = {
+	[key: string]: any;
+};
 declare interface RowDicType {
 	dicName: string;
 	fieldName: string;

@@ -312,3 +312,25 @@ export const groupByAndMergeChildArrays = (array: Array<any>, groupByKey: any, c
 		return acc;
 	}, []);
 };
+/**
+ * 组成新数组
+ * @param array1 要处理的数组1
+ * @param array2  要处理的数组2
+ * @param propertyName  两个数组有存在，并且要处理的key
+ */
+export const getIntersectionByProperty = <T extends ArrayItem, K extends keyof T>(array1: T[], array2: T[], propertyName: K): T[] => {
+	// 创建一个新的 Set，包含 array1 中所有元素的指定属性值
+	const propertyValues = new Set(array1.map((item) => item[propertyName]));
+	// 使用 filter 方法筛选出 array2 中属性值存在于 Set 中的元素
+	// 并合并两个数组的属性到返回的对象中
+	return array2
+		.filter((item) => propertyValues.has(item[propertyName]))
+		.map((item2) => {
+			// 查找 array1 中与当前 item2 相匹配的对象
+			const matchingItem1 = array1.find(
+				(item1) => item1[propertyName] === item2[propertyName]
+			);
+			// 合并两个对象的属性
+			return { ...matchingItem1, ...item2 };
+		});
+};

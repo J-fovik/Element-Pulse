@@ -22,7 +22,7 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref, onActivated } from 'vue';
 import RollAside from '@/components/RollAside.vue';
 import RollMain from '@/components/RollMain.vue';
 import UploadExcel from '@/components/UploadExcel.vue';
@@ -55,6 +55,9 @@ const onSuccess = (response, file, fileList) => {
 const onDownTemplate = () => {
 	ElMessage.error('演示模式');
 };
+onActivated(() => {
+	console.log(33);
+});
 </script>
 
 <style>
