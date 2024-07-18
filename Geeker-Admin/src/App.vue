@@ -28,16 +28,16 @@ onMounted(() => {
 	globalStore.setGlobalState('language', language as LanguageType);
 });
 
-// element language
+// element 语言
 const locale = computed(() => {
 	if (globalStore.language == 'zh') return zhCn;
 	if (globalStore.language == 'en') return en;
 	return getBrowserLang() == 'zh' ? zhCn : en;
 });
 
-// element assemblySize
+// element 组装尺寸
 const assemblySize = computed(() => globalStore.assemblySize);
 
-// element button config
+// element 按钮配置
 const buttonConfig = reactive({ autoInsertSpace: false });
 </script>

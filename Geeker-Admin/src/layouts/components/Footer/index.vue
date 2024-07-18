@@ -1,6 +1,7 @@
 <template>
+	<!-- 页脚 -->
 	<div class="footer flx-center">
-		<a href="/" target="_blank"> 2024 © Geeker-Admin By Geeker Technology. </a>
+		<a href="/" target="_blank"> 2024 © Geeker-Admin By Geeker. </a>
 	</div>
 </template>
 

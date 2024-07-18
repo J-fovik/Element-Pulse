@@ -1,4 +1,5 @@
 <template>
+	<!-- 搜索菜单 -->
 	<div class="search-menu">
 		<i :class="'iconfont icon-sousuo'" class="toolBar-icon" @click="handleOpen"></i>
 		<el-dialog
