@@ -5,7 +5,7 @@ import vueSetupExtend from 'vite-plugin-vue-setup-extend-plus';
 import viteCompression from 'vite-plugin-compression'; // 启用 gzip 压缩功能
 import Components from 'unplugin-vue-components/vite'; // 全部注册组件
 import AutoImport from 'unplugin-auto-import/vite'; // 自动引入
-
+import FullReload from 'vite-plugin-full-reload';
 import { buildConfig } from './src/utils/build';
 
 const pathResolve = (dir: string) => {
@@ -29,6 +29,7 @@ const viteConfig = defineConfig((mode: ConfigEnv) => {
 			vueSetupExtend(),
 			viteCompression(),
 			JSON.parse(env.VITE_OPEN_CDN) ? buildConfig.cdn() : null,
+			FullReload(['src/**/*.vue'], { delay: 200 }),
 			AutoImport({
 				// 自动导入vue相关函数，如: ref、reactive、toRef等
 				imports: ['vue', 'vue-router'],

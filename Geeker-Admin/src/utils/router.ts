@@ -4,11 +4,11 @@
  * @returns {Array}
  * */
 export function getShowMenuList(menuList: Menu.MenuOptions[]) {
-  let newMenuList: Menu.MenuOptions[] = JSON.parse(JSON.stringify(menuList));
-  return newMenuList.filter(item => {
-    item.children?.length && (item.children = getShowMenuList(item.children));
-    return !item.meta?.isHide;
-  });
+	let newMenuList: Menu.MenuOptions[] = JSON.parse(JSON.stringify(menuList));
+	return newMenuList.filter((item) => {
+		item.children?.length && (item.children = getShowMenuList(item.children));
+		return !item.meta?.isHide;
+	});
 }
 
 /**
@@ -17,8 +17,11 @@ export function getShowMenuList(menuList: Menu.MenuOptions[]) {
  * @returns {Array}
  */
 export function getFlatMenuList(menuList: Menu.MenuOptions[]): Menu.MenuOptions[] {
-  let newMenuList: Menu.MenuOptions[] = JSON.parse(JSON.stringify(menuList));
-  return newMenuList.flatMap(item => [item, ...(item.children ? getFlatMenuList(item.children) : [])]);
+	let newMenuList: Menu.MenuOptions[] = JSON.parse(JSON.stringify(menuList));
+	return newMenuList.flatMap((item) => [
+		item,
+		...(item.children ? getFlatMenuList(item.children) : []),
+	]);
 }
 
 /**
@@ -28,12 +31,16 @@ export function getFlatMenuList(menuList: Menu.MenuOptions[]): Menu.MenuOptions[
  * @param {Object} result 处理后的结果
  * @returns {Object}
  */
-export const getAllBreadcrumbList = (menuList: Menu.MenuOptions[], parent = [], result: { [key: string]: any } = {}) => {
-  for (const item of menuList) {
-    result[item.path] = [...parent, item];
-    if (item.children) getAllBreadcrumbList(item.children, result[item.path], result);
-  }
-  return result;
+export const getAllBreadcrumbList = (
+	menuList: Menu.MenuOptions[],
+	parent = [],
+	result: { [key: string]: any } = {}
+) => {
+	for (const item of menuList) {
+		result[item.path] = [...parent, item];
+		if (item.children) getAllBreadcrumbList(item.children, result[item.path], result);
+	}
+	return result;
 };
 
 /**
@@ -42,12 +49,15 @@ export const getAllBreadcrumbList = (menuList: Menu.MenuOptions[], parent = [], 
  * @param {Array} keepAliveNameArr 缓存的菜单 name ['**','**']
  * @returns {Array}
  * */
-export function getKeepAliveRouterName(menuList: Menu.MenuOptions[], keepAliveNameArr: string[] = []) {
-  menuList.forEach(item => {
-    item.meta.isKeepAlive && item.name && keepAliveNameArr.push(item.name);
-    item.children?.length && getKeepAliveRouterName(item.children, keepAliveNameArr);
-  });
-  return keepAliveNameArr;
+export function getKeepAliveRouterName(
+	menuList: Menu.MenuOptions[],
+	keepAliveNameArr: string[] = []
+) {
+	menuList.forEach((item) => {
+		item.meta.isKeepAlive && item.name && keepAliveNameArr.push(item.name);
+		item.children?.length && getKeepAliveRouterName(item.children, keepAliveNameArr);
+	});
+	return keepAliveNameArr;
 }
 
 /**
@@ -56,10 +66,32 @@ export function getKeepAliveRouterName(menuList: Menu.MenuOptions[], keepAliveNa
  * @param {Array} menuPathArr 菜单地址的一维数组 ['**','**']
  * @returns {Array}
  */
-export function getMenuListPath(menuList: Menu.MenuOptions[], menuPathArr: string[] = []): string[] {
-  for (const item of menuList) {
-    if (typeof item === "object" && item.path) menuPathArr.push(item.path);
-    if (item.children?.length) getMenuListPath(item.children, menuPathArr);
-  }
-  return menuPathArr;
+export function getMenuListPath(
+	menuList: Menu.MenuOptions[],
+	menuPathArr: string[] = []
+): string[] {
+	for (const item of menuList) {
+		if (typeof item === 'object' && item.path) menuPathArr.push(item.path);
+		if (item.children?.length) getMenuListPath(item.children, menuPathArr);
+	}
+	return menuPathArr;
+}
+/**
+ * @description 递归查询当前 path 所对应的菜单对象 (该函数暂未使用)
+ * @param {Array} menuList 菜单列表
+ * @param {String} path 当前访问地址
+ * @returns {Object | null}
+ */
+export function findMenuByPath(
+	menuList: Menu.MenuOptions[],
+	path: string
+): Menu.MenuOptions | null {
+	for (const item of menuList) {
+		if (item.path === path) return item;
+		if (item.children) {
+			const res = findMenuByPath(item.children, path);
+			if (res) return res;
+		}
+	}
+	return null;
 }

@@ -2,7 +2,7 @@ import { ElTag, ElImage } from 'element-plus';
 import { h } from 'vue';
 import type { TableCustomColumnData } from '@/hooks';
 import commonFunction from '@/utils/commonFunction';
-import findOption from '@/utils/dict'; // 根据value查label
+import findOption from '@/utils/options'; // 根据value查label
 import { ALL_TYPE_OPTIONS } from './options';
 
 // 定义表头数据

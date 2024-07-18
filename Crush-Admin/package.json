@@ -41,6 +41,7 @@
 		"typed.js": "2.1",
 		"unplugin-auto-import": "^0.17.6",
 		"unplugin-vue-components": "^0.27.0",
+		"vite-plugin-full-reload": "^1.2.0",
 		"vue": "^3.2.47",
 		"vue-clipboard3": "^2.0.0",
 		"vue-cropper": "^1.1.1",

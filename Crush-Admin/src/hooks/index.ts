@@ -3,7 +3,7 @@ import useGray from './modules/useGray'; // 页面灰度效果
 import useDevice from './modules/useDevice'; // 响应式布局容器固定宽度
 import useEcharts from './modules/useEcharts'; // 响应式布局容器固定宽度
 export type { TableCustomColumnData } from './modules/useTable';
-export { useBasicsState, useBasicsSet, useBasicsMap } from './modules/useBase'; // 唯一值 set map
+export { useBasicsState, useBasicsSet, useBasicsMap, useCountDown } from './modules/useBase'; // 唯一值 set map 倒计时
 export { useAsyncData, useAsyncNoInitData, useAsyncWatchData } from './modules/useAsyncRequest'; // 异步请求封装
 export { useForm, useTable } from './modules/useTable'; // 表格表单
 export { curryingRequest } from './modules/useRequest'; // 请求封装
