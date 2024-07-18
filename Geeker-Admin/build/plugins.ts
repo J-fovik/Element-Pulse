@@ -10,7 +10,7 @@ import viteCompression from 'vite-plugin-compression';
 import vueSetupExtend from 'unplugin-vue-setup-extend-plus/vite';
 import Components from 'unplugin-vue-components/vite'; // 全部注册组件
 import AutoImport from 'unplugin-auto-import/vite'; // 自动引入
-
+import FullReload from 'vite-plugin-full-reload'; // 修改代码编译
 /**
  * 创建 vite 插件
  * @param viteEnv
@@ -25,6 +25,7 @@ export const createVitePlugins = (viteEnv: ViteEnv): (PluginOption | PluginOptio
 		vueSetupExtend({}),
 		// 创建打包压缩配置
 		createCompression(viteEnv),
+		FullReload(['src/**/*.vue'], { delay: 200 }),
 		// 注入变量到 html 文件
 		createHtmlPlugin({
 			minify: true,

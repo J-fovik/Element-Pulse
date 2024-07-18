@@ -62,10 +62,7 @@
 			</template>
 			<template #operate>
 				<el-space>
-					<el-button
-						type="primary"
-						:icon="CirclePlus"
-						@click="$router.push(`/proTable/useTableDemo/detail/index`)"
+					<el-button type="primary" :icon="CirclePlus" @click="setActiveKey('AddEditor')"
 						>新增</el-button
 					>
 					<el-button
@@ -98,8 +95,8 @@
 								type="success"
 								text
 								@click="
-									$router.push(
-										`/proTable/useTableDemo/detail/index?id=${row.id}&isReadOnly=true`
+									setSelectRow({ ...row, isReadOnly: true }, () =>
+										setActiveKey('AddEditor')
 									)
 								"
 								>详情</el-button
@@ -107,9 +104,7 @@
 							<el-button
 								type="primary"
 								text
-								@click="
-									$router.push(`/proTable/useTableDemo/detail/index?id=${row.id}`)
-								"
+								@click="setSelectRow(row, () => setActiveKey('AddEditor'))"
 								>编辑</el-button
 							>
 							<el-button type="danger" text>删除</el-button>
@@ -132,9 +127,17 @@
 				/>
 			</template>
 		</CustomTableMould>
+		<!-- 新增编辑模态框 -->
+		<!-- 实现逻辑就是模态框一直打开状态，根据activeKey控制展示或者销毁，必须用v-if -->
+		<Operation
+			v-if="activeKey === 'AddEditor'"
+			:data="selectRow"
+			@success="initData"
+			@close="setSelectRow({}, () => setActiveKey(null))"
+		></Operation>
 	</div>
 </template>
-<script setup lang="ts" name="useTableDemo">
+<script setup lang="ts" name="useTableDemo2">
 import { CirclePlus, Delete } from '@element-plus/icons-vue';
 import {
 	useForm,
@@ -153,7 +156,6 @@ import {
 	TYPES_B_OPTIONS,
 	STATUS_OPTIONS,
 } from './options'; // 模拟接口数据
-
 import { createTableColumns } from './table'; // 表头配置
 import {
 	getUserList,
@@ -167,6 +169,8 @@ import {
 	//   getUserStatus,
 	//   getUserGender
 } from '@/api/modules/user';
+import Operation from './components/index.vue';
+
 // 页面唯一元素控制
 const [activeKey, setActiveKey] = useBasicsState<string | null>(null);
 // 表单hooks
@@ -190,6 +194,7 @@ const {
 	onPageSizeChange, // 改变每页数量
 	onCurrentChange, // 改变当前页码
 	resetData, // 重置分页筛选
+	setSelectRow, // 设置当前数据
 	extendTableList, // 处理表格数据
 	handleSelectionChange, // 多选
 } = useTable(createTableColumns(), () => initData());
@@ -224,7 +229,7 @@ const {
 	data: tableData,
 	loading,
 	initData,
-} = useAsyncNoInitData(async () => {
+} = useAsyncData(async () => {
 	// const { res, err } = await curryingRequest(() =>
 	//     getUserList({
 	//         ...form.value,
@@ -237,10 +242,5 @@ const {
 	// 赋值总页数
 	tableBaseOptions.pagination.total = TABLE_DATA.total;
 	return extendTableList(TABLE_DATA.tableData); // 处理数据
-});
-// onActivated 可用于跳转页面返回刷新列表
-onActivated(() => {
-	console.log('onActivated', 88);
-	initData();
 });
 </script>

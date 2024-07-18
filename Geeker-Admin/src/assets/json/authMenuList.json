@@ -73,6 +73,20 @@
 							}
 						}
 					]
+				},
+				{
+					"path": "/proTable/useTableDemo2",
+					"name": "useTableDemo2",
+					"component": "/proTable/useTableDemo2/index",
+					"meta": {
+						"icon": "Menu",
+						"title": "超级表格Demo2",
+						"isLink": "",
+						"isHide": false,
+						"isFull": false,
+						"isAffix": false,
+						"isKeepAlive": true
+					}
 				}
 			]
 		},
