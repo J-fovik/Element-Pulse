@@ -13,7 +13,6 @@ import { LanguageType } from './stores/interface';
 import { useGlobalStore } from '@/stores/modules/global';
 import en from 'element-plus/es/locale/lang/en';
 import zhCn from 'element-plus/es/locale/lang/zh-cn';
-
 const globalStore = useGlobalStore();
 
 // 初始化设置主题

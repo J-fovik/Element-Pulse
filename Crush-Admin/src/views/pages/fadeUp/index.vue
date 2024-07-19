@@ -3,7 +3,7 @@
 		<el-card shadow="hover">
 			<div class="flex items-center justify-center flex-col">
 				<!-- 循环背景颜色 -->
-				<div v-fadeUp v-for="(k, i) in 50" :key="k" :style="{ backgroundColor: colorList[i % colorList.length] }" class="item">
+				<div v-fadeUp v-waves v-for="(k, i) in 50" :key="k" :style="{ backgroundColor: colorList[i % colorList.length] }" class="item">
 					{{ k }}
 				</div>
 			</div>

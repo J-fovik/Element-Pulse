@@ -1,4 +1,4 @@
-// ? 全局默认配置项
+//  全局默认配置项
 
 // 项目名称
 export const PROJECT_NAME: string = 'Geeker';

@@ -153,7 +153,6 @@ import {
 	TYPES_B_OPTIONS,
 	STATUS_OPTIONS,
 } from './options'; // 模拟接口数据
-
 import { createTableColumns } from './table'; // 表头配置
 import {
 	getUserList,
@@ -240,7 +239,6 @@ const {
 });
 // onActivated 可用于跳转页面返回刷新列表
 onActivated(() => {
-	console.log('onActivated', 88);
 	initData();
 });
 </script>

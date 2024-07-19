@@ -25,7 +25,6 @@ import '@/assets/styles/app.scss';
 const app = createApp(App);
 
 app.config.errorHandler = errorHandler;
-
 // 全局注册element图标
 Object.keys(Icons).forEach((key) => {
 	app.component(key, Icons[key as keyof typeof Icons]);

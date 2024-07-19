@@ -14,8 +14,6 @@ declare module 'vue' {
     CustomTableMould: typeof import('./components/CustomTableMould/index.vue')['default']
     ECharts: typeof import('./components/ECharts/index.vue')['default']
     FlopTime: typeof import('./components/FlopTime/index.vue')['default']
-    Grid: typeof import('./components/Grid/index.vue')['default']
-    GridItem: typeof import('./components/Grid/components/GridItem.vue')['default']
     Loading: typeof import('./components/Loading/index.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']

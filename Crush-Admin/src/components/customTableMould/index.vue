@@ -23,13 +23,13 @@
 				<div style="width: 1px; margin: 0 20px; background-color: #e5e6eb"></div>
 				<div class="flex items-center flex-col">
 					<div class="flex items-center justify-center" :class="collapsed ? 'flex-col marginStyle' : ''">
-						<el-button type="primary" size="default" @click="emits('search')">
+						<el-button type="primary"  @click="emits('search')">
 							<el-icon>
 								<ele-Search />
 							</el-icon>
 							查询
 						</el-button>
-						<el-button type="info" :class="collapsed ? 'marginStyle' : ''" size="default" @click="emits('resetSearch')">
+						<el-button type="info" :class="collapsed ? 'marginStyle' : ''"  @click="emits('resetSearch')">
 							<el-icon>
 								<ele-Refresh />
 							</el-icon>
