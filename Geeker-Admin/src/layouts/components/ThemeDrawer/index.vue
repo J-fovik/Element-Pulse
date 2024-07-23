@@ -156,8 +156,9 @@ import { useTheme } from '@/hooks';
 import { useGlobalStore } from '@/stores/modules/global';
 import { LayoutType } from '@/stores/interface';
 import { DEFAULT_PRIMARY } from '@/config';
-import mittBus from '@/utils/mittBus';
 import { showModal } from '@/utils/elementPlus';
+import mittBus from '@/utils/mittBus';
+
 // 解构方法
 const { changePrimary, changeGreyOrWeak, setAsideTheme, setHeaderTheme } = useTheme();
 

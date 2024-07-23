@@ -16,7 +16,8 @@ export const initDynamicRouter = async () => {
 	const authStore = useAuthStore();
 
 	try {
-		// 1.获取菜单列表 && 按钮权限列表
+		// 1.获取用户信息 && 获取菜单列表 && 按钮权限列表
+		await userStore.getUserInfo();
 		await authStore.getAuthMenuList();
 		await authStore.getAuthButtonList();
 

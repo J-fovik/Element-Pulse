@@ -123,7 +123,4 @@ const closeAllTab = () => {
 const handleToDetail = (id: string) => {
 	router.push(`/assembly/tabs/detail/${id}`);
 };
-onActivated(() => {
-	console.log(1);
-});
 </script>

@@ -4,7 +4,7 @@
 		<el-header>
 			<div class="header-lf mask-image">
 				<div class="logo flx-center">
-					<img class="logo-img" src="@/assets/images/logo.svg" alt="logo" />
+					<img class="logo-img" src="@/assets/svgIcons/logo.svg" alt="logo" />
 					<span class="logo-text">{{ title }}</span>
 				</div>
 				<ToolBarLeft />

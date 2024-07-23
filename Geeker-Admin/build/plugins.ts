@@ -7,7 +7,6 @@ import { createSvgIconsPlugin } from 'vite-plugin-svg-icons';
 import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
 import viteCompression from 'vite-plugin-compression';
-import vueSetupExtend from 'unplugin-vue-setup-extend-plus/vite';
 import Components from 'unplugin-vue-components/vite'; // 全部注册组件
 import AutoImport from 'unplugin-auto-import/vite'; // 自动引入
 import FullReload from 'vite-plugin-full-reload'; // 修改代码编译
@@ -21,11 +20,9 @@ export const createVitePlugins = (viteEnv: ViteEnv): (PluginOption | PluginOptio
 		vue(),
 		// vue 可以使用 jsx/tsx 语法
 		vueJsx(),
-		// name 可以写在 script 标签上
-		vueSetupExtend({}),
 		// 创建打包压缩配置
 		createCompression(viteEnv),
-		FullReload(['src/**/*.vue'], { delay: 200 }),
+		FullReload(['src/**/*'], { delay: 200 }),
 		// 注入变量到 html 文件
 		createHtmlPlugin({
 			minify: true,
@@ -41,7 +38,10 @@ export const createVitePlugins = (viteEnv: ViteEnv): (PluginOption | PluginOptio
 		// 自动导入vue相关函数，如: ref、reactive、toRef等
 		AutoImport({
 			// 自动引入的文件
-			imports: ['vue', 'vue-router'],
+			imports: [
+				'vue',
+				'vue-router', // 添加mitt到自动导入列表
+			],
 			// 配置文件生成位置
 			dts: 'src/auto-import.d.ts',
 		}),

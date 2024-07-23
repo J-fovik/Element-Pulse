@@ -3,7 +3,7 @@
 	<el-container class="layout">
 		<div class="aside-split" style="z-index: 999; height: 100vh !important">
 			<div class="logo flx-center">
-				<img class="logo-img" src="@/assets/images/logo.svg" alt="logo" />
+				<img class="logo-img" src="@/assets/svgIcons/logo.svg" alt="logo" />
 			</div>
 			<el-scrollbar>
 				<div class="split-list">

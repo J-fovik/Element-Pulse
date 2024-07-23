@@ -4,7 +4,7 @@
 		<el-aside class="h-full">
 			<div class="aside-box" :style="{ width: isCollapse ? '65px' : '210px' }">
 				<div class="logo flx-center">
-					<img class="logo-img" src="@/assets/images/logo.svg" alt="logo" />
+					<img class="logo-img" src="@/assets/svgIcons/logo.svg" alt="logo" />
 					<span v-show="!isCollapse" class="logo-text">{{ title }}</span>
 				</div>
 				<el-scrollbar>

@@ -55,7 +55,8 @@ const props = withDefaults(defineProps<SelectFilterProps>(), {
   data: () => [],
   defaultValues: () => ({})
 });
-
+// 给父组件传参
+const emits = defineEmits(['change']);
 // 重新接收默认值
 const selected = ref<{ [key: string]: any }>({});
 watch(
@@ -68,11 +69,6 @@ watch(
   },
   { deep: true, immediate: true }
 );
-
-// emit
-const emit = defineEmits<{
-  change: [value: any];
-}>();
 
 /**
  * @description 选择筛选项
@@ -101,7 +97,7 @@ const select = (item: SelectDataProps, option: OptionsProps) => {
       if (selected.value[item.key].includes(item.options[0].value)) selected.value[item.key].splice(0, 1);
     }
   }
-  emit("change", selected.value);
+  emits("change", selected.value);
 };
 </script>
 
