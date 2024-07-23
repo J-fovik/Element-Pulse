@@ -7,7 +7,7 @@
 			:sub-title="`抱歉，您访问的页面不存在~🤷‍♂️🤷‍♀️，${second}秒自动跳转到首页`"
 		>
 			<template #extra>
-				<el-button type="primary" @click="fn">返回首页</el-button>
+				<el-button type="primary" @click="router.replace(HOME_URL)">返回首页</el-button>
 			</template>
 		</el-result>
 	</div>
@@ -22,7 +22,4 @@ const { second, startCountDown } = useCountDown(5, 1000, () => {
 	router.replace(HOME_URL);
 });
 startCountDown();
-const fn = () => {
-	console.log(11);
-};
 </script>

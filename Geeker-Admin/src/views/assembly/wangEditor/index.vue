@@ -10,9 +10,11 @@
 			<el-descriptions-item label="height"> 高度，默认300px </el-descriptions-item>
 			<el-descriptions-item label="disabled"> 是否禁用 </el-descriptions-item>
 			<el-descriptions-item label="hideToolbar"> 是否展示操作栏 </el-descriptions-item>
-			<el-descriptions-item label="uploadImg"> 图片 </el-descriptions-item>
+			<el-descriptions-item label="uploadImg">
+				回调图片 使用示例：:upload-img="uploadImg"
+			</el-descriptions-item>
 		</el-descriptions>
-		<el-dialog v-model="dialogVisible" title="富文本内容预览" width="1300px" top="50px">
+		<el-dialog v-model="dialogVisible" title="富文本内容预览" width="800" top="50px">
 			<div class="view" v-html="content"></div>
 		</el-dialog>
 	</el-card>

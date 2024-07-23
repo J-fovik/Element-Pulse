@@ -18,13 +18,13 @@
 
 <script setup lang="ts" name="selectFilter">
 import { ref } from 'vue';
-
+// 默认值
 const filterResult = ref({ state: '1', type: ['1', '3'] });
 // change事件
 const changeFilter = (val: typeof filterResult.value) => {
 	filterResult.value = val;
 };
-
+// 数据列表
 const filterData = [
 	{
 		title: '物流状态(单)',
