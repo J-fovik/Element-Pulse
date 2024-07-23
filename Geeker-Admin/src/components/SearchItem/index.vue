@@ -5,7 +5,7 @@
     </el-form-item>
   </el-col>
 </template>
-<script setup name="searchItem">
+<script setup name="SearchItem">
 defineProps({
   label: String
 });

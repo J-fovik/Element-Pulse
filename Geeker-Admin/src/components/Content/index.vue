@@ -9,7 +9,7 @@
     </el-card>
 </template>
 
-<script lang="ts" setup name="content">
+<script lang="ts" setup name="Content">
 const route = useRoute();
 </script>
 <style lang="scss" scoped>

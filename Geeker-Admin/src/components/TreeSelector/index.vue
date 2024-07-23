@@ -48,7 +48,7 @@
 	</div>
 </template>
 
-<script setup lang="ts" name="treeSelector">
+<script setup lang="ts" name="TreeSelector">
 import { ElTree } from 'element-plus';
 
 // 父组件参数

@@ -1,4 +1,4 @@
-<script setup lang="ts" name="flopTime">
+<script setup lang="ts" name="FlopTime">
 import dayjs from 'dayjs';
 import Flipper from './flipper';
 let timer: number = 0;

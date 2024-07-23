@@ -31,9 +31,7 @@
 	</div>
 </template>
 
-<script setup lang="ts" name="svgIcon">
-import SvgIcon from '@/components/SvgIcon/index.vue';
-</script>
+<script setup lang="ts" name="svgIcon"></script>
 
 <style scoped lang="scss">
 .icon-list {

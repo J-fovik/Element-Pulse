@@ -2,8 +2,7 @@
 	<div id="echarts" ref="chartRef" :style="echartsStyle" />
 </template>
 
-<script setup lang="ts" name="eCharts">
-import { markRaw } from 'vue';
+<script setup lang="ts" name="ECharts">
 import { EChartsType, ECElementEvent } from 'echarts/core';
 import echarts, { ECOption } from './config';
 import { useDebounceFn } from '@vueuse/core'; // 导入 debounce 函数用于处理 resize 事件

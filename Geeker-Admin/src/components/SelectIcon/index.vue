@@ -14,10 +14,20 @@
 			</template>
 		</el-input>
 		<el-dialog v-model="dialogVisible" :title="title" top="50px" width="66%">
-			<el-input v-model="inputValue" placeholder="搜索图标" size="large" :prefix-icon="Icons.Search" />
+			<el-input
+				v-model="inputValue"
+				placeholder="搜索图标"
+				size="large"
+				:prefix-icon="Icons.Search"
+			/>
 			<el-scrollbar v-if="Object.keys(iconsList).length">
 				<div class="icon-list">
-					<div v-for="item in iconsList" :key="item" class="icon-item" @click="selectIcon(item)">
+					<div
+						v-for="item in iconsList"
+						:key="item"
+						class="icon-item"
+						@click="selectIcon(item)"
+					>
 						<el-icon>
 							<component :is="item"></component>
 						</el-icon>
@@ -30,7 +40,7 @@
 	</div>
 </template>
 
-<script setup lang="ts" name="selectIcon">
+<script setup lang="ts" name="SelectIcon">
 import * as Icons from '@element-plus/icons-vue';
 // 接受父组件数据
 const props = withDefaults(
@@ -76,7 +86,8 @@ const iconsList = computed((): { [key: string]: any } => {
 	if (!inputValue.value) return Icons;
 	let result: { [key: string]: any } = {};
 	for (const key in customIcons) {
-		if (key.toLowerCase().indexOf(inputValue.value.toLowerCase()) > -1) result[key] = customIcons[key];
+		if (key.toLowerCase().indexOf(inputValue.value.toLowerCase()) > -1)
+			result[key] = customIcons[key];
 	}
 	return result;
 });

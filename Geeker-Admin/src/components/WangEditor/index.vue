@@ -18,7 +18,7 @@
 	</div>
 </template>
 
-<script setup lang="ts" name="wangEditor">
+<script setup lang="ts" name="WangEditor">
 import type { IEditorConfig } from '@wangeditor/editor';
 // 富文本
 import '@wangeditor/editor/dist/css/style.css';

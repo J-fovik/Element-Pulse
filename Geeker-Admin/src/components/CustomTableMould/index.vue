@@ -86,7 +86,7 @@
     </el-card>
 </template>
 
-<script lang="ts" setup name="customTableMould">
+<script lang="ts" setup name="CustomTableMould">
 import { Delete, Search } from "@element-plus/icons-vue";
 import { useBasicsState } from "@/hooks";
 const route = useRoute();
