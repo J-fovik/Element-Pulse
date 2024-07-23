@@ -222,9 +222,9 @@
 					}
 				},
 				{
-					"path": "/assembly/treeFilter",
-					"name": "treeFilter",
-					"component": "/assembly/treeFilter/index",
+					"path": "/assembly/TreeSelector",
+					"name": "TreeSelector",
+					"component": "/assembly/TreeSelector/index",
 					"meta": {
 						"icon": "Menu",
 						"title": "树形筛选器",

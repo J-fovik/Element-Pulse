@@ -24,7 +24,7 @@ declare module 'vue' {
     SwitchDark: typeof import('./components/SwitchDark/index.vue')['default']
     TableColumn: typeof import('./components/ProTable/components/TableColumn.vue')['default']
     TablePlus: typeof import('./components/TablePlus/index.vue')['default']
-    TreeFilter: typeof import('./components/TreeFilter/index.vue')['default']
+    TreeSelector: typeof import('./components/TreeSelector/index.vue')['default']
     WangEditor: typeof import('./components/WangEditor/index.vue')['default']
   }
 }

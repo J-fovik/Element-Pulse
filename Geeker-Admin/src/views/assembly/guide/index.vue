@@ -91,5 +91,7 @@ const driverObj = driver({
 </script>
 
 <style scoped lang="scss">
-@import "./index.scss";
+.el-button {
+  margin-top: 20px;
+}
 </style>

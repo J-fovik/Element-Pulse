@@ -219,6 +219,31 @@ export function getElementOffsetTop(element: any) {
 	}
 	return offsetTop;
 }
+
+/**
+ * @description 生成唯一 uuid
+ * @returns {String}
+ */
+export function generateUUID() {
+	let uuid = '';
+	for (let i = 0; i < 32; i++) {
+		let random = (Math.random() * 16) | 0;
+		if (i === 8 || i === 12 || i === 16 || i === 20) uuid += '-';
+		uuid += (i === 12 ? 4 : i === 16 ? (random & 3) | 8 : random).toString(16);
+	}
+	return uuid;
+}
+
+/**
+ * @description 生成随机数
+ * @param {Number} min 最小值
+ * @param {Number} max 最大值
+ * @returns {Number}
+ */
+export function randomNum(min: number, max: number): number {
+	let num = Math.floor(Math.random() * (min - max) + max);
+	return num;
+}
 /**
  * 统一批量导出
  * @method elSvg 导出全局注册 element plus svg 图标

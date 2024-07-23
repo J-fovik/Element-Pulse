@@ -1,9 +1,8 @@
 <template>
-	<div class="card filter">
+	<div class="card treeSelector">
 		<h4 v-if="title" class="title sle">
 			{{ title }}
 		</h4>
-		<!-- <el-input v-model="filterText" placeholder="输入关键字进行过滤" clearable /> -->
 		<div class="search">
 			<el-input v-model="filterText" placeholder="输入关键字进行过滤" clearable />
 			<el-dropdown trigger="click">
@@ -21,9 +20,10 @@
 		<el-scrollbar :style="{ height: title ? `calc(100% - 95px)` : `calc(100% - 56px)` }">
 			<el-tree
 				ref="treeRef"
-				default-expand-all
+				accordion
+				:icon="icon"
 				:node-key="id"
-				:data="multiple ? treeData : treeAllData"
+				:data="data"
 				:show-checkbox="multiple"
 				:check-strictly="false"
 				:current-node-key="!multiple ? selected : ''"
@@ -36,10 +36,10 @@
 				@node-click="handleNodeClick"
 				@check="handleCheckChange"
 			>
-				<template #default="scope">
+				<template #default="{ node, data }">
 					<span class="el-tree-node__label">
-						<slot :row="scope">
-							{{ scope.node.label }}
+						<slot :row="{ node, data }">
+							{{ node.label }}
 						</slot>
 					</span>
 				</template>
@@ -48,37 +48,42 @@
 	</div>
 </template>
 
-<script setup lang="ts" name="TreeFilter">
+<script setup lang="ts" name="treeSelector">
 import { ElTree } from 'element-plus';
 
-// 接收父组件参数并设置默认值
-interface TreeFilterProps {
-	requestApi?: (data?: any) => Promise<any>; // 请求分类数据的 api ==> 非必传
-	data?: { [key: string]: any }[]; // 分类数据，如果有分类数据，则不会执行 api 请求 ==> 非必传
-	title?: string; // treeFilter 标题 ==> 非必传
-	id?: string; // 选择的id ==> 非必传，默认为 “id”
-	label?: string; // 显示的label ==> 非必传，默认为 “label”
-	multiple?: boolean; // 是否为多选 ==> 非必传，默认为 false
-	defaultValue?: any; // 默认选中的值 ==> 非必传
-}
-// 接收父组件参数并设置默认值
-const props = withDefaults(defineProps<TreeFilterProps>(), {
-	id: 'id',
-	label: 'label',
-	multiple: false,
-});
-// 默认配置
-const defaultProps = {
-	children: 'children',
-	label: props.label,
-};
-
+// 父组件参数
+const props = withDefaults(
+	defineProps<{
+		data: Array<any>; // 数据 ==> 必传
+		defaultValue?: any; // 默认选中的值 ==> 非必传
+		defaultProps?: any; // 默认配置==> 非必传
+		multiple?: boolean; // 是否为多选 ==> 非必传，默认为 false
+		title?: string; // treeFilter 标题 ==> 非必传
+		id?: string; // 选择的id ==> 非必传，默认为 “id”
+		width?: string; // 组件宽度 ==> 非必传，默认为 “220px”
+		icon?: string; // 节点图标 ==> 非必传
+	}>(),
+	{
+		data: () => [],
+		defaultValue: () => [],
+		defaultProps: {
+			children: 'children',
+			label: 'label',
+		},
+		multiple: false,
+		title: '',
+		id: 'id',
+		width: '220px',
+		icon: 'CaretRight',
+	}
+);
+// 树形控件实例
 const treeRef = ref<InstanceType<typeof ElTree>>();
-const treeData = ref<{ [key: string]: any }[]>([]);
-const treeAllData = ref<{ [key: string]: any }[]>([]);
 // 选中值
 const selected = ref();
-// 设置选中值
+// 搜索过滤值
+const filterText = ref('');
+// 设置默认选中值
 const setSelected = () => {
 	if (props.multiple)
 		selected.value = Array.isArray(props.defaultValue)
@@ -86,35 +91,15 @@ const setSelected = () => {
 			: [props.defaultValue];
 	else selected.value = typeof props.defaultValue === 'string' ? props.defaultValue : '';
 };
-
-onBeforeMount(async () => {
+onBeforeMount(() => {
 	setSelected();
-	if (props.requestApi) {
-		const { data } = await props.requestApi!();
-		treeData.value = data;
-		treeAllData.value = [{ id: '', [props.label]: '全部' }, ...data];
-	}
 });
-
 // 使用 nextTick 防止打包后赋值不生效，开发环境是正常的
 watch(
 	() => props.defaultValue,
 	() => nextTick(() => setSelected()),
 	{ deep: true, immediate: true }
 );
-
-watch(
-	() => props.data,
-	() => {
-		if (props.data?.length) {
-			treeData.value = props.data;
-			treeAllData.value = [{ id: '', [props.label]: '全部' }, ...props.data];
-		}
-	},
-	{ deep: true, immediate: true }
-);
-// 文本过滤
-const filterText = ref('');
 watch(filterText, (val) => {
 	treeRef.value!.filter(val);
 });
@@ -142,33 +127,27 @@ const toggleTreeNodes = (isExpand: boolean) => {
 		}
 	}
 };
-// emit
-const emit = defineEmits<{
-	change: [value: any];
-}>();
+const emits = defineEmits(['change']);
 
 // 单选
 const handleNodeClick = (data: { [key: string]: any }) => {
 	if (props.multiple) return;
-	emit('change', data[props.id]);
+	emits('change', data[props.id]);
 };
 
 // 多选
 const handleCheckChange = () => {
-	emit('change', treeRef.value?.getCheckedKeys());
+	emits('change', treeRef.value?.getCheckedKeys());
 };
 
 // 暴露给父组件使用
-defineExpose({ treeData, treeAllData, treeRef });
+defineExpose({ treeRef });
 </script>
 
 <style scoped lang="scss">
-.filter {
+.treeSelector {
 	box-sizing: border-box;
-	width: 220px;
 	height: 100%;
-	padding: 18px;
-	margin-right: 10px;
 	.title {
 		margin: 0 0 15px;
 		font-size: 18px;
@@ -176,15 +155,7 @@ defineExpose({ treeData, treeAllData, treeRef });
 		color: var(--el-color-info-dark-2);
 		letter-spacing: 0.5px;
 	}
-	.search {
-		display: flex;
-		align-items: center;
-		margin: 0 0 15px;
-		.el-icon {
-			cursor: pointer;
-			transform: rotate(90deg) translateY(-8px);
-		}
-	}
+
 	.el-scrollbar {
 		:deep(.el-tree) {
 			height: 80%;
@@ -205,6 +176,19 @@ defineExpose({ treeData, treeAllData, treeRef });
 				}
 			}
 		}
+	}
+}
+:deep(.el-tree--highlight-current .el-tree-node.is-current > .el-tree-node__content) {
+	background-color: var(--el-color-primary-light-1) !important;
+	color: var(--next-bg-main-color) !important;
+}
+.search {
+	display: flex;
+	align-items: center;
+	margin: 0 0 15px;
+	.el-icon {
+		cursor: pointer;
+		transform: rotate(90deg) translateY(-8px);
 	}
 }
 </style>

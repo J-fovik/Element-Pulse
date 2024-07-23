@@ -57,8 +57,8 @@ import { CircleClose, UserFilled } from '@element-plus/icons-vue';
 import { useForm, useBasicsState, curryingRequest } from '@/hooks';
 // form
 const { form, formRef } = useForm<any>(() => ({
-	loginName: '',
-	passWord: '',
+	username: '',
+	password: '',
 }));
 /* 弹窗状态控制 */
 const [activeKey, setActiveKey] = useBasicsState<string | null>(null);
@@ -79,7 +79,7 @@ const login = (formEl: FormInstance | undefined) => {
 	formEl.validate(async (valid) => {
 		if (!valid) return;
 		// 1.执行登录接口
-		const { res } = await curryingRequest(
+		const { res, err } = await curryingRequest(
 			() =>
 				loginApi({
 					...form.value,
@@ -90,6 +90,7 @@ const login = (formEl: FormInstance | undefined) => {
 				after: () => setActiveKey(null),
 			}
 		);
+		if (err) return;
 		userStore.setToken(res?.data.access_token);
 		// 2.添加动态路由
 		await initDynamicRouter();

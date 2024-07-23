@@ -1,7 +1,6 @@
 <script setup lang="ts" name="flopTime">
-import { format } from 'date-fns';
+import dayjs from 'dayjs';
 import Flipper from './flipper';
-
 let timer: number = 0;
 const flipObjs: Flipper[] = [];
 const contentRef = ref<HTMLDivElement>();
@@ -16,12 +15,10 @@ onMounted(() => {
 				return false;
 			}
 		});
-		// 获取当前时间
-		const now = new Date();
 		// 格式化当前时间，例如现在是20:30:10，则输出"203010"字符串
-		const nowTimeStr = format(now, 'hhmmss');
+		const nowTimeStr = dayjs().format('HHmmss');
 		// 格式化下一秒的时间
-		const nextTimeStr = format(new Date(now.getTime() + 1000), 'hhmmss');
+		const nextTimeStr = dayjs().add(1, 'second').format('HHmmss');
 		// 定义牌板数组，用来存储6个Flipper翻板对象
 		for (let i = 0; i < flips.length; i++) {
 			// 创建6个Flipper实例，初始化并存入flipObjs
@@ -38,19 +35,22 @@ onMounted(() => {
 	}
 
 	timer = window.setInterval(() => {
-		// 获取当前时间
-		let now = new Date();
 		// 格式化当前时间，例如现在是20:30:10，则输出"203010"字符串
-		const nowTimeStr = format(now, 'hhmmss');
+		const nowTimeStr = dayjs().format('HHmmss');
 		// 格式化下一秒的时间
-		const nextTimeStr = format(new Date(now.getTime() + 1000), 'hhmmss');
+		const nextTimeStr = dayjs().add(1, 'second').format('HHmmss');
 		for (let i = 0; i < flipObjs.length; i++) {
 			// 如果前后数字没有变化，则直接跳过，不翻牌
 			if (nowTimeStr[i] === nextTimeStr[i]) {
 				continue;
 			}
 			// 传递前后牌的数字，进行向下翻牌动画
-			flipObjs[i].flipDown(Number(nowTimeStr[i]), `number${nowTimeStr[i]}`, Number(nextTimeStr[i]), `number${nextTimeStr[i]}`);
+			flipObjs[i].flipDown(
+				Number(nowTimeStr[i]),
+				`number${nowTimeStr[i]}`,
+				Number(nextTimeStr[i]),
+				`number${nextTimeStr[i]}`
+			);
 		}
 	}, 1000);
 });

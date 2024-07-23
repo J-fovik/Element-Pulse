@@ -157,18 +157,17 @@ import {
 	STATUS_OPTIONS,
 } from './options'; // 模拟接口数据
 import { createTableColumns } from './table'; // 表头配置
-import {
-	getUserList,
-	//   deleteUser,
-	//   editUser,
-	//   addUser,
-	//   changeUserStatus,
-	//   resetUserPassWord,
-	//   exportUserInfo,
-	//   BatchAddUser,
-	//   getUserStatus,
-	//   getUserGender
-} from '@/api/modules/user';
+import // getUserList,
+//   deleteUser,
+//   editUser,
+//   addUser,
+//   changeUserStatus,
+//   resetUserPassWord,
+//   exportUserInfo,
+//   BatchAddUser,
+//   getUserStatus,
+//   getUserGender
+'@/api/modules/user';
 import Operation from './components/index.vue';
 
 // 页面唯一元素控制

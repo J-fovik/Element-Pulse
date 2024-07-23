@@ -154,18 +154,17 @@ import {
 	STATUS_OPTIONS,
 } from './options'; // 模拟接口数据
 import { createTableColumns } from './table'; // 表头配置
-import {
-	getUserList,
-	//   deleteUser,
-	//   editUser,
-	//   addUser,
-	//   changeUserStatus,
-	//   resetUserPassWord,
-	//   exportUserInfo,
-	//   BatchAddUser,
-	//   getUserStatus,
-	//   getUserGender
-} from '@/api/modules/user';
+import // getUserList,
+//   deleteUser,
+//   editUser,
+//   addUser,
+//   changeUserStatus,
+//   resetUserPassWord,
+//   exportUserInfo,
+//   BatchAddUser,
+//   getUserStatus,
+//   getUserGender
+'@/api/modules/user';
 // 页面唯一元素控制
 const [activeKey, setActiveKey] = useBasicsState<string | null>(null);
 // 表单hooks
@@ -239,6 +238,7 @@ const {
 });
 // onActivated 可用于跳转页面返回刷新列表
 onActivated(() => {
+	console.log(22);
 	initData();
 });
 </script>
