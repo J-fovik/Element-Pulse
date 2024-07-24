@@ -6,8 +6,15 @@
 @import '@/assets/iconfont/iconfont.scss';
 // 自定义字体 css
 @import '@/assets/fontFamily/index.scss';
+// element 样式
+@import 'element-plus/dist/index.css';
+// element dark css
+@import 'element-plus/theme-chalk/dark/css-vars.css';
 * {
+	margin: 0;
+	padding: 0;
 	box-sizing: border-box;
+	outline: none !important;
 }
 html,
 body,
@@ -25,17 +32,7 @@ body,
 :-webkit-any(article, aside, nav, section) h1 {
 	font-size: 2em;
 }
-/* mask image */
-.mask-image {
-	padding-right: 50px;
-	mask-image: linear-gradient(90deg, #000000 0%, #000000 calc(100% - 50px), transparent);
-}
-.w-full {
-	width: 100%;
-}
-.h-full {
-	height: 100%;
-}
+
 /* 
   布局：
   页面高度自适应 ：card + container样式;
@@ -154,7 +151,17 @@ body,
 	text-align: center;
 }
 /*********************** flex **********************/
-
+/* mask image */
+.mask-image {
+	padding-right: 50px;
+	mask-image: linear-gradient(90deg, #000000 0%, #000000 calc(100% - 50px), transparent);
+}
+.w-full {
+	width: 100%;
+}
+.h-full {
+	height: 100%;
+}
 /* 价格设置 */
 .text-red {
 	color: red;

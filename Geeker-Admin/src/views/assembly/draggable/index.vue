@@ -8,8 +8,8 @@
 		force-fallback="true"
 	>
 		<template #item="{ element }">
-			<!-- 例：class="item item-1" -->
 			<div :class="'item' + ' ' + 'item-' + element.num">
+				<!-- 例：class="item item-1" -->
 				{{ element.num }}
 			</div>
 		</template>
