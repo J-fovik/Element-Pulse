@@ -23,8 +23,7 @@
 	</el-footer>
 </template>
 
-<script setup lang="ts">
-import { ref, onBeforeUnmount, provide, watch, h } from 'vue';
+<script setup lang="ts" name="Main">
 import { storeToRefs } from 'pinia';
 import { useDebounceFn } from '@vueuse/core';
 import { useGlobalStore } from '@/stores/modules/global';

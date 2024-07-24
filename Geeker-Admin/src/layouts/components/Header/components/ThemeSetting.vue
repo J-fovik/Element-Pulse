@@ -5,7 +5,7 @@
 	</div>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts" name="ThemeSetting">
 import mittBus from '@/utils/mittBus';
 
 // 打开抽屉

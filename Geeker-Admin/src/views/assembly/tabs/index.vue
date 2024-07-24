@@ -50,9 +50,7 @@
 </template>
 
 <script setup lang="ts" name="tabs">
-import { inject, nextTick, ref } from 'vue';
 import { HOME_URL } from '@/config';
-import { useRoute, useRouter } from 'vue-router';
 import { useTabsStore } from '@/stores/modules/tabs';
 import { useGlobalStore } from '@/stores/modules/global';
 import { useKeepAliveStore } from '@/stores/modules/keepAlive';

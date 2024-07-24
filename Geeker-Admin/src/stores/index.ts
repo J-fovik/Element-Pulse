@@ -1,7 +1,7 @@
-import { createPinia } from "pinia";
-import piniaPluginPersistedstate from "pinia-plugin-persistedstate";
+import { createPinia } from 'pinia';
+import piniaPluginPersistedstate from 'pinia-plugin-persistedstate';
 
-// pinia persist
+// 仓库持久化
 const pinia = createPinia();
 pinia.use(piniaPluginPersistedstate);
 

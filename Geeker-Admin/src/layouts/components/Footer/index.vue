@@ -1,11 +1,11 @@
 <template>
 	<!-- 页脚 -->
 	<div class="footer flx-center">
-		<a href="/" target="_blank"> 2024 © Geeker-Admin By Geeker. </a>
+		<a href="/" target="_blank"> 2024 © Geeker-Admin ❤️. </a>
 	</div>
 </template>
 
-<style scoped lang="scss">
+<style scoped lang="scss" name="Footer">
 .footer {
 	height: 30px;
 	background-color: var(--el-bg-color);

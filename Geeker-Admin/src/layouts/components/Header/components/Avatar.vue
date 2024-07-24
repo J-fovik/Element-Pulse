@@ -2,7 +2,7 @@
 	<!-- 头像下拉 -->
 	<el-dropdown trigger="click">
 		<div class="avatar">
-			<img src="@/assets/images/avatar.gif" alt="avatar" />
+			<img src="@/assets/images/avatar.gif" class="w-full h-full" alt="avatar" />
 		</div>
 		<template #dropdown>
 			<el-dropdown-menu>
@@ -27,7 +27,7 @@
 	></PasswordDialog>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts" name="Avatar">
 import { LOGIN_URL } from '@/config';
 import { logoutApi } from '@/api/modules/login';
 import { useUserStore } from '@/stores/modules/user';
@@ -67,9 +67,5 @@ const logout = () => {
 	overflow: hidden;
 	cursor: pointer;
 	border-radius: 50%;
-	img {
-		width: 100%;
-		height: 100%;
-	}
 }
 </style>

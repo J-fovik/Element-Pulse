@@ -1,3 +1,37 @@
+<template>
+	<div style="width: 100%">
+		<div class="container">
+			<div class="content" ref="contentRef">
+				<div class="flip down">
+					<div class="digital front"></div>
+					<div class="digital back"></div>
+				</div>
+				<div class="flip down">
+					<div class="digital front"></div>
+					<div class="digital back"></div>
+				</div>
+				<div class="dot">:</div>
+				<div class="flip down">
+					<div class="digital front"></div>
+					<div class="digital back"></div>
+				</div>
+				<div class="flip down">
+					<div class="digital front"></div>
+					<div class="digital back"></div>
+				</div>
+				<div class="dot">:</div>
+				<div class="flip down">
+					<div class="digital front"></div>
+					<div class="digital back"></div>
+				</div>
+				<div class="flip down">
+					<div class="digital front"></div>
+					<div class="digital back"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</template>
 <script setup lang="ts" name="FlopTime">
 import dayjs from 'dayjs';
 import Flipper from './flipper';
@@ -59,41 +93,6 @@ onUnmounted(() => {
 	timer && window.clearInterval(timer);
 });
 </script>
-
-<template>
-	<div style="width: 100%">
-		<div class="container">
-			<div class="content" ref="contentRef">
-				<div class="flip down">
-					<div class="digital front"></div>
-					<div class="digital back"></div>
-				</div>
-				<div class="flip down">
-					<div class="digital front"></div>
-					<div class="digital back"></div>
-				</div>
-				<div class="dot">:</div>
-				<div class="flip down">
-					<div class="digital front"></div>
-					<div class="digital back"></div>
-				</div>
-				<div class="flip down">
-					<div class="digital front"></div>
-					<div class="digital back"></div>
-				</div>
-				<div class="dot">:</div>
-				<div class="flip down">
-					<div class="digital front"></div>
-					<div class="digital back"></div>
-				</div>
-				<div class="flip down">
-					<div class="digital front"></div>
-					<div class="digital back"></div>
-				</div>
-			</div>
-		</div>
-	</div>
-</template>
 
 <style scoped lang="scss">
 .container {

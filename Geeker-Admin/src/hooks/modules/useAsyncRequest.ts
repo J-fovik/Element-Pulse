@@ -1,6 +1,8 @@
 import { useBasicsState } from '@/hooks';
 import { showFullScreenLoading, tryHideFullScreenLoading } from '@/utils/elementPlus';
-
+/**
+ * @description 异步处理请求
+ */
 // 异步结果处理（初始化执行）
 export const useAsyncData = <T = Array<any>>(api: () => Promise<any>, defaultValue = [] as T) => {
 	// 加载状态

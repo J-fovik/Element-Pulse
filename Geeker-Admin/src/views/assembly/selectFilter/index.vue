@@ -17,7 +17,6 @@
 </template>
 
 <script setup lang="ts" name="selectFilter">
-import { ref } from 'vue';
 // 默认值
 const filterResult = ref({ state: '1', type: ['1', '3'] });
 // change事件

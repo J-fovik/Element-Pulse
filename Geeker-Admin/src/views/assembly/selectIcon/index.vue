@@ -14,8 +14,5 @@
 </template>
 
 <script setup lang="ts" name="selectIcon">
-import { ref } from 'vue';
 const iconValue = ref('');
 </script>
-
-<style scoped lang="scss"></style>

@@ -9,7 +9,7 @@ import vueJsx from '@vitejs/plugin-vue-jsx';
 import viteCompression from 'vite-plugin-compression';
 import Components from 'unplugin-vue-components/vite'; // 全部注册组件
 import AutoImport from 'unplugin-auto-import/vite'; // 自动引入
-import FullReload from 'vite-plugin-full-reload'; // 修改代码编译
+import FullReload from 'vite-plugin-full-reload'; // 修改代码重新编译加载页面
 /**
  * 创建 vite 插件
  * @param viteEnv
@@ -22,6 +22,7 @@ export const createVitePlugins = (viteEnv: ViteEnv): (PluginOption | PluginOptio
 		vueJsx(),
 		// 创建打包压缩配置
 		createCompression(viteEnv),
+		// 修改代码重新编译加载页面
 		FullReload(['src/**/*'], { delay: 200 }),
 		// 注入变量到 html 文件
 		createHtmlPlugin({

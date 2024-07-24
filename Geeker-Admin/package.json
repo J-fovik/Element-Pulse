@@ -8,7 +8,10 @@
 		"build:dev": "vue-tsc && vite build --mode development",
 		"build:test": "vue-tsc && vite build --mode test",
 		"build:pro": "vue-tsc && vite build --mode production",
-		"preview": "npm run build:dev && vite preview"
+		"preview": "npm run build:dev && vite preview",
+		"lint:eslint": "eslint --fix --ext .js,.ts,.vue ./src",
+		"lint:prettier": "prettier --write \"src/**/*.{js,ts,json,tsx,css,less,scss,vue,html,md}\"",
+		"lint:stylelint": "stylelint --cache --fix \"**/*.{vue,less,postcss,css,scss}\" --cache --cache-location node_modules/.cache/stylelint/"
 	},
 	"dependencies": {
 		"@element-plus/icons-vue": "^2.3.1",

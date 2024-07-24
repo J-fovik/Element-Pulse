@@ -37,9 +37,7 @@
 	</el-container>
 </template>
 
-<script setup lang="ts" name="layoutClassic">
-import { computed } from 'vue';
-import { useRoute } from 'vue-router';
+<script setup lang="ts" name="LayoutClassic">
 import { useAuthStore } from '@/stores/modules/auth';
 import { useGlobalStore } from '@/stores/modules/global';
 import Main from '@/layouts/components/Main/index.vue';

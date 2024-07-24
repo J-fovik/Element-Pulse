@@ -98,7 +98,7 @@ export const useTheme = () => {
 		setMenuTheme();
 	};
 
-	// init theme
+	// 初始化设置主题
 	const initTheme = () => {
 		switchDark();
 		if (isGrey.value) changeGreyOrWeak('grey', true);

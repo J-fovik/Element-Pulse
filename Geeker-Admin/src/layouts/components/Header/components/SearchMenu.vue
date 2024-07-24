@@ -39,12 +39,10 @@
 	</div>
 </template>
 
-<script setup lang="ts">
-import { ref, computed, nextTick, watch, onMounted, onUnmounted } from 'vue';
+<script setup lang="ts" name="SearchMenu">
 import { InputInstance } from 'element-plus';
 import { Search } from '@element-plus/icons-vue';
 import { useAuthStore } from '@/stores/modules/auth';
-import { useRouter } from 'vue-router';
 import { useDebounceFn } from '@vueuse/core';
 
 const router = useRouter();

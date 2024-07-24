@@ -2,44 +2,40 @@
 
 ### 文件资源目录 📚
 
-```text
 Geeker-Admin
-├─ .husky                  # husky 配置文件
-├─ .vscode                 # VSCode 推荐配置
-├─ build                   # Vite 配置项
-├─ public                  # 静态资源文件（该文件夹不会被打包）
+├─ .vscode # VSCode 推荐配置
+├─ build # Vite 配置项
+├─ public # 静态资源文件（该文件夹不会被打包）
 ├─ src
-│  ├─ api                  # API 接口管理
-│  ├─ assets               # 静态资源文件
-│  ├─ components           # 全局组件
-│  ├─ config               # 全局配置项
-│  ├─ directives           # 全局指令文件
-│  ├─ hooks                # 常用 Hooks 封装
-│  ├─ languages            # 语言国际化 i18n
-│  ├─ layouts              # 框架布局模块
-│  ├─ routers              # 路由管理
-│  ├─ stores               # pinia store
-│  ├─ styles               # 全局样式文件
-│  ├─ typings              # 全局 ts 声明
-│  ├─ utils                # 常用工具库
-│  ├─ views                # 项目所有页面
-│  ├─ App.vue              # 项目主组件
-│  ├─ auto-import.d.ts     # 自动引入
-│  ├─ components.d.ts      # 全局注册组件
-│  ├─ main.ts              # 项目入口文件
-│  └─ vite-env.d.ts        # 指定 ts 识别 vue
-├─ .env                    # vite 常用配置
-├─ .env.development        # 开发环境配置
-├─ .env.production         # 生产环境配置
-├─ .env.test               # 测试环境配置
-├─ .gitignore              # 忽略 git 提交
-├─ index.html              # 入口 html
-├─ package-lock.json       # 依赖包包版本锁
-├─ package.json            # 依赖包管理
-├─ README.md               # README 介绍
-├─ tsconfig.json           # typescript 全局配置
-└─ vite.config.ts          # vite 全局配置文件
-```
+│ ├─ api # API 接口管理
+│ ├─ assets # 静态资源文件
+│ ├─ components # 全局组件
+│ ├─ config # 全局配置项
+│ ├─ directives # 全局指令文件
+│ ├─ hooks # 常用 Hooks 封装
+│ ├─ languages # 语言国际化 i18n
+│ ├─ layouts # 框架布局模块
+│ ├─ routers # 路由管理
+│ ├─ stores # pinia store
+│ ├─ typings # 全局 ts 声明
+│ ├─ utils # 常用工具库
+│ ├─ views # 项目所有页面
+│ ├─ App.vue # 项目主组件
+│ ├─ auto-import.d.ts # 自动引入
+│ ├─ components.d.ts # 全局注册组件
+│ ├─ main.ts # 项目入口文件
+│ └─ vite-env.d.ts # 指定 ts 识别 vue
+├─ .env # vite 常用配置
+├─ .env.development # 开发环境配置
+├─ .env.production # 生产环境配置
+├─ .env.test # 测试环境配置
+├─ .gitignore # 忽略 git 提交
+├─ index.html # 入口 html
+├─ package-lock.json # 依赖包包版本锁
+├─ package.json # 依赖包管理
+├─ README.md # README 介绍
+├─ tsconfig.json # typescript 全局配置
+└─ vite.config.ts # vite 全局配置文件
 
 ### 路由配置
 
@@ -75,3 +71,17 @@ isKeepAlive: boolean;
 /\*\* 多级路由嵌套 _/
 children: RouteRecordRaw[];
 }
+
+### 校验、格式化代码：
+
+##### eslint 检测代码
+
+npm lint:eslint
+
+##### prettier 格式化代码
+
+npm lint:prettier
+
+##### stylelint 格式化样式
+
+npm lint:stylelint

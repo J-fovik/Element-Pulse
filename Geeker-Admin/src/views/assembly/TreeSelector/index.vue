@@ -9,8 +9,7 @@
 			title="树形控件(单)"
 			:default-props="defaultProps"
 			@change="changeTreeFilterSingle"
-		>
-		</TreeSelector>
+		/>
 		<TreeSelector
 			:data="addressJson.address"
 			id="code"
@@ -20,8 +19,7 @@
 			title="树形控件(多)"
 			:default-props="defaultProps"
 			@change="changeTreeFilterMany"
-		>
-		</TreeSelector>
+		/>
 		<div class="descriptions-box card">
 			<span class="text"> 树形筛选器 🍓🍇🍈🍉</span>
 			<el-descriptions title="配置项 📚" :column="1" border>
@@ -42,9 +40,7 @@
 	</div>
 </template>
 
-<script setup lang="ts" name="treeFilter">
-import { reactive } from 'vue';
-import { ElMessage } from 'element-plus';
+<script setup lang="ts" name="treeSelector">
 import addressJson from '@/assets/json/address.json';
 // 默认配置
 const defaultProps = {

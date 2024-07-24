@@ -1,5 +1,8 @@
 import type { Ref, UnwrapRef } from 'vue';
-
+/**
+ * @description 基本方法(唯一值, new set, new map)
+ */
+// 唯一值
 export const useBasicsState = <T>(
 	value: T, // 默认值
 	callback?: Dispatch<T> // 回调
@@ -19,7 +22,7 @@ export const useBasicsState = <T>(
 	// 暴露API
 	return [basicsState, setBasicsState];
 };
-
+// new set
 export const useBasicsSet = (defaultValue: Array<string> = []) => {
 	const basicsSet = ref<Set<string>>(new Set(defaultValue));
 	// 检查是否存在某个值
@@ -41,7 +44,7 @@ export const useBasicsSet = (defaultValue: Array<string> = []) => {
 	// 暴露API
 	return { basicsSet, hasValue, addValue, deleteValue, clearValue };
 };
-
+// new map
 export const useBasicsMap = <T = AnyObject>(defaultValue = []) => {
 	const basicsMap = ref<Map<string, T>>(new Map(defaultValue));
 	// 检查是否存在某个值
@@ -74,43 +77,4 @@ export const useBasicsMap = <T = AnyObject>(defaultValue = []) => {
 	};
 	// 暴露API
 	return { basicsMap, getValue, hasValue, setValue, addValue, deleteValue, clearValue };
-};
-// 倒计时
-export const useCountDown = (value: number, interval: number = 1000, callback?: () => void) => {
-	// 初始值
-	const second = ref(value);
-	// 计时器
-	const timer = shallowRef<any>(null);
-	// 是否开始计时
-	const isStart = computed(() => {
-		return second.value !== value;
-	});
-	// 开始倒计时
-	const startCountDown = () => {
-		if (second.value > 0) {
-			// 设置延时器
-			timer.value = setTimeout(() => {
-				// 时间--
-				second.value = second.value - 1;
-				// 重复调用
-				startCountDown();
-			}, interval);
-		} else {
-			// 重置计时器
-			resetCountDown();
-			// 执行回调
-			if (callback) callback();
-		}
-	};
-	// 重置计时器
-	const resetCountDown = () => {
-		clearTimeout(timer.value);
-		second.value = value;
-	};
-	// 页面卸载时清除定时器
-	onUnmounted(() => {
-		if (timer.value !== null) clearTimeout(timer.value);
-	});
-	// 暴露API
-	return { second, isStart, startCountDown, resetCountDown };
 };

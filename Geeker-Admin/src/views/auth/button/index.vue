@@ -1,6 +1,6 @@
 <template>
-	<div class="card container">
-		<span class="text"> 按钮权限 🍓🍇🍈🍉</span>
+	<div class="card items-start">
+		<span class="w-full text-center"> 按钮权限 🍓🍇🍈🍉</span>
 		<el-alert
 			class="mb20"
 			:title="`当前用户按钮权限：${JSON.stringify(Object.keys(BUTTONS))}`"
@@ -75,13 +75,3 @@ import { CirclePlus, Delete, EditPen, Download, Upload } from '@element-plus/ico
 
 const { BUTTONS } = useAuthButtons();
 </script>
-
-<style scoped lang="scss">
-.container {
-	align-items: flex-start;
-	span {
-		width: 100%;
-		text-align: center;
-	}
-}
-</style>

@@ -58,9 +58,7 @@
 	</el-container>
 </template>
 
-<script setup lang="ts" name="layoutColumns">
-import { ref, computed, watch } from 'vue';
-import { useRoute, useRouter } from 'vue-router';
+<script setup lang="ts" name="LayoutColumns">
 import { useAuthStore } from '@/stores/modules/auth';
 import { useGlobalStore } from '@/stores/modules/global';
 import Main from '@/layouts/components/Main/index.vue';

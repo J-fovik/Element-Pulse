@@ -31,9 +31,7 @@
 	</el-container>
 </template>
 
-<script setup lang="ts" name="layoutVertical">
-import { computed } from 'vue';
-import { useRoute } from 'vue-router';
+<script setup lang="ts" name="LayoutVertical">
 import { useAuthStore } from '@/stores/modules/auth';
 import { useGlobalStore } from '@/stores/modules/global';
 import Main from '@/layouts/components/Main/index.vue';

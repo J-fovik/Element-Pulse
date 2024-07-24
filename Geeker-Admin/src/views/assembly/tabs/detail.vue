@@ -8,14 +8,11 @@
 </template>
 
 <script setup lang="ts" name="tabsDetail">
-import { ref } from 'vue';
-import { useRoute } from 'vue-router';
 import { useTabsStore } from '@/stores/modules/tabs';
 import { useTabStore } from '@/stores/modules/jumpTab';
 const { jumpTabName } = useTabStore();
 const route = useRoute();
 const tabStore = useTabsStore();
 tabStore.setTabsTitle(`No.${route.params.id} - ${route.meta.title}`);
-
 const value = ref('');
 </script>
