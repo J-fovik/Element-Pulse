@@ -50,9 +50,11 @@ router.beforeEach(async (to, from, next) => {
 	const title = import.meta.env.VITE_GLOB_APP_TITLE;
 	document.title = to.meta.title ? `${to.meta.title} - ${title}` : title;
 
-	// 3.判断是访问登陆页，有 Token 就在当前页面，没有 Token 重置路由到登陆页
+	// 3.判断访问登陆页
 	if (to.path.toLocaleLowerCase() === LOGIN_URL) {
+		// 有 Token 就在当前页面
 		if (userStore.token) return next(from.fullPath);
+		// 没有 Token 重置路由并到登陆页
 		resetRouter();
 		return next();
 	}
@@ -65,8 +67,15 @@ router.beforeEach(async (to, from, next) => {
 
 	// 6.如果没有菜单列表，就重新请求菜单列表并添加动态路由
 	if (!authStore.authMenuListGet.length) {
-		await initDynamicRouter();
-		return next({ ...to, replace: true });
+		const isNoPower = await initDynamicRouter();
+		// 无权限
+		if (isNoPower) {
+			// 清空token
+			userStore.setToken('');
+			return next({ path: LOGIN_URL, replace: true });
+		} else {
+			return next({ path: to.path, query: to.query });
+		}
 	}
 
 	// 7.存储 routerName 做按钮权限筛选

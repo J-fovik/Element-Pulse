@@ -1,7 +1,7 @@
 <template>
 	<el-form ref="formRef" :model="form" :rules="rules" size="large">
 		<el-form-item prop="username">
-			<el-input v-model="form.username" placeholder="用户名：admin / user">
+			<el-input v-model.trim="form.username" placeholder="用户名：admin / user">
 				<template #prefix>
 					<el-icon class="el-input__icon">
 						<user />
@@ -11,7 +11,7 @@
 		</el-form-item>
 		<el-form-item prop="password">
 			<el-input
-				v-model="form.password"
+				v-model.trim="form.password"
 				type="password"
 				placeholder="密码：123456"
 				show-password
@@ -26,9 +26,7 @@
 		</el-form-item>
 	</el-form>
 	<div class="login-btn">
-		<el-button :icon="CircleClose" round size="large" @click="resetForm(formRef)">
-			重置
-		</el-button>
+		<el-button :icon="CircleClose" round size="large" @click="resetForm"> 重置 </el-button>
 		<el-button
 			:icon="UserFilled"
 			round
@@ -50,13 +48,12 @@ import { HOME_URL } from '@/config';
 import { getTimeState } from '@/utils';
 import { loginApi } from '@/api/modules/login';
 import { useUserStore } from '@/stores/modules/user';
-import { useTabsStore } from '@/stores/modules/tabs';
-import { useKeepAliveStore } from '@/stores/modules/keepAlive';
 import { initDynamicRouter } from '@/routers/dynamicRouter';
 import { CircleClose, UserFilled } from '@element-plus/icons-vue';
 import { useForm, useBasicsState, curryingRequest } from '@/hooks';
+import { Local } from '@/utils/storage';
 // form
-const { form, formRef } = useForm<any>(() => ({
+const { form, formRef, resetForm } = useForm<any>(() => ({
 	username: '',
 	password: '',
 }));
@@ -64,8 +61,6 @@ const { form, formRef } = useForm<any>(() => ({
 const [activeKey, setActiveKey] = useBasicsState<string | null>(null);
 const router = useRouter();
 const userStore = useUserStore();
-const tabsStore = useTabsStore();
-const keepAliveStore = useKeepAliveStore();
 
 /* 表单验证 */
 const rules = {
@@ -78,7 +73,6 @@ const login = (formEl: FormInstance | undefined) => {
 	if (!formEl) return;
 	formEl.validate(async (valid) => {
 		if (!valid) return;
-		// 1.执行登录接口
 		const { res, err } = await curryingRequest(
 			() =>
 				loginApi({
@@ -91,13 +85,28 @@ const login = (formEl: FormInstance | undefined) => {
 			}
 		);
 		if (err) return;
+		// 1.存储token
 		userStore.setToken(res?.data.access_token);
 		// 2.添加动态路由
-		await initDynamicRouter();
-		// 3.清空 tabs、keepAlive 数据
-		tabsStore.setTabs([]);
-		keepAliveStore.setKeepAliveName([]);
-		// 4.跳转到首页
+		const isNoPower = await initDynamicRouter();
+		// 3.登录成功后的跳转
+		signInSuccess(isNoPower);
+	});
+};
+// 登录成功后的跳转
+const signInSuccess = (isNoPower: boolean | undefined) => {
+	// 无登录权限时
+	if (isNoPower) {
+		ElNotification({
+			title: '无权限访问',
+			message: '当前账号无任何菜单权限，请联系系统管理员！',
+			type: 'warning',
+			duration: 3000,
+		});
+		// 清空token
+		userStore.setToken('');
+	} else {
+		// 跳转到首页
 		router.push(HOME_URL);
 		ElNotification({
 			title: getTimeState(),
@@ -105,13 +114,7 @@ const login = (formEl: FormInstance | undefined) => {
 			type: 'success',
 			duration: 3000,
 		});
-	});
-};
-
-// 重置表单
-const resetForm = (formEl: FormInstance | undefined) => {
-	if (!formEl) return;
-	formEl.resetFields();
+	}
 };
 // 监听回车事件
 const onKeyUp = (e: any) => {

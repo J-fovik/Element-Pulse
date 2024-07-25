@@ -49,8 +49,6 @@ request.interceptors.response.use(
 				if ([9000].includes(res.data.code)) {
 					// 清空Token
 					userStore.setToken('');
-					// 清空用户信息
-					userStore.setUserInfo({} as any);
 					// 去登录页
 					router.replace(LOGIN_URL);
 				}
