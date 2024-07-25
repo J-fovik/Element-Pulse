@@ -48,10 +48,11 @@ import { HOME_URL } from '@/config';
 import { getTimeState } from '@/utils';
 import { loginApi } from '@/api/modules/login';
 import { useUserStore } from '@/stores/modules/user';
+import { useTabsStore } from '@/stores/modules/tabs';
+import { useKeepAliveStore } from '@/stores/modules/keepAlive';
 import { initDynamicRouter } from '@/routers/dynamicRouter';
 import { CircleClose, UserFilled } from '@element-plus/icons-vue';
 import { useForm, useBasicsState, curryingRequest } from '@/hooks';
-import { Local } from '@/utils/storage';
 // form
 const { form, formRef, resetForm } = useForm<any>(() => ({
 	username: '',
@@ -61,7 +62,8 @@ const { form, formRef, resetForm } = useForm<any>(() => ({
 const [activeKey, setActiveKey] = useBasicsState<string | null>(null);
 const router = useRouter();
 const userStore = useUserStore();
-
+const tabsStore = useTabsStore();
+const keepAliveStore = useKeepAliveStore();
 /* 表单验证 */
 const rules = {
 	username: [{ required: true, message: '请输入用户名', trigger: 'blur' }],
@@ -85,11 +87,14 @@ const login = (formEl: FormInstance | undefined) => {
 			}
 		);
 		if (err) return;
-		// 1.存储token
+		// 存储token
 		userStore.setToken(res?.data.access_token);
-		// 2.添加动态路由
+		// 清空 tabs、keepAlive 数据
+		tabsStore.setTabs([]);
+		keepAliveStore.setKeepAliveName([]);
+		// 添加动态路由
 		const isNoPower = await initDynamicRouter();
-		// 3.登录成功后的跳转
+		// 登录成功后的跳转
 		signInSuccess(isNoPower);
 	});
 };

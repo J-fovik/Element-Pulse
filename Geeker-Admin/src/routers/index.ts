@@ -67,6 +67,7 @@ router.beforeEach(async (to, from, next) => {
 
 	// 6.如果没有菜单列表，就重新请求菜单列表并添加动态路由
 	if (!authStore.authMenuListGet.length) {
+		// 避免返回空路由数组
 		const isNoPower = await initDynamicRouter();
 		// 无权限
 		if (isNoPower) {
@@ -76,6 +77,8 @@ router.beforeEach(async (to, from, next) => {
 		} else {
 			return next({ path: to.path, query: to.query });
 		}
+		// await initDynamicRouter();
+		// return next({ path: to.path, query: to.query });
 	}
 
 	// 7.存储 routerName 做按钮权限筛选
