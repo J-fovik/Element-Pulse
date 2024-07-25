@@ -1,0 +1,45 @@
+export default {
+	path: '/auth',
+	name: 'auth',
+	redirect: '/auth/menu',
+	meta: {
+		icon: 'Lock',
+		order: 4,
+		title: '权限管理',
+		isLink: '',
+		isHide: false,
+		isFull: false,
+		isAffix: false,
+		isKeepAlive: true,
+	},
+	children: [
+		{
+			path: '/auth/menu',
+			name: 'authMenu',
+			component: '/auth/menu/index',
+			meta: {
+				icon: 'Menu',
+				title: '菜单权限',
+				isLink: '',
+				isHide: false,
+				isFull: false,
+				isAffix: false,
+				isKeepAlive: true,
+			},
+		},
+		{
+			path: '/auth/button',
+			name: 'authButton',
+			component: '/auth/button/index',
+			meta: {
+				icon: 'Menu',
+				title: '按钮权限',
+				isLink: '',
+				isHide: false,
+				isFull: false,
+				isAffix: false,
+				isKeepAlive: true,
+			},
+		},
+	],
+};

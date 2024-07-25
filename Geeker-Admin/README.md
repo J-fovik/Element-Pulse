@@ -55,6 +55,8 @@ meta: {
 icon: string;
 /** 路由标题 (用作 document.title || 菜单的名称) _/
 title: string;
+/\*\* 排序 _/
+order: number;
 /\*\* 是否在菜单中隐藏, 需要高亮的 path (通常用作详情页高亮父级菜单) _/
 activeMenu: string;
 /** 路由外链时填写的访问地址 \*/
@@ -68,7 +70,7 @@ isAffix: boolean;
 /** 当前路由是否缓存 _/
 isKeepAlive: boolean;
 };
-/\*\* 多级路由嵌套 _/
+/\*\* 多级路由嵌套 \_/
 children: RouteRecordRaw[];
 }
 

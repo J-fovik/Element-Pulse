@@ -1,6 +1,11 @@
 import { RouteRecordRaw } from 'vue-router';
 import { HOME_URL, LOGIN_URL } from '@/config';
-
+// 模块
+const modules = import.meta.glob('./modules/*.ts', { eager: true });
+// 处理模块
+export const appMenus = Object.keys(modules).map((key) => {
+	return (modules[key] as any).default;
+});
 /**
  * staticRouter (静态路由)
  */

@@ -1,0 +1,62 @@
+export default {
+	path: '/proTable',
+	name: 'proTable',
+	redirect: '/proTable/useTableDemo',
+	meta: {
+		icon: 'MessageBox',
+		order: 3,
+		title: '超级表格',
+		isLink: '',
+		isHide: false,
+		isFull: false,
+		isAffix: false,
+		isKeepAlive: true,
+	},
+	children: [
+		{
+			path: '/proTable/useTableDemo',
+			name: 'useTableDemo',
+			component: '/proTable/useTableDemo/index',
+			meta: {
+				icon: 'Menu',
+				title: '超级表格Demo',
+				isLink: '',
+				isHide: false,
+				isFull: false,
+				isAffix: false,
+				isKeepAlive: true,
+			},
+			children: [
+				{
+					path: '/proTable/useTableDemo/detail/:id',
+					name: 'useTableDemoDetail',
+					component: '/proTable/useTableDemo/detail/index',
+					meta: {
+						icon: 'Menu',
+						title: '超级表格Demo详情',
+						activeMenu: '/proTable/useTableDemo',
+						isLink: '',
+						isHide: true,
+						isFull: false,
+						isAffix: false,
+						isKeepAlive: true,
+					},
+				},
+			],
+		},
+		{
+			path: '/proTable/useTableDemo2',
+			name: 'useTableDemo2',
+			component: '/proTable/useTableDemo2/index',
+			meta: {
+				icon: 'Menu',
+				title: '超级表格Demo2',
+				isLink: '',
+				isHide: false,
+				isFull: false,
+				isAffix: false,
+				isKeepAlive: true,
+			},
+		},
+	],
+};

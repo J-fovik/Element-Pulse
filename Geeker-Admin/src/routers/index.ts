@@ -21,6 +21,7 @@ const routerMode = {
  * @param component ==> 视图文件路径
  * @param meta ==> 路由菜单元信息
  * @param meta.icon ==> 菜单和面包屑对应的图标
+ * @param meta.order ==> 菜单的排序
  * @param meta.title ==> 路由标题 (用作 document.title || 菜单的名称)
  * @param meta.activeMenu ==> 当前路由为详情页时，需要高亮的菜单*保证返回上级路由*
  * @param meta.isLink ==> 路由外链时填写的访问地址
@@ -77,8 +78,6 @@ router.beforeEach(async (to, from, next) => {
 		} else {
 			return next({ path: to.path, query: to.query });
 		}
-		// await initDynamicRouter();
-		// return next({ path: to.path, query: to.query });
 	}
 
 	// 7.存储 routerName 做按钮权限筛选
