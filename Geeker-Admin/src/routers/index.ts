@@ -5,7 +5,6 @@ import { LOGIN_URL, ROUTER_WHITE_LIST } from '@/config';
 import { initDynamicRouter } from '@/routers/dynamicRouter';
 import { staticRouter, errorRouter } from '@/routers/staticRouter';
 import NProgress from '@/config/nprogress';
-import { ElNotification } from 'element-plus';
 
 const mode = import.meta.env.VITE_ROUTER_MODE;
 
@@ -45,52 +44,38 @@ router.beforeEach(async (to, from, next) => {
 	const userStore = useUserStore();
 	const authStore = useAuthStore();
 
-	// 1.NProgress 开始
+	// NProgress 开始
 	NProgress.start();
 
-	// 2.动态设置标题
+	// 动态设置标题
 	const title = import.meta.env.VITE_GLOB_APP_TITLE;
 	document.title = to.meta.title ? `${to.meta.title} - ${title}` : title;
 
-	// 3.判断访问登陆页
+	// 判断访问登陆页
 	if (to.path.toLocaleLowerCase() === LOGIN_URL) {
-		// 有 Token 就在当前页面
+		// 有 Token 就在当前页面，没有 Token 重置路由到登陆页
 		if (userStore.token) return next(from.fullPath);
-		// 没有 Token 重置路由并到登陆页
+		// 重置路由
 		resetRouter();
 		return next();
 	}
 
-	// 4.判断访问页面是否在路由白名单地址(静态路由)中，如果存在直接放行
+	// 判断访问页面是否在路由白名单地址(静态路由)中，如果存在直接放行
 	if (ROUTER_WHITE_LIST.includes(to.path)) return next();
 
-	// 5.判断是否有 Token，没有重定向到 login 页面
+	// 判断是否有 Token，没有重定向到 login 页面
 	if (!userStore.token) return next({ path: LOGIN_URL, replace: true });
 
-	// 6.如果没有菜单列表，就重新请求菜单列表并添加动态路由
+	// 如果没有菜单列表，就重新请求菜单列表并添加动态路由
 	if (!authStore.authMenuListGet.length) {
-		// 路由跳转返回空路由
-		const isNoPower = await initDynamicRouter();
-		// 无权限
-		if (isNoPower) {
-			// 清空token
-			userStore.setToken('');
-			ElNotification({
-				title: '无权限访问',
-				message: '当前账号无任何菜单权限，请联系系统管理员！',
-				type: 'warning',
-				duration: 3000,
-			});
-			return next({ path: LOGIN_URL, replace: true });
-		} else {
-			return next({ path: to.path, query: to.query });
-		}
+		await initDynamicRouter();
+		return next({ ...to, replace: true });
 	}
 
-	// 7.存储 routerName 做按钮权限筛选
+	// 存储 routerName 做按钮权限筛选
 	authStore.setRouteName(to.name as string);
 
-	// 8.正常访问页面
+	// 正常访问页面
 	next();
 });
 

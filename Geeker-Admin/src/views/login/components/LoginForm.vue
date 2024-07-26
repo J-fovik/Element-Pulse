@@ -89,37 +89,21 @@ const login = (formEl: FormInstance | undefined) => {
 		if (err) return;
 		// 存储token
 		userStore.setToken(res?.data.access_token);
+		// 添加动态路由
+		await initDynamicRouter();
 		// 清空 tabs、keepAlive 数据
 		tabsStore.setTabs([]);
 		keepAliveStore.setKeepAliveName([]);
-		// 添加动态路由
-		const isNoPower = await initDynamicRouter();
-		// 登录成功后的跳转
-		signInSuccess(isNoPower);
-	});
-};
-// 登录成功后的跳转
-const signInSuccess = (isNoPower: boolean | undefined) => {
-	// 无登录权限时
-	if (isNoPower) {
-		ElNotification({
-			title: '无权限访问',
-			message: '当前账号无任何菜单权限，请联系系统管理员！',
-			type: 'warning',
-			duration: 3000,
-		});
-		// 清空token
-		userStore.setToken('');
-	} else {
-		// 跳转到首页
+		// 跳转首页
 		router.push(HOME_URL);
+		// 欢迎登录提示
 		ElNotification({
 			title: getTimeState(),
 			message: '欢迎登录 Geeker-Admin',
 			type: 'success',
 			duration: 3000,
 		});
-	}
+	});
 };
 // 监听回车事件
 const onKeyUp = (e: any) => {
