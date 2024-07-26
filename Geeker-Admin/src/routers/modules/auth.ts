@@ -4,7 +4,7 @@ export default {
 	redirect: '/auth/menu',
 	meta: {
 		icon: 'Lock',
-		order: 4,
+		order: 5,
 		title: '权限管理',
 		isLink: '',
 		isHide: false,

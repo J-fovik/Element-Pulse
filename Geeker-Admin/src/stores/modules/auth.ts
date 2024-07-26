@@ -2,7 +2,7 @@ import { defineStore } from 'pinia';
 import { AuthState } from '@/stores/interface';
 import { getAuthButtonListApi, getAuthMenuListApi } from '@/api/modules/login';
 import { getFlatMenuList, getShowMenuList, getAllBreadcrumbList } from '@/utils/menu';
-import { appMenus } from '@/routers/staticRouter';
+import { appRoutes } from '@/routers/staticRouter';
 export const useAuthStore = defineStore({
 	id: 'geeker-auth',
 	state: (): AuthState => ({
@@ -34,7 +34,7 @@ export const useAuthStore = defineStore({
 		// 获取菜单权限
 		async getAuthMenuList() {
 			const { data } = await getAuthMenuListApi();
-			this.authMenuList = appMenus.sort((a: any, b: any) => a.meta.order - b.meta.order);
+			this.authMenuList = appRoutes.sort((a: any, b: any) => a.meta.order - b.meta.order);
 		},
 		// 设置当前路由名称
 		async setRouteName(name: string) {

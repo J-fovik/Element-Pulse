@@ -10,7 +10,7 @@ export const ALL_OPTIONS = [
 /**
  * @description：用户性别
  */
-export const GENDER_TYPDS = [
+export const GENDER_TYPES = [
 	{ label: '男', value: 1 },
 	{ label: '女', value: 2 },
 ];
@@ -22,6 +22,7 @@ export const USER_STATUS = [
 	{ label: '启用', value: 1, tagType: 'success' },
 	{ label: '禁用', value: 0, tagType: 'danger' },
 ];
+
 // 默认导出，找到匹配的元素
 export default (options: Array<any>, value: string) => {
 	return options.find((item) => item.value === value);
