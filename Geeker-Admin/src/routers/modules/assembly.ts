@@ -4,7 +4,7 @@ export default {
 	redirect: '/assembly/guide',
 	meta: {
 		icon: 'Briefcase',
-		order: 4,
+		order: 5,
 		title: '常用组件',
 		isLink: '',
 		isHide: false,
