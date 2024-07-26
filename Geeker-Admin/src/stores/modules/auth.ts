@@ -3,6 +3,7 @@ import { AuthState } from '@/stores/interface';
 import { getAuthButtonListApi, getAuthMenuListApi } from '@/api/modules/login';
 import { getFlatMenuList, getShowMenuList, getAllBreadcrumbList } from '@/utils/menu';
 import { appRoutes } from '@/routers/staticRouter';
+
 export const useAuthStore = defineStore({
 	id: 'geeker-auth',
 	state: (): AuthState => ({
