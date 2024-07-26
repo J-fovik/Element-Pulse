@@ -5,6 +5,7 @@ import { LOGIN_URL, ROUTER_WHITE_LIST } from '@/config';
 import { initDynamicRouter } from '@/routers/dynamicRouter';
 import { staticRouter, errorRouter } from '@/routers/staticRouter';
 import NProgress from '@/config/nprogress';
+import { ElNotification } from 'element-plus';
 
 const mode = import.meta.env.VITE_ROUTER_MODE;
 
@@ -68,12 +69,18 @@ router.beforeEach(async (to, from, next) => {
 
 	// 6.如果没有菜单列表，就重新请求菜单列表并添加动态路由
 	if (!authStore.authMenuListGet.length) {
-		// 避免返回空路由数组
+		// 路由跳转返回空路由
 		const isNoPower = await initDynamicRouter();
 		// 无权限
 		if (isNoPower) {
 			// 清空token
 			userStore.setToken('');
+			ElNotification({
+				title: '无权限访问',
+				message: '当前账号无任何菜单权限，请联系系统管理员！',
+				type: 'warning',
+				duration: 3000,
+			});
 			return next({ path: LOGIN_URL, replace: true });
 		} else {
 			return next({ path: to.path, query: to.query });
