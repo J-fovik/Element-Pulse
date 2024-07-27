@@ -42,9 +42,11 @@ const router = useRouter();
 const tabStore = useTabsStore();
 const authStore = useAuthStore();
 const globalStore = useGlobalStore();
-
+// 当前标签
 const tabsMenuValue = ref(route.fullPath);
+// 标签数组
 const tabsMenuList = computed(() => tabStore.tabsMenuList);
+// 标签图标
 const tabsIcon = computed(() => globalStore.tabsIcon);
 
 onMounted(() => {
