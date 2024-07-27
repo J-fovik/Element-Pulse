@@ -43,7 +43,7 @@
 <script setup lang="ts">
 import md5 from 'md5';
 import type { FormInstance } from 'element-plus';
-import { ElNotification } from 'element-plus';
+import { toast } from '@/utils/elementPlus';
 import { HOME_URL } from '@/config';
 import { getTimeState } from '@/utils';
 import { loginApi } from '@/api/modules/login';
@@ -97,12 +97,7 @@ const login = (formEl: FormInstance | undefined) => {
 		// 跳转首页
 		router.push(HOME_URL);
 		// 欢迎登录提示
-		ElNotification({
-			title: getTimeState(),
-			message: '欢迎登录 Geeker-Admin',
-			type: 'success',
-			duration: 3000,
-		});
+		toast('欢迎登录 Geeker-Admin', 'success', getTimeState());
 	});
 };
 // 监听回车事件

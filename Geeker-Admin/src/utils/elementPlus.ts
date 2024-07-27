@@ -37,16 +37,19 @@ export const tryHideFullScreenLoading = () => {
  * 消息提示函数
  * @param message 消息内容
  * @param type type类型
+ * @param title 标题
  * @param dangerouslyUseHTMLString 是否解析标签
  */
 export function toast(
 	message: string | VNode,
 	type: 'success' | 'warning' | 'info' | 'error' = 'success',
+	title: string = '',
 	dangerouslyUseHTMLString: boolean = false
 ) {
 	ElNotification({
 		message,
 		type,
+		title,
 		dangerouslyUseHTMLString,
 		duration: 3000,
 	});
