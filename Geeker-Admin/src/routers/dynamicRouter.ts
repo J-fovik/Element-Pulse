@@ -45,7 +45,7 @@ export const initDynamicRouter = async () => {
 				router.addRoute('layout', item as unknown as RouteRecordRaw);
 			}
 		});
-		// 当按钮 || 菜单请求出错时
+		// 当用户信息 || 按钮 || 菜单 返回new promise实例请求出错时执行
 	} catch (error) {
 		// 清空Token
 		userStore.setToken('');
