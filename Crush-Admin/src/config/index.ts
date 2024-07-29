@@ -1,7 +1,7 @@
 //  全局默认配置项
 
 // 项目名称
-export const PROJECT_NAME: string = 'Geeker Admin';
+export const PROJECT_NAME: string = 'Crush Admin';
 
 // 首页地址（默认）
 export const HOME_URL: string = '/home';
