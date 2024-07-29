@@ -72,9 +72,13 @@ const route = useRoute();
 const router = useRouter();
 const authStore = useAuthStore();
 const globalStore = useGlobalStore();
+// 是否手风琴
 const accordion = computed(() => globalStore.accordion);
+// 是否水平折叠收起菜单
 const isCollapse = computed(() => globalStore.isCollapse);
+// 路由数组
 const menuList = computed(() => authStore.showMenuListGet);
+// 活跃菜单
 const activeMenu = computed(
 	() => (route.meta.activeMenu ? route.meta.activeMenu : route.path) as string
 );
