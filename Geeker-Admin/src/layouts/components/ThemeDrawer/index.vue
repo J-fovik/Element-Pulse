@@ -122,6 +122,10 @@
 			<el-switch v-model="isCollapse" />
 		</div>
 		<div class="theme-item">
+			<span>水印</span>
+			<el-switch v-model="isWatermark" />
+		</div>
+		<div class="theme-item">
 			<span>菜单手风琴</span>
 			<el-switch v-model="accordion" />
 		</div>
@@ -177,6 +181,7 @@ const {
 	tabs,
 	tabsIcon,
 	footer,
+	isWatermark,
 } = storeToRefs(globalStore);
 
 // 预定义主题颜色

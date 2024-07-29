@@ -155,7 +155,15 @@ defineExpose({ treeRef });
 		color: var(--el-color-info-dark-2);
 		letter-spacing: 0.5px;
 	}
-
+	.search {
+		display: flex;
+		align-items: center;
+		margin: 0 0 15px;
+		.el-icon {
+			cursor: pointer;
+			transform: rotate(90deg) translateY(-8px);
+		}
+	}
 	.el-scrollbar {
 		:deep(.el-tree) {
 			height: 80%;
@@ -181,14 +189,5 @@ defineExpose({ treeRef });
 :deep(.el-tree--highlight-current .el-tree-node.is-current > .el-tree-node__content) {
 	background-color: var(--el-color-primary-light-1) !important;
 	color: var(--next-bg-main-color) !important;
-}
-.search {
-	display: flex;
-	align-items: center;
-	margin: 0 0 15px;
-	.el-icon {
-		cursor: pointer;
-		transform: rotate(90deg) translateY(-8px);
-	}
 }
 </style>

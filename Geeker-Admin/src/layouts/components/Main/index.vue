@@ -5,17 +5,26 @@
 	<Tabs v-show="tabs" />
 	<!-- 主体 -->
 	<el-main>
-		<router-view v-slot="{ Component, route }">
-			<transition appear name="fade-transform" mode="out-in">
-				<keep-alive :include="keepAliveName">
-					<component
-						:is="createComponentWrapper(Component, route)"
-						v-if="isRouterShow"
-						:key="route.fullPath"
-					/>
-				</keep-alive>
-			</transition>
-		</router-view>
+		<!-- 水印 关键是id属性 -->
+		<el-watermark
+			id="watermark"
+			:font="watermarkFont"
+			:content="isWatermark ? ['Geeker Admin', 'Happy Working'] : ''"
+		>
+			<!-- BackTop 返回顶部 -->
+			<el-backtop target=".el-main" :bottom="50"></el-backtop>
+			<router-view v-slot="{ Component, route }">
+				<transition appear name="fade-transform" mode="out-in">
+					<keep-alive :include="keepAliveName">
+						<component
+							:is="createComponentWrapper(Component, route)"
+							v-if="isRouterShow"
+							:key="route.fullPath"
+						/>
+					</keep-alive>
+				</transition>
+			</router-view>
+		</el-watermark>
 	</el-main>
 	<!-- 页脚 -->
 	<el-footer v-show="footer">
@@ -33,14 +42,24 @@ import Tabs from '@/layouts/components/Tabs/index.vue';
 import Footer from '@/layouts/components/Footer/index.vue';
 
 const globalStore = useGlobalStore();
-const { maximize, isCollapse, layout, tabs, footer } = storeToRefs(globalStore);
-
+const { maximize, isCollapse, layout, tabs, footer, isWatermark, isDark } =
+	storeToRefs(globalStore);
 const keepAliveStore = useKeepAliveStore();
 const { keepAliveName } = storeToRefs(keepAliveStore);
 // 注入刷新页面方法
 const isRouterShow = ref(true);
 const refreshCurrentPage = (val: boolean) => (isRouterShow.value = val);
 provide('refresh', refreshCurrentPage);
+
+// 水印样式
+const watermarkFont = reactive({ color: 'rgba(0, 0, 0, .15)' });
+watch(
+	isDark,
+	() => (watermarkFont.color = isDark.value ? 'rgba(255, 255, 255, .15)' : 'rgba(0, 0, 0, .15)'),
+	{
+		immediate: true,
+	}
+);
 
 // 解决详情页 keep-alive 问题
 const wrapperMap = new Map();
