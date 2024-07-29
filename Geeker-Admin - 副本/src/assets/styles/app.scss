@@ -1,0 +1,327 @@
+// 自定义 element css
+@import './element.scss';
+// 自定义 element dark css
+@import './element-dark.scss';
+// 阿里图标 css
+@import '@/assets/iconfont/iconfont.scss';
+// 自定义字体 css
+@import '@/assets/fontFamily/index.scss';
+// element 样式
+@import 'element-plus/dist/index.css';
+// element dark css
+@import 'element-plus/theme-chalk/dark/css-vars.css';
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	outline: none !important;
+}
+html,
+body,
+#app {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	font-size: 16px;
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-font-smoothing: antialiased;
+}
+#watermark {
+	width: 100%;
+	height: 100%;
+	padding: 0;
+	margin: 0;
+}
+/* 解决 h1 标签在 webkit 内核浏览器中文字大小失效问题 */
+:-webkit-any(article, aside, nav, section) h1 {
+	font-size: 2em;
+}
+
+/* 
+  布局：
+  页面高度自适应 ：card + container样式;
+  页面滚动: 用el-card组件
+*/
+/* custom card */
+.card {
+	box-sizing: border-box;
+	padding: 20px;
+	overflow-x: hidden;
+	background-color: var(--el-bg-color);
+	border: 1px solid var(--el-border-color-light);
+	border-radius: 6px;
+	box-shadow: 0 0 12px rgb(0 0 0 / 5%);
+}
+/* container (常用内容盒子) */
+.container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	height: 100%;
+}
+/* main-box (树形表格 treeFilter 页面会使用，左右布局 flex) */
+.main-box {
+	display: flex;
+	width: 100%;
+	height: 100%;
+	.table-box {
+		// 这里减去的 230px 是 treeFilter 组件宽度
+		width: calc(100% - 230px);
+	}
+}
+/*********************** flex **********************/
+.flx-center {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.flx-justify-between {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+.flx-align-center {
+	display: flex;
+	align-items: center;
+}
+.flex {
+	display: flex;
+}
+
+.flex-auto {
+	flex: 1;
+	overflow: hidden;
+}
+
+.flex-margin {
+	margin: auto;
+}
+
+.flex-row {
+	flex-direction: row;
+}
+
+.flex-col {
+	flex-direction: column;
+}
+
+.flex-1 {
+	flex: 1;
+}
+
+.justify-center {
+	justify-content: center;
+}
+
+.justify-between {
+	justify-content: space-between;
+}
+
+.justify-around {
+	justify-content: space-around;
+}
+
+.justify-end {
+	justify-content: flex-end;
+}
+
+.items-center {
+	align-items: center;
+}
+.items-start {
+	align-items: flex-start;
+}
+.items-stretch {
+	align-items: stretch;
+}
+
+.items-end {
+	align-items: flex-end;
+}
+
+.self-end {
+	align-self: flex-end;
+}
+
+.grow {
+	flex-grow: 1;
+}
+
+.grow-0 {
+	flex-grow: 0;
+}
+
+.text-center {
+	text-align: center;
+}
+/*********************** flex **********************/
+/* mask image */
+.mask-image {
+	padding-right: 50px;
+	mask-image: linear-gradient(90deg, #000000 0%, #000000 calc(100% - 50px), transparent);
+}
+.w-full {
+	width: 100%;
+}
+.h-full {
+	height: 100%;
+}
+/* 价格设置 */
+.text-red {
+	color: red;
+}
+.text-price::before {
+	content: '¥';
+	font-size: 70%;
+	margin-right: 4rpx;
+}
+
+/* 清空浮动 */
+.clearfix::after {
+	display: block;
+	height: 0;
+	overflow: hidden;
+	clear: both;
+	content: '';
+}
+
+/* 文字单行省略号 */
+.sle {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+/* 文字多行省略号 */
+.mle {
+	display: -webkit-box;
+	overflow: hidden;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 2;
+}
+
+/* 文字多了自动換行 */
+.break-word {
+	word-break: break-all;
+	word-wrap: break-word;
+}
+// 新增编辑底部操作
+.footerCard {
+	position: fixed;
+	left: 0;
+	right: 0;
+	bottom: 0;
+}
+
+/* fade-transform */
+.fade-transform-leave-active,
+.fade-transform-enter-active {
+	transition: all 0.2s;
+}
+.fade-transform-enter-from {
+	opacity: 0;
+	transition: all 0.2s;
+	transform: translateX(-30px);
+}
+.fade-transform-leave-to {
+	opacity: 0;
+	transition: all 0.2s;
+	transform: translateX(30px);
+}
+
+/* breadcrumb-transform */
+.breadcrumb-enter-active {
+	transition: all 0.2s;
+}
+.breadcrumb-enter-from,
+.breadcrumb-leave-active {
+	opacity: 0;
+	transform: translateX(10px);
+}
+
+/* scroll bar */
+::-webkit-scrollbar {
+	width: 6px;
+	height: 6px;
+}
+::-webkit-scrollbar-thumb {
+	background-color: var(--el-border-color-darker);
+	border-radius: 20px;
+}
+
+/* nprogress */
+#nprogress .bar {
+	background: var(--el-color-primary) !important;
+}
+#nprogress .spinner-icon {
+	border-top-color: var(--el-color-primary) !important;
+	border-left-color: var(--el-color-primary) !important;
+}
+#nprogress .peg {
+	box-shadow: 0 0 10px var(--el-color-primary), 0 0 5px var(--el-color-primary) !important;
+}
+/* 字体大小全局样式
+------------------------------- */
+@for $i from 1 through 100 {
+	.font#{$i} {
+		font-size: #{$i}px !important;
+	}
+}
+
+/* 外边距、内边距全局样式
+------------------------------- */
+@for $i from 0 through 200 {
+	.mt#{$i} {
+		margin-top: #{$i}px !important;
+	}
+	.mr#{$i} {
+		margin-right: #{$i}px !important;
+	}
+	.mb#{$i} {
+		margin-bottom: #{$i}px !important;
+	}
+	.ml#{$i} {
+		margin-left: #{$i}px !important;
+	}
+	.mx#{$i} {
+		margin-left: #{$i}px !important;
+		margin-right: #{$i}px !important;
+	}
+	.my#{$i} {
+		margin-top: #{$i}px !important;
+		margin-bottom: #{$i}px !important;
+	}
+	.m#{$i} {
+		margin-top: #{$i}px !important;
+		margin-bottom: #{$i}px !important;
+		margin-left: #{$i}px !important;
+		margin-right: #{$i}px !important;
+	}
+	.pt#{$i} {
+		padding-top: #{$i}px !important;
+	}
+	.pr#{$i} {
+		padding-right: #{$i}px !important;
+	}
+	.pb#{$i} {
+		padding-bottom: #{$i}px !important;
+	}
+	.pl#{$i} {
+		padding-left: #{$i}px !important;
+	}
+	.px#{$i} {
+		padding-left: #{$i}px !important;
+		padding-right: #{$i}px !important;
+	}
+	.py#{$i} {
+		padding-top: #{$i}px !important;
+		padding-bottom: #{$i}px !important;
+	}
+	.p#{$i} {
+		padding-top: #{$i}px !important;
+		padding-bottom: #{$i}px !important;
+		padding-left: #{$i}px !important;
+		padding-right: #{$i}px !important;
+	}
+}
