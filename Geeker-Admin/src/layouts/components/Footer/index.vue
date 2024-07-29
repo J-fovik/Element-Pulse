@@ -1,10 +1,12 @@
 <template>
 	<!-- 页脚 -->
 	<div class="footer flx-center">
-		<a href="/" target="_blank"> 2024 © Geeker-Admin ❤️. </a>
+		<a href="/" target="_blank"> 2024 © {{ PROJECT_NAME }} ❤️. </a>
 	</div>
 </template>
-
+<script setup lang="ts" name="Footer">
+import { PROJECT_NAME } from '@/config';
+</script>
 <style scoped lang="scss" name="Footer">
 .footer {
 	height: 30px;

@@ -1,5 +1,5 @@
 export default {
-	path: '/home/index',
+	path: '/home',
 	name: 'home',
 	component: '/home/index',
 	meta: {

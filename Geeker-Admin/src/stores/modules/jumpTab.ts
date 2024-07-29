@@ -23,7 +23,7 @@ export const useTabStore = defineStore("tabStore", () => {
       if (route.query.name) {
         router.replace({ name: route.query.name as string });
       } else {
-        router.replace({ path: (route.meta.activeMenu as string) ?? "/home/index" });
+        router.replace({ path: (route.meta.activeMenu as string) ?? "/home" });
       }
     }
   };

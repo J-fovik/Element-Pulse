@@ -47,24 +47,21 @@ import { useDebounceFn } from '@vueuse/core';
 
 const router = useRouter();
 const authStore = useAuthStore();
+// 路由数组
 const menuList = computed(() => authStore.flatMenuListGet.filter((item) => !item.meta.isHide));
-
-onMounted(() => {
-	document.addEventListener('keydown', keyboardOperation);
-});
-
-onUnmounted(() => {
-	document.removeEventListener('keydown', keyboardOperation);
-});
-
+// 当前活跃路径
 const activePath = ref('');
+// 移动菜单项
 const mouseoverMenuItem = (menu: Menu.MenuOptions) => {
 	activePath.value = menu.path;
 };
-
+// 菜单输入框实例
 const menuInputRef = ref<InputInstance | null>(null);
+// 是否显示搜索
 const isShowSearch = ref<boolean>(false);
+// 搜索菜单输入框
 const searchMenu = ref<string>('');
+// 点击打开
 const handleOpen = () => {
 	isShowSearch.value = true;
 	nextTick(() => {
@@ -75,6 +72,7 @@ const handleOpen = () => {
 };
 // 搜索列表
 const searchList = ref<Menu.MenuOptions[]>([]);
+// 更新搜索列表
 const updateSearchList = () => {
 	searchList.value = searchMenu.value
 		? menuList.value.filter(
@@ -86,12 +84,13 @@ const updateSearchList = () => {
 		: [];
 	activePath.value = searchList.value.length ? searchList.value[0].path : '';
 };
-
+// 防抖
 const debouncedUpdateSearchList = useDebounceFn(updateSearchList, 300);
 
 watch(searchMenu, debouncedUpdateSearchList);
-
+// 菜单列表实例
 const menuListRef = ref<Element | null>(null);
+// 操作上下箭头键
 const keyPressUpOrDown = (direction: number) => {
 	const length = searchList.value.length;
 	if (length === 0) return;
@@ -104,14 +103,17 @@ const keyPressUpOrDown = (direction: number) => {
 		menuListRef.value.scrollTop = newIndex * menuItemHeight;
 	});
 };
-// 按下回车
+// 键盘判断
 const keyboardOperation = (event: KeyboardEvent) => {
+	// 上箭头键
 	if (event.key === 'ArrowUp') {
 		event.preventDefault();
 		keyPressUpOrDown(-1);
+		// 下箭头键
 	} else if (event.key === 'ArrowDown') {
 		event.preventDefault();
 		keyPressUpOrDown(1);
+		// 回车键
 	} else if (event.key === 'Enter') {
 		event.preventDefault();
 		handleClickMenu();
@@ -126,6 +128,13 @@ const handleClickMenu = () => {
 	searchMenu.value = '';
 	isShowSearch.value = false;
 };
+onMounted(() => {
+	document.addEventListener('keydown', keyboardOperation);
+});
+
+onUnmounted(() => {
+	document.removeEventListener('keydown', keyboardOperation);
+});
 </script>
 
 <style scoped lang="scss">

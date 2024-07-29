@@ -2,7 +2,7 @@
 	"code": 200,
 	"data": [
 		{
-			"path": "/home/index",
+			"path": "/home",
 			"name": "home",
 			"component": "/home/index",
 			"meta": {

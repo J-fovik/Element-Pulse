@@ -5,7 +5,7 @@
 	</div>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts" name="Maximize">
 import { useGlobalStore } from '@/stores/modules/global';
 // 获取仓库
 const globalStore = useGlobalStore();
@@ -15,7 +15,7 @@ const exitMaximize = () => {
 };
 </script>
 
-<style scoped lang="scss" name="Maximize">
+<style scoped lang="scss">
 .maximize {
 	position: fixed;
 	top: -25px;

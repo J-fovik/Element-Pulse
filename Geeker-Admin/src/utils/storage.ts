@@ -1,3 +1,4 @@
+import { PROJECT_NAME } from '@/config';
 /**
  * window.localStorage 浏览器永久缓存
  * @method set 设置永久缓存
@@ -8,7 +9,7 @@
 export const Local = {
 	setKey(key: string) {
 		// @ts-ignore
-		return `Geeker-${key}`;
+		return `${PROJECT_NAME}-${key}`;
 	},
 	// 设置永久缓存
 	set<T>(key: string, val: T) {
