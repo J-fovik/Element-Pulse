@@ -1,0 +1,62 @@
+export default {
+	path: '/function',
+	name: 'function',
+	redirect: '/function/guide',
+	meta: {
+		icon: 'Briefcase',
+		order: 6,
+		title: '功能插件',
+		isLink: '',
+		isHide: false,
+		isFull: false,
+		isAffix: false,
+		isKeepAlive: true,
+	},
+	children: [
+		{
+			path: '/function/guide',
+			name: 'guide',
+			component: '/function/guide/index',
+			meta: {
+				icon: 'Menu',
+				title: '引导页',
+				isLink: '',
+				isHide: false,
+				isFull: false,
+				isAffix: false,
+				isKeepAlive: true,
+			},
+		},
+		{
+			path: '/function/tabs',
+			name: 'tabs',
+			component: '/function/tabs/index',
+			meta: {
+				icon: 'Menu',
+				title: '标签页操作',
+				isLink: '',
+				isHide: false,
+				isFull: false,
+				isAffix: false,
+				isKeepAlive: true,
+			},
+			children: [
+				{
+					path: '/function/tabs/detail/:id',
+					name: 'tabsDetail',
+					component: '/function/tabs/detail',
+					meta: {
+						icon: 'Menu',
+						title: 'Tab 详情',
+						activeMenu: '/function/tabs',
+						isLink: '',
+						isHide: true,
+						isFull: false,
+						isAffix: false,
+						isKeepAlive: true,
+					},
+				},
+			],
+		},
+	],
+};
