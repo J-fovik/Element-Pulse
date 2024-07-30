@@ -55,6 +55,7 @@ const title = import.meta.env.VITE_GLOB_APP_TITLE;
 const route = useRoute();
 const router = useRouter();
 const authStore = useAuthStore();
+
 // 路由数组
 const menuList = computed(() => authStore.showMenuListGet);
 // 活跃菜单

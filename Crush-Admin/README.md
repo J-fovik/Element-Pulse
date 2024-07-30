@@ -1,8 +1,8 @@
-# Geeker-Admin
+# Crush-Admin
 
 ## 文件资源目录 📚
 
-Geeker-Admin
+Crush-Admin
 ├─ .vscode # VSCode 推荐配置
 ├─ build # Vite 配置项
 ├─ public # 静态资源文件（该文件夹不会被打包）

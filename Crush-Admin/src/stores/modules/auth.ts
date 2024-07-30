@@ -5,7 +5,7 @@ import { getFlatMenuList, getShowMenuList, getAllBreadcrumbList } from '@/utils/
 import { appRoutes } from '@/routers/staticRouter';
 
 export const useAuthStore = defineStore({
-	id: 'geeker-auth',
+	id: 'crush-auth',
 	state: (): AuthState => ({
 		// 按钮权限列表
 		authButtonList: {},

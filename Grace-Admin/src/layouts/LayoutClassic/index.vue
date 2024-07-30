@@ -51,6 +51,7 @@ const title = import.meta.env.VITE_GLOB_APP_TITLE;
 const route = useRoute();
 const userStore = useUserStore();
 const globalStore = useGlobalStore();
+
 // 是否手风琴
 const accordion = computed(() => globalStore.accordion);
 // 是否水平折叠收起菜单

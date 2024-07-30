@@ -2,7 +2,7 @@ import { defineStore } from 'pinia';
 import { UserState } from '@/stores/interface';
 import piniaPersistConfig from '@/stores/helper/persist';
 export const useUserStore = defineStore({
-	id: 'geeker-user',
+	id: 'crush-user',
 	state: (): UserState => ({
 		token: '',
 		userInfo: {} as any,
@@ -22,10 +22,10 @@ export const useUserStore = defineStore({
 			// const { data } = await getUserInfoApi();
 			this.userInfo = {
 				...this.userInfo,
-				name: 'Geeker',
+				name: 'Crush',
 				// ...data
 			};
 		},
 	},
-	persist: piniaPersistConfig('geeker-user'),
+	persist: piniaPersistConfig('crush-user'),
 });

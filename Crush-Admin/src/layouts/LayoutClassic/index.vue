@@ -4,7 +4,7 @@
 		<el-header>
 			<div class="header-lf mask-image">
 				<div class="logo flx-center">
-					<img class="logo-img" src="@/assets/svgIcons/logo.svg" alt="logo" />
+					<Logo />
 					<span class="logo-text">{{ title }}</span>
 				</div>
 				<ToolBarLeft />
@@ -38,9 +38,11 @@
 </template>
 
 <script setup lang="ts" name="LayoutClassic">
+import { storeToRefs } from 'pinia';
 import { useAuthStore } from '@/stores/modules/auth';
 import { useGlobalStore } from '@/stores/modules/global';
 import Main from '@/layouts/components/Main/index.vue';
+import Logo from '@/layouts/components/Logo/index.vue';
 import SubMenu from '@/layouts/components/Menu/SubMenu.vue';
 import ToolBarLeft from '@/layouts/components/Header/ToolBarLeft.vue';
 import ToolBarRight from '@/layouts/components/Header/ToolBarRight.vue';
@@ -50,10 +52,9 @@ const title = import.meta.env.VITE_GLOB_APP_TITLE;
 const route = useRoute();
 const authStore = useAuthStore();
 const globalStore = useGlobalStore();
-// 是否手风琴
-const accordion = computed(() => globalStore.accordion);
-// 是否水平折叠收起菜单
-const isCollapse = computed(() => globalStore.isCollapse);
+
+// 是否手风琴、是否水平折叠收起菜单
+const { accordion, isCollapse } = storeToRefs(globalStore);
 // 路由数组
 const menuList = computed(() => authStore.showMenuListGet);
 // 活跃菜单
@@ -84,16 +85,12 @@ const activeMenu = computed(
 				flex-shrink: 0;
 				width: 210px;
 				margin-right: 16px;
-				.logo-img {
-					width: 28px;
-					margin-right: 6px;
-					object-fit: contain;
-				}
 				.logo-text {
 					font-size: 21.5px;
 					font-weight: bold;
 					color: var(--el-header-logo-text-color);
 					white-space: nowrap;
+					margin-left: 6px;
 				}
 			}
 		}

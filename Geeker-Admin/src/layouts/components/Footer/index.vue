@@ -7,7 +7,7 @@
 <script setup lang="ts" name="Footer">
 import { PROJECT_NAME } from '@/config';
 </script>
-<style scoped lang="scss" name="Footer">
+<style scoped lang="scss">
 .footer {
 	height: 30px;
 	background-color: var(--el-bg-color);

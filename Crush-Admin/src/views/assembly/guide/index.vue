@@ -5,7 +5,7 @@
 			type="warning"
 			:closable="false"
 		/>
-		<div id="Geeker">
+		<div id="Crush">
 			<el-button class="mt20" type="primary" @click.prevent.stop="driverObj.drive()">
 				打开引导页 🤹‍♂️
 			</el-button>

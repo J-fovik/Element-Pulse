@@ -72,6 +72,7 @@ const route = useRoute();
 const router = useRouter();
 const userStore = useUserStore();
 const globalStore = useGlobalStore();
+
 // 是否手风琴
 const accordion = computed(() => globalStore.accordion);
 // 是否水平折叠收起菜单

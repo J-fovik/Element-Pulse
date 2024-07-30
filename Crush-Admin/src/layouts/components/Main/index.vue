@@ -9,7 +9,7 @@
 		<el-watermark
 			id="watermark"
 			:font="watermarkFont"
-			:content="isWatermark ? ['Geeker Admin', 'Happy Working'] : ''"
+			:content="isWatermark ? ['Crush Admin', 'Happy Working'] : ''"
 		>
 			<!-- BackTop 返回顶部 -->
 			<el-backtop target=".el-main" :bottom="50"></el-backtop>
