@@ -3,7 +3,7 @@
 	<el-container class="layout">
 		<div class="aside-split" style="z-index: 999; height: 100vh !important">
 			<div class="logo flx-center">
-				<img class="logo-img" src="@/assets/svgIcons/logo.svg" alt="logo" />
+				<Logo />
 			</div>
 			<el-scrollbar>
 				<div class="split-list">
@@ -32,7 +32,7 @@
 		>
 			<div class="logo flx-center">
 				<span v-show="subMenuList.length" class="logo-text">{{
-					isCollapse ? 'G' : title
+					isCollapse ? 'G' : APP_TITLE
 				}}</span>
 			</div>
 			<el-scrollbar>
@@ -59,24 +59,24 @@
 </template>
 
 <script setup lang="ts" name="LayoutColumns">
+import { storeToRefs } from 'pinia';
 import { useAuthStore } from '@/stores/modules/auth';
 import { useGlobalStore } from '@/stores/modules/global';
 import Main from '@/layouts/components/Main/index.vue';
+import Logo from '@/layouts/components/Logo/index.vue';
 import ToolBarLeft from '@/layouts/components/Header/ToolBarLeft.vue';
 import ToolBarRight from '@/layouts/components/Header/ToolBarRight.vue';
 import SubMenu from '@/layouts/components/Menu/SubMenu.vue';
 // LOGO标题
-const title = import.meta.env.VITE_GLOB_APP_TITLE;
+const APP_TITLE = import.meta.env.VITE_GLOB_APP_TITLE;
 
 const route = useRoute();
 const router = useRouter();
 const authStore = useAuthStore();
 const globalStore = useGlobalStore();
 
-// 是否手风琴
-const accordion = computed(() => globalStore.accordion);
-// 是否水平折叠收起菜单
-const isCollapse = computed(() => globalStore.isCollapse);
+// 是否手风琴、是否水平折叠收起菜单
+const { accordion, isCollapse } = storeToRefs(globalStore);
 // 路由数组
 const menuList = computed(() => authStore.showMenuListGet);
 // 活跃菜单
@@ -133,10 +133,6 @@ const changeSubMenu = (item: Menu.MenuOptions) => {
 		.logo {
 			box-sizing: border-box;
 			height: 55px;
-			.logo-img {
-				width: 32px;
-				object-fit: contain;
-			}
 		}
 		.el-scrollbar {
 			height: calc(100% - 55px);

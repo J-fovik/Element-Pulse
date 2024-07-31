@@ -1,11 +1,11 @@
 <template>
 	<!-- 页脚 -->
 	<div class="footer flx-center">
-		<a href="/" target="_blank"> 2024 © {{ PROJECT_NAME }} ❤️. </a>
+		<a href="/" target="_blank"> 2024 © {{ BY_NAME }} ❤️. </a>
 	</div>
 </template>
 <script setup lang="ts" name="Footer">
-import { PROJECT_NAME } from '@/config';
+import { BY_NAME } from '@/config';
 </script>
 <style scoped lang="scss">
 .footer {

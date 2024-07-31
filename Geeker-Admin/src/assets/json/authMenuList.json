@@ -137,7 +137,7 @@
 		{
 			"path": "/assembly",
 			"name": "assembly",
-			"redirect": "/assembly/guide",
+			"redirect": "/assembly/selectIcon",
 			"meta": {
 				"icon": "Briefcase",
 				"title": "常用组件",
@@ -148,51 +148,6 @@
 				"isKeepAlive": true
 			},
 			"children": [
-				{
-					"path": "/assembly/guide",
-					"name": "guide",
-					"component": "/assembly/guide/index",
-					"meta": {
-						"icon": "Menu",
-						"title": "引导页",
-						"isLink": "",
-						"isHide": false,
-						"isFull": false,
-						"isAffix": false,
-						"isKeepAlive": true
-					}
-				},
-				{
-					"path": "/assembly/tabs",
-					"name": "tabs",
-					"component": "/assembly/tabs/index",
-					"meta": {
-						"icon": "Menu",
-						"title": "标签页操作",
-						"isLink": "",
-						"isHide": false,
-						"isFull": false,
-						"isAffix": false,
-						"isKeepAlive": true
-					},
-					"children": [
-						{
-							"path": "/assembly/tabs/detail/:id",
-							"name": "tabsDetail",
-							"component": "/assembly/tabs/detail",
-							"meta": {
-								"icon": "Menu",
-								"title": "Tab 详情",
-								"activeMenu": "/assembly/tabs",
-								"isLink": "",
-								"isHide": true,
-								"isFull": false,
-								"isAffix": false,
-								"isKeepAlive": true
-							}
-						}
-					]
-				},
 				{
 					"path": "/assembly/selectIcon",
 					"name": "selectIcon",
@@ -264,9 +219,84 @@
 					}
 				},
 				{
-					"path": "/assembly/draggable",
+					"path": "/assembly/dargSelect",
+					"name": "dargSelect",
+					"component": "/assembly/dargSelect/index",
+					"meta": {
+						"icon": "Menu",
+						"title": "拖拽下拉框",
+						"isLink": "",
+						"isHide": false,
+						"isFull": false,
+						"isAffix": false,
+						"isKeepAlive": true
+					}
+				}
+			]
+		},
+		{
+			"path": "/function",
+			"name": "function",
+			"redirect": "/function/guide",
+			"meta": {
+				"icon": "Coin",
+				"title": "功能插件",
+				"isLink": "",
+				"isHide": false,
+				"isFull": false,
+				"isAffix": false,
+				"isKeepAlive": true
+			},
+			"children": [
+				{
+					"path": "/function/guide",
+					"name": "guide",
+					"component": "/function/guide/index",
+					"meta": {
+						"icon": "Menu",
+						"title": "引导页",
+						"isLink": "",
+						"isHide": false,
+						"isFull": false,
+						"isAffix": false,
+						"isKeepAlive": true
+					}
+				},
+				{
+					"path": "/function/tabs",
+					"name": "tabs",
+					"component": "/function/tabs/index",
+					"meta": {
+						"icon": "Menu",
+						"title": "标签页操作",
+						"isLink": "",
+						"isHide": false,
+						"isFull": false,
+						"isAffix": false,
+						"isKeepAlive": true
+					},
+					"children": [
+						{
+							"path": "/function/tabs/detail/:id",
+							"name": "tabsDetail",
+							"component": "/function/tabs/detail",
+							"meta": {
+								"icon": "Menu",
+								"title": "Tab 详情",
+								"activeMenu": "/function/tabs",
+								"isLink": "",
+								"isHide": true,
+								"isFull": false,
+								"isAffix": false,
+								"isKeepAlive": true
+							}
+						}
+					]
+				},
+				{
+					"path": "/function/draggable",
 					"name": "draggable",
-					"component": "/assembly/draggable/index",
+					"component": "/function/draggable/index",
 					"meta": {
 						"icon": "Menu",
 						"title": "拖拽组件",

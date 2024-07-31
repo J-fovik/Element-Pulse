@@ -1,7 +1,7 @@
 export default {
 	path: '/assembly',
 	name: 'assembly',
-	redirect: '/assembly/guide',
+	redirect: '/assembly/selectIcon',
 	meta: {
 		icon: 'Briefcase',
 		order: 5,
@@ -13,51 +13,6 @@ export default {
 		isKeepAlive: true,
 	},
 	children: [
-		{
-			path: '/assembly/guide',
-			name: 'guide',
-			component: '/assembly/guide/index',
-			meta: {
-				icon: 'Menu',
-				title: '引导页',
-				isLink: '',
-				isHide: false,
-				isFull: false,
-				isAffix: false,
-				isKeepAlive: true,
-			},
-		},
-		{
-			path: '/assembly/tabs',
-			name: 'tabs',
-			component: '/assembly/tabs/index',
-			meta: {
-				icon: 'Menu',
-				title: '标签页操作',
-				isLink: '',
-				isHide: false,
-				isFull: false,
-				isAffix: false,
-				isKeepAlive: true,
-			},
-			children: [
-				{
-					path: '/assembly/tabs/detail/:id',
-					name: 'tabsDetail',
-					component: '/assembly/tabs/detail',
-					meta: {
-						icon: 'Menu',
-						title: 'Tab 详情',
-						activeMenu: '/assembly/tabs',
-						isLink: '',
-						isHide: true,
-						isFull: false,
-						isAffix: false,
-						isKeepAlive: true,
-					},
-				},
-			],
-		},
 		{
 			path: '/assembly/selectIcon',
 			name: 'selectIcon',
@@ -129,12 +84,12 @@ export default {
 			},
 		},
 		{
-			path: '/assembly/draggable',
-			name: 'draggable',
-			component: '/assembly/draggable/index',
+			path: '/assembly/dargSelect',
+			name: 'dargSelect',
+			component: '/assembly/dargSelect/index',
 			meta: {
 				icon: 'Menu',
-				title: '拖拽组件',
+				title: '拖拽下拉框',
 				isLink: '',
 				isHide: false,
 				isFull: false,

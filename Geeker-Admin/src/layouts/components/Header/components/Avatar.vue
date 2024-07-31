@@ -2,7 +2,7 @@
 	<!-- 头像下拉 -->
 	<el-dropdown trigger="click">
 		<div class="avatar">
-			<img src="@/assets/images/avatar.gif" class="w-full h-full" alt="avatar" />
+			<img src="@/assets/images/avatar.png" class="w-full h-full" alt="avatar" />
 		</div>
 		<template #dropdown>
 			<el-dropdown-menu>

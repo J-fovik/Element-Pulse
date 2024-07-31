@@ -4,8 +4,8 @@
 		<el-aside class="h-full">
 			<div class="aside-box" :style="{ width: isCollapse ? '65px' : '210px' }">
 				<div class="logo flx-center">
-					<img class="logo-img" src="@/assets/svgIcons/logo.svg" alt="logo" />
-					<span v-show="!isCollapse" class="logo-text">{{ title }}</span>
+					<Logo />
+					<span v-show="!isCollapse" class="logo-text">{{ APP_TITLE }}</span>
 				</div>
 				<el-scrollbar>
 					<el-menu
@@ -32,23 +32,22 @@
 </template>
 
 <script setup lang="ts" name="LayoutVertical">
+import { storeToRefs } from 'pinia';
 import { useAuthStore } from '@/stores/modules/auth';
 import { useGlobalStore } from '@/stores/modules/global';
 import Main from '@/layouts/components/Main/index.vue';
+import Logo from '@/layouts/components/Logo/index.vue';
 import ToolBarLeft from '@/layouts/components/Header/ToolBarLeft.vue';
 import ToolBarRight from '@/layouts/components/Header/ToolBarRight.vue';
 import SubMenu from '@/layouts/components/Menu/SubMenu.vue';
 // LOGO标题
-const title = import.meta.env.VITE_GLOB_APP_TITLE;
+const APP_TITLE = import.meta.env.VITE_GLOB_APP_TITLE;
 
 const route = useRoute();
 const authStore = useAuthStore();
 const globalStore = useGlobalStore();
-
-// 是否手风琴
-const accordion = computed(() => globalStore.accordion);
-// 是否水平折叠收起菜单
-const isCollapse = computed(() => globalStore.isCollapse);
+// 是否手风琴、是否水平折叠收起菜单
+const { accordion, isCollapse } = storeToRefs(globalStore);
 // 路由数组
 const menuList = computed(() => authStore.showMenuListGet);
 // 活跃菜单
@@ -81,16 +80,12 @@ const activeMenu = computed(
 			.logo {
 				box-sizing: border-box;
 				height: 55px;
-				.logo-img {
-					width: 28px;
-					margin-right: 6px;
-					object-fit: contain;
-				}
 				.logo-text {
 					font-size: 21.5px;
 					font-weight: bold;
 					color: var(--el-aside-logo-text-color);
 					white-space: nowrap;
+					margin-left: 6px;
 				}
 			}
 		}

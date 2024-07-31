@@ -3,8 +3,8 @@
 	<el-container class="layout">
 		<el-header>
 			<div class="logo flx-center">
-				<img class="logo-img" src="@/assets/svgIcons/logo.svg" alt="logo" />
-				<span class="logo-text">{{ title }}</span>
+				<Logo />
+				<span class="logo-text">{{ APP_TITLE }}</span>
 			</div>
 			<el-menu mode="horizontal" :router="false" :default-active="activeMenu">
 				<!-- 不能直接使用 SubMenu 组件，无法触发 el-menu 隐藏省略功能 -->
@@ -46,11 +46,12 @@
 <script setup lang="ts" name="LayoutTransverse">
 import { useAuthStore } from '@/stores/modules/auth';
 import Main from '@/layouts/components/Main/index.vue';
+import Logo from '@/layouts/components/Logo/index.vue';
 import ToolBarRight from '@/layouts/components/Header/ToolBarRight.vue';
 import SubMenu from '@/layouts/components/Menu/SubMenu.vue';
 
 // LOGO标题
-const title = import.meta.env.VITE_GLOB_APP_TITLE;
+const APP_TITLE = import.meta.env.VITE_GLOB_APP_TITLE;
 
 const route = useRoute();
 const router = useRouter();
@@ -85,16 +86,12 @@ const handleClickMenu = (subItem: Menu.MenuOptions) => {
 		.logo {
 			width: 210px;
 			margin-right: 30px;
-			.logo-img {
-				width: 28px;
-				margin-right: 6px;
-				object-fit: contain;
-			}
 			.logo-text {
 				font-size: 21.5px;
 				font-weight: bold;
 				color: var(--el-header-logo-text-color);
 				white-space: nowrap;
+				margin-left: 6px;
 			}
 		}
 		.el-menu {

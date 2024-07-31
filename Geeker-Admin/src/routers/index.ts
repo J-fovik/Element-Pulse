@@ -1,7 +1,7 @@
 import { createRouter, createWebHashHistory, createWebHistory } from 'vue-router';
 import { useUserStore } from '@/stores/modules/user';
 import { useAuthStore } from '@/stores/modules/auth';
-import { LOGIN_URL, ROUTER_WHITE_LIST } from '@/config';
+import { LOGIN_URL, ROUTER_WHITE_LIST, HOME_URL } from '@/config';
 import { initDynamicRouter } from '@/routers/dynamicRouter';
 import { staticRouter, errorRouter } from '@/routers/staticRouter';
 import NProgress from '@/config/nprogress';
@@ -48,13 +48,13 @@ router.beforeEach(async (to, from, next) => {
 	NProgress.start();
 
 	// 动态设置标题
-	const title = import.meta.env.VITE_GLOB_APP_TITLE;
-	document.title = to.meta.title ? `${to.meta.title} - ${title}` : title;
+	const APP_TITLE = import.meta.env.VITE_GLOB_APP_TITLE;
+	document.title = to.meta.title ? `${to.meta.title} - ${APP_TITLE}` : APP_TITLE;
 
 	// 判断访问登陆页
 	if (to.path.toLocaleLowerCase() === LOGIN_URL) {
 		// 有 Token 就在当前页面，没有 Token 重置路由到登陆页
-		if (userStore.token) return next(from.fullPath);
+		if (userStore.token) return next(HOME_URL);
 		// 重置路由
 		resetRouter();
 		return next();
