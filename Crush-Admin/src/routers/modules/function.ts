@@ -3,7 +3,7 @@ export default {
 	name: 'function',
 	redirect: '/function/guide',
 	meta: {
-		icon: 'Briefcase',
+		icon: 'Coin',
 		order: 6,
 		title: '功能插件',
 		isLink: '',
@@ -57,6 +57,20 @@ export default {
 					},
 				},
 			],
+		},
+		{
+			path: '/function/draggable',
+			name: 'draggable',
+			component: '/function/draggable/index',
+			meta: {
+				icon: 'Menu',
+				title: '拖拽组件',
+				isLink: '',
+				isHide: false,
+				isFull: false,
+				isAffix: false,
+				isKeepAlive: true,
+			},
 		},
 	],
 };

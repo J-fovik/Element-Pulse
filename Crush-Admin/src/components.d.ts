@@ -12,7 +12,7 @@ declare module 'vue' {
     500: typeof import('./components/ErrorMessage/500.vue')['default']
     Content: typeof import('./components/Content/index.vue')['default']
     CustomTableMould: typeof import('./components/CustomTableMould/index.vue')['default']
-    DargSelect: typeof import('./components/dargSelect/index.vue')['default']
+    DargSelect: typeof import('./components/DargSelect/index.vue')['default']
     ECharts: typeof import('./components/ECharts/index.vue')['default']
     FlopTime: typeof import('./components/FlopTime/index.vue')['default']
     Loading: typeof import('./components/Loading/index.vue')['default']

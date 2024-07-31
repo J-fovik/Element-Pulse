@@ -26,7 +26,7 @@ const dragSelect = ref(null);
 // 排序
 const setSort = () => {
 	const el = dragSelect.value.$el.querySelectorAll('.el-select__tags > span')[0];
-	const sortable = Sortable.create(el, {
+	Sortable.create(el, {
 		ghostClass: 'sortable-ghost',
 		setData: function (dataTransfer) {
 			dataTransfer.setData('Text', '');

@@ -31,20 +31,7 @@ export const initDynamicRouter = async () => {
 			return Promise.reject('No permission');
 		}
 		// 添加动态路由
-		authStore.flatMenuListGet.forEach((item) => {
-			// 存在children并删除
-			item.children && delete item.children;
-			// 处理组件模块
-			if (item.component && typeof item.component == 'string') {
-				item.component = modules['/src/views' + item.component + '.vue'];
-			}
-			// 根据isFull添加路由
-			if (item.meta.isFull) {
-				router.addRoute(item as unknown as RouteRecordRaw);
-			} else {
-				router.addRoute('layout', item as unknown as RouteRecordRaw);
-			}
-		});
+		await setAddRoute();
 		// 当用户信息 || 按钮 || 菜单 返回new promise实例请求出错时执行
 	} catch (error) {
 		// 清空Token
@@ -53,4 +40,23 @@ export const initDynamicRouter = async () => {
 		router.replace(LOGIN_URL);
 		return Promise.reject(error);
 	}
+};
+// 添加动态路由
+const setAddRoute = () => {
+	const authStore = useAuthStore();
+	// 添加动态路由
+	authStore.flatMenuListGet.forEach((item) => {
+		// 存在children并删除
+		item.children && delete item.children;
+		// 处理组件模块
+		if (item.component && typeof item.component == 'string') {
+			item.component = modules['/src/views' + item.component + '.vue'];
+		}
+		// 根据isFull添加路由
+		if (item.meta.isFull) {
+			router.addRoute(item as unknown as RouteRecordRaw);
+		} else {
+			router.addRoute('layout', item as unknown as RouteRecordRaw);
+		}
+	});
 };

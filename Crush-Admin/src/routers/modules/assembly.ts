@@ -84,12 +84,12 @@ export default {
 			},
 		},
 		{
-			path: '/assembly/draggable',
-			name: 'draggable',
-			component: '/assembly/draggable/index',
+			path: '/assembly/dargSelect',
+			name: 'dargSelect',
+			component: '/assembly/dargSelect/index',
 			meta: {
 				icon: 'Menu',
-				title: '拖拽组件',
+				title: '拖拽下拉框',
 				isLink: '',
 				isHide: false,
 				isFull: false,

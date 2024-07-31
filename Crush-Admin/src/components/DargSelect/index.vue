@@ -4,7 +4,7 @@
 	</el-select>
 </template>
 
-<script setup name="DargSelect">
+<script setup lang="ts" name="DargSelect">
 import Sortable from 'sortablejs';
 // 接受父组件参数
 const props = defineProps({
@@ -21,17 +21,17 @@ const selectVal = computed({
 	set: (val) => emit('update:modelValue', [...val]),
 });
 // 排序下拉框实例
-const dragSelect = ref(null);
+const dragSelect = ref();
 
 // 排序
 const setSort = () => {
-	const el = dragSelect.value.$el.querySelectorAll('.el-select__tags > span')[0];
-	const sortable = Sortable.create(el, {
+	const el = dragSelect.value.$el.querySelectorAll('.el-select__selection')[0];
+	Sortable.create(el, {
 		ghostClass: 'sortable-ghost',
 		setData: function (dataTransfer) {
 			dataTransfer.setData('Text', '');
 		},
-		onEnd: (evt) => {
+		onEnd: (evt: any) => {
 			const targetRow = props.modelValue.splice(evt.oldIndex, 1)[0];
 			props.modelValue.splice(evt.newIndex, 0, targetRow);
 			emit('update:modelValue', props.modelValue);

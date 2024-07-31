@@ -1,6 +1,5 @@
 <template>
-	<div class="card items-start">
-		<span class="w-full text-center"> 按钮权限 🍓🍇🍈🍉</span>
+	<Content>
 		<el-alert
 			class="mb20"
 			:title="`当前用户按钮权限：${JSON.stringify(Object.keys(BUTTONS))}`"
@@ -66,7 +65,7 @@
 				导出数据
 			</el-button>
 		</el-row>
-	</div>
+	</Content>
 </template>
 
 <script setup lang="ts" name="authButton">
