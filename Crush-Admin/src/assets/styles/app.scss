@@ -94,10 +94,6 @@ body,
 	overflow: hidden;
 }
 
-.flex-margin {
-	margin: auto;
-}
-
 .flex-row {
 	flex-direction: row;
 }
@@ -176,7 +172,9 @@ body,
 	font-size: 70%;
 	margin-right: 4rpx;
 }
-
+.margin-auto {
+	margin: auto;
+}
 /* 清空浮动 */
 .clearfix::after {
 	display: block;

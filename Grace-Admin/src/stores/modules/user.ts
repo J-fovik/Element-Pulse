@@ -2,7 +2,7 @@ import { defineStore } from 'pinia';
 import jsCookie from 'js-cookie';
 import { curryingRequest } from '@/hooks';
 import { getAuthButtonListApi, getAuthMenuListApi } from '@/api/modules/login';
-import { formatRoutes, getShowMenuList, getAllBreadcrumbList } from '@/utils/menu';
+import { getFlatMenuList, getShowMenuList, getAllBreadcrumbList } from '@/utils/menu';
 import { newModules } from '@/routers/base';
 
 export const useUserStore = defineStore('user', () => {
@@ -38,7 +38,7 @@ export const useUserStore = defineStore('user', () => {
 
 	// 菜单权限列表 ==> 扁平化之后的一维数组菜单，支持多级
 	const flatMenuListGet = () => {
-		return formatRoutes(authMenuList.value);
+		return getFlatMenuList(authMenuList.value);
 	};
 
 	// 递归处理后的所有面包屑导航列表

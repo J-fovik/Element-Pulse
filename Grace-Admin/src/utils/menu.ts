@@ -12,32 +12,13 @@ export function getShowMenuList(menuList: Menu.MenuOptions[]) {
 		return !item.meta?.isHide;
 	});
 }
-/**
- * @description 定义一个递归函数来收集所有路由的name
- * @param {Array} Array 路由列表
- * @returns {Array}
- * */
-export function collectAllRouteNames(Array: any): string[] {
-	let names: string[] = [];
-	Array.forEach((route) => {
-		// 如果路由有name属性，则添加到names数组中
-		if (route.name) {
-			names.push(route.name);
-		}
-		// 如果路由有children属性，递归收集子路由的name
-		if (route.children) {
-			names = names.concat(collectAllRouteNames(route.children));
-		}
-	});
 
-	return names;
-}
 /**
  * @description 使用递归处理扁平化菜单 支持多级
  * @param {Array} routes 菜单列表
  * @returns {Array}
  * */
-export const formatRoutes = (routes: any) => {
+export const getFlatMenuList = (routes: any) => {
 	const flattenRoutes = (routeList: any) => {
 		return routeList.reduce((acc: RouteRecordNormalized[], route: any) => {
 			const { children, ...routeWithoutChildren } = route;
@@ -71,18 +52,25 @@ export const getAllBreadcrumbList = (
 };
 
 /**
- * @description 使用递归扁平化菜单，方便添加动态路由(该函数暂未使用)
- * @param {Array} menuList 菜单列表
+ * @description 定义一个递归函数来收集所有路由的name
+ * @param {Array} Array 路由列表
  * @returns {Array}
- */
-export function getFlatMenuList(menuList: any): any {
-	let newMenuList: any = JSON.parse(JSON.stringify(menuList));
-	return newMenuList.flatMap((item) => [
-		item,
-		...(item.children ? getFlatMenuList(item.children) : []),
-	]);
-}
+ * */
+export function collectAllRouteNames(Array: any): string[] {
+	let names: string[] = [];
+	Array.forEach((route) => {
+		// 如果路由有name属性，则添加到names数组中
+		if (route.name) {
+			names.push(route.name);
+		}
+		// 如果路由有children属性，递归收集子路由的name
+		if (route.children) {
+			names = names.concat(collectAllRouteNames(route.children));
+		}
+	});
 
+	return names;
+}
 /**
  * @description 使用递归过滤需要缓存的菜单 name (该函数暂未使用)
  * @param {Array} menuList 所有菜单列表

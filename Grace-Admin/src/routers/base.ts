@@ -1,4 +1,4 @@
-import { formatRoutes } from '@/utils/menu';
+import { getFlatMenuList } from '@/utils/menu';
 
 // 模块
 const modules = import.meta.glob('./modules/*.ts', { eager: true });
@@ -8,4 +8,4 @@ export const newModules = Object.keys(modules).map((key) => {
 });
 
 // 返回模块路由
-export const appRoutes = formatRoutes(newModules);
+export const appRoutes = getFlatMenuList(newModules);

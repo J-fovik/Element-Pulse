@@ -91,6 +91,7 @@ const routerMode = {
  * @param meta ==> 路由菜单元信息
  * @param meta.icon ==> 菜单和面包屑对应的图标
  * @param meta.title ==> 路由标题 (用作 document.title || 菜单的名称)
+ * @param meta.order ==> 排序
  * @param meta.requiresAuth ==> 是否需要认证
  * @param meta.activeMenu ==> 当前路由为详情页时，需要高亮的菜单*保证返回上级路由*
  * @param meta.isLink ==> 路由外链时填写的访问地址

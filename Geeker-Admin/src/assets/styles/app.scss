@@ -94,10 +94,6 @@ body,
 	overflow: hidden;
 }
 
-.flex-margin {
-	margin: auto;
-}
-
 .flex-row {
 	flex-direction: row;
 }
@@ -167,6 +163,7 @@ body,
 .h-full {
 	height: 100%;
 }
+
 /* 价格设置 */
 .text-red {
 	color: red;
@@ -185,7 +182,9 @@ body,
 	clear: both;
 	content: '';
 }
-
+.margin-auto {
+	margin: auto;
+}
 /* 文字单行省略号 */
 .sle {
 	overflow: hidden;
