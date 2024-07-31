@@ -41,40 +41,43 @@
 
 ## 路由配置
 
+```
+
 /** 路由参数简介 \*/
 interface RouteRecordRaw {
-—— /** 路由访问路径 _/
-—— path: string;
-—— /\*\* 路由 name (对应页面组件 name, 可用作 KeepAlive 缓存标识 && 按钮权限筛选) _/
-—— name: string;
-—— /** 路由重定向地址 \*/
-—— redirect: string;
-—— /** 视图文件路径 _/
-—— component: string | (() => Promise<unknown>);
-—— /\*\* 路由元信息 _/
-—— meta: {
-———— /** 菜单和面包屑对应的图标 \*/
-———— icon: string;
-———— /** 路由标题 (用作 document.title || 菜单的名称) _/
-———— title: string;
-———— /\*\* 排序 _/
-———— order: number;
-———— /\*\* 是否在菜单中隐藏, 需要高亮的 path (通常用作详情页高亮父级菜单) _/
-———— activeMenu: string;
-———— /** 路由外链时填写的访问地址 \*/
-———— isLink: string;
-———— /** 是否在菜单中隐藏 (通常列表详情页需要隐藏) _/
-———— isHide: boolean;
-———— /\*\* 菜单是否全屏 (示例：数据大屏页面) \_/
-———— isFull: boolean;
-———— /** 菜单是否固定在标签页中 (首页通常是固定项) \*/
-———— isAffix: boolean;
-———— /** 当前路由是否缓存 \_/
-———— isKeepAlive: boolean;
-—— };
-—— /\*\* 多级路由嵌套 \_/
-—— children: RouteRecordRaw[];
+   /** 路由访问路径 _/
+   path: string;
+   /\*\* 路由 name (对应页面组件 name, 可用作 KeepAlive 缓存标识 && 按钮权限筛选) _/
+   name: string;
+   /** 路由重定向地址 \*/
+   redirect: string;
+   /** 视图文件路径 _/
+   component: string | (() => Promise<unknown>);
+   /\*\* 路由元信息 _/
+   meta: {
+        /** 菜单和面包屑对应的图标 \*/
+        icon: string;
+        /** 路由标题 (用作 document.title || 菜单的名称) _/
+        title: string;
+        /\*\* 排序 _/
+        order: number;
+        /\*\* 是否在菜单中隐藏, 需要高亮的 path (通常用作详情页高亮父级菜单) _/
+        activeMenu: string;
+        /** 路由外链时填写的访问地址 \*/
+        isLink: string;
+        /** 是否在菜单中隐藏 (通常列表详情页需要隐藏) _/
+        isHide: boolean;
+        /\*\* 菜单是否全屏 (示例：数据大屏页面) \_/
+        isFull: boolean;
+        /** 菜单是否固定在标签页中 (首页通常是固定项) \*/
+        isAffix: boolean;
+        /** 当前路由是否缓存 \_/
+        isKeepAlive: boolean;
+   };
+   /\*\* 多级路由嵌套 \_/
+   children: RouteRecordRaw[];
 }
+```
 
 ### 校验、格式化代码：
 
