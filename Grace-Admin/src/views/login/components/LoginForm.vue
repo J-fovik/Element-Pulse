@@ -45,7 +45,7 @@ import md5 from 'md5';
 import jsCookie from 'js-cookie';
 import type { FormInstance } from 'element-plus';
 import { ElNotification } from 'element-plus';
-import { HOME_URL, PROJECT_NAME } from '@/config';
+import { HOME_URL } from '@/config';
 import { getTimeState } from '@/utils';
 import { loginApi } from '@/api/modules/login';
 import { useUserStore } from '@/stores/modules/user';
@@ -53,6 +53,9 @@ import { useTabsStore } from '@/stores/modules/tabs';
 import { useKeepAliveStore } from '@/stores/modules/keepAlive';
 import { CircleClose, UserFilled } from '@element-plus/icons-vue';
 import { useForm, useBasicsState, curryingRequest } from '@/hooks';
+// 项目名称
+const APP_TITLE = import.meta.env.VITE_GLOB_APP_TITLE;
+
 // form
 const { form, formRef, resetForm } = useForm<any>(() => ({
 	username: '',
@@ -99,7 +102,7 @@ const login = (formEl: FormInstance | undefined) => {
 			router.push(HOME_URL);
 			ElNotification({
 				title: getTimeState(),
-				message: `欢迎登录 ${PROJECT_NAME}`,
+				message: `欢迎登录 ${APP_TITLE}`,
 				type: 'success',
 				duration: 3000,
 			});

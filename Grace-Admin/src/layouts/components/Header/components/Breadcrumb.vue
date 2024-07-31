@@ -36,7 +36,7 @@ const globalStore = useGlobalStore();
 // 面包屑数组
 const breadcrumbList = computed(() => {
 	let breadcrumbData =
-		userStore.breadcrumbListGet[route.matched[route.matched.length - 1].path] ?? [];
+		userStore.breadcrumbListGet()[route.matched[route.matched.length - 1].path] ?? [];
 	// 🙅‍♀️不需要首页面包屑可删除以下判断
 	if (breadcrumbData.length !== 0 && breadcrumbData[0].path !== HOME_URL) {
 		breadcrumbData = [

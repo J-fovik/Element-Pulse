@@ -5,7 +5,7 @@
 			<div class="header-lf mask-image">
 				<div class="logo flx-center">
 					<Logo />
-					<span class="logo-text">{{ title }}</span>
+					<span class="logo-text">{{ APP_TITLE }}</span>
 				</div>
 				<ToolBarLeft />
 			</div>
@@ -48,7 +48,7 @@ import ToolBarLeft from '@/layouts/components/Header/ToolBarLeft.vue';
 import ToolBarRight from '@/layouts/components/Header/ToolBarRight.vue';
 
 // LOGO标题
-const title = import.meta.env.VITE_GLOB_APP_TITLE;
+const APP_TITLE = import.meta.env.VITE_GLOB_APP_TITLE;
 
 const route = useRoute();
 const userStore = useUserStore();

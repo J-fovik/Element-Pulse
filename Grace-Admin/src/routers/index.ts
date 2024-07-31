@@ -38,6 +38,15 @@ const staticRouter: RouteRecordRaw[] = [
 			requiresAuth: true,
 		},
 	},
+	// 全屏页面
+	{
+		path: '/dataScreen',
+		name: 'dataScreen',
+		meta: {
+			requiresAuth: true,
+		},
+		component: () => import('@/views/dataScreen/index.vue'),
+	},
 ];
 
 /**
@@ -115,8 +124,8 @@ router.beforeEach(async (to) => {
 	NProgress.start();
 
 	// 2.动态设置标题
-	const title = import.meta.env.VITE_GLOB_APP_TITLE;
-	document.title = to.meta.title ? `${to.meta.title} - ${title}` : title;
+	const APP_TITLE = import.meta.env.VITE_GLOB_APP_TITLE;
+	document.title = to.meta.title ? `${to.meta.title} - ${APP_TITLE}` : APP_TITLE;
 	// 查询用户信息
 	const userStore = useUserStore();
 	// 用户cookie

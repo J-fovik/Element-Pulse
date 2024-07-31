@@ -5,7 +5,7 @@
 			<div class="aside-box" :style="{ width: isCollapse ? '65px' : '210px' }">
 				<div class="logo flx-center">
 					<Logo />
-					<span v-show="!isCollapse" class="logo-text">{{ title }}</span>
+					<span v-show="!isCollapse" class="logo-text">{{ APP_TITLE }}</span>
 				</div>
 				<el-scrollbar>
 					<el-menu
@@ -41,7 +41,7 @@ import ToolBarLeft from '@/layouts/components/Header/ToolBarLeft.vue';
 import ToolBarRight from '@/layouts/components/Header/ToolBarRight.vue';
 import SubMenu from '@/layouts/components/Menu/SubMenu.vue';
 // LOGO标题
-const title = import.meta.env.VITE_GLOB_APP_TITLE;
+const APP_TITLE = import.meta.env.VITE_GLOB_APP_TITLE;
 
 const route = useRoute();
 const userStore = useUserStore();

@@ -4,7 +4,7 @@ import { curryingRequest } from '@/hooks';
 import { getAuthButtonListApi, getAuthMenuListApi } from '@/api/modules/login';
 import { getFlatMenuList, getShowMenuList, getAllBreadcrumbList } from '@/utils/menu';
 import { newModules } from '@/routers/base';
-
+import { BY_NAME } from '@/config';
 export const useUserStore = defineStore('user', () => {
 	// 用户信息
 	const userInfo = ref({} as any);
@@ -62,7 +62,7 @@ export const useUserStore = defineStore('user', () => {
 		// 设置用户信息
 		setUserInfo({
 			...userInfo,
-			name: 'geeker',
+			name: BY_NAME,
 		});
 		// 获取成功
 		return true;

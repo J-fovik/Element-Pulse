@@ -32,7 +32,7 @@
 		>
 			<div class="logo flx-center">
 				<span v-show="subMenuList.length" class="logo-text">{{
-					isCollapse ? 'G' : title
+					isCollapse ? 'G' : APP_TITLE
 				}}</span>
 			</div>
 			<el-scrollbar>
@@ -68,7 +68,7 @@ import ToolBarLeft from '@/layouts/components/Header/ToolBarLeft.vue';
 import ToolBarRight from '@/layouts/components/Header/ToolBarRight.vue';
 import SubMenu from '@/layouts/components/Menu/SubMenu.vue';
 // LOGO标题
-const title = import.meta.env.VITE_GLOB_APP_TITLE;
+const APP_TITLE = import.meta.env.VITE_GLOB_APP_TITLE;
 
 const route = useRoute();
 const router = useRouter();

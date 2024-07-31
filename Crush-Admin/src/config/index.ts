@@ -1,7 +1,7 @@
 //  全局默认配置项
 
-// 项目名称
-export const PROJECT_NAME: string = 'Crush Admin';
+// BY-NAME
+export const BY_NAME: string = 'Crush';
 
 // 首页地址（默认）
 export const HOME_URL: string = '/home';

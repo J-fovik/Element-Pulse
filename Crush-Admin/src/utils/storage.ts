@@ -1,4 +1,4 @@
-import { PROJECT_NAME } from '@/config';
+const APP_TITLE = import.meta.env.VITE_GLOB_APP_TITLE;
 /**
  * window.localStorage 浏览器永久缓存
  * @method set 设置永久缓存
@@ -9,7 +9,7 @@ import { PROJECT_NAME } from '@/config';
 export const Local = {
 	setKey(key: string) {
 		// @ts-ignore
-		return `${PROJECT_NAME}-${key}`;
+		return `${APP_TITLE}-${key}`;
 	},
 	// 设置永久缓存
 	set<T>(key: string, val: T) {

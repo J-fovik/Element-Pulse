@@ -44,7 +44,7 @@
 import md5 from 'md5';
 import type { FormInstance } from 'element-plus';
 import { toast } from '@/utils/elementPlus';
-import { HOME_URL, PROJECT_NAME } from '@/config';
+import { HOME_URL } from '@/config';
 import { getTimeState } from '@/utils';
 import { loginApi } from '@/api/modules/login';
 import { useUserStore } from '@/stores/modules/user';
@@ -53,6 +53,8 @@ import { useKeepAliveStore } from '@/stores/modules/keepAlive';
 import { initDynamicRouter } from '@/routers/dynamicRouter';
 import { CircleClose, UserFilled } from '@element-plus/icons-vue';
 import { useForm, useBasicsState, curryingRequest } from '@/hooks';
+const APP_TITLE = import.meta.env.VITE_GLOB_APP_TITLE;
+
 // form
 const { form, formRef, resetForm } = useForm<any>(() => ({
 	username: '',
@@ -97,7 +99,7 @@ const login = (formEl: FormInstance | undefined) => {
 		// 跳转首页
 		router.push(HOME_URL);
 		// 欢迎登录提示
-		toast(`欢迎登录 ${PROJECT_NAME}`, 'success', getTimeState());
+		toast(`欢迎登录 ${APP_TITLE}`, 'success', getTimeState());
 	});
 };
 // 监听回车事件

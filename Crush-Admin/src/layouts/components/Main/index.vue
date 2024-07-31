@@ -9,7 +9,7 @@
 		<el-watermark
 			id="watermark"
 			:font="watermarkFont"
-			:content="isWatermark ? ['Crush Admin', 'Happy Working'] : ''"
+			:content="isWatermark ? [APP_TITLE, 'Happy Working'] : ''"
 		>
 			<!-- BackTop 返回顶部 -->
 			<el-backtop target=".el-main" :bottom="50"></el-backtop>
@@ -40,6 +40,7 @@ import { useKeepAliveStore } from '@/stores/modules/keepAlive';
 import Maximize from './components/Maximize.vue';
 import Tabs from '@/layouts/components/Tabs/index.vue';
 import Footer from '@/layouts/components/Footer/index.vue';
+const APP_TITLE = import.meta.env.VITE_GLOB_APP_TITLE;
 
 const globalStore = useGlobalStore();
 const { maximize, isCollapse, layout, tabs, footer, isWatermark, isDark } =
