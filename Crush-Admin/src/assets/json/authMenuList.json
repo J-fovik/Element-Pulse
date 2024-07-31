@@ -239,7 +239,7 @@
 			"name": "function",
 			"redirect": "/function/guide",
 			"meta": {
-				"icon": "Briefcase",
+				"icon": "Coin",
 				"title": "功能插件",
 				"isLink": "",
 				"isHide": false,

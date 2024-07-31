@@ -35,7 +35,7 @@ export const useAuthStore = defineStore({
 		// 获取菜单权限
 		async getAuthMenuList() {
 			const { data } = await getAuthMenuListApi();
-			this.authMenuList = appRoutes.sort((a: any, b: any) => a.meta.order - b.meta.order);
+			this.authMenuList = data; //appRoutes.sort((a: any, b: any) => a.meta.order - b.meta.order);
 		},
 		// 设置当前路由名称
 		async setRouteName(name: string) {

@@ -16,6 +16,8 @@ export const initDynamicRouter = async () => {
 	try {
 		// 无 token 停止执行下一步
 		if (!userStore.token) return false;
+		console.log(222);
+		console.log(333);
 		// 获取用户信息 && 获取菜单列表 && 按钮权限列表
 		await userStore.getUserInfo();
 		await authStore.getAuthMenuList();
