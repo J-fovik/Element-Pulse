@@ -3,7 +3,7 @@
 	<el-container class="layout">
 		<el-header>
 			<div class="logo flx-center">
-				<img class="logo-img" src="@/assets/svgIcons/logo.svg" alt="logo" />
+				<Logo />
 				<span class="logo-text">{{ title }}</span>
 			</div>
 			<el-menu mode="horizontal" :router="false" :default-active="activeMenu">
@@ -46,6 +46,7 @@
 <script setup lang="ts" name="LayoutTransverse">
 import { useUserStore } from '@/stores/modules/user';
 import Main from '@/layouts/components/Main/index.vue';
+import Logo from '@/layouts/components/Logo/index.vue';
 import ToolBarRight from '@/layouts/components/Header/ToolBarRight.vue';
 import SubMenu from '@/layouts/components/Menu/SubMenu.vue';
 
@@ -85,16 +86,12 @@ const handleClickMenu = (subItem: Menu.MenuOptions) => {
 		.logo {
 			width: 210px;
 			margin-right: 30px;
-			.logo-img {
-				width: 28px;
-				margin-right: 6px;
-				object-fit: contain;
-			}
 			.logo-text {
 				font-size: 21.5px;
 				font-weight: bold;
 				color: var(--el-header-logo-text-color);
 				white-space: nowrap;
+				margin-left: 6px;
 			}
 		}
 		.el-menu {

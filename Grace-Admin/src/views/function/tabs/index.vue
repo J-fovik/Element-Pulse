@@ -119,6 +119,6 @@ const closeAllTab = () => {
 
 // 打开详情页
 const handleToDetail = (id: string) => {
-	router.push(`/assembly/tabs/detail/${id}`);
+	router.push(`/function/tabs/detail/${id}`);
 };
 </script>

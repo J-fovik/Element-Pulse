@@ -1,7 +1,7 @@
 export default {
 	path: '/assembly',
 	name: 'assembly',
-	redirect: '/assembly/guide',
+	redirect: '/assembly/selectIcon',
 	meta: {
 		icon: 'Briefcase',
 		order: 5,
@@ -14,54 +14,6 @@ export default {
 		isKeepAlive: true,
 	},
 	children: [
-		{
-			path: '/assembly/guide',
-			name: 'guide',
-			meta: {
-				icon: 'Menu',
-				requiresAuth: true,
-				title: '引导页',
-				isLink: '',
-				isHide: false,
-				isFull: false,
-				isAffix: false,
-				isKeepAlive: true,
-			},
-			component: () => import('@/views/assembly/guide/index.vue'),
-		},
-		{
-			path: '/assembly/tabs',
-			name: 'tabs',
-			meta: {
-				icon: 'Menu',
-				requiresAuth: true,
-				title: '标签页操作',
-				isLink: '',
-				isHide: false,
-				isFull: false,
-				isAffix: false,
-				isKeepAlive: true,
-			},
-			children: [
-				{
-					path: '/assembly/tabs/detail/:id',
-					name: 'tabsDetail',
-					meta: {
-						icon: 'Menu',
-						requiresAuth: true,
-						title: 'Tab 详情',
-						activeMenu: '/assembly/tabs',
-						isLink: '',
-						isHide: true,
-						isFull: false,
-						isAffix: false,
-						isKeepAlive: true,
-					},
-					component: () => import('@/views/assembly/tabs/detail.vue'),
-				},
-			],
-			component: () => import('@/views/assembly/tabs/index.vue'),
-		},
 		{
 			path: '/assembly/selectIcon',
 			name: 'selectIcon',
@@ -136,21 +88,6 @@ export default {
 				isKeepAlive: true,
 			},
 			component: () => import('@/views/assembly/wangEditor/index.vue'),
-		},
-		{
-			path: '/assembly/draggable',
-			name: 'draggable',
-			meta: {
-				icon: 'Menu',
-				requiresAuth: true,
-				title: '拖拽组件',
-				isLink: '',
-				isHide: false,
-				isFull: false,
-				isAffix: false,
-				isKeepAlive: true,
-			},
-			component: () => import('@/views/assembly/draggable/index.vue'),
 		},
 	],
 };

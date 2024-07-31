@@ -140,7 +140,6 @@ router.beforeEach(async (to) => {
 		}
 		// 权限控制
 		if (!collectAllRouteNames(userStore.authMenuList)?.includes(to.name as any)) {
-			console.log(111, !to.meta);
 			// 详情页面不做权限处理;
 			if (!to.meta.activeMenu) {
 				return {
