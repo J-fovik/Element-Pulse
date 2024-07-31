@@ -42,7 +42,6 @@
 ## 路由配置
 
 ```
-
 /** 路由参数简介 \*/
 interface RouteRecordRaw {
    /** 路由访问路径 _/
