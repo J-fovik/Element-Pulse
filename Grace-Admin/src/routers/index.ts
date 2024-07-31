@@ -91,6 +91,7 @@ const routerMode = {
  * @param meta ==> 路由菜单元信息
  * @param meta.icon ==> 菜单和面包屑对应的图标
  * @param meta.title ==> 路由标题 (用作 document.title || 菜单的名称)
+ * @param meta.requiresAuth ==> 是否需要认证
  * @param meta.activeMenu ==> 当前路由为详情页时，需要高亮的菜单*保证返回上级路由*
  * @param meta.isLink ==> 路由外链时填写的访问地址
  * @param meta.isHide ==> 是否在菜单中隐藏 (通常列表详情页需要隐藏)
@@ -119,7 +120,7 @@ router.beforeEach(async (to) => {
 	const userStore = useUserStore();
 	// 用户cookie
 	const userToken = jsCookie.get('userToken');
-	// 跳转页面是否需要token
+	// 是否需要认证
 	if (to.meta.requiresAuth) {
 		// // 判断token
 		if (userToken) {
@@ -139,8 +140,9 @@ router.beforeEach(async (to) => {
 		}
 		// 权限控制
 		if (!collectAllRouteNames(userStore.authMenuList)?.includes(to.name as any)) {
+			console.log(111, !to.meta);
 			// 详情页面不做权限处理;
-			if (!to.meta.superiorName) {
+			if (!to.meta.activeMenu) {
 				return {
 					path: '/403',
 					query: { redirect: to.fullPath },

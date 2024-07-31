@@ -12,6 +12,7 @@
 				"isHide": false,
 				"isFull": false,
 				"isAffix": true,
+				"requiresAuth": true,
 				"isKeepAlive": true
 			}
 		},
@@ -26,6 +27,7 @@
 				"isHide": false,
 				"isFull": true,
 				"isAffix": false,
+				"requiresAuth": true,
 				"isKeepAlive": true
 			}
 		},
@@ -40,6 +42,7 @@
 				"isHide": false,
 				"isFull": false,
 				"isAffix": false,
+				"requiresAuth": true,
 				"isKeepAlive": true
 			},
 			"children": [
@@ -54,6 +57,7 @@
 						"isHide": false,
 						"isFull": false,
 						"isAffix": false,
+						"requiresAuth": true,
 						"isKeepAlive": true
 					},
 					"children": [
@@ -69,6 +73,7 @@
 								"isHide": true,
 								"isFull": false,
 								"isAffix": false,
+								"requiresAuth": true,
 								"isKeepAlive": true
 							}
 						}
@@ -85,6 +90,7 @@
 						"isHide": false,
 						"isFull": false,
 						"isAffix": false,
+						"requiresAuth": true,
 						"isKeepAlive": true
 					}
 				}
@@ -101,6 +107,7 @@
 				"isHide": false,
 				"isFull": false,
 				"isAffix": false,
+				"requiresAuth": true,
 				"isKeepAlive": true
 			},
 			"children": [
@@ -115,6 +122,7 @@
 						"isHide": false,
 						"isFull": false,
 						"isAffix": false,
+						"requiresAuth": true,
 						"isKeepAlive": true
 					}
 				},
@@ -129,6 +137,7 @@
 						"isHide": false,
 						"isFull": false,
 						"isAffix": false,
+						"requiresAuth": true,
 						"isKeepAlive": true
 					}
 				}
@@ -145,6 +154,7 @@
 				"isHide": false,
 				"isFull": false,
 				"isAffix": false,
+				"requiresAuth": true,
 				"isKeepAlive": true
 			},
 			"children": [
@@ -159,6 +169,7 @@
 						"isHide": false,
 						"isFull": false,
 						"isAffix": false,
+						"requiresAuth": true,
 						"isKeepAlive": true
 					}
 				},
@@ -173,6 +184,7 @@
 						"isHide": false,
 						"isFull": false,
 						"isAffix": false,
+						"requiresAuth": true,
 						"isKeepAlive": true
 					},
 					"children": [
@@ -188,6 +200,7 @@
 								"isHide": true,
 								"isFull": false,
 								"isAffix": false,
+								"requiresAuth": true,
 								"isKeepAlive": true
 							}
 						}
@@ -204,6 +217,7 @@
 						"isHide": false,
 						"isFull": false,
 						"isAffix": false,
+						"requiresAuth": true,
 						"isKeepAlive": true
 					}
 				},
@@ -218,6 +232,7 @@
 						"isHide": false,
 						"isFull": false,
 						"isAffix": false,
+						"requiresAuth": true,
 						"isKeepAlive": true
 					}
 				},
@@ -232,6 +247,7 @@
 						"isHide": false,
 						"isFull": false,
 						"isAffix": false,
+						"requiresAuth": true,
 						"isKeepAlive": true
 					}
 				},
@@ -246,6 +262,7 @@
 						"isHide": false,
 						"isFull": false,
 						"isAffix": false,
+						"requiresAuth": true,
 						"isKeepAlive": true
 					}
 				},
@@ -260,6 +277,7 @@
 						"isHide": false,
 						"isFull": false,
 						"isAffix": false,
+						"requiresAuth": true,
 						"isKeepAlive": true
 					}
 				},
@@ -274,6 +292,7 @@
 						"isHide": false,
 						"isFull": false,
 						"isAffix": false,
+						"requiresAuth": true,
 						"isKeepAlive": true
 					}
 				}
@@ -290,6 +309,7 @@
 				"isHide": false,
 				"isFull": false,
 				"isAffix": false,
+				"requiresAuth": true,
 				"isKeepAlive": true
 			},
 			"children": [
@@ -304,6 +324,7 @@
 						"isHide": false,
 						"isFull": false,
 						"isAffix": false,
+						"requiresAuth": true,
 						"isKeepAlive": true
 					}
 				},
@@ -318,6 +339,7 @@
 						"isHide": false,
 						"isFull": false,
 						"isAffix": false,
+						"requiresAuth": true,
 						"isKeepAlive": true
 					}
 				},
@@ -332,6 +354,7 @@
 						"isHide": false,
 						"isFull": false,
 						"isAffix": false,
+						"requiresAuth": true,
 						"isKeepAlive": true
 					}
 				},
@@ -346,6 +369,7 @@
 						"isHide": false,
 						"isFull": false,
 						"isAffix": false,
+						"requiresAuth": true,
 						"isKeepAlive": true
 					}
 				},
@@ -360,6 +384,7 @@
 						"isHide": false,
 						"isFull": false,
 						"isAffix": false,
+						"requiresAuth": true,
 						"isKeepAlive": true
 					}
 				},
@@ -374,6 +399,7 @@
 						"isHide": false,
 						"isFull": false,
 						"isAffix": false,
+						"requiresAuth": true,
 						"isKeepAlive": true
 					}
 				}
@@ -390,6 +416,7 @@
 				"isHide": false,
 				"isFull": false,
 				"isAffix": false,
+				"requiresAuth": true,
 				"isKeepAlive": true
 			},
 			"children": [
@@ -404,6 +431,7 @@
 						"isHide": false,
 						"isFull": false,
 						"isAffix": false,
+						"requiresAuth": true,
 						"isKeepAlive": true
 					}
 				},
@@ -418,6 +446,7 @@
 						"isHide": false,
 						"isFull": false,
 						"isAffix": false,
+						"requiresAuth": true,
 						"isKeepAlive": true
 					},
 					"children": [
@@ -432,6 +461,7 @@
 								"isHide": false,
 								"isFull": false,
 								"isAffix": false,
+								"requiresAuth": true,
 								"isKeepAlive": true
 							}
 						},
@@ -446,6 +476,7 @@
 								"isHide": false,
 								"isFull": false,
 								"isAffix": false,
+								"requiresAuth": true,
 								"isKeepAlive": true
 							},
 							"children": [
@@ -460,6 +491,7 @@
 										"isHide": false,
 										"isFull": false,
 										"isAffix": false,
+										"requiresAuth": true,
 										"isKeepAlive": true
 									}
 								},
@@ -474,6 +506,7 @@
 										"isHide": false,
 										"isFull": false,
 										"isAffix": false,
+										"requiresAuth": true,
 										"isKeepAlive": true
 									}
 								}
@@ -494,6 +527,7 @@
 				"isHide": false,
 				"isFull": false,
 				"isAffix": false,
+				"requiresAuth": true,
 				"isKeepAlive": true
 			},
 			"children": [
@@ -508,6 +542,7 @@
 						"isHide": false,
 						"isFull": false,
 						"isAffix": false,
+						"requiresAuth": true,
 						"isKeepAlive": true
 					}
 				},
@@ -522,6 +557,7 @@
 						"isHide": false,
 						"isFull": false,
 						"isAffix": false,
+						"requiresAuth": true,
 						"isKeepAlive": true
 					}
 				}
