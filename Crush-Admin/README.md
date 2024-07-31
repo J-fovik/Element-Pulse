@@ -81,15 +81,15 @@ interface RouteRecordRaw {
 ### 校验、格式化代码：
 
 ```
-    ##### eslint 检测代码
+    <!-- 检测代码 -->
 
     npm lint:eslint
 
-    ##### prettier 格式化代码
+    <!-- 格式化代码 -->
 
     npm lint:prettier
 
-    ##### stylelint 格式化样式
+    <!-- 格式化样式 -->
 
     npm lint:stylelint
 ```
