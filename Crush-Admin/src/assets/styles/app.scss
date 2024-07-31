@@ -172,9 +172,7 @@ body,
 	font-size: 70%;
 	margin-right: 4rpx;
 }
-.margin-auto {
-	margin: auto;
-}
+
 /* 清空浮动 */
 .clearfix::after {
 	display: block;
@@ -183,7 +181,9 @@ body,
 	clear: both;
 	content: '';
 }
-
+.margin-auto {
+	margin: auto;
+}
 /* 文字单行省略号 */
 .sle {
 	overflow: hidden;
