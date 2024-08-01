@@ -27,7 +27,7 @@ export default {
 				isAffix: false,
 				isKeepAlive: true,
 			},
-			component: () => import('@/views/link/outerChain/index.vue'),
+			component: () => import('@/views/link/embedded/index.vue'),
 		},
 		{
 			path: '/link/outerChain',

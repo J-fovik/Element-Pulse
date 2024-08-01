@@ -16,7 +16,7 @@ export default {
 		{
 			path: '/link/embedded',
 			name: 'embedded',
-			component: '/link/outerChain/index',
+			component: '/link/embedded/index',
 			meta: {
 				icon: 'Menu',
 				title: '内嵌',

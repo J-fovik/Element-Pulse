@@ -1,15 +1,21 @@
 <template>
-	<el-card>
-		<span class="text">
-			项目文档：
-			<a href="https://element-plus.org/zh-CN/component/icon.html" target="_blank"
-				>https://element-plus.org/zh-CN/component/icon.html</a
-			>
-			🍒🍉🍊
-		</span>
-	</el-card>
+	<div class="card container">
+		<iframe
+			src="https://element-plus.org/zh-CN/component/icon.html"
+			frameborder="0"
+			class="full-iframe"
+		></iframe>
+	</div>
 </template>
 
 <script setup lang="ts" name="embedded"></script>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+.full-iframe {
+	width: 100%;
+	height: 100%;
+}
+.card {
+	padding: 0 !important;
+}
+</style>

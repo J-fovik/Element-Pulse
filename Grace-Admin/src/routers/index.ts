@@ -120,10 +120,10 @@ const router = createRouter({
  * @description 路由拦截 beforeEach
  * */
 router.beforeEach(async (to) => {
-	// 1.NProgress 开始
+	// NProgress 开始
 	NProgress.start();
 
-	// 2.动态设置标题
+	// 动态设置标题
 	const APP_TITLE = import.meta.env.VITE_GLOB_APP_TITLE;
 	document.title = to.meta.title ? `${to.meta.title} - ${APP_TITLE}` : APP_TITLE;
 	// 查询用户信息
