@@ -20,7 +20,7 @@
 			:default-props="defaultProps"
 			@change="changeTreeFilterMany"
 		/>
-		<div class="descriptions-box card">
+		<div class="descriptions-box card ml10">
 			<span class="text"> 树形筛选器 🍓🍇🍈🍉</span>
 			<el-descriptions title="配置项 📚" :column="1" border>
 				<el-descriptions-item label="data"> 分类数据 </el-descriptions-item>
