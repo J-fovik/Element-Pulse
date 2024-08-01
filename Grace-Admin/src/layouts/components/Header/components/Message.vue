@@ -1,9 +1,15 @@
 <template>
 	<!-- 消息通知 -->
 	<div class="message">
-		<el-popover placement="bottom" :width="400" trigger="click" :persistent="false">
+		<el-popover
+			placement="bottom"
+			:visible="visible"
+			:width="400"
+			trigger="click"
+			:persistent="false"
+		>
 			<template #reference>
-				<el-badge :value="5" class="item" @click="clickMessage">
+				<el-badge :value="5" class="item" @click="togglePopover">
 					<i :class="'iconfont icon-xiaoxi'" class="toolBar-icon"></i>
 				</el-badge>
 			</template>
@@ -13,35 +19,35 @@
 						<div class="message-item">
 							<img src="@/assets/images/msg01.png" alt="" class="message-icon" />
 							<div class="message-content">
-								<span class="message-title">一键三连  🧡</span>
+								<span class="message-title">一键三连 🧡</span>
 								<span class="message-date">一分钟前</span>
 							</div>
 						</div>
 						<div class="message-item">
 							<img src="@/assets/images/msg02.png" alt="" class="message-icon" />
 							<div class="message-content">
-								<span class="message-title">一键三连  💙</span>
+								<span class="message-title">一键三连 💙</span>
 								<span class="message-date">一小时前</span>
 							</div>
 						</div>
 						<div class="message-item">
 							<img src="@/assets/images/msg03.png" alt="" class="message-icon" />
 							<div class="message-content">
-								<span class="message-title">一键三连  💚</span>
+								<span class="message-title">一键三连 💚</span>
 								<span class="message-date">半天前</span>
 							</div>
 						</div>
 						<div class="message-item">
 							<img src="@/assets/images/msg04.png" alt="" class="message-icon" />
 							<div class="message-content">
-								<span class="message-title">一键三连  💜</span>
+								<span class="message-title">一键三连 💜</span>
 								<span class="message-date">一星期前</span>
 							</div>
 						</div>
 						<div class="message-item">
 							<img src="@/assets/images/msg05.png" alt="" class="message-icon" />
 							<div class="message-content">
-								<span class="message-title">一键三连  💛</span>
+								<span class="message-title">一键三连 💛</span>
 								<span class="message-date">一个月前</span>
 							</div>
 						</div>
@@ -66,12 +72,17 @@
 
 <script setup lang="ts" name="Message">
 const activeName = ref('first');
+const visible = ref(false);
+// 获取消息列表
 const getMessageList = () => {
-	console.log(1);
+	console.log('获取列表');
 };
-// 点击消息
-const clickMessage = () => {
-	getMessageList();
+// 点击事件
+const togglePopover = () => {
+	visible.value = !visible.value;
+	if (visible.value) {
+		getMessageList();
+	}
 };
 </script>
 <style scoped lang="scss">
