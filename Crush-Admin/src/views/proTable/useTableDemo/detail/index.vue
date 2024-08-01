@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<Content>
+		<Container>
 			<el-form
 				ref="formRef"
 				:model="form"
@@ -67,7 +67,7 @@
 					</el-col>
 				</el-row>
 			</el-form>
-		</Content>
+		</Container>
 		<el-card class="footerCard flex justify-end items-end">
 			<el-space>
 				<el-button

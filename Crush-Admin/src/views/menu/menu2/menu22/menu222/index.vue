@@ -1,5 +1,5 @@
 <template>
-	<Content></Content>
+	<Container></Container>
 </template>
 
 <script setup lang="ts" name="menu222"></script>

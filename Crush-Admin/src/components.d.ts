@@ -10,7 +10,7 @@ declare module 'vue' {
     403: typeof import('./components/ErrorMessage/403.vue')['default']
     404: typeof import('./components/ErrorMessage/404.vue')['default']
     500: typeof import('./components/ErrorMessage/500.vue')['default']
-    Content: typeof import('./components/Content/index.vue')['default']
+    Container: typeof import('./components/Container/index.vue')['default']
     CustomTableMould: typeof import('./components/CustomTableMould/index.vue')['default']
     DargSelect: typeof import('./components/DargSelect/index.vue')['default']
     ECharts: typeof import('./components/ECharts/index.vue')['default']
