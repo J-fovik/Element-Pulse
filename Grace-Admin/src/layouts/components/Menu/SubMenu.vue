@@ -27,8 +27,13 @@ defineProps<{ menuList: Menu.MenuOptions[] }>();
 const router = useRouter();
 // 点击切换菜单
 const handleClickMenu = (subItem: Menu.MenuOptions) => {
-	if (subItem.meta.isLink) return window.open(subItem.meta.isLink, '_blank');
-	router.push(subItem.path);
+	// 如果有isLink，跳转路由并打开新页面
+	if (subItem.meta.isLink) {
+		router.push(subItem.path);
+		window.open(subItem.meta.isLink, '_blank');
+	} else {
+		router.push(subItem.path);
+	}
 };
 </script>
 
