@@ -22,7 +22,6 @@ declare module 'vue' {
     SelectIcon: typeof import('./components/SelectIcon/index.vue')['default']
     SvgIcon: typeof import('./components/SvgIcon/index.vue')['default']
     SwitchDark: typeof import('./components/SwitchDark/index.vue')['default']
-    TableColumn: typeof import('./components/ProTable/components/TableColumn.vue')['default']
     TablePlus: typeof import('./components/TablePlus/index.vue')['default']
     TreeSelector: typeof import('./components/TreeSelector/index.vue')['default']
     WangEditor: typeof import('./components/WangEditor/index.vue')['default']
