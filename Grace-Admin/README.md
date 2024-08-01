@@ -73,7 +73,7 @@ interface RouteRecordRaw {
         /** 当前路由是否缓存 \_/
         isKeepAlive: boolean;
         /** 是否需要认证 \_/
-        requiresAuth:boolean;
+        requiresAuth: boolean;
    };
    /\*\* 多级路由嵌套 \_/
    children: RouteRecordRaw[];
