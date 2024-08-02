@@ -1,8 +1,9 @@
 import { defineStore } from 'pinia';
 import { useTabsStore } from './tabs';
+import { BY_NAME } from '@/config';
 
 // 页签控制
-export const useJumpTabStore = defineStore('jumpTabStore', () => {
+export const useJumpTabStore = defineStore(`${BY_NAME}-jumpTab`, () => {
 	// 路由信息
 	const route = useRoute();
 	// 路由控制

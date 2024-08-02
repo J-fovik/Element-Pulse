@@ -9,8 +9,8 @@
 
 <script setup lang="ts" name="tabsDetail">
 import { useTabsStore } from '@/stores/modules/tabs';
-import { useTabStore } from '@/stores/modules/jumpTab';
-const { jumpTabName } = useTabStore();
+import { useJumpTabStore } from '@/stores/modules/jumpTab';
+const { jumpTabName } = useJumpTabStore();
 const route = useRoute();
 const tabStore = useTabsStore();
 tabStore.setTabsTitle(`No.${route.params.id} - ${route.meta.title}`);

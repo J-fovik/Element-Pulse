@@ -2,9 +2,10 @@ import { defineStore } from 'pinia';
 import { GlobalState } from '@/stores/interface';
 import { DEFAULT_PRIMARY } from '@/config';
 import piniaPersistConfig from '@/stores/helper/persist';
+import { BY_NAME } from '@/config';
 
 export const useGlobalStore = defineStore({
-	id: 'geeker-global',
+	id: `${BY_NAME}-global`,
 	// 修改默认值之后，需清除 localStorage 数据
 	state: (): GlobalState => ({
 		// 布局模式 (纵向：vertical | 经典：classic | 横向：transverse | 分栏：columns)
@@ -57,5 +58,5 @@ export const useGlobalStore = defineStore({
 			location.reload();
 		},
 	},
-	persist: piniaPersistConfig('geeker-global'),
+	persist: piniaPersistConfig(`${BY_NAME}-global`),
 });
