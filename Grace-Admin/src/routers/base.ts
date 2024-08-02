@@ -8,4 +8,6 @@ export const newModules = Object.keys(modules).map((key) => {
 });
 
 // 返回模块路由
-export const appRoutes = getFlatMenuList(newModules);
+export const appRoutes = getFlatMenuList(newModules).sort(
+	(a: any, b: any) => a.meta.order - b.meta.order
+);
