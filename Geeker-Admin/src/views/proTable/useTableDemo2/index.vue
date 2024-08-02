@@ -90,7 +90,7 @@
 						</el-switch>
 					</template>
 					<template #operate="{ row }">
-						<el-space>
+						<el-space spacer="|">
 							<el-button
 								type="success"
 								text

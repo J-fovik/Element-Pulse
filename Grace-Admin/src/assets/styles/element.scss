@@ -61,3 +61,8 @@
 		line-height: 30px;
 	}
 }
+// 时间日期选择器宽度
+.el-date-editor.el-input,
+.el-date-editor.el-input__wrapper {
+	width: 100% !important;
+}

@@ -23,23 +23,13 @@
 				</div>
 				<!-- 间隔线 -->
 				<div style="width: 1px; margin: 0 20px; background-color: #e5e6eb"></div>
-				<div class="flex items-center flex-col">
-					<div
-						class="flex items-center justify-center"
-						:class="collapsed ? 'flex-col marginStyle' : ''"
-					>
-						<el-button type="primary" :icon="Search" @click="emits('search')">
-							查询
-						</el-button>
-						<el-button
-							:class="collapsed ? 'marginStyle' : ''"
-							:icon="Delete"
-							@click="emits('resetSearch')"
-						>
-							重置
-						</el-button>
-					</div>
-				</div>
+				<!-- 查询重置按钮 -->
+				<el-space :direction="collapsed ? 'vertical' : 'horizontal'" size="large">
+					<el-button type="primary" :icon="Search" @click="emits('search')">
+						查询
+					</el-button>
+					<el-button :icon="Delete" @click="emits('resetSearch')"> 重置 </el-button>
+				</el-space>
 			</div>
 			<el-divider />
 		</template>
@@ -139,9 +129,5 @@ const emits = defineEmits(['resetSearch', 'search']);
 	height: 40px;
 	overflow: hidden;
 	flex: 1;
-}
-.marginStyle {
-	margin-top: 10px;
-	margin-left: 0px !important;
 }
 </style>
