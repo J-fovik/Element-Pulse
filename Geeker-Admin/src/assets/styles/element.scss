@@ -30,9 +30,16 @@
 .el-input__inner,
 .el-input__prefix {
 	padding: 10px !important;
+}
+.el-input__wrapper {
 	box-shadow: 0 0 0 1px var(--el-border-color) inset;
 	border-radius: var(--el-border-radius-base);
 }
+.el-input__inner:focus {
+	box-shadow: 0 0 0 1px var(--el-border-color) inset;
+	border-radius: var(--el-border-radius-base);
+}
+
 /* el-table 表头样式 */
 .el-table__header th {
 	font-weight: bold;
