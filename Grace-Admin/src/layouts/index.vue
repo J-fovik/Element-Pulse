@@ -6,7 +6,7 @@
 
 <script setup lang="ts" name="layouts">
 import { LayoutType } from '@/stores/interface';
-import { useGlobalStore } from '@/stores/modules/global';
+import { useGlobalStore } from '@/stores';
 import ThemeDrawer from './components/ThemeDrawer/index.vue';
 import LayoutVertical from './LayoutVertical/index.vue';
 import LayoutClassic from './LayoutClassic/index.vue';

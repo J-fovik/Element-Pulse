@@ -15,7 +15,7 @@
 <script setup lang="ts" name="authMenu">
 import { LOGIN_URL } from '@/config';
 import jsCookie from 'js-cookie';
-import { useUserStore } from '@/stores/modules/user';
+import { useUserStore } from '@/stores';
 import { Promotion } from '@element-plus/icons-vue';
 
 const router = useRouter();

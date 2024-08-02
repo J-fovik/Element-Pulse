@@ -1,8 +1,5 @@
-import { createPinia } from 'pinia';
-import piniaPluginPersistedstate from 'pinia-plugin-persistedstate';
-
-// 仓库持久化
-const pinia = createPinia();
-pinia.use(piniaPluginPersistedstate);
-
-export default pinia;
+export { useGlobalStore } from './modules/global';
+export { useJumpTabStore } from './modules/jumpTab';
+export { useKeepAliveStore } from './modules/keepAlive';
+export { useTabsStore } from './modules/tabs';
+export { useUserStore } from './modules/user';

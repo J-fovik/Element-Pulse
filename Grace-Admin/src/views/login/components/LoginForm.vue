@@ -48,9 +48,7 @@ import { ElNotification } from 'element-plus';
 import { HOME_URL } from '@/config';
 import { getTimeState } from '@/utils';
 import { loginApi } from '@/api/modules/login';
-import { useUserStore } from '@/stores/modules/user';
-import { useTabsStore } from '@/stores/modules/tabs';
-import { useKeepAliveStore } from '@/stores/modules/keepAlive';
+import { useKeepAliveStore, useTabsStore, useUserStore } from '@/stores';
 import { CircleClose, UserFilled } from '@element-plus/icons-vue';
 import { useForm, useBasicsState, curryingRequest } from '@/hooks';
 // 项目名称

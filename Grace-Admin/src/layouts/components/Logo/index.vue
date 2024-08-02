@@ -6,7 +6,7 @@
 	</div>
 </template>
 <script setup lang="ts" name="Logo">
-import { useGlobalStore } from '@/stores/modules/global';
+import { useGlobalStore } from '@/stores';
 const globalStore = useGlobalStore();
 // 主题
 const isDark = computed(() => globalStore.isDark);

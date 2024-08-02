@@ -13,7 +13,11 @@ import router from '@/routers';
 // 语言包
 import I18n from '@/languages/index';
 // pinia 仓库
-import pinia from '@/stores';
+import { createPinia } from 'pinia';
+import piniaPluginPersistedstate from 'pinia-plugin-persistedstate';
+const pinia = createPinia();
+// 仓库持久化
+pinia.use(piniaPluginPersistedstate);
 // 全局错误
 import errorHandler from '@/utils/errorHandler';
 // 样式

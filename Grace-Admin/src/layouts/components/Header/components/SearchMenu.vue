@@ -42,7 +42,7 @@
 <script setup lang="ts" name="SearchMenu">
 import { InputInstance } from 'element-plus';
 import { Search } from '@element-plus/icons-vue';
-import { useUserStore } from '@/stores/modules/user';
+import { useUserStore } from '@/stores';
 import { useDebounceFn } from '@vueuse/core';
 
 const router = useRouter();

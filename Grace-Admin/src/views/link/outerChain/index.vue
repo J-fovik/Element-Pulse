@@ -9,7 +9,7 @@
 </template>
 
 <script setup lang="ts" name="outerChain">
-import { useGlobalStore } from '@/stores/modules/global';
+import { useGlobalStore } from '@/stores';
 const globalStore = useGlobalStore();
 // 主题色
 const primary = computed(() => globalStore.primary);

@@ -31,9 +31,7 @@
 
 <script setup lang="ts" name="Tabs">
 import Sortable from 'sortablejs';
-import { useGlobalStore } from '@/stores/modules/global';
-import { useTabsStore } from '@/stores/modules/tabs';
-import { useUserStore } from '@/stores/modules/user';
+import { useGlobalStore, useTabsStore, useUserStore } from '@/stores';
 import { TabsPaneContext, TabPaneName } from 'element-plus';
 import MoreButton from './components/MoreButton.vue';
 

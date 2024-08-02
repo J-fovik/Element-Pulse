@@ -41,9 +41,7 @@
 
 <script setup lang="ts" name="MoreButton">
 import { HOME_URL } from '@/config';
-import { useTabsStore } from '@/stores/modules/tabs';
-import { useGlobalStore } from '@/stores/modules/global';
-import { useKeepAliveStore } from '@/stores/modules/keepAlive';
+import { useGlobalStore, useKeepAliveStore, useTabsStore } from '@/stores';
 
 const route = useRoute();
 const router = useRouter();

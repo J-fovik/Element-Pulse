@@ -33,8 +33,7 @@
 
 <script setup lang="ts" name="LayoutVertical">
 import { storeToRefs } from 'pinia';
-import { useUserStore } from '@/stores/modules/user';
-import { useGlobalStore } from '@/stores/modules/global';
+import { useUserStore, useGlobalStore } from '@/stores';
 import Main from '@/layouts/components/Main/index.vue';
 import Logo from '@/layouts/components/Logo/index.vue';
 import ToolBarLeft from '@/layouts/components/Header/ToolBarLeft.vue';

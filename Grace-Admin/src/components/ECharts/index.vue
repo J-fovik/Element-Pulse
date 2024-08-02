@@ -6,7 +6,7 @@
 import { EChartsType, ECElementEvent } from 'echarts/core';
 import echarts, { ECOption } from './config';
 import { useDebounceFn } from '@vueuse/core'; // 导入 debounce 函数用于处理 resize 事件
-import { useGlobalStore } from '@/stores/modules/global'; // 导入全局状态管理
+import { useGlobalStore } from '@/stores'; // 导入全局状态管理
 import { storeToRefs } from 'pinia'; // 导入 pinia 的 storeToRefs 函数用于解构全局状态
 // 定义 Props 接口，用于接收来自父组件的配置
 interface Props {
