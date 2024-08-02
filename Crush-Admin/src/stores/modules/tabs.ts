@@ -4,11 +4,12 @@ import { getUrlWithParams } from '@/utils';
 import { useKeepAliveStore } from './keepAlive';
 import { TabsState, TabsMenuProps } from '@/stores/interface';
 import piniaPersistConfig from '@/stores/helper/persist';
+import { BY_NAME } from '@/config';
 
 const keepAliveStore = useKeepAliveStore();
 
 export const useTabsStore = defineStore({
-	id: 'crush-tabs',
+	id: `${BY_NAME}-tabs`,
 	state: (): TabsState => ({
 		tabsMenuList: [],
 	}),
@@ -76,5 +77,5 @@ export const useTabsStore = defineStore({
 			});
 		},
 	},
-	persist: piniaPersistConfig('crush-tabs'),
+	persist: piniaPersistConfig(`${BY_NAME}-tabs`),
 });

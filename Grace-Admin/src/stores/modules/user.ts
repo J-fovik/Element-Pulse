@@ -2,7 +2,7 @@ import { defineStore } from 'pinia';
 import jsCookie from 'js-cookie';
 import { curryingRequest } from '@/hooks';
 import { getAuthButtonListApi, getAuthMenuListApi } from '@/api/modules/login';
-import { getFlatMenuList, getShowMenuList, getAllBreadcrumbList } from '@/utils/menu';
+import { getFlatMenuList, getShowMenuList, getAllBreadcrumbList, filterRoutes } from '@/utils/menu';
 import { newModules } from '@/routers/base';
 import { BY_NAME } from '@/config';
 export const useUserStore = defineStore('user', () => {
@@ -23,7 +23,7 @@ export const useUserStore = defineStore('user', () => {
 	// 获取菜单权限
 	const authMenuListGet = async () => {
 		const { data } = await getAuthMenuListApi();
-		authMenuList.value = newModules;
+		authMenuList.value = newModules.sort((a: any, b: any) => a.meta.order - b.meta.order);
 	};
 	// 获取按钮权限
 	const authButtonListGet = async () => {
@@ -32,19 +32,11 @@ export const useUserStore = defineStore('user', () => {
 	};
 
 	// 菜单权限列表 ==> 左侧菜单栏渲染，需要剔除 isHide == true
-	const showMenuListGet = () => {
-		return getShowMenuList(authMenuList.value);
-	};
-
+	const showMenuListGet = () => getShowMenuList(authMenuList.value);
 	// 菜单权限列表 ==> 扁平化之后的一维数组菜单，支持多级
-	const flatMenuListGet = () => {
-		return getFlatMenuList(authMenuList.value);
-	};
-
+	const flatMenuListGet = () => getFlatMenuList(authMenuList.value);
 	// 递归处理后的所有面包屑导航列表
-	const breadcrumbListGet = () => {
-		return getAllBreadcrumbList(authMenuList.value);
-	};
+	const breadcrumbListGet = () => getAllBreadcrumbList(authMenuList.value);
 
 	// 获取用户信息
 	const initUserInfo = async () => {

@@ -1,7 +1,7 @@
 //  全局默认配置项
 
 // BY-NAME
-export const BY_NAME: string = 'Crush';
+export const BY_NAME: string = 'Geeker';
 
 // 首页地址（默认）
 export const HOME_URL: string = '/home';

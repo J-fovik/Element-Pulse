@@ -123,3 +123,25 @@ export function findMenuByPath(
 	}
 	return null;
 }
+/**
+ * @description 根据name数组，对路由数组进行递归过滤
+ * @param {Array} routes 菜单列表
+ * @param {Array} nameList name数组
+ * @returns {Array}
+ */
+export function filterRoutes(routes, nameList) {
+	return routes
+		.map((route) => {
+			// 存在子路由
+			if (route.children) {
+				route.children = filterRoutes(route.children, nameList);
+				// 子路由长度为空，删除key
+				if (route.children.length === 0) {
+					delete route.children;
+				}
+			}
+			// 返回包含name的对象，否则为null
+			return nameList.includes(route.name) ? route : null;
+		})
+		.filter((route) => route !== null);
+}

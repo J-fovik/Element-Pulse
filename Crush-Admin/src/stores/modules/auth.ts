@@ -3,9 +3,9 @@ import { AuthState } from '@/stores/interface';
 import { getAuthButtonListApi, getAuthMenuListApi } from '@/api/modules/login';
 import { getFlatMenuList, getShowMenuList, getAllBreadcrumbList } from '@/utils/menu';
 import { appRoutes } from '@/routers/staticRouter';
-
+import { BY_NAME } from '@/config';
 export const useAuthStore = defineStore({
-	id: 'crush-auth',
+	id: `${BY_NAME}-auth`,
 	state: (): AuthState => ({
 		// 按钮权限列表
 		authButtonList: {},
