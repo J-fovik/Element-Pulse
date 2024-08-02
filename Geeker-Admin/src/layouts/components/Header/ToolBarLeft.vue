@@ -8,7 +8,7 @@
 </template>
 
 <script setup lang="ts" name="ToolBarLeft">
-import { useGlobalStore } from "@/stores/modules/global";
+import { useGlobalStore } from "@/stores";
 import CollapseIcon from "./components/CollapseIcon.vue";
 import Breadcrumb from "./components/Breadcrumb.vue";
 const globalStore = useGlobalStore();

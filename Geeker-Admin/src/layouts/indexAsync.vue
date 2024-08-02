@@ -13,7 +13,7 @@
 
 <script setup lang="ts" name="layoutAsync">
 import { LayoutType } from '@/stores/interface';
-import { useGlobalStore } from '@/stores/modules/global';
+import { useGlobalStore } from '@/stores';
 import Loading from '@/components/Loading/index.vue';
 import ThemeDrawer from './components/ThemeDrawer/index.vue';
 // 整合组件

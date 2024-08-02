@@ -1,4 +1,6 @@
 import { createApp } from 'vue';
+import { createPinia } from 'pinia';
+import piniaPluginPersistedstate from 'pinia-plugin-persistedstate';
 import App from './App.vue';
 // 导入并注册 SVG 图标
 import 'virtual:svg-icons-register';
@@ -12,13 +14,14 @@ import directives from '@/directives/index';
 import router from '@/routers';
 // 语言包
 import I18n from '@/languages/index';
-// pinia 仓库
-import pinia from '@/stores';
 // 全局错误
 import errorHandler from '@/utils/errorHandler';
 // 样式
 import '@/assets/styles/app.scss';
 const app = createApp(App);
+// 仓库持久化
+const pinia = createPinia();
+pinia.use(piniaPluginPersistedstate);
 app.config.errorHandler = errorHandler;
 // 全局注册element图标
 Object.keys(Icons).forEach((key) => {

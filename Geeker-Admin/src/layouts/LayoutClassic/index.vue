@@ -39,8 +39,7 @@
 
 <script setup lang="ts" name="LayoutClassic">
 import { storeToRefs } from 'pinia';
-import { useAuthStore } from '@/stores/modules/auth';
-import { useGlobalStore } from '@/stores/modules/global';
+import { useAuthStore, useGlobalStore } from '@/stores';
 import Main from '@/layouts/components/Main/index.vue';
 import Logo from '@/layouts/components/Logo/index.vue';
 import SubMenu from '@/layouts/components/Menu/SubMenu.vue';

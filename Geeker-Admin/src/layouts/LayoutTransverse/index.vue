@@ -44,7 +44,7 @@
 </template>
 
 <script setup lang="ts" name="LayoutTransverse">
-import { useAuthStore } from '@/stores/modules/auth';
+import { useAuthStore } from '@/stores';
 import Main from '@/layouts/components/Main/index.vue';
 import Logo from '@/layouts/components/Logo/index.vue';
 import ToolBarRight from '@/layouts/components/Header/ToolBarRight.vue';

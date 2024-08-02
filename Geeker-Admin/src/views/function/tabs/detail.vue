@@ -8,8 +8,7 @@
 </template>
 
 <script setup lang="ts" name="tabsDetail">
-import { useTabsStore } from '@/stores/modules/tabs';
-import { useJumpTabStore } from '@/stores/modules/jumpTab';
+import { useJumpTabStore, useTabsStore } from '@/stores';
 const { jumpTabName } = useJumpTabStore();
 const route = useRoute();
 const tabStore = useTabsStore();

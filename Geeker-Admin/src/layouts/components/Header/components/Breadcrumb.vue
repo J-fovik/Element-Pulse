@@ -26,8 +26,7 @@
 <script setup lang="ts" name="Breadcrumb">
 import { HOME_URL } from '@/config';
 import { ArrowRight } from '@element-plus/icons-vue';
-import { useAuthStore } from '@/stores/modules/auth';
-import { useGlobalStore } from '@/stores/modules/global';
+import { useAuthStore, useGlobalStore } from '@/stores';
 
 const route = useRoute();
 const router = useRouter();

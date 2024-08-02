@@ -6,7 +6,7 @@
 </template>
 
 <script setup lang="ts" name="CollapseIcon">
-import { useGlobalStore } from '@/stores/modules/global';
+import { useGlobalStore } from '@/stores';
 
 const globalStore = useGlobalStore();
 // 改变展开或折叠

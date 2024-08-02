@@ -35,8 +35,7 @@
 <script setup lang="ts" name="Main">
 import { storeToRefs } from 'pinia';
 import { useDebounceFn } from '@vueuse/core';
-import { useGlobalStore } from '@/stores/modules/global';
-import { useKeepAliveStore } from '@/stores/modules/keepAlive';
+import { useGlobalStore, useKeepAliveStore } from '@/stores';
 import Maximize from './components/Maximize.vue';
 import Tabs from '@/layouts/components/Tabs/index.vue';
 import Footer from '@/layouts/components/Footer/index.vue';

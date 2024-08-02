@@ -156,7 +156,7 @@
 <script setup lang="ts" name="ThemeDrawer">
 import { storeToRefs } from 'pinia';
 import { useTheme } from '@/hooks';
-import { useGlobalStore } from '@/stores/modules/global';
+import { useGlobalStore } from '@/stores';
 import { LayoutType } from '@/stores/interface';
 import { DEFAULT_PRIMARY } from '@/config';
 import { showModal } from '@/utils/elementPlus';

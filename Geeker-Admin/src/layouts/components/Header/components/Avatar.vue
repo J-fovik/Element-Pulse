@@ -30,7 +30,7 @@
 <script setup lang="ts" name="Avatar">
 import { LOGIN_URL } from '@/config';
 import { logoutApi } from '@/api/modules/login';
-import { useUserStore } from '@/stores/modules/user';
+import { useUserStore } from '@/stores';
 import { ElMessageBox, ElMessage } from 'element-plus';
 import { useBasicsState } from '@/hooks';
 import InfoDialog from './InfoDialog.vue';

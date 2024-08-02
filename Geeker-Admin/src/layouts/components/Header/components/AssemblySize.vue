@@ -18,7 +18,7 @@
 </template>
 
 <script setup lang="ts" name="AssemblySize">
-import { useGlobalStore } from '@/stores/modules/global';
+import { useGlobalStore } from '@/stores';
 import { AssemblySizeType } from '@/stores/interface';
 
 const globalStore = useGlobalStore();

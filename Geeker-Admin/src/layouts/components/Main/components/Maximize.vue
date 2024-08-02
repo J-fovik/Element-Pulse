@@ -6,7 +6,7 @@
 </template>
 
 <script setup lang="ts" name="Maximize">
-import { useGlobalStore } from '@/stores/modules/global';
+import { useGlobalStore } from '@/stores';
 // 获取仓库
 const globalStore = useGlobalStore();
 // 点击退出最大化

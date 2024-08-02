@@ -21,7 +21,7 @@
 </template>
 
 <script setup lang="ts" name="ToolBarRight">
-import { useUserStore } from '@/stores/modules/user';
+import { useUserStore } from '@/stores';
 import AssemblySize from './components/AssemblySize.vue';
 import Language from './components/Language.vue';
 import SearchMenu from './components/SearchMenu.vue';

@@ -88,7 +88,7 @@ import type { FormInstance } from 'element-plus';
 import dayjs from 'dayjs';
 import { moneyFormatComma, verifyNumberInteger, checkPhoneNumber } from '@/utils/eleValidate'; // 校验工具
 import { useForm, useBasicsState, useAsyncData, curryingRequest } from '@/hooks';
-import { useJumpTabStore } from '@/stores/modules/jumpTab';
+import { useJumpTabStore } from '@/stores';
 // import { addApi, editApi, detailApi } from '/@/api/test';
 
 const { jumpTabName } = useJumpTabStore();
