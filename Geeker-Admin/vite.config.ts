@@ -83,6 +83,6 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
 					assetFileNames: 'assets/[ext]/[name]-[hash].[ext]',
 				},
 			},
-		},
+		}
 	};
 });
