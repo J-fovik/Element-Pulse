@@ -44,9 +44,9 @@
 import md5 from 'md5';
 import jsCookie from 'js-cookie';
 import type { FormInstance } from 'element-plus';
-import { ElNotification } from 'element-plus';
+import { toast } from '@/utils/elementPlus';
 import { HOME_URL } from '@/config';
-import { getTimeState } from '@/utils';
+import { formatAxis } from '@/utils/formatTime';
 import { loginApi } from '@/api/modules/login';
 import { useKeepAliveStore, useTabsStore, useUserStore } from '@/stores';
 import { CircleClose, UserFilled } from '@element-plus/icons-vue';
@@ -97,12 +97,8 @@ const login = (formEl: FormInstance | undefined) => {
 		const isSuccess = await initUserInfo();
 		if (isSuccess) {
 			router.push(HOME_URL);
-			ElNotification({
-				title: getTimeState(),
-				message: `欢迎登录 ${APP_TITLE}`,
-				type: 'success',
-				duration: 3000,
-			});
+			// 欢迎登录提示
+			toast(`欢迎登录 ${APP_TITLE}`, 'success', formatAxis());
 		}
 	});
 };

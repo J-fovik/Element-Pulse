@@ -1,6 +1,7 @@
+import { log } from 'console';
 import { useUserInfo } from '/@/stores/userInfo';
 import { judementSameArr } from '/@/utils/arrayOperation';
-import type {  App } from "vue";
+import type { App } from 'vue';
 
 /**
  * 用户权限指令

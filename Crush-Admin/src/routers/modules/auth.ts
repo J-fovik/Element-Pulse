@@ -1,0 +1,48 @@
+export default {
+	path: '/auth',
+	name: 'auth',
+	redirect: '/auth/menu',
+	meta: {
+		icon: 'Lock',
+		order: 4,
+		requiresAuth: true,
+		title: '权限管理',
+		isLink: '',
+		isHide: false,
+		isFull: false,
+		isAffix: false,
+		isKeepAlive: true,
+	},
+	children: [
+		{
+			path: '/auth/menu',
+			name: 'authMenu',
+			meta: {
+				icon: 'Menu',
+				requiresAuth: true,
+				title: '菜单权限',
+				isLink: '',
+				isHide: false,
+				isFull: false,
+				isAffix: false,
+				isKeepAlive: true,
+			},
+			component: () => import('@/views/auth/menu/index.vue'),
+		},
+		{
+			path: '/auth/button',
+			name: 'authButton',
+			meta: {
+				icon: 'Menu',
+				requiresAuth: true,
+				title: '按钮权限',
+				isLink: '',
+				isHide: false,
+				isFull: false,
+				isAffix: false,
+				isKeepAlive: true,
+			},
+			component: () => import('@/views/auth/button/index.vue'),
+		},
+	],
+};
