@@ -1,5 +1,5 @@
 /**
- * @name 日期相关
+ * @name 时间日期相关
  */
 
 import dayjs from 'dayjs';
@@ -259,3 +259,14 @@ export function daysBetween(date1: any, date2: any) {
 	const oneDay = 24 * 60 * 60 * 1000;
 	return Math.round(Math.abs((date2 - date1) / oneDay));
 }
+
+/**
+ * @description 解析身份证信息
+ * @param {String} IdNumber 身份证号码
+ * @returns {Object} {生日，性别}
+ */
+export const resolveIdNumberInfo = (IdNumber: string) => {
+	const birthday = dayjs(IdNumber.substring(6, 14)).format('YYYY-MM-DD');
+	const gender = (IdNumber.substring(16, 17) as any) % 2 === 0 ? '0' : '1';
+	return { birthday, gender };
+};

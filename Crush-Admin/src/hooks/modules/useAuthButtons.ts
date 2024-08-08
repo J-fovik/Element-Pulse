@@ -1,8 +1,10 @@
+/**
+ * @name 页面按钮权限
+ */
+
 import { useUserStore } from '@/stores/modules/user';
 
-/**
- * @description 页面按钮权限
- * */
+// 按钮权限
 export const useAuthButtons = () => {
 	const route = useRoute();
 	const { authButtonList } = useUserStore();

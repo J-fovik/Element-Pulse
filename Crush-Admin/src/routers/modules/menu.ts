@@ -4,7 +4,7 @@ export default {
 	redirect: '/menu/menu1',
 	meta: {
 		icon: 'List',
-		order: 8,
+		order: 9,
 		requiresAuth: true,
 		title: '菜单嵌套',
 		isLink: '',

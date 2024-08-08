@@ -1,6 +1,7 @@
 /**
  * @name 颜色主题相关
  */
+
 import { ElMessage } from 'element-plus';
 
 /**
@@ -72,4 +73,13 @@ export const randomColor = () => {
 			.toString(16)
 			.padEnd(6, '0')
 	);
+};
+
+/**
+ * @description 是否为 16 进制颜色
+ * @param {String} str 需判断的字符串
+ * @returns {Boolean} 为真返回true，否则为false
+ */
+export const isHexColor = (str: string) => {
+	return /^#?([0-9A-Fa-f]{3}|[0-9A-Fa-f]{6})$/.test(str);
 };

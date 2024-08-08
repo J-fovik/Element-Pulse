@@ -1,3 +1,7 @@
+/**
+ * @name 全局主题
+ */
+
 import { storeToRefs } from 'pinia';
 import { ElMessage } from 'element-plus';
 import { DEFAULT_PRIMARY } from '@/config';
@@ -7,9 +11,7 @@ import { menuTheme } from '@/assets/styles/theme/menu';
 import { asideTheme } from '@/assets/styles/theme/aside';
 import { headerTheme } from '@/assets/styles/theme/header';
 
-/**
- * @description 全局主题 hooks
- * */
+// 全局主题
 export const useTheme = () => {
 	const globalStore = useGlobalStore();
 	const { primary, isDark, isGrey, isWeak, layout, asideInverted, headerInverted } =
@@ -113,4 +115,15 @@ export const useTheme = () => {
 		setAsideTheme,
 		setHeaderTheme,
 	};
+};
+
+// 灰度效果
+export const useGray = (isGray: boolean = false) => {
+	// 获取页面中的<html>元素
+	const html = document.querySelector('html') as HTMLHtmlElement;
+	// 获取<html>元素的style属性
+	const style = html.style;
+	// 设置filter样式，根据isGray的值决定是否应用灰度效果
+	// grayscale(1)表示完全灰度，grayscale(0)表示无灰度
+	style.filter = `grayscale(${isGray ? 1 : 0})`;
 };

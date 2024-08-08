@@ -1,6 +1,7 @@
 /**
  * @name 全局代码错误捕捉
  */
+
 import { ElNotification } from 'element-plus';
 
 /**

@@ -145,16 +145,7 @@ export function getCode(time: any) {
 	}, 1000);
 }
 
-// 检测数据是否为空数据
-export const isEmpty = (data: unknown) => {
-	if (data === '' || data === 'undefined' || data === undefined || data === null || data === 'null') {
-		return true;
-	}
-	if (JSON.stringify(data) == '{}' || JSON.stringify(data) == '[]' || JSON.stringify(data) == '[{}]') {
-		return true;
-	}
-	return false;
-};
+
 // 驼峰
 export const toHump = (str: string): string => {
 	if (!str) return str;

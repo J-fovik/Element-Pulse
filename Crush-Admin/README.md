@@ -41,6 +41,8 @@
 
 ## 路由配置
 
+注:本项目为前端注册路由,可根据后端返回路由菜单 name 进行路由权限拦截
+
 ```
 /** 路由参数简介 \*/
 interface RouteRecordRaw {
@@ -78,6 +80,48 @@ interface RouteRecordRaw {
    /\*\* 多级路由嵌套 \_/
    children: RouteRecordRaw[];
 }
+```
+
+## Hooks 方法
+
+```
+├── src/hooks/modules
+	├── useAsyncRequest.ts (异步处理请求)
+	├── useAuthButtons.ts (页面按钮权限)
+	├── useBase.ts (基本方法包括state、set、map)
+	├── useCountDown.ts (倒计时)
+	├── useCreateScript.ts (创建script标签)
+	├── useDebounceCustomRef.ts (输入框防抖)
+	├── useDevice.ts (页面大小)
+	├── useOnline.ts (网络状态)
+	├── useRequest.ts (请求二次封装)
+	├── useTable.ts (菜单表格包括表格、表单)
+	├── useTheme.ts (全局主题)
+	└── useTime.ts (获取本地时间)
+
+注释:useCreateScript, useDebounceCustomRef, useRequest 可放utils里
+```
+
+## 公共方法
+
+```
+├── src/utils
+	├── arrayOperation.ts (数组相关方法)
+	├── color.ts (颜色主题相关)
+	├── commonFunction.ts (通用函数)
+	├── elementPlus.ts (Element组件二次封装)
+	├── errorHandler.ts (全局代码错误捕捉)
+	├── fileOperation.ts (文件相关)
+	├── formatTime.ts (时间日期相关)
+	├── getStyleSheets.ts (获取样式表)
+	├── mittBus.ts (mitt事件总线通讯)
+	├── objectOperation.ts (对象相关方法)
+	├── options.ts (公共options数据)
+	├── other.ts (其他方法)
+	├── setIconfont.ts (设置字体图标)
+	├── storage.ts (浏览器缓存相关)
+	├── type.ts (type类型相关)
+	└── watermark.ts (页面水印)
 ```
 
 ## 校验、格式化代码：

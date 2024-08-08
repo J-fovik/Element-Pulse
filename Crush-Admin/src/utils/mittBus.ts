@@ -1,5 +1,5 @@
 /**
- * @name mitt通讯
+ * @name mitt事件总线通讯
  */
 
 import mitt from 'mitt';

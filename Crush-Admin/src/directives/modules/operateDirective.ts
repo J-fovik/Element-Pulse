@@ -124,6 +124,7 @@ export function debounceDirective(app: App) {
 		},
 	});
 }
+
 /**
  * 双击触发指令
  * @directive  使用方式：v-doubleClick，如 `<button v-doubleClick="fn">双击</button>`
@@ -253,6 +254,7 @@ export function copyDirective(app: App) {
 		},
 	});
 }
+
 /**
  * 点击滚动到指定视图（锚点）
  *  @directive  使用方式：v-scrollTo 如：`<div v-scrollTo=".className">click me</div>`,`<div v-scrollTo="#idName">click me</div>`

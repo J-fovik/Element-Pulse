@@ -1,6 +1,6 @@
 import axios, { AxiosError, InternalAxiosRequestConfig, AxiosResponse } from 'axios';
 import { LOGIN_URL } from '@/config';
-import jsCookie from 'js-cookie';
+import { Session } from '@/utils/storage';
 import { ElMessage } from 'element-plus';
 import { useUserStore } from '@/stores/modules/user';
 import router from '@/routers';
@@ -21,7 +21,7 @@ request.interceptors.request.use(
 	(config: InternalAxiosRequestConfig) => {
 		const { userInfo } = useUserStore();
 		// 获取用户token
-		const uerToken = jsCookie.get('userToken');
+		const uerToken = Session.get('userToken');
 		// 判断是否存在
 		if (uerToken) {
 			config.headers['token'] = uerToken;
@@ -49,11 +49,11 @@ request.interceptors.response.use(
 				return res.data;
 			} else {
 				// 登录失效
-				if ([9000].includes(res.data.code)) {
+				if ([1002, 1003].includes(res.data.code)) {
 					// 删除token
-					jsCookie.remove('userToken');
+					Session.remove('userToken');
 					// 删除用户信息
-					jsCookie.remove('userInfo');
+					Session.remove('userInfo');
 					// 清除用户信息
 					setUserInfo({});
 					// 去登录页
@@ -61,7 +61,7 @@ request.interceptors.response.use(
 				}
 				if (res.data.code === 1003) {
 					// 设置token
-					jsCookie.set('userToken', res?.data.access_token);
+					Session.set('userToken', res?.data.access_token);
 					// 重新请求
 					return await request(res.config);
 				}

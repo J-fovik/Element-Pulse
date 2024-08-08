@@ -1,8 +1,10 @@
+/**
+ * @name 菜单表格(表格,表单)
+ */
+
 import type { FormInstance } from 'element-plus';
 import type { UnwrapRef } from 'vue';
-/**
- * @description 菜单表格(表格,表单)
- * */
+
 // 定义类型
 export interface TableCustomColumnData {
 	show?: boolean;

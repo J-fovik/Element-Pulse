@@ -30,7 +30,9 @@ declare type EmptyArrayType<T = any> = T[];
 declare type EmptyObjectType<T = any> = {
 	[key: string]: T;
 };
-
+namespace HandleData {
+	type MessageType = '' | 'success' | 'warning' | 'info' | 'error';
+}
 /* hooks */
 type Dispatch<A> = (value: A) => void;
 interface AnyObject {

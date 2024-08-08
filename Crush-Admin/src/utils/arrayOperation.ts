@@ -1,5 +1,5 @@
 /**
- * @name 数组方法相关
+ * @name 数组相关方法
  */
 
 import { ElMessage } from 'element-plus';

@@ -1,3 +1,7 @@
+/**
+ * @name 创建script标签
+ */
+
 // 创建text/javascript的script标签
 export const useCreateScript = async (src: string) => {
 	try {

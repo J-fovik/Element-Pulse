@@ -1,7 +1,9 @@
-import type { Ref, UnwrapRef } from 'vue';
 /**
- * @description 基本方法(唯一值, new set, new map)
+ * @name 基本方法
  */
+
+import type { Ref, UnwrapRef } from 'vue';
+
 // 唯一值
 export const useBasicsState = <T>(
 	value: T, // 默认值
@@ -22,6 +24,7 @@ export const useBasicsState = <T>(
 	// 暴露API
 	return [basicsState, setBasicsState];
 };
+
 // new set
 export const useBasicsSet = (defaultValue: Array<string> = []) => {
 	const basicsSet = ref<Set<string>>(new Set(defaultValue));
@@ -44,6 +47,7 @@ export const useBasicsSet = (defaultValue: Array<string> = []) => {
 	// 暴露API
 	return { basicsSet, hasValue, addValue, deleteValue, clearValue };
 };
+
 // new map
 export const useBasicsMap = <T = AnyObject>(defaultValue = []) => {
 	const basicsMap = ref<Map<string, T>>(new Map(defaultValue));

@@ -152,6 +152,7 @@ export function lazyImgDirective(app: App) {
 		observer.observe(el);
 	});
 }
+
 /**
  * 文本省略
  *  @directive  使用方式：v-ellipsis 如：<div v-ellipsis:multiple="[200, 2]">{{ longText }}</div>
@@ -189,6 +190,7 @@ export function ellipsisDirective(app: App) {
 		},
 	});
 }
+
 /**
  * 文本提示
  *  @directive  使用方式：v-tooltip 如：<div  v-tooltip="{ text: 'tooltip', position: 'left' }">Hover me</div>

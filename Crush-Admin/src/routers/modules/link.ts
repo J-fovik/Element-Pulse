@@ -4,7 +4,7 @@ export default {
 	redirect: '/link/embedded',
 	meta: {
 		icon: 'Paperclip',
-		order: 9,
+		order: 10,
 		requiresAuth: true,
 		title: '内嵌外链',
 		isLink: '',

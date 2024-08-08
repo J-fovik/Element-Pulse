@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia';
-import jsCookie from 'js-cookie';
+import { Session } from '@/utils/storage';
 import { curryingRequest } from '@/hooks';
 import { getAuthButtonListApi, getAuthMenuListApi } from '@/api/modules/login';
 import {
@@ -56,14 +56,14 @@ export const useUserStore = defineStore(`${BY_NAME}-user`, () => {
 		await Promise.all([authMenuListGet(), authButtonListGet()]);
 		// 设置token
 		// if (res?.data.token) {
-		// 	jsCookie.set('userToken', res?.data.token);
+		// 	Session.set('userToken', res?.data.token);
 		// }
-
 		// 设置用户信息
 		setUserInfo({
 			...userInfo,
 			name: BY_NAME,
 		});
+		Session.set('userInfo', userInfo.value);
 		// 获取成功
 		return true;
 	};

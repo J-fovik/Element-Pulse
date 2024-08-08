@@ -1,3 +1,7 @@
+/**
+ * @name 请求二次封装
+ */
+
 import { ElMessage } from 'element-plus';
 export interface HttpResponse<T = unknown> {
 	status: number;
@@ -11,9 +15,7 @@ export interface HttpError {
 	code?: number;
 	status?: number;
 }
-/**
- * @description 请求二次封装
- * */
+
 // 二次封装请求
 export const curryingRequest = async <T = any>(
 	api: () => Promise<any>, // 请求接口

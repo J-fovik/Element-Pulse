@@ -331,6 +331,68 @@
 			}
 		},
 		{
+			"path": "/icon",
+			"name": "icon",
+			"redirect": "/icon/awesome",
+			"meta": {
+				"icon": "Grape",
+				"title": "图标管理",
+				"isLink": "",
+				"isHide": false,
+				"isFull": false,
+				"isAffix": false,
+				"requiresAuth": true,
+				"isKeepAlive": true
+			},
+			"children": [
+				{
+					"path": "/icon/awesome",
+					"name": "awesome",
+					"component": "/icon/awesome/index",
+					"meta": {
+						"icon": "Menu",
+						"title": "awe字体图标",
+						"isLink": "",
+						"isHide": false,
+						"isFull": false,
+						"isAffix": false,
+						"requiresAuth": true,
+						"isKeepAlive": true
+					}
+				},
+				{
+					"path": "/icon/element",
+					"name": "element",
+					"component": "/icon/element/index",
+					"meta": {
+						"icon": "Menu",
+						"title": "ele字体图标",
+						"isLink": "",
+						"isHide": false,
+						"isFull": false,
+						"isAffix": false,
+						"requiresAuth": true,
+						"isKeepAlive": true
+					}
+				},
+				{
+					"path": "/icon/iocnfont",
+					"name": "iocnfont",
+					"component": "/icon/iocnfont/index",
+					"meta": {
+						"icon": "Menu",
+						"title": "ali字体图标",
+						"isLink": "",
+						"isHide": false,
+						"isFull": false,
+						"isAffix": false,
+						"requiresAuth": true,
+						"isKeepAlive": true
+					}
+				}
+			]
+		},
+		{
 			"path": "/menu",
 			"name": "menu",
 			"redirect": "/menu/menu1",

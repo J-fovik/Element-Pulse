@@ -50,6 +50,7 @@ export const sizeTostr = (size: number, decimals = 2) => {
  * @param {String} url 文件路径
  * @param {String} target 打开方式
  * @param {String} fileName 文件名称
+ * @returns {Promise}
  */
 export function downloadByUrl({
 	url,
@@ -166,8 +167,8 @@ export const getImageWidthHeight: GetImageWidthHeightFn = (url: string) => {
 
 /**
  * @description 左右翻转
- * @param {*} imageData 图片路径
- * @returns {*} 翻转后的图片路径
+ * @param {ImageData} imageData 图片路径
+ * @returns {ImageData} 翻转后的图片路径
  */
 export const flipSideToSide = (imageData: ImageData) => {
 	if (imageData) {
@@ -190,8 +191,8 @@ export const flipSideToSide = (imageData: ImageData) => {
 
 /**
  * @description 上下翻转
- * @param {*} imageData 图片路径
- * @returns {*} 翻转后的图片路径
+ * @param {ImageData} imageData 图片路径
+ * @returns {ImageData} 翻转后的图片路径
  */
 export const flipUpsideDown = (imageData: ImageData) => {
 	if (imageData) {
@@ -214,8 +215,8 @@ export const flipUpsideDown = (imageData: ImageData) => {
 
 /**
  * @description 左旋转
- * @param {*} imageData 图片路径
- * @returns {*} 翻转后的图片路径
+ * @param {ImageData} imageData 图片路径
+ * @returns {ImageData} 翻转后的图片路径
  */
 export const leftRotate = (imageData: ImageData) => {
 	if (imageData) {
@@ -238,8 +239,8 @@ export const leftRotate = (imageData: ImageData) => {
 
 /**
  * @description 右旋转
- * @param {*} imageData 图片路径
- * @returns {*} 翻转后的图片路径
+ * @param {ImageData} imageData 图片路径
+ * @returns {ImageData} 翻转后的图片路径
  */
 export const rightRotate = (imageData: ImageData) => {
 	if (imageData) {

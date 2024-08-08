@@ -4,7 +4,7 @@ export default {
 	redirect: '/echarts/waterChart',
 	meta: {
 		icon: 'TrendCharts',
-		order: 10,
+		order: 11,
 		requiresAuth: true,
 		title: 'ECharts',
 		isLink: '',

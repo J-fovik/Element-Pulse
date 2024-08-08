@@ -1,6 +1,7 @@
 /**
- * @description 倒计时,验证码
+ * @name 倒计时
  */
+
 // 倒计时
 export const useCountDown = (value: number, interval: number = 1000, callback?: () => void) => {
 	// 初始值

@@ -1,5 +1,9 @@
 /**
- * @description：全部数据筛选
+ * @name 公共options数据
+ */
+
+/**
+ * @description 全部数据筛选
  */
 export const ALL_OPTIONS = [
 	{
@@ -8,21 +12,25 @@ export const ALL_OPTIONS = [
 	},
 ];
 /**
- * @description：用户性别
+ * @description 用户性别
  */
-export const GENDER_TYPDS = [
+export const GENDER_TYPES = [
 	{ label: '男', value: 1 },
 	{ label: '女', value: 2 },
 ];
 
 /**
- * @description：用户状态
+ * @description 用户状态
  */
 export const USER_STATUS = [
 	{ label: '启用', value: 1, tagType: 'success' },
 	{ label: '禁用', value: 0, tagType: 'danger' },
 ];
-// 默认导出，找到匹配的元素
+
+/**
+ * @description 默认导出，找到匹配的元素
+ * @returns {Object | Null} 找出第一个符合条件的成员
+ */
 export default (options: Array<any>, value: string) => {
 	return options.find((item) => item.value === value);
 };

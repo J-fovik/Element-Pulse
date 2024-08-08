@@ -13,7 +13,7 @@
 
 <script setup lang="ts" name="authMenu">
 import { LOGIN_URL } from '@/config';
-import jsCookie from 'js-cookie';
+import { Session } from '@/utils/storage';
 import { useUserStore } from '@/stores';
 import { Promotion } from '@element-plus/icons-vue';
 
@@ -24,7 +24,7 @@ const handleToLogin = () => {
 	// 请空用户信息
 	setUserInfo({});
 	// 清除Cookie
-	jsCookie.remove('userToken');
+	Session.remove('userToken');
 	router.push(LOGIN_URL);
 };
 </script>
