@@ -8,11 +8,12 @@
 		/>
 		<div class="flex gap-2 flex-wrap">
 			<el-tag
-				type="primary"
+				:type="currentIndex === index ? 'primary' : 'success'"
 				class="mr5 cursor-pointer"
 				v-for="(item, index) in 40"
 				:key="index"
 				v-scrollTo="'#item-' + index"
+				@click="currentIndex = index"
 				>{{ item }}</el-tag
 			>
 		</div>
@@ -28,5 +29,22 @@
 </template>
 
 <script setup lang="ts" name="ScrollTo">
-const value = ref('');
+const currentIndex = ref(-1); // 初始化时设置为-1，表示没有点击任何tag
+import { useWindowScroll } from '@vueuse/core';
+
+const { x, y } = useWindowScroll();
+onMounted(() => {
+	window.addEventListener('scroll', handleScroll);
+});
+
+function handleScroll() {
+	const scrollY = y.value; // 获取当前滚动位置
+	console.log(y);
+
+	// 根据滚动位置更新currentIndex的值
+	// 这里只是一个示例，具体逻辑需要根据您的需求来调整
+	// 例如，您可以根据滚动位置来判断哪个元素在视口范围内
+	// 然后将对应的index赋值给currentIndex
+	// 这里只是简单地将currentIndex设置为滚动位置的整数部分
+}
 </script>

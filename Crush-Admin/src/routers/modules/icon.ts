@@ -4,8 +4,8 @@ export default {
 	redirect: '/icon/awesome',
 	meta: {
 		icon: 'Grape',
-		order: 8,
 		title: '图标管理',
+		order: 8,
 		isLink: '',
 		isHide: false,
 		isFull: false,

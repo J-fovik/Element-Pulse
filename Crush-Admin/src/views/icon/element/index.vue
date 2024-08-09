@@ -23,7 +23,7 @@
 						</el-icon>
 					</div>
 					<div class="mt10 text-center" v-ellipsis:single="[110, 1]">{{ v }}</div>
-					<div class="copy">复制</div>
+					<div class="copy" @click="copy(v)">复制</div>
 				</div>
 			</el-col>
 		</el-row>
@@ -32,8 +32,12 @@
 
 <script setup lang="ts" name="element">
 import initIconfont from '@/utils/getStyleSheets';
+import { copy } from '@/utils/other';
+import { useGlobalStore } from '@/stores';
+const globalStore = useGlobalStore();
+// 主题色
+const primary = computed(() => globalStore.primary);
 const sheetsIconList = ref([] as any);
-
 // 初始化获取 css 样式，获取 element plus 自带 svg 图标
 const initGetStyleSheets = () => {
 	initIconfont.ele().then((res: any) => (sheetsIconList.value = res));
@@ -66,22 +70,19 @@ onMounted(() => {
 	transition: padding-bottom 0.2s ease-in-out;
 
 	&:hover {
-		color: #1890ff;
+		color: v-bind(primary);
 		box-shadow: 0 0 10px #f0f0f0;
 		padding-bottom: 22px;
 		transition: padding-bottom 0.2s ease-in-out;
-
 		.copy {
 			cursor: pointer;
-			background-color: #1890ff;
 			transform: translateY(0);
 			transition: transform 0.2s ease-in-out;
 		}
 	}
-
 	.copy {
 		position: absolute;
-		background-color: #1890ff;
+		background-color: v-bind(primary);
 		padding: 5px 0;
 		color: #fff;
 		font-size: 12px;

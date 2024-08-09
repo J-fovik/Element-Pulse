@@ -17,9 +17,8 @@
 </template>
 
 <script lang="ts" setup name="FadeUp">
-import { DEFAULT_PRIMARY } from '@/config';
 const colorList = ref([
-	DEFAULT_PRIMARY,
+	'#009688',
 	'aqua',
 	'#daa96e',
 	'#0c819f',

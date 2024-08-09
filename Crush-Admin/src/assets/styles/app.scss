@@ -91,6 +91,13 @@ body,
 .toolBar-icon {
 	font-size: 20px !important;
 }
+.inputNumber {
+	width: 100% !important;
+	text-align: left !important;
+	.el-input-number .el-input__inner {
+		text-align: left !important;
+	}
+}
 /*********************** flex **********************/
 .flx-center {
 	display: flex;

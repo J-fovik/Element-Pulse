@@ -2,11 +2,24 @@
  * @name 其他方法
  */
 
-// import clipboard from 'vue-clipboard3';
 import { ElMessage } from 'element-plus';
+import { useClipboard } from '@vueuse/core';
+// import clipboard from 'vue-clipboard3';
 
 /**
- * @description 生成随机数
+ * @description 获取指定范围内的随机整数
+ * @param {number} start - 开始范围
+ * @param {number} end - 结束范围
+ * @returns {Number} 返回一个介于start和end之间的整数
+ */
+export function getRandomInteger(start = 0, end: number): number {
+	const range = end - start;
+	const random = Math.floor(Math.random() * range + start);
+	return random;
+}
+
+/**
+ * @description 获取指定范围内的随机数
  * @param {Number} min 最小值
  * @param {Number} max 最大值
  * @returns {Number} 返回一个介于min和max之间的随机数
@@ -31,19 +44,20 @@ export const randomStr = (length: number) => {
 };
 
 /**
- * @description 点击复制文本
- * @param {*} text 要复制的文本
+ * @description 点击复制文本(vue-clipboard3)
+ * @param {*} value 要复制的文本
  * @returns {Promise}
  */
-// export const copyText = (text: any) => {
+// export const copyText = (value: any) => {
+// 	if (!value) return ElMessage.error('请输入文本');
 // 	const { toClipboard } = clipboard();
 // 	return new Promise((resolve, reject) => {
 // 		try {
 // 			//复制
-// 			toClipboard(text);
+// 			toClipboard(value);
 // 			//下面可以设置复制成功的提示框等操作
 // 			ElMessage.success('复制成功');
-// 			resolve(text);
+// 			resolve(value);
 // 		} catch (e) {
 // 			//复制失败
 // 			ElMessage.error('复制失败');
@@ -53,12 +67,29 @@ export const randomStr = (length: number) => {
 // };
 
 /**
- * @description 点击复制文本
- * @param {*} text 要复制的文本
+ * @description 点击复制文本(浏览器自带)
+ * @param {*} value 要复制的文本
  */
-export const clipboard = (text: any) => {
-	navigator.clipboard.writeText(text);
-	ElMessage.success('复制成功，内容为：' + text);
+export const clipboard = (value: any) => {
+	if (!value) return ElMessage.error('请输入文本');
+	navigator.clipboard.writeText(value);
+	ElMessage.success('复制成功，内容为：' + value);
+};
+
+/**
+ * @description 点击复制文本(vueuse/core)
+ * @param {*} value 要复制的文本
+ */
+export const copy = (value: any) => {
+	if (!value) return ElMessage.error('请输入文本');
+	// copy为方法 ，isSupported为支不支持，text为返回粘贴内容，source为复制内容
+	const { copy, isSupported, text } = useClipboard({ source: value });
+	copy(value).then(() => {
+		ElMessage.success('复制成功，内容为：' + value);
+	});
+	if (!isSupported) {
+		ElMessage.error('当前浏览器不支持此功能');
+	}
 };
 
 /**
@@ -196,4 +227,23 @@ export function generateUUID(): string {
 		uuid += (i === 12 ? 4 : i === 16 ? (random & 3) | 8 : random).toString(16);
 	}
 	return uuid; // 返回生成的UUID字符串
+}
+
+/**
+ * @description 大小写转换
+ * @param {string} str 待转换的字符串
+ * @param {number} type 1:全大写 2:全小写 3:首字母大写
+ * @returns {string} 转换后的字符串
+ */
+export function toCase(str: string, type: number = 1) {
+	switch (type) {
+		case 1:
+			return str.toUpperCase();
+		case 2:
+			return str.toLowerCase();
+		case 3:
+			return str[0].toUpperCase() + str.substring(1).toLowerCase();
+		default:
+			return str;
+	}
 }

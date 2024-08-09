@@ -17,7 +17,6 @@
 			<el-input
 				v-model="inputValue"
 				placeholder="搜索图标"
-				size="large"
 				:prefix-icon="Icons.Search"
 			/>
 			<el-scrollbar v-if="Object.keys(iconsList).length">

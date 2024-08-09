@@ -13,7 +13,6 @@
 				v-model="searchMenu"
 				ref="menuInputRef"
 				placeholder="菜单搜索：支持菜单名称、路径"
-				size="large"
 				clearable
 				:prefix-icon="Search"
 			></el-input>

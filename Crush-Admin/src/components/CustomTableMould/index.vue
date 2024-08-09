@@ -5,7 +5,7 @@
 				<div>{{ route.meta.title as any }}</div>
 				<!-- 折叠按钮 -->
 				<template v-if="fold">
-					<el-button type="primary" link size="small" @click="setCollapsed(!collapsed)">
+					<el-button type="primary" link @click="setCollapsed(!collapsed)">
 						<el-icon class="mr5"
 							><ArrowUpBold v-if="collapsed" /><ArrowDownBold v-else />
 						</el-icon>
@@ -24,7 +24,7 @@
 				<!-- 间隔线 -->
 				<div style="width: 1px; margin: 0 20px; background-color: #e5e6eb"></div>
 				<!-- 查询重置按钮 -->
-				<el-space :direction="collapsed ? 'vertical' : 'horizontal'" size="large">
+				<el-space :direction="collapsed ? 'vertical' : 'horizontal'">
 					<el-button type="primary" :icon="Search" @click="emits('search')">
 						查询
 					</el-button>
@@ -64,7 +64,6 @@
 										<el-icon><Menu /></el-icon>
 										<el-checkbox
 											v-model="v.show"
-											size="default"
 											class="ml12"
 											:label="
 												v.title.length > 8

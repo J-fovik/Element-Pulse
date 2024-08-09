@@ -1,5 +1,5 @@
 <template>
-	<el-form ref="formRef" :model="form" :rules="rules" size="large">
+	<el-form ref="formRef" :model="form" :rules="rules">
 		<el-form-item prop="username">
 			<el-input v-model.trim="form.username" placeholder="用户名：admin / user">
 				<template #prefix>
@@ -26,11 +26,10 @@
 		</el-form-item>
 	</el-form>
 	<div class="login-btn">
-		<el-button :icon="CircleClose" round size="large" @click="resetForm"> 重置 </el-button>
+		<el-button :icon="CircleClose" round @click="resetForm"> 重置 </el-button>
 		<el-button
 			:icon="UserFilled"
 			round
-			size="large"
 			type="primary"
 			:loading="activeKey === 'login'"
 			@click="login(formRef)"

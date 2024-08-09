@@ -53,8 +53,11 @@
 		line-height: 30px;
 	}
 }
-// 时间日期选择器宽度
+// 时间日期选择器 和 数字输入框  宽度
 .el-date-editor.el-input,
 .el-date-editor.el-input__wrapper {
 	width: 100% !important;
+}
+.el-input-number .el-input__inner {
+	text-align: left !important;
 }

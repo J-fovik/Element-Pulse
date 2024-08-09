@@ -1,3 +1,4 @@
+export { useDictionaryStore } from './modules/dictionary';
 export { useGlobalStore } from './modules/global';
 export { useJumpTabStore } from './modules/jumpTab';
 export { useKeepAliveStore } from './modules/keepAlive';

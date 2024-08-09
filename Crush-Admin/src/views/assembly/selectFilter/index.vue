@@ -7,7 +7,9 @@
 			<el-descriptions-item label="title"> 筛选器标题 </el-descriptions-item>
 			<el-descriptions-item label="multiple"> 是否为多选(默认单选) </el-descriptions-item>
 			<el-descriptions-item label="key"> 当前筛选项 key 值 </el-descriptions-item>
-			<el-descriptions-item label="options"> 当前筛选数据 </el-descriptions-item>
+			<el-descriptions-item label="options">
+				当前筛选数据[{ value: '', label: '', icon: '' }]
+			</el-descriptions-item>
 			<el-descriptions-item label="data">
 				需要筛选的数据列表，详情请查看代码
 			</el-descriptions-item>

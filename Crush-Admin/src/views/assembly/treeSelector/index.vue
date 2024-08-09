@@ -26,14 +26,18 @@
 			<el-descriptions title="配置项 📚" :column="1" border class="mt20">
 				<el-descriptions-item label="data"> 分类数据 </el-descriptions-item>
 				<el-descriptions-item label="title"> TreeSelector 标题 </el-descriptions-item>
-				<el-descriptions-item label="id"> 选择的id，默认为 “id” </el-descriptions-item>
-				<el-descriptions-item label="width"> 组件宽度，默认220 </el-descriptions-item>
+				<el-descriptions-item label="id"> 选择的id，默认 'id' </el-descriptions-item>
+				<el-descriptions-item label="width"> 组件宽度，默认 '220px' </el-descriptions-item>
 				<el-descriptions-item label="multiple">
 					是否为多选，默认为 false
 				</el-descriptions-item>
-				<el-descriptions-item label="icon"> 节点图标 </el-descriptions-item>
+				<el-descriptions-item label="icon">
+					节点图标,默认 'CaretRight'
+				</el-descriptions-item>
 				<el-descriptions-item label="defaultValue"> 默认选中的值 </el-descriptions-item>
-				<el-descriptions-item label="defaultProps"> 默认配置 </el-descriptions-item>
+				<el-descriptions-item label="defaultProps">
+					配置项 默认{ children: 'children', label: 'label', }
+				</el-descriptions-item>
 			</el-descriptions>
 		</div>
 	</div>

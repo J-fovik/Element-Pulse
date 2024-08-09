@@ -16,7 +16,7 @@ export const TABLE_DATA: any = {
             date: "2016-05-04 12:12:00",
             name: "Jane",
             type: "3",
-            money: 1044,
+            money: -1044,
             num: "222",
             status: "0",
             id: "222",

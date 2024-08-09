@@ -89,7 +89,7 @@ onMounted(() => {
 	}, 1000);
 });
 
-onUnmounted(() => {
+onDeactivated(() => {
 	timer && window.clearInterval(timer);
 });
 </script>

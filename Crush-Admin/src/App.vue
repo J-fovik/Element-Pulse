@@ -16,7 +16,9 @@ import setIntroduction from '@/utils/setIconfont';
 import { useTheme } from '@/hooks';
 import { LanguageType } from './stores/interface';
 import { useGlobalStore } from '@/stores/modules/global';
-
+import { useDictionaryStore } from '@/stores/modules/dictionary';
+// 初始化字典
+useDictionaryStore();
 const globalStore = useGlobalStore();
 
 // 初始化设置主题

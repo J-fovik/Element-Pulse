@@ -52,11 +52,7 @@ export const createTableColumns = (): TableCustomColumnData[] => {
 			align: 'right',
 			headerAlign: 'center',
 			formatter: (record) => {
-				return h(
-					'span',
-					{ class: 'text-red text-price' },
-					moneyFormat(scaleFormat(record.money, 2))
-				);
+				return h('span', { class: 'text-red text-price' }, moneyFormat(record.money, '0'));
 			},
 		},
 		{

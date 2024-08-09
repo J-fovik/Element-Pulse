@@ -1,14 +1,21 @@
 <template>
 	<Container>
-		<WangEditor v-model="content" :upload-img="uploadImg" />
+		<el-alert
+			title="富文本编辑器目前使用 wangeditor 插件完成，官方文档请查看 ：https://www.wangeditor.com/v5/installation.html#cdn"
+			type="warning"
+			:closable="false"
+		/>
+		<WangEditor v-model="content" :upload-img="uploadImg" class="mt20" />
 		<el-descriptions title="配置项 📚" :column="1" border class="mt20">
 			<el-descriptions-item label="modelValue">
 				双向绑定的 value 值，使用示例： v-model="content">
 			</el-descriptions-item>
 			<el-descriptions-item label="excludeKeys"> 默认配置 </el-descriptions-item>
 			<el-descriptions-item label="height"> 高度，默认300px </el-descriptions-item>
-			<el-descriptions-item label="disabled"> 是否禁用 </el-descriptions-item>
-			<el-descriptions-item label="hideToolbar"> 是否展示操作栏 </el-descriptions-item>
+			<el-descriptions-item label="disabled"> 是否禁用 ,默认 false</el-descriptions-item>
+			<el-descriptions-item label="hideToolbar">
+				是否展示操作栏,默认 true
+			</el-descriptions-item>
 			<el-descriptions-item label="uploadImg">
 				回调上传图片 使用示例：:upload-img="uploadImg"
 			</el-descriptions-item>

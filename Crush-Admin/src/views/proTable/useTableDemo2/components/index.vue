@@ -11,7 +11,6 @@
 			ref="formRef"
 			:model="form"
 			label-align="left"
-			size="large"
 			:rules="rules"
 			label-width="auto"
 			:disabled="!!form.isReadOnly"
@@ -26,7 +25,7 @@
 				<el-input
 					v-model="form.money"
 					placeholder="请输入金额"
-					:formatter="(value: string) => moneyFormatComma(value)"
+					:formatter="(value: string) => moneyFormat(value)"
 					:parser="(value: string) => value.replace(/,/g, '')"
 				/>
 			</el-form-item>
@@ -86,7 +85,8 @@
 <script lang="ts" setup name="tableDemoOperate">
 import type { FormInstance } from 'element-plus';
 import dayjs from 'dayjs';
-import { moneyFormatComma, verifyNumberInteger, checkPhoneNumber } from '@/utils/eleValidate'; // 校验工具
+import { verifyNumberInteger, checkPhoneNumber } from '@/utils/eleValidate'; // 校验工具
+import { moneyFormat } from '@/utils/toolsValidate'; // 校验工具
 import { useForm, useBasicsState, useAsyncData, curryingRequest } from '@/hooks';
 // import { addApi, editApi, detailApi } from '/@/api/test';
 /* 接受父组件参数 */
@@ -146,7 +146,7 @@ const rules = {
 	},
 };
 /* 验证数据 */
-const validateData = (formEl: FormInstance | undefined) => {
+const validateData = (formEl: any) => {
 	if (!formEl) return;
 	formEl.validate((valid) => {
 		if (valid) {
