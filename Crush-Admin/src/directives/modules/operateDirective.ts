@@ -8,7 +8,7 @@ interface ElType extends HTMLElement {
 }
 
 /**
- * 父元素区域任意拖拽。
+ * @name 父元素区域任意拖拽。
  * @directive  使用方式：v-drag ，如 `<div v-drag></div>`
  * @directive  父元素需设置position: relative;
  * @directive 思路：
@@ -53,7 +53,7 @@ export function dragDirective(app: App) {
 }
 
 /**
- * 防止重复点击(节流)
+ * @name 防止重复点击(节流)
  * @directive  使用方式：v-throttle，如 `<button v-throttle>click me</button>` `<button v-throttle="2000">click me</button>`
  * @description  可接受延时时间（毫秒），默认为2000
  * @directive  需求：防止按钮在短时间内被多次点击，使用节流函数限制规定时间内只能点击一次。
@@ -87,7 +87,7 @@ export function throttleDirective(app: App) {
 }
 
 /**
- * 防止重复点击(防抖)
+ * @name 防止重复点击(防抖)
  * @directive  使用方式：v-debounce，如 `<div v-debounce="fn">click me</div>`，`<div v-debounce：2000="fn">click me</div>`
  * @directive 可接受延时时间（毫秒），默认为500， 接收参数：function类型
  * @directive 在延迟后被调用。如果在延时时间内再次点击按钮，之前的计时将被清除，并重新开始计时
@@ -126,7 +126,7 @@ export function debounceDirective(app: App) {
 }
 
 /**
- * 双击触发指令
+ * @name 双击触发指令
  * @directive  使用方式：v-doubleClick，如 `<button v-doubleClick="fn">双击</button>`
  * @description  双击触发函数
  */
@@ -141,7 +141,7 @@ export function doubleClickDirective(app: App) {
 }
 
 /**
- * 长按触发指令
+ * @name 长按触发指令
  * @directive  使用方式：v-longpress 如：<div v-longpress="fn">longpress me</div>
  * @description  接收参数：function 类型 ，长按指令，长按时触发事件
  */
@@ -177,7 +177,7 @@ export function longpressDirective(app: App) {
 			};
 			// 添加事件监听器
 			el.addEventListener('mousedown', start);
-			el.addEventListener('touchstart', start);
+			el.addEventListener('touchstart', start, { passive: true });
 			// 取消计时器
 			el.addEventListener('click', cancel);
 			el.addEventListener('mouseout', cancel);
@@ -186,11 +186,12 @@ export function longpressDirective(app: App) {
 		},
 	});
 }
+
 /**
- * 点击元素内外部
- *  @directive  使用方式：v-clickOutside 如：<div v-clickOutside="fn">click me</div>
- *  @description  接收参数：function类型，点击外面时返回true, 点击内部时返回false
- *  @description  函数接受个Boolean，如：function fn(type){// 可执行需要逻辑}
+ * @name 点击元素内外部
+ * @directive  使用方式：v-clickOutside 如：<div v-clickOutside="fn">click me</div>
+ * @description  接收参数：function类型，点击外面时返回true, 点击内部时返回false
+ * @description  函数接受个Boolean，如：function fn(type){// 可执行需要逻辑}
  */
 export function clickOutsideDirective(app: App) {
 	app.directive('clickOutside', {
@@ -214,9 +215,9 @@ export function clickOutsideDirective(app: App) {
 }
 
 /**
- * 点击文本复制指令
- *  @directive  使用方式：v-copy 如：<div  v-copy="textValue">click me</div>
- *  @description  点击复制文本。
+ * @name 点击文本复制指令
+ * @directive  使用方式：v-copy 如：<div  v-copy="textValue">click me</div>
+ * @description  点击复制文本。
  */
 export function copyDirective(app: App) {
 	app.directive('copy', {
@@ -256,10 +257,10 @@ export function copyDirective(app: App) {
 }
 
 /**
- * 点击滚动到指定视图（锚点）
- *  @directive  使用方式：v-scrollTo 如：`<div v-scrollTo=".className">click me</div>`,`<div v-scrollTo="#idName">click me</div>`
- *  @description  参数为class名称或者id名称等，要保证唯一
- *  @description  点击滚动到指定视图,类似于锚点
+ * @name 点击滚动到指定视图（锚点）
+ * @directive  使用方式：v-scrollTo 如：`<div v-scrollTo=".className">click me</div>`,`<div v-scrollTo="#idName">click me</div>`
+ * @description  参数为class名称或者id名称等，要保证唯一
+ * @description  点击滚动到指定视图,类似于锚点
  */
 export function scrollToDirective(app: App) {
 	app.directive('scrollTo', {

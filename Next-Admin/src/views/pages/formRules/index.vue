@@ -68,7 +68,8 @@ const onSubmitForm = () => {
 	]).then(() => {
 		ElMessage.success('表单全部验证成功');
 		console.log(state.formRulesOneData);
-		console.log(pagesFormRulesTwoRef.value.getFormData())		
+		console.log(pagesFormRulesTwoRef.value.getFormData());
+		console.log(pagesFormRulesThreeRef.value);
 	});
 };
 // 重置表单

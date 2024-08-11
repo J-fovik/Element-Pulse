@@ -8,8 +8,8 @@ import { useClipboard } from '@vueuse/core';
 
 /**
  * @description 获取指定范围内的随机整数
- * @param {number} start - 开始范围
- * @param {number} end - 结束范围
+ * @param {Number} start - 开始范围
+ * @param {Number} end - 结束范围
  * @returns {Number} 返回一个介于start和end之间的整数
  */
 export function getRandomInteger(start = 0, end: number): number {
@@ -157,23 +157,9 @@ export function isMobile() {
 }
 
 /**
- * @description 将下划线命名转换为驼峰命名
- * @description "user_name" ==> "userName"
- * @param {String} str 下划线命名的字符串
- * @returns {String} 驼峰命名字符串
- */
-export const toHump = (str: string): string => {
-	if (!str) return str;
-	return str.replace(/\_(\w)/g, function (all, letter) {
-		// 将中划线后面的第一个字母大写
-		return letter.toUpperCase();
-	});
-};
-
-/**
  * @description 去除字符串的HTML标签
- * @param {string} htmlString - 包含HTML标签的字符串，例如 "<div>111</div>"
- * @returns {string} - 返回去除HTML标签后的纯文本内容
+ * @param {String} htmlString - 包含HTML标签的字符串，例如 "<div>111</div>"
+ * @returns {String} - 返回去除HTML标签后的纯文本内容
  */
 export const removeHtmlTag = (htmlString: any) => {
 	return new DOMParser().parseFromString(htmlString, 'text/html').body.textContent || '';
@@ -201,7 +187,7 @@ export const detectBrowser = () => {
  * @description 计算元素到文档顶部的距离
  * @description 确保DOM元素已经挂载后，再获取偏移量 (onMounted)
  * @param {HTMLElement} element - 要计算距离的DOM元素
- * @returns {number} - 元素到文档顶部的距离（以像素为单位）
+ * @returns {Number} - 元素到文档顶部的距离（以像素为单位）
  */
 export function getElementOffsetTop(element: HTMLElement | null): number {
 	let offsetTop = 0; // 初始化偏移量为0
@@ -215,7 +201,7 @@ export function getElementOffsetTop(element: HTMLElement | null): number {
 
 /**
  * @description 生成唯一 uuid
- * @returns {string} - 返回一个格式化的UUID字符串
+ * @returns {String} - 返回一个格式化的UUID字符串
  */
 export function generateUUID(): string {
 	let uuid = ''; // 初始化uuid字符串为空
@@ -230,20 +216,74 @@ export function generateUUID(): string {
 }
 
 /**
- * @description 大小写转换
- * @param {string} str 待转换的字符串
- * @param {number} type 1:全大写 2:全小写 3:首字母大写
- * @returns {string} 转换后的字符串
+ * @description 解决浮点数bug
+ * @param {Number} num 待转换的字符串
+ * @param {Number} decimalPlaces 保留的小数位数，默认2位
+ * @returns {Number} 处理后的数值
  */
-export function toCase(str: string, type: number = 1) {
-	switch (type) {
-		case 1:
-			return str.toUpperCase();
-		case 2:
-			return str.toLowerCase();
-		case 3:
-			return str[0].toUpperCase() + str.substring(1).toLowerCase();
-		default:
-			return str;
-	}
-}
+export const roundNum = (num: number, decimalPlaces: number = 2) => {
+	const factor = 10 ** decimalPlaces;
+	return Math.round(num * factor) / factor;
+};
+
+/**
+ * @description 节流函数，用于限制函数在特定时间内的执行次数。
+ * @param {Function} callback - 需要节流的回调函数。
+ * @param {Number} wait - 节流的时间间隔，单位为毫秒(默认1000毫秒)。
+ * @returns {Function} 返回一个节流后的函数。
+ */
+export const throttle = (callback, wait: number = 1000) => {
+	// 用于存储setTimeout的返回值，以便后续可以取消它
+	let timeout;
+	// 记录上一次成功执行回调函数的时间
+	let lastCallTime = 0;
+	/**
+	 * 返回的节流函数，可以接收任意数量的参数。
+	 * @param {...*} args - 传递给回调函数的参数。
+	 */
+	return function (...args) {
+		// 获取当前时间
+		const now = Date.now();
+		// 计算距离下一次可以执行回调函数的剩余时间
+		const remainingTime = wait - (now - lastCallTime);
+
+		// 如果剩余时间小于等于0，立即执行回调函数
+		if (remainingTime <= 0) {
+			callback(...args);
+			// 更新上一次成功执行回调函数的时间
+			lastCallTime = now;
+		} else {
+			// 如果还有剩余时间，取消之前的setTimeout，并重新设置一个新的
+			clearTimeout(timeout);
+			timeout = setTimeout(() => {
+				// 当剩余时间到达时，执行回调函数
+				callback(...args);
+				// 更新上一次成功执行回调函数的时间
+				lastCallTime = Date.now();
+			}, remainingTime);
+		}
+	};
+};
+
+/**
+ * @description 防抖函数，确保在指定的时间内，即使多次触发，也只执行一次。
+ * @param {Function} callback - 需要被防抖执行的函数。
+ * @param {Number} wait - 在执行回调函数前需要等待的时间，单位为毫秒(默认500毫秒)。
+ * @returns {Function} 返回一个新函数，该函数被防抖。
+ */
+export const debounce = (callback, wait: number = 500) => {
+	// 用于存储setTimeout的返回值，以便后续可以取消它
+	let timeout;
+	/**
+	 * 返回的防抖函数，可以接收任意数量的参数。
+	 * @param {...*} args - 传递给回调函数的参数。
+	 */
+	return function (...args) {
+		// 如果有之前的setTimeout，则取消它
+		if (timeout) clearTimeout(timeout);
+		// 设置一个新的setTimeout，在指定时间后执行回调函数
+		timeout = setTimeout(() => {
+			callback(...args);
+		}, wait);
+	};
+};

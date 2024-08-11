@@ -114,13 +114,14 @@ interface RouteRecordRaw {
 	├── fileOperation.ts (文件相关)
 	├── formatTime.ts (时间日期相关)
 	├── getStyleSheets.ts (获取样式表)
+	├── loading.ts (全局loading样式)
 	├── mittBus.ts (mitt事件总线通讯)
 	├── objectOperation.ts (对象相关方法)
 	├── options.ts (公共options数据)
 	├── other.ts (其他方法)
+	├── rules.ts (规则校验集合)
 	├── setIconfont.ts (设置字体图标)
 	├── storage.ts (浏览器缓存相关)
-	├── toolsValidate.ts (工具校验集合)
 	├── type.ts (type类型相关)
 	└── watermark.ts (页面水印)
 ```
@@ -148,8 +149,6 @@ interface RouteRecordRaw {
     <!-- 格式化样式 -->
 
     npm lint:stylelint
-
-```
 
 ```
 ````

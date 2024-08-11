@@ -21,19 +21,21 @@
 				</el-form-item>
 				<el-form-item label="金额:" prop="money" required>
 					<el-input
-						v-model="form.money"
+						v-model.number="form.money"
 						placeholder="请输入金额"
-						:formatter="(value: string) => moneyFormat(value)"
+						type="number"
+						:formatter="(value: string) => moneyFormat(value,'')"
 						:parser="(value: string) => value.replace(/,/g, '')"
 					/>
 				</el-form-item>
 				<el-form-item label="数量:" prop="num" required>
-					<el-input
-						v-model="form.num"
+					<el-input-number
+						v-model.number="form.num"
+						controls-position="right"
 						placeholder="请输入数量"
-						class="flex-1"
-						:formatter="(value: string) => verifyNumberInteger(value)"
-						:parser="(value: string) => value.replace(/,/g, '')"
+						:precision="2"
+						:max="1000000"
+						class="flex1 inputNumber"
 					/>
 				</el-form-item>
 				<el-form-item label="手机号:" prop="phone" required>
@@ -67,6 +69,7 @@
 				</el-row>
 			</el-form>
 		</Container>
+		<div style="height: 100px"></div>
 		<el-card class="footerCard flex justify-end items-end">
 			<el-space>
 				<el-button
@@ -83,10 +86,9 @@
 </template>
 
 <script setup lang="ts" name="useTableDemoDetail">
-import type { FormInstance } from 'element-plus';
 import dayjs from 'dayjs';
-import { verifyNumberInteger, checkPhoneNumber } from '@/utils/eleValidate'; // 校验工具
-import { moneyFormat } from '@/utils/toolsValidate'; // 校验工具
+import { validatePhoneOrLandline } from '@/utils/rules'; // 校验工具
+import { moneyFormat } from '@/utils/commonFunction';
 import { useForm, useBasicsState, useAsyncData, curryingRequest } from '@/hooks';
 import { useJumpTabStore } from '@/stores';
 // import { addApi, editApi, detailApi } from '/@/api/test';
@@ -97,12 +99,12 @@ const route = useRoute();
 /* 弹窗状态控制 */
 const [activeKey, setActiveKey] = useBasicsState<string | null>(null);
 /* 表单 */
-const { form, formRef } = useForm(() => ({
+const { form, formRef } = useForm<any>(() => ({
 	name: '', // 姓名
 	phone: '',
 	address: '',
 	money: '',
-	num: '',
+	num: undefined,
 	startDate: '',
 	endDate: '',
 }));
@@ -112,7 +114,7 @@ const rules = {
 		{ required: true, message: '请输入姓名', trigger: 'blur' },
 		{ min: 3, max: 19, message: '请输入3-5个字', trigger: 'change' },
 	],
-	phone: [{ required: true, validator: checkPhoneNumber, trigger: 'blur' }],
+	phone: [{ required: true, validator: validatePhoneOrLandline, trigger: 'blur' }],
 	// 自定义校验
 	address: [
 		{
@@ -126,7 +128,7 @@ const rules = {
 		},
 	],
 	money: { required: true, message: '请输入金额', trigger: 'blur' },
-	num: { required: true, message: '请输入数量', trigger: 'blur' },
+	num: { required: true, message: '请输入数量' },
 	startDate: {
 		required: true,
 		validator: (rule: any, value: any, callback: any) => {

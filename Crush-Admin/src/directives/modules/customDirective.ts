@@ -10,7 +10,7 @@ interface IOptions {
 	[key: string]: CSSProperties;
 }
 /**
- * 按钮波浪指令
+ * @name 按钮波浪指令
  * @directive 默认方式：v-waves，如 `<div v-waves></div>`
  * @directive 参数方式：v-waves=" |light|red|orange|purple|green|teal"，如 `<div v-waves="'light'"></div>`
  * @directive 根据@/assets/styles/directives/wavesDirective.scss样式进行控制
@@ -64,7 +64,7 @@ export function wavesDirective(app: App) {
 }
 
 /**
- * 元素平滑上移
+ * @name 元素平滑上移
  * @directive  使用方式：v-fadeUp，如 `<div v-fadeUp></div>`
  */
 export function fadeUpDirective(app: App) {
@@ -130,7 +130,7 @@ export function fadeUpDirective(app: App) {
 }
 
 /**
- * 图片懒加载
+ * @name 图片懒加载
  * @directive  使用方式：v-lazy 如：<img v-lazy="imageSrc"/>
  * @description  接收参数：String 类型 ,接受图片路径 用于图片懒加载
  */
@@ -154,11 +154,11 @@ export function lazyImgDirective(app: App) {
 }
 
 /**
- * 文本省略
- *  @directive  使用方式：v-ellipsis 如：<div v-ellipsis:multiple="[200, 2]">{{ longText }}</div>
- *  @description  single |multiple (单行 | 多行) ,[200, 2] (元素的宽度，行数)
- *  @description  接受数组参数，数组中包含两个值：一个是元素的宽度，另一个是行数。指令还接受一个修饰符arg，用于指定是单行省略（single）还是多行省略（multiple）
- *  @description  用于实现文本省略效果。
+ * @name 文本省略
+ * @directive  使用方式：v-ellipsis 如：<div v-ellipsis:multiple="[200, 2]">{{ longText }}</div>
+ * @description  single |multiple (单行 | 多行) ,[200, 2] (元素的宽度，行数)
+ * @description  接受数组参数，数组中包含两个值：一个是元素的宽度，另一个是行数。指令还接受一个修饰符arg，用于指定是单行省略（single）还是多行省略（multiple）
+ * @description  用于实现文本省略效果。
  */
 export function ellipsisDirective(app: App) {
 	const cssProperties: IOptions = {
@@ -192,11 +192,11 @@ export function ellipsisDirective(app: App) {
 }
 
 /**
- * 文本提示
- *  @directive  使用方式：v-tooltip 如：<div  v-tooltip="{ text: 'tooltip', position: 'left' }">Hover me</div>
- *  @description  接受个对象，里面两个参数, text 为提示内容, position 为提示方向
- *  @description  用于悬停文本提示（仅可在top|bottom|left|right四方向，若需更多个方向需要借助组件库）。
- *  @directive 根据@/assets/styles/directives/tooltipDirective.scss样式进行控制
+ * @name 文本提示
+ * @directive  使用方式：v-tooltip 如：<div  v-tooltip="{ text: 'tooltip', position: 'left' }">Hover me</div>
+ * @description  接受个对象，里面两个参数, text 为提示内容, position 为提示方向
+ * @description  用于悬停文本提示（仅可在top|bottom|left|right四方向，若需更多个方向需要借助组件库）。
+ * @directive 根据@/assets/styles/directives/tooltipDirective.scss样式进行控制
  */
 export function tooltipDirective(app: App) {
 	app.directive('tooltip', {
@@ -275,10 +275,10 @@ export function tooltipDirective(app: App) {
 }
 
 /**
- * 元素可见性指令
- *  @directive  使用方式：v-visibility 如：`<div v-visibility="fn">观察我</div>`
- *  @description  fn可接受个参数，该参数是个boolean，可判断该元素是否进入视口
- *  @description  当元素进入视口时为true，未进入视口为false
+ * @name 元素可见性指令
+ * @directive  使用方式：v-visibility 如：`<div v-visibility="fn">观察我</div>`
+ * @description  fn可接受个参数，该参数是个boolean，可判断该元素是否进入视口
+ * @description  当元素进入视口时为true，未进入视口为false
  */
 export function visibilityDirective(app: App) {
 	app.directive('visibility', {
@@ -295,11 +295,11 @@ export function visibilityDirective(app: App) {
 }
 
 /**
- * 添加背景水印
- *  @directive  使用方式：v-waterMarker 如：`<div v-waterMarker="{text:'text',textColor:'rgba(180, 180, 180, 0.4)'}"></div>`
- *  @description  可接受文本，字体以及颜色
- *  @description  使用：设置水印文案，字体大小,颜色即可
- *  @description  思路：
+ * @name 添加背景水印
+ * @directive  使用方式：v-waterMarker 如：`<div v-waterMarker="{text:'text',textColor:'rgba(180, 180, 180, 0.4)'}"></div>`
+ * @description  可接受文本，字体以及颜色
+ * @description  使用：设置水印文案，字体大小,颜色即可
+ * @description  思路：
     				1、使用 canvas 特性生成 base64 格式的图片文件，设置其字体大小，颜色等。
     				2、将其设置为背景图片，从而实现页面或组件水印效果
  */

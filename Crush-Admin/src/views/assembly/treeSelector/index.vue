@@ -12,6 +12,7 @@
 		/>
 		<TreeSelector
 			:data="addressJson.address"
+			class="ml10"
 			id="code"
 			multiple
 			label="name"

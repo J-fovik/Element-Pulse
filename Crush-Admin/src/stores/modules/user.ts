@@ -31,7 +31,7 @@ export const useUserStore = defineStore(`${BY_NAME}-user`, () => {
 	// 获取菜单权限
 	const authMenuListGet = async () => {
 		const { data } = await getAuthMenuListApi();
-		authMenuList.value = data; //newModules.sort((a: any, b: any) => a.meta.order - b.meta.order);
+		authMenuList.value = newModules.sort((a: any, b: any) => a.meta.order - b.meta.order);
 	};
 	// 获取按钮权限
 	const authButtonListGet = async () => {

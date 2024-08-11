@@ -24,6 +24,13 @@ declare namespace Menu {
 type ArrayItem = {
 	[key: string]: any;
 };
+// 声明文件，定义全局变量
+/* eslint-disable */
+declare interface Window {
+	nextLoading: boolean;
+	BMAP_SATELLITE_MAP: any;
+	BMap: any;
+}
 // 申明 数组
 declare type EmptyArrayType<T = any> = T[];
 // 申明 对象

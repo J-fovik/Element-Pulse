@@ -71,7 +71,14 @@ request.interceptors.response.use(
 		}
 	},
 	async (error: AxiosError) => {
-		ElMessage.error('请求出错了');
+		// 对响应错误做点什么
+		if (error.message.indexOf('timeout') != -1) {
+			ElMessage.error('网络超时');
+		} else if (error.message == 'Network Error') {
+			ElMessage.error('网络连接错误');
+		} else {
+			ElMessage.error('请求出错了');
+		}
 		return Promise.reject(error);
 	}
 );

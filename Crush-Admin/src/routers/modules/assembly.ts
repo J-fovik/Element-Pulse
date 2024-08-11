@@ -89,5 +89,20 @@ export default {
 			},
 			component: () => import('@/views/assembly/wangEditor/index.vue'),
 		},
+		{
+			path: '/assembly/eCharts',
+			name: 'eCharts',
+			meta: {
+				icon: 'Menu',
+				requiresAuth: true,
+				title: 'ECharts图表',
+				isLink: '',
+				isHide: false,
+				isFull: false,
+				isAffix: false,
+				isKeepAlive: true,
+			},
+			component: () => import('@/views/assembly/eCharts/index.vue'),
+		},
 	],
 };

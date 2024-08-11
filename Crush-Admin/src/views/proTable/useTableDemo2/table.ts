@@ -1,7 +1,7 @@
 import { ElTag, ElImage } from 'element-plus';
 import { h } from 'vue';
 import type { TableCustomColumnData } from '@/hooks';
-import { moneyFormat, textFormat, scaleFormat, dayjsFormat } from '@/utils/commonFunction';
+import { moneyFormat, textFormat, scaleFormat, dateFormat } from '@/utils/commonFunction';
 import findOption from '@/utils/options'; // 根据value查label
 import { ALL_TYPE_OPTIONS } from './options';
 
@@ -82,7 +82,7 @@ export const createTableColumns = (): TableCustomColumnData[] => {
 			align: 'center',
 			headerAlign: 'center',
 			formatter: (record) => {
-				return textFormat(dayjsFormat(record.date, 'YYYY-MM-DD'));
+				return textFormat(dateFormat(record.date, 'YYYY-MM-DD'));
 			},
 		},
 		{

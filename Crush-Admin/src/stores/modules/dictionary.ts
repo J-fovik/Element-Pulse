@@ -25,7 +25,7 @@ export const useDictionaryStore = defineStore('dictionary', () => {
 		});
 	};
 	/**
-	 * 根据分类分组的值找到该数组，再根据具体的值找到该对象
+	 * @description 根据分类分组的值找到该数组，再根据具体的值找到该对象
 	 * @param key 分组分类的值
 	 * @param value 具体的值
 	 * @returns

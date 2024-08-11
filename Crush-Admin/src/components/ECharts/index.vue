@@ -10,7 +10,7 @@ import { useGlobalStore } from '@/stores'; // 导入全局状态管理
 import { storeToRefs } from 'pinia'; // 导入 pinia 的 storeToRefs 函数用于解构全局状态
 // 定义 Props 接口，用于接收来自父组件的配置
 interface Props {
-	option: ECOption; // 图表配置选项
+	option: any; // 图表配置选项
 	renderer?: 'canvas' | 'svg'; // 图表渲染方式
 	resize?: boolean; // 是否在窗口大小改变时重新调整图表大小
 	theme?: Object | string; // 图表主题
@@ -38,7 +38,6 @@ const draw = () => {
 		chartInstance.value.setOption(props.option, { notMerge: true });
 	}
 };
-
 // 监听 props 变化，并重新绘制图表
 watch(props, () => {
 	draw();

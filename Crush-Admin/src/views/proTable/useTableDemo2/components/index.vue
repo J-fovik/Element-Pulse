@@ -21,21 +21,32 @@
 			<el-form-item label="地点:" prop="address" required>
 				<el-input type="textarea" v-model.trim="form.address" placeholder="请输入地点" />
 			</el-form-item>
-			<el-form-item label="金额:" prop="money" required>
+			<!-- <el-form-item label="金额:" prop="money" required>
 				<el-input
-					v-model="form.money"
+					v-model.number="form.money"
 					placeholder="请输入金额"
-					:formatter="(value: string) => moneyFormat(value)"
+					:formatter="(value: string) => moneyFormat(value,'')"
 					:parser="(value: string) => value.replace(/,/g, '')"
+				/>
+			</el-form-item> -->
+			<el-form-item label="金额:" prop="money" required>
+				<el-input-number
+					v-model.number="form.money"
+					controls-position="right"
+					placeholder="请输入金额"
+					:precision="2"
+					@input="inputMoney"
+					class="flex1 inputNumber"
 				/>
 			</el-form-item>
 			<el-form-item label="数量:" prop="num" required>
-				<el-input
-					v-model="form.num"
+				<el-input-number
+					v-model.number="form.num"
+					controls-position="right"
 					placeholder="请输入数量"
-					style="width: 100%"
-					:formatter="(value: string) => verifyNumberInteger(value)"
-					:parser="(value: string) => value.replace(/,/g, '')"
+					:precision="2"
+					:max="1000000"
+					class="flex1 inputNumber"
 				/>
 			</el-form-item>
 			<el-form-item label="手机号:" prop="phone" required>
@@ -83,10 +94,9 @@
 </template>
 
 <script lang="ts" setup name="tableDemoOperate">
-import type { FormInstance } from 'element-plus';
 import dayjs from 'dayjs';
-import { verifyNumberInteger, checkPhoneNumber } from '@/utils/eleValidate'; // 校验工具
-import { moneyFormat } from '@/utils/toolsValidate'; // 校验工具
+import { validatePhoneOrLandline } from '@/utils/rules'; // 校验工具
+import { moneyFormat } from '@/utils/commonFunction';
 import { useForm, useBasicsState, useAsyncData, curryingRequest } from '@/hooks';
 // import { addApi, editApi, detailApi } from '/@/api/test';
 /* 接受父组件参数 */
@@ -102,14 +112,14 @@ const emits = defineEmits(['close', 'success']);
 /* 弹窗状态控制 */
 const [activeKey, setActiveKey] = useBasicsState<string | null>(null);
 /* 表单 */
-const { form, formRef } = useForm(() => ({ ...props.data }));
+const { form, formRef } = useForm<any>(() => ({ ...props.data, num: props.data.num * 1 }));
 /* 表单验证 */
 const rules = {
 	name: [
 		{ required: true, message: '请输入姓名', trigger: 'blur' },
 		{ min: 3, max: 19, message: '请输入3-5个字', trigger: 'change' },
 	],
-	phone: [{ required: true, validator: checkPhoneNumber, trigger: 'blur' }],
+	phone: [{ required: true, validator: validatePhoneOrLandline, trigger: 'blur' }],
 	// 自定义校验
 	address: [
 		{
@@ -123,7 +133,7 @@ const rules = {
 		},
 	],
 	money: { required: true, message: '请输入金额', trigger: 'blur' },
-	num: { required: true, message: '请输入数量', trigger: 'blur' },
+	num: { required: true, message: '请输入数量' },
 	startDate: {
 		required: true,
 		validator: (rule: any, value: any, callback: any) => {
@@ -144,6 +154,10 @@ const rules = {
 		},
 		trigger: 'blur',
 	},
+};
+const inputMoney = (e) => {
+	form.value.money = moneyFormat(e, '');
+	console.log(form.value.money);
 };
 /* 验证数据 */
 const validateData = (formEl: any) => {

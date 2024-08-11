@@ -62,6 +62,7 @@ export function getLightColor(color: string, level: number) {
 	for (let i = 0; i < 3; i++) rgb[i] = Math.round(255 * level + rgb[i] * (1 - level));
 	return rgbToHex(rgb[0], rgb[1], rgb[2]);
 }
+
 /**
  * @description 获取随机颜色
  * @returns {String} 返回 # 拼接的六位颜色值
