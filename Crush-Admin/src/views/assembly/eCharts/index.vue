@@ -69,13 +69,42 @@
 		</el-card>
 		<el-card
 			shadow="hover"
-			header="水型图"
 			class="mt10"
 			:content-style="{ padding: '10px' }"
 			:header-style="{ padding: '10px' }"
-		>
+			><template #header>
+				<div class="flex items-center justify-between">
+					<div>订单趋势</div>
+					<el-dropdown trigger="click">
+						<div>
+							{{ chartDayTitle }}
+							<el-icon size="20"><ArrowDownBold /></el-icon>
+						</div>
+						<template #dropdown>
+							<el-dropdown-menu>
+								<el-dropdown-item @click="setChartDay(1)">
+									<el-icon><Select v-if="chartDay === 1" /></el-icon>
+									最近一个月
+								</el-dropdown-item>
+								<el-dropdown-item @click="setChartDay(3)">
+									<el-icon><Select v-if="chartDay === 3" /></el-icon>
+									最近三个月
+								</el-dropdown-item>
+								<el-dropdown-item @click="setChartDay(6)">
+									<el-icon><Select v-if="chartDay === 6" /></el-icon>
+									最近半年
+								</el-dropdown-item>
+								<el-dropdown-item @click="setChartDay(12)">
+									<el-icon><Select v-if="chartDay === 12" /></el-icon>
+									最近一年
+								</el-dropdown-item>
+							</el-dropdown-menu>
+						</template>
+					</el-dropdown>
+				</div>
+			</template>
 			<div style="height: 400px">
-				<ECharts :options="options10" />
+				<ECharts :options="options11" />
 			</div>
 		</el-card>
 		<el-card
@@ -104,583 +133,286 @@
 <script setup lang="ts" name="eCharts">
 import { useGlobalStore } from '@/stores';
 import echarts from '@/components/ECharts/config';
+import { useBasicsState } from '@/hooks';
+import {
+	options1,
+	options2,
+	options3,
+	options4,
+	options5,
+	options6,
+	options7,
+	options8,
+	options9,
+	options10,
+} from './options';
 const globalStore = useGlobalStore();
 // 主题色
 const isDark = computed(() => (globalStore.isDark ? 'dark' : 'light'));
 const echartsClick = (e) => {
 	console.log('点击', e);
 };
-const options1 = {
-	xAxis: {
-		type: 'category',
-		boundaryGap: false,
-		data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-	},
-	yAxis: {
-		type: 'value',
-	},
-	grid: {
-		x: '10%',
-		y: '5%',
-		x2: '5%',
-		y2: '15%',
-	},
-	series: [
-		{
-			data: [150, 230, 224, 218, 135, 147, 260],
-			type: 'line',
+// 控制时间选择
+const [chartDay, setChartDay] = useBasicsState(1, () => initData());
+// 时间
+const chartDayTitle = computed(() => {
+	switch (chartDay.value) {
+		case 1:
+			return '最近一个月';
+		case 3:
+			return '最近三个月';
+		case 6:
+			return '最近半年';
+		case 12:
+			return '最近一年';
+		default:
+			return '';
+	}
+});
+// 图表数据
+const yData = ref<number[]>([]);
+// 时间轴
+const xData = ref<string[]>([]);
+// 图表配置
+const options11 = computed(() => {
+	return {
+		grid: {
+			left: '5%',
+			right: '5%',
+			top: '12%',
+			bottom: '22%',
 		},
-	],
-};
-const options2 = {
-	grid: {
-		x: '10%',
-		y: '5%',
-		x2: '5%',
-		y2: '15%',
-	},
-	xAxis: {
-		type: 'category',
-		boundaryGap: false,
-		data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-	},
-	yAxis: {
-		type: 'value',
-	},
-	series: [
-		{
-			data: [820, 932, 901, 934, 1290, 1330, 1320],
-			type: 'line',
-			areaStyle: {},
-		},
-	],
-};
-const options3 = {
-	tooltip: {
-		trigger: 'axis',
-	},
-	xAxis: {
-		type: 'category',
-		boundaryGap: false,
-		data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
-	},
-	yAxis: {
-		type: 'value',
-	},
-	series: [
-		{
-			name: '邮件营销',
-			type: 'line',
-			stack: '总量',
-			data: [120, 132, 101, 134, 90, 230, 210],
-		},
-		{
-			name: '联盟广告',
-			type: 'line',
-			stack: '总量',
-			data: [220, 182, 191, 234, 290, 330, 310],
-		},
-		{
-			name: '视频广告',
-			type: 'line',
-			stack: '总量',
-			data: [150, 232, 201, 154, 190, 330, 410],
-		},
-		{
-			name: '直接访问',
-			type: 'line',
-			stack: '总量',
-			data: [320, 332, 301, 334, 390, 330, 320],
-		},
-		{
-			name: '搜索引擎',
-			type: 'line',
-			stack: '总量',
-			data: [820, 932, 901, 934, 1290, 1330, 1320],
-		},
-	],
-	grid: {
-		x: '15%',
-		y: '5%',
-		x2: '1%',
-		y2: '15%',
-	},
-};
-const options4 = {
-	xAxis: {
-		type: 'category',
-		data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-	},
-	yAxis: {
-		type: 'value',
-	},
-	series: [
-		{
-			data: [120, 200, 150, 80, 70, 110, 130],
-			type: 'bar',
-			showBackground: true,
-			backgroundStyle: {
-				color: 'rgba(180, 180, 180, 0.2)',
+		dataZoom: [
+			{
+				show: true,
+				realtime: true,
+				start: 0,
+				end: 100,
+			},
+			{
+				type: 'inside',
+				realtime: true,
+				start: 0,
+				end: 100,
+			},
+		],
+		xAxis: {
+			type: 'category',
+			offset: 2,
+			data: xData.value,
+			boundaryGap: false,
+			axisLabel: {
+				color: '#4E5969',
+				formatter(value: number, idx: number) {
+					if (idx === 0) return '';
+					if (idx === xData.value.length - 1) return '';
+					return `${value}`;
+				},
+			},
+			axisLine: {
+				show: false,
+			},
+			axisTick: {
+				show: false,
+			},
+			splitLine: {
+				show: true,
+				interval: (idx: number) => {
+					if (idx === 0) return false;
+					if (idx === xData.value.length - 1) return false;
+					return true;
+				},
+				lineStyle: {
+					color: '#E5E8EF',
+				},
+			},
+			axisPointer: {
+				show: true,
+				lineStyle: {
+					color: '#23ADFF',
+					width: 2,
+				},
 			},
 		},
-	],
-	grid: {
-		x: '15%',
-		y: '5%',
-		x2: '1%',
-		y2: '15%',
-	},
-};
-const options5 = {
-	xAxis: {
-		type: 'category',
-		data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-	},
-	yAxis: {
-		type: 'value',
-	},
-	series: [
-		{
-			data: [
-				120,
-				{
-					value: 200,
+		yAxis: {
+			type: 'value',
+			axisLine: {
+				show: false,
+			},
+			splitLine: {
+				show: true,
+				lineStyle: {
+					type: 'dashed',
+					color: '#E5E8EF',
+				},
+			},
+		},
+		tooltip: {
+			trigger: 'axis',
+			formatter(params: any) {
+				const [firstElement] = params;
+				return `<div>
+							<p class="tooltip-title">${firstElement.axisValueLabel}</p>
+							<div class="content-panel">
+								<span>订单量</span>
+								<span class="tooltip-value">${firstElement.value}</span>
+							</div>
+          				</div>`;
+			},
+			className: 'echarts-tooltip-diy',
+		},
+		series: [
+			{
+				data: yData.value,
+				type: 'line',
+				smooth: true,
+				symbolSize: 12,
+				emphasis: {
+					focus: 'series',
 					itemStyle: {
-						color: '#a90000',
+						borderWidth: 2,
 					},
 				},
-				150,
-				80,
-				70,
-				110,
-				130,
-			],
-			type: 'bar',
-		},
-	],
-	grid: {
-		x: '15%',
-		y: '5%',
-		x2: '1%',
-		y2: '15%',
-	},
-};
-const options6 = {
-	xAxis: {
-		type: 'value',
-		boundaryGap: [0, 0.01],
-	},
-	yAxis: {
-		type: 'category',
-		data: ['巴西', '印尼', '美国', '印度', '中国'],
-	},
-	series: [
-		{
-			name: '2011年',
-			type: 'bar',
-			data: [18203, 23489, 29034, 104970, 131744],
-		},
-		{
-			name: '2012年',
-			type: 'bar',
-			data: [19325, 23438, 31000, 121594, 134141],
-		},
-	],
-	tooltip: {
-		trigger: 'axis',
-		axisPointer: {
-			type: 'shadow',
-		},
-	},
-	grid: {
-		x: '15%',
-		y: '5%',
-		x2: '1%',
-		y2: '15%',
-	},
-};
-const options7 = {
-	series: [
-		{
-			name: '访问来源',
-			type: 'pie',
-			radius: '50%',
-			data: [
-				{ value: 1048, name: '搜索引擎' },
-				{ value: 735, name: '直接访问' },
-				{ value: 580, name: '邮件营销' },
-				{ value: 484, name: '联盟广告' },
-				{ value: 300, name: '视频广告' },
-			],
-			emphasis: {
-				itemStyle: {
-					shadowBlur: 10,
-					shadowOffsetX: 0,
-					shadowColor: 'rgba(0, 0, 0, 0.5)',
+				markPoint: {
+					data: [
+						{ type: 'max', name: 'Max' },
+						{ type: 'min', name: 'Min' },
+					],
 				},
-			},
-		},
-	],
-	grid: {
-		x: '15%',
-		y: '5%',
-		x2: '1%',
-		y2: '15%',
-	},
-};
-const options8 = {
-	series: [
-		{
-			name: '访问来源',
-			type: 'pie',
-			radius: ['40%', '70%'],
-			avoidLabelOverlap: false,
-			itemStyle: {
-				borderRadius: 10,
-				borderColor: '#fff',
-				borderWidth: 2,
-			},
-			label: {
-				show: false,
-				position: 'center',
-			},
-			emphasis: {
-				label: {
-					show: true,
-					fontSize: '20',
-					fontWeight: 'bold',
+				markLine: {
+					data: [{ type: 'average', name: 'Avg', silent: true }],
 				},
-			},
-			labelLine: {
-				show: false,
-			},
-			data: [
-				{ value: 1048, name: '搜索引擎' },
-				{ value: 735, name: '直接访问' },
-				{ value: 580, name: '邮件营销' },
-				{ value: 484, name: '联盟广告' },
-				{ value: 300, name: '视频广告' },
-			],
-		},
-	],
-	grid: {
-		x: '15%',
-		y: '5%',
-		x2: '1%',
-		y2: '15%',
-	},
-};
-const options9 = {
-	series: [
-		{
-			name: '面积模式',
-			type: 'pie',
-			radius: [20, 60],
-			center: ['50%', '50%'],
-			roseType: 'area',
-			itemStyle: {
-				borderRadius: 8,
-			},
-			data: [
-				{ value: 40, name: 'rose 1' },
-				{ value: 38, name: 'rose 2' },
-				{ value: 32, name: 'rose 3' },
-				{ value: 30, name: 'rose 4' },
-				{ value: 28, name: 'rose 5' },
-				{ value: 26, name: 'rose 6' },
-				{ value: 22, name: 'rose 7' },
-				{ value: 18, name: 'rose 8' },
-			],
-		},
-	],
-	grid: {
-		x: '15%',
-		y: '5%',
-		x2: '1%',
-		y2: '15%',
-	},
-};
-const options10 = {
-	title: [
-		{
-			text: '预约量',
-			x: '25%',
-			y: 30,
-			textAlign: 'center',
-			textStyle: {
-				color: '#a1a1a1',
-				fontSize: 16,
-				fontFamily: 'Microsoft Yahei',
-				fontWeight: '100',
-				textAlign: 'center',
-			},
-		},
-		{
-			text: '实时客流量',
-			x: '75%',
-			y: 30,
-			textAlign: 'center',
-			textStyle: {
-				color: '#a1a1a1',
-				fontSize: 16,
-				fontFamily: 'Microsoft Yahei',
-				fontWeight: '100',
-				textAlign: 'center',
-			},
-		},
-		{
-			text: (0.5 * 100).toFixed(0) + '%',
-			left: '25%',
-			top: '38%',
-			textAlign: 'center',
-			textStyle: {
-				fontSize: '50',
-				fontWeight: '300',
-				color: '#a06a0a',
-				textAlign: 'center',
-				textBorderColor: 'rgba(0, 0, 0, 0)',
-				textShadowColor: '#fff',
-				textShadowBlur: '0',
-				textShadowOffsetX: 0,
-				textShadowOffsetY: 1,
-			},
-		},
-		{
-			text: (0.5 * 100).toFixed(0) + '%',
-			left: '75%',
-			top: '38%',
-			textAlign: 'center',
-			textStyle: {
-				fontSize: '50',
-				fontWeight: '300',
-				color: '#02456d',
-				textAlign: 'center',
-				textBorderColor: 'rgba(0, 0, 0, 0)',
-				textShadowColor: '#fff',
-				textShadowBlur: '0',
-				textShadowOffsetX: 0,
-				textShadowOffsetY: 1,
-			},
-		},
-	],
-	series: [
-		{
-			type: 'liquidFill',
-			radius: '50%',
-			z: 6,
-			center: ['25%', '50%'],
-			color: [
-				{
-					type: 'linear',
-					x: 0,
-					y: 0,
-					x2: 0,
-					y2: 1,
-					colorStops: [
+				lineStyle: {
+					width: 3,
+					color: new echarts.graphic.LinearGradient(0, 0, 1, 0, [
 						{
-							offset: 1,
-							color: 'rgba(251, 173, 23, 0)',
+							offset: 0,
+							color: 'rgba(30, 231, 255, 1)',
 						},
 						{
 							offset: 0.5,
-							color: 'rgba(251, 173, 23, .2)',
+							color: 'rgba(36, 154, 255, 1)',
 						},
 						{
+							offset: 1,
+							color: 'rgba(111, 66, 251, 1)',
+						},
+					]),
+				},
+				showSymbol: false,
+				areaStyle: {
+					opacity: 0.8,
+					color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+						{
 							offset: 0,
-							color: 'rgba(251, 173, 23, 1)',
+							color: 'rgba(17, 126, 255, 0.16)',
 						},
-					],
-					globalCoord: false,
-				},
-			],
-			data: [0.5, 0.5, 0.5],
-			backgroundStyle: {
-				borderWidth: 1,
-				color: 'transparent',
-			},
-			label: {
-				normal: {
-					formatter: '',
-				},
-			},
-			outline: {
-				show: true,
-				itemStyle: {
-					borderWidth: 0,
-				},
-				borderDistance: 0,
-			},
-		},
-		{
-			name: '第二层白边',
-			type: 'pie',
-			z: 3,
-			radius: ['0%', '55%'],
-			center: ['25%', '50%'],
-			hoverAnimation: false,
-			itemStyle: {
-				normal: {
-					label: {
-						show: false,
-					},
-				},
-			},
-			data: [
-				{
-					value: 100,
-					itemStyle: {
-						normal: {
-							color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
-								{
-									offset: 0,
-									color: '#fefefe',
-								},
-								{
-									offset: 1,
-									color: '#e7e8ea',
-								},
-							]),
+						{
+							offset: 1,
+							color: 'rgba(17, 128, 255, 0)',
 						},
-					},
-				},
-				{
-					value: 0,
-					itemStyle: {
-						normal: {
-							color: 'transparent',
-						},
-					},
-				},
-			],
-		},
-		{
-			name: '最外绿边',
-			type: 'pie',
-			z: 1,
-			radius: ['0%', '58%'],
-			center: ['25%', '50%'],
-			hoverAnimation: false,
-			itemStyle: {
-				normal: {
-					label: {
-						show: false,
-					},
+					]),
 				},
 			},
-			data: [
-				{
-					value: 100,
-					itemStyle: {
-						color: '#fdc56e',
-					},
-				},
-				{
-					value: 0,
-					itemStyle: {
-						normal: {
-							color: 'transparent',
-						},
-					},
-				},
-			],
-		},
-		{
-			type: 'liquidFill',
-			radius: '50%',
-			z: 6,
-			center: ['75%', '50%'],
-			color: ['#c1dce7', '#90d3f0', '#009bdb'],
-			data: [0.6, { value: 0.5, direction: 'left' }, 0.4, 0.3],
-			backgroundStyle: {
-				borderWidth: 1,
-				color: 'transparent',
-			},
-			label: {
-				normal: {
-					formatter: '',
-				},
-			},
-			outline: {
-				show: true,
-				itemStyle: {
-					borderWidth: 0,
-				},
-				borderDistance: 0,
-			},
-		},
-		{
-			name: '第二层白边',
-			type: 'pie',
-			z: 3,
-			radius: ['0%', '55%'],
-			center: ['75%', '50%'],
-			hoverAnimation: false,
-			itemStyle: {
-				normal: {
-					label: {
-						show: false,
-					},
-				},
-			},
-			data: [
-				{
-					value: 100,
-					itemStyle: {
-						normal: {
-							color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
-								{
-									offset: 0,
-									color: '#fefefe',
-								},
-								{
-									offset: 1,
-									color: '#e7e8ea',
-								},
-							]),
-						},
-					},
-				},
-				{
-					value: 0,
-					itemStyle: {
-						normal: {
-							color: 'transparent',
-						},
-					},
-				},
-			],
-		},
-		{
-			name: '最外蓝边',
-			type: 'pie',
-			z: 1,
-			radius: ['0%', '58%'],
-			center: ['75%', '50%'],
-			hoverAnimation: false,
-			itemStyle: {
-				normal: {
-					label: {
-						show: false,
-					},
-				},
-			},
-			data: [
-				{
-					value: 100,
-					itemStyle: {
-						color: '#07a2e3',
-					},
-				},
-				{
-					value: 0,
-					itemStyle: {
-						normal: {
-							color: 'transparent',
-						},
-					},
-				},
-			],
-		},
-	],
+		],
+	};
+});
+// 获取数据
+const initData = async () => {
+	if (chartDay.value === 1) {
+		// 设置数据
+		yData.value = [
+			3221, 3654, 3782, 4023, 4277, 4212, 105, 208, 356, 499, 866, 1065, 1865, 2522, 2699,
+			2254, 2344, 1986, 1602, 1787, 2654, 2877,
+		];
+		// 设置时间
+		xData.value = [
+			'2023/04/19',
+			'2023/04/20',
+			'2023/04/21',
+			'2023/04/22',
+			'2023/04/23',
+			'2023/04/24',
+			'2023/04/25',
+			'2023/04/26',
+			'2023/04/27',
+			'2023/04/28',
+			'2023/04/29',
+			'2023/04/30',
+			'2023/05/01',
+			'2023/05/02',
+			'2023/05/03',
+			'2023/05/04',
+			'2023/05/05',
+			'2023/05/06',
+			'2023/05/07',
+			'2023/05/08',
+			'2023/05/09',
+			'2023/05/10',
+		];
+	} else if (chartDay.value === 3) {
+		// 设置数据
+		yData.value = [
+			222, 333, 444, 555, 866, 1065, 1865, 2522, 2699, 2254, 2344, 1986, 1602, 1787, 2654,
+			2877, 3221, 3654, 3782, 4023, 4277, 4212,
+		];
+		// 设置时间
+		xData.value = [
+			'2024/04/19',
+			'2024/04/20',
+			'2024/04/21',
+			'2024/04/22',
+			'2024/04/23',
+			'2024/04/24',
+			'2024/04/25',
+			'2024/04/26',
+			'2024/04/27',
+			'2024/04/28',
+			'2024/04/29',
+			'2024/04/30',
+			'2024/05/01',
+			'2024/05/02',
+			'2024/05/03',
+			'2024/05/04',
+			'2024/05/05',
+			'2024/05/06',
+			'2024/05/07',
+			'2024/05/08',
+			'2024/05/09',
+			'2024/05/10',
+		];
+	} else {
+		// 设置数据
+		yData.value = [
+			1865, 2522, 2699, 2254, 2344, 1986, 1602, 222, 333, 444, 555, 866, 1065, 1787, 2654,
+			2877, 3221, 3654, 3782, 4023, 4277, 4212,
+		];
+		// 设置时间
+		xData.value = [
+			'2025/04/19',
+			'2025/04/20',
+			'2025/04/21',
+			'2025/04/22',
+			'2025/04/23',
+			'2025/04/24',
+			'2025/04/25',
+			'2025/04/26',
+			'2025/04/27',
+			'2025/04/28',
+			'2025/04/29',
+			'2025/04/30',
+			'2025/05/01',
+			'2025/05/02',
+			'2025/05/03',
+			'2025/05/04',
+			'2025/05/05',
+			'2025/05/06',
+			'2025/05/07',
+			'2025/05/08',
+			'2025/05/09',
+			'2025/05/10',
+		];
+	}
 };
+initData();
 </script>
