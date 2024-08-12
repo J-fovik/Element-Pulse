@@ -52,8 +52,6 @@ request.interceptors.response.use(
 				if ([1002, 1003].includes(res.data.code)) {
 					// 删除token
 					Session.remove('userToken');
-					// 删除用户信息
-					Session.remove('userInfo');
 					// 清除用户信息
 					setUserInfo({});
 					// 去登录页

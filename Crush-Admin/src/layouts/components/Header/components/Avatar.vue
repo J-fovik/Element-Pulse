@@ -54,8 +54,6 @@ const logout = () => {
 		setUserInfo({});
 		// 清除Cookie
 		await Session.remove('userToken');
-		// 删除用户信息
-		Session.remove('userInfo');
 		// 到登陆页
 		router.push(LOGIN_URL);
 		ElMessage.success('退出登录成功！');

@@ -63,7 +63,6 @@ export const useUserStore = defineStore(`${BY_NAME}-user`, () => {
 			...userInfo,
 			name: BY_NAME,
 		});
-		Session.set('userInfo', userInfo.value);
 		// 获取成功
 		return true;
 	};
