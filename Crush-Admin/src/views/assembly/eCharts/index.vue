@@ -109,6 +109,24 @@
 		</el-card>
 		<el-card
 			shadow="hover"
+			class="mt10"
+			:content-style="{ padding: '10px' }"
+			:header-style="{ padding: '10px' }"
+			><template #header>
+				<div class="flex items-center justify-between">
+					<div>其他ECharts</div>
+					<el-button
+						type="primary"
+						text
+						class="cursor-pointer"
+						@click="$router.push(`/dataScreen`)"
+						>数据大屏</el-button
+					>
+				</div>
+			</template>
+		</el-card>
+		<el-card
+			shadow="hover"
 			header="配置项 📚"
 			class="mt10"
 			:content-style="{ padding: '10px' }"

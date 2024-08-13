@@ -10,6 +10,8 @@ import {
 } from '@/utils/arrayOperation';
 import { newModules } from '@/routers/base';
 import { BY_NAME } from '@/config';
+import authMenuNameList from '@/assets/json/authMenuNameList.json';
+
 /**
  * @name 用户信息仓库
  */
@@ -30,8 +32,13 @@ export const useUserStore = defineStore(`${BY_NAME}-user`, () => {
 
 	// 获取菜单权限
 	const authMenuListGet = async () => {
-		const { data } = await getAuthMenuListApi();
-		authMenuList.value = newModules.sort((a: any, b: any) => a.meta.order - b.meta.order);
+		const frontRouteList = newModules.sort((a: any, b: any) => a.meta.order - b.meta.order); // 一：根据前端定义路由
+		const { data: backRouteList } = await getAuthMenuListApi(); // 二：根据接口返回路由
+		// const frontFilterFrontRouteList = filterRoutes(
+		// 	newModules.sort((a: any, b: any) => a.meta.order - b.meta.order),
+		// 	authMenuNameList.data.menuNameList
+		// ); // 三：根据后端name数组过滤前端定义的路由
+		authMenuList.value = frontRouteList;
 	};
 	// 获取按钮权限
 	const authButtonListGet = async () => {

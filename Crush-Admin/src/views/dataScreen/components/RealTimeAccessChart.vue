@@ -1,5 +1,5 @@
 <template>
-	<!-- 实时访问 -->
+	<!-- 实时游客统计 -->
 	<div class="actual-total">
 		<div class="expect-total">可预约总量<i>999999</i>人</div>
 		<div class="actual-total">
@@ -10,18 +10,18 @@
 		</div>
 	</div>
 	<div class="echarts">
-		<ECharts :options="option" />
+		<ECharts :options="options" />
 	</div>
 </template>
 
-<script setup lang="ts">
-import { ref } from 'vue';
+<script setup lang="ts" name="RealTimeAccessChart">
 const actualTotal = ref('216908');
-
-const option = {
+const waterLevel = ref(0.55); // 初始化水量为 0.4
+// 配置
+const options = {
 	title: [
 		{
-			text: (0.5 * 100).toFixed(0) + '%',
+			text: (waterLevel.value * 100).toFixed(0) + '%', // 名称
 			left: '49%',
 			top: '35%',
 			textAlign: 'center',
@@ -102,7 +102,7 @@ const option = {
 			radius: '70%',
 			z: 2,
 			center: ['50%', '50%'],
-			data: [0.4, 0.4, 0.4],
+			data: [waterLevel.value, waterLevel.value, waterLevel.value],
 			itemStyle: {
 				color: {
 					type: 'linear',
@@ -127,7 +127,7 @@ const option = {
 				},
 			},
 			label: {
-				show: false,
+				show: false, // 展示数据
 			},
 			backgroundStyle: {
 				borderWidth: 1,

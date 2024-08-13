@@ -1,22 +1,23 @@
 <template>
-	<!-- 年度使用 -->
+	<!-- 年度游客容量对比 -->
 	<div class="echarts">
-		<ECharts :options="option" :resize="false" />
+		<ECharts :options="options" />
 	</div>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts" name="AnnualUseChart">
 interface ChartProp {
 	label: string;
 	value: string[];
 }
-
+// 颜色数组
 const gradientColors = [
 	'rgba(254, 219, 101,0.1)',
 	'rgba(0, 122, 254,0.1)',
 	'rgba(255, 75, 122, 0.1)',
 ];
-const annualData = [
+// 每年的数据
+const annualData = ref([
 	{
 		label: new Date().getFullYear() - 2 + '年',
 		value: ['184', '90', '120', '0', '30', '100', '80', '40', '20', '510', '350', '180'],
@@ -29,16 +30,16 @@ const annualData = [
 		label: new Date().getFullYear() + '年',
 		value: ['548', '259', '113', '90', '69', '512', '23', '49', '28', '420', '313', '156'],
 	},
-];
-
+]);
+// 数据源
 const data = {
-	data: annualData,
-	unit: annualData.map((val) => val.label),
+	data: annualData.value,
+	unit: annualData.value.map((val) => val.label),
 	columns: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
 	colors: ['#FFA600', '#007AFE', '#FF4B7A'],
 };
-
-const option = {
+// 配置
+const options = {
 	tooltip: {
 		trigger: 'axis',
 		axisPointer: {

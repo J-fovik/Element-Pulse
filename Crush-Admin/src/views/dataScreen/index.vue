@@ -155,9 +155,6 @@ let time = ref<string>(dayjs().format('YYYY年MM月DD HH:mm:ss'));
 timer = setInterval(() => {
 	time.value = dayjs().format('YYYY年MM月DD HH:mm:ss');
 }, 1000);
-onMounted(() => {
-	console.log(11);
-});
 onBeforeUnmount(() => {
 	window.removeEventListener('resize', resize);
 	clearInterval(timer as unknown as number);

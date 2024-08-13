@@ -1,25 +1,25 @@
 <template>
-	<!-- 平台来源 -->
+	<!-- 预约渠道数据统计 -->
 	<div class="echarts">
-		<ECharts :options="option" :resize="false" />
+		<ECharts :options="options" />
 	</div>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts" name="PlatformSourceChart">
 interface ChartProp {
 	name: string;
 	value: number;
 	percentage: string;
 }
-
-const data = [
+// 数据源
+const data = ref([
 	{ value: 40, name: '智慧文旅平台', percentage: '40%' },
 	{ value: 10, name: '携程', percentage: '10%' },
 	{ value: 20, name: '飞猪', percentage: '20%' },
 	{ value: 30, name: '其他渠道', percentage: '30%' },
-];
-
-const option = {
+]);
+// 配置
+const options = {
 	grid: {
 		top: '0%',
 		left: '2%',
@@ -44,14 +44,14 @@ const option = {
 		itemGap: 20,
 		formatter: function (name: string) {
 			let text = '';
-			data.forEach((val: ChartProp) => {
+			data.value.forEach((val: ChartProp) => {
 				if (val.name === name) {
 					text = name + ' --- ' + val.percentage;
 				}
 			});
 			return text;
 		},
-		data: data.map((val: ChartProp) => val.name),
+		data: data.value.map((val: ChartProp) => val.name),
 	},
 	series: [
 		{
@@ -63,7 +63,7 @@ const option = {
 				borderColor: '#031845',
 				borderWidth: 10,
 			},
-			data: data,
+			data: data.value,
 			labelLine: {
 				show: false,
 			},

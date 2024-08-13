@@ -39,7 +39,7 @@ let timer: number = 0;
 const flipObjs: Flipper[] = [];
 const contentRef = ref<HTMLDivElement>();
 
-onMounted(() => {
+onActivated(() => {
 	if (contentRef.value) {
 		let flips: any = contentRef.value.children;
 		flips = Array.prototype.filter.call(flips, (itemNode) => {

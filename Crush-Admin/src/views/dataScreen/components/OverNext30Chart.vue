@@ -1,14 +1,14 @@
 <template>
 	<!-- 未来30天访问量趋势预测图 -->
 	<div class="echarts">
-		<ECharts :options="option" :resize="false" />
+		<ECharts :options="options" />
 	</div>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts" name="OverNext30Chart">
 import dayjs from 'dayjs';
 import { randomNum } from '@/utils/other';
-
+// 日期数组
 const initDate = (): string[] => {
 	const dateList: string[] = [];
 	let startDate = dayjs();
@@ -21,16 +21,17 @@ const initDate = (): string[] => {
 	}
 	return dateList;
 };
-
-const data = {
-	unit: ['访问量'],
+// 数据源
+const data = ref({
+	unit: ['访问量'], //
 	data: new Array(31).fill('').map((val) => {
 		val = randomNum(1, 200000);
 		return val;
 	}),
-};
+});
 
-const option = {
+// 配置
+const options = {
 	tooltip: {
 		trigger: 'axis',
 		confine: true,
@@ -79,7 +80,7 @@ const option = {
 			data: initDate(),
 		},
 	],
-	yAxis: data.unit.map((_val: string, index: number) => {
+	yAxis: data.value.unit.map((_val: string, index: number) => {
 		return {
 			name: '(访问量)',
 			nameTextStyle: {
@@ -116,7 +117,7 @@ const option = {
 			},
 		};
 	}),
-	series: data.data.map(() => {
+	series: data.value.data.map(() => {
 		return {
 			name: '',
 			type: 'line',
@@ -153,7 +154,7 @@ const option = {
 				shadowColor: 'rgba(255, 199, 37, 0)',
 				shadowBlur: 20,
 			},
-			data: data.data,
+			data: data.value.data,
 		};
 	}),
 };

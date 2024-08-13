@@ -13,23 +13,23 @@
 		</div>
 		<!-- echarts -->
 		<div class="echarts">
-			<ECharts :options="option" :resize="false" />
+			<ECharts :options="options" />
 		</div>
 	</div>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts" name="MaleFemaleRatioChart">
 interface ChartProp {
 	man: number;
 	woman: number;
 }
-
-let data: ChartProp = {
+// 数据源
+const data = ref({
 	man: 0.6,
 	woman: 0.4,
-};
-
-const option = {
+} as ChartProp);
+// 配置
+const options = {
 	xAxis: {
 		type: 'value',
 		show: false,
@@ -71,7 +71,7 @@ const option = {
 				fontSize: 12,
 				lineHeight: 60,
 				color: 'rgba(255, 255, 255, 0.9)',
-				formatter: '{value}' + data.woman * 100 + '%',
+				formatter: '{value}' + data.value.woman * 100 + '%',
 				rich: {
 					a: {
 						color: 'transparent',
@@ -87,7 +87,7 @@ const option = {
 		{
 			type: 'bar',
 			barWidth: 20,
-			data: [data.man],
+			data: [data.value.man],
 			z: 20,
 			itemStyle: {
 				borderRadius: 10,
@@ -100,7 +100,7 @@ const option = {
 				offset: [0, -20],
 				fontSize: 12,
 				formatter: () => {
-					return `男士 ${data.man * 100}%`;
+					return `男士 ${data.value.man * 100}%`;
 				},
 			},
 		},
@@ -120,7 +120,7 @@ const option = {
 				offset: [0, -20],
 				fontSize: 12,
 				formatter: () => {
-					return `女士 ${data.woman * 100}%`;
+					return `女士 ${data.value.woman * 100}%`;
 				},
 			},
 		},

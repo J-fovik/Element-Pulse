@@ -91,7 +91,12 @@ const setSelected = () => {
 			: [props.defaultValue];
 	else selected.value = typeof props.defaultValue === 'string' ? props.defaultValue : '';
 };
+// 未缓存组件使用
 onBeforeMount(() => {
+	setSelected();
+});
+// 缓存组件使用
+onActivated(() => {
 	setSelected();
 });
 // 使用 nextTick 防止打包后赋值不生效，开发环境是正常的

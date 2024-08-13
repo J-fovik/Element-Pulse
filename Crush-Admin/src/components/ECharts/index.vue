@@ -80,14 +80,14 @@ useResizeObserver(eChartRef, () => {
 		debounceFn();
 	}
 });
-// // 缓存组件之后用 onActivated 和 onDeactivated
-// onMounted(() => {
-// 	init();
-// });
-// // 离开页面之前卸载实例
-// onBeforeUnmount(() => {
-// 	if (instance) echarts.dispose(instance);
-// });
+// 缓存组件之后用 onActivated 和 onDeactivated(解决全屏dataScreen页面为缓存问题)
+onMounted(() => {
+	init();
+});
+// 离开页面之前卸载实例
+onBeforeUnmount(() => {
+	if (instance) echarts.dispose(instance);
+});
 // 向父组件暴漏API
 defineExpose({
 	getInstance: () => instance,

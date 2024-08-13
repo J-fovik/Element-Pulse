@@ -39,7 +39,7 @@
 	</div>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts" name="LoginForm">
 import md5 from 'md5';
 import { Session } from '@/utils/storage';
 import type { FormInstance } from 'element-plus';
