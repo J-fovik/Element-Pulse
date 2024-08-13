@@ -51,7 +51,6 @@ onMounted(() => {
 	tabsDrop();
 	initTabs();
 });
-
 // 监听路由的变化（防止浏览器后退/前进不变化 tabsMenuValue）
 watch(
 	() => route.fullPath,

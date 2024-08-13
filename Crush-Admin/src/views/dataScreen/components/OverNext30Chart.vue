@@ -1,13 +1,12 @@
 <template>
 	<!-- 未来30天访问量趋势预测图 -->
 	<div class="echarts">
-		<ECharts :option="option" :resize="false" />
+		<ECharts :options="option" :resize="false" />
 	</div>
 </template>
 
 <script setup lang="ts">
 import dayjs from 'dayjs';
-import { ECOption } from '@/components/ECharts/config';
 import { randomNum } from '@/utils/other';
 
 const initDate = (): string[] => {
@@ -31,7 +30,7 @@ const data = {
 	}),
 };
 
-const option: ECOption = {
+const option = {
 	tooltip: {
 		trigger: 'axis',
 		confine: true,

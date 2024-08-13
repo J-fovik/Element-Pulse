@@ -80,13 +80,7 @@ useResizeObserver(eChartRef, () => {
 		debounceFn();
 	}
 });
-// 向父组件暴漏API
-defineExpose({
-	getInstance: () => instance,
-	debounceFn,
-	init,
-});
-// 缓存组件之后用 onActivated 和 onDeactivated
+// // 缓存组件之后用 onActivated 和 onDeactivated
 // onMounted(() => {
 // 	init();
 // });
@@ -94,4 +88,10 @@ defineExpose({
 // onBeforeUnmount(() => {
 // 	if (instance) echarts.dispose(instance);
 // });
+// 向父组件暴漏API
+defineExpose({
+	getInstance: () => instance,
+	debounceFn,
+	init,
+});
 </script>

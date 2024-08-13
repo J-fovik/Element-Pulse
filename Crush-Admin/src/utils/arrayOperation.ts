@@ -369,6 +369,31 @@ export const getIntersectionByProperty = <T extends ArrayItem, K extends keyof T
 };
 
 /**
+ * @description 根据两个数组中 相同的属性值 组装成一个完整数组
+ * @param {Array} array1 要处理的数组1
+ * @param {Array} array2  要处理的数组2
+ * @param {String} key  两个数组都存在的key，并且要处理的key
+ * @returns {Array} 重组后的数组
+ */
+export function mergeArraysByKey<T1 extends Record<string, any>, T2 extends Record<string, any>>(
+	array1: T1[],
+	array2: T2[],
+	key: (keyof T1 & keyof T2) | any
+): T1[] {
+	// 创建一个新的数组，用于存储结果
+	const mergedArray: T1[] = [];
+	// 遍历 array1 数组，并查找 array2 中具有相同 key 的元素
+	array1.forEach((item1) => {
+		const matchingItem2 = array2.find((item2) => item2[key] === item1[key]);
+		if (matchingItem2) {
+			// 如果找到匹配项，合并两个对象的属性并添加到 mergedArray 中
+			mergedArray.push({ ...item1, ...matchingItem2 });
+		}
+	});
+	return mergedArray;
+}
+
+/**
  * @description 使用递归过滤出需要渲染在左侧菜单的列表 (需剔除 isHide == true 的菜单)
  * @param {Array} menuList 菜单列表
  * @returns {Array} 递归过滤后的数组

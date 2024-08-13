@@ -6,12 +6,11 @@
     <span>预约数量</span>
   </div>
   <div class="echarts">
-    <ECharts :option="option" :resize="false" />
+    <ECharts :options="option" :resize="false" />
   </div>
 </template>
 
 <script setup lang="ts">
-import { ECOption } from "@/components/ECharts/config";
 import { ranking1, ranking2, ranking3, ranking4 } from "../assets/ranking-icon";
 
 interface ChartProp {
@@ -56,7 +55,7 @@ const data = [
 
 const colors = ["#1089E7", "#F57474", "#56D0E3", "#F8B448", "#8B78F6"];
 
-const option: ECOption = {
+const option= {
   grid: {
     top: "5%",
     left: "7%",
