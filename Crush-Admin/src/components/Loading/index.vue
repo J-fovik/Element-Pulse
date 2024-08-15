@@ -1,4 +1,5 @@
 <template>
+	<!-- loading加载 -->
 	<div class="loading-box">
 		<div class="loading-wrap">
 			<span class="dot dot-spin"><i></i><i></i><i></i><i></i></span>

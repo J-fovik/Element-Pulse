@@ -36,11 +36,11 @@
 					是否为多选，默认为 false
 				</el-descriptions-item>
 				<el-descriptions-item label="icon">
-					节点图标,默认 'CaretRight'
+					节点图标，默认 'CaretRight'
 				</el-descriptions-item>
 				<el-descriptions-item label="defaultValue"> 默认选中的值 </el-descriptions-item>
 				<el-descriptions-item label="defaultProps">
-					配置项 默认{ children: 'children', label: 'label', }
+					配置项，默认{ children: 'children', label: 'label', }
 				</el-descriptions-item>
 			</el-descriptions>
 		</div>

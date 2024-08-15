@@ -15,6 +15,7 @@ declare module 'vue' {
     ECharts: typeof import('./components/ECharts/index.vue')['default']
     FlopTime: typeof import('./components/FlopTime/index.vue')['default']
     Loading: typeof import('./components/Loading/index.vue')['default']
+    NoticeBar: typeof import('./components/NoticeBar/index.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     SearchItem: typeof import('./components/SearchItem/index.vue')['default']
@@ -23,6 +24,7 @@ declare module 'vue' {
     SvgIcon: typeof import('./components/SvgIcon/index.vue')['default']
     SwitchDark: typeof import('./components/SwitchDark/index.vue')['default']
     TablePlus: typeof import('./components/TablePlus/index.vue')['default']
+    TagInput: typeof import('./components/TagInput/index.vue')['default']
     TreeSelector: typeof import('./components/TreeSelector/index.vue')['default']
     WangEditor: typeof import('./components/WangEditor/index.vue')['default']
   }
