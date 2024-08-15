@@ -4,26 +4,29 @@
 			:data="addressJson.address"
 			id="code"
 			icon="Grape"
-			label="name"
 			:default-value="singleSelected"
 			title="树形控件(单)"
 			:default-props="defaultProps"
 			@change="changeTreeFilterSingle"
 		/>
 		<TreeSelector
-			:data="addressJson.address"
+			:data="menuList"
 			class="ml10"
-			id="code"
+			id="name"
 			multiple
-			label="name"
 			:default-value="manySelected"
 			title="树形控件(多)"
-			:default-props="defaultProps"
+			:default-props="{
+				children: 'children',
+				label: 'title',
+			}"
 			@change="changeTreeFilterMany"
 		/>
 
 		<div class="descriptions-box card ml10">
 			<span> 树形筛选器 🍓🍇🍈🍉</span>
+			<div class="mt20">树形控件(单) ： {{ singleSelected }}</div>
+			<div class="mt20">树形控件(多) ： {{ manySelected }}</div>
 			<el-descriptions title="配置项 📚" :column="1" border class="mt20">
 				<el-descriptions-item label="data"> 分类数据 </el-descriptions-item>
 				<el-descriptions-item label="title"> TreeSelector 标题 </el-descriptions-item>
@@ -45,7 +48,14 @@
 </template>
 
 <script setup lang="ts" name="treeSelector">
+// 如果是后端返回路由或者返回name数组，要用前端路由进行展示 appMenus
+import { appMenus } from '@/routers/base';
 import addressJson from '@/assets/json/address.json';
+import { useUserStore } from '@/stores';
+const userStore = useUserStore();
+// 路由数组
+const menuList = computed(() => userStore.showMenuListGet());
+
 // 默认配置
 const defaultProps = {
 	children: 'children',

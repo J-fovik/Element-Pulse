@@ -341,7 +341,7 @@ export const groupByAndMergeChildArrays = (
 };
 
 /**
- * @description 根据两个数组中 相同的属性值 组装成一个完整数组
+ * @description 根据两个数组中 相同的属性值 返回公共key存在的数组
  * @param {Array} array1 要处理的数组1
  * @param {Array} array2  要处理的数组2
  * @param {String} propertyName  两个数组都存在的key，并且要处理的key
@@ -369,29 +369,36 @@ export const getIntersectionByProperty = <T extends ArrayItem, K extends keyof T
 };
 
 /**
- * @description 根据两个数组中 相同的属性值 组装成一个完整数组
+ * @description 根据两个数组中 相同的属性值 进行数组合并
  * @param {Array} array1 要处理的数组1
  * @param {Array} array2  要处理的数组2
  * @param {String} key  两个数组都存在的key，并且要处理的key
  * @returns {Array} 重组后的数组
  */
-export function mergeArraysByKey<T1 extends Record<string, any>, T2 extends Record<string, any>>(
-	array1: T1[],
-	array2: T2[],
-	key: (keyof T1 & keyof T2) | any
-): T1[] {
-	// 创建一个新的数组，用于存储结果
-	const mergedArray: T1[] = [];
-	// 遍历 array1 数组，并查找 array2 中具有相同 key 的元素
-	array1.forEach((item1) => {
-		const matchingItem2 = array2.find((item2) => item2[key] === item1[key]);
-		if (matchingItem2) {
-			// 如果找到匹配项，合并两个对象的属性并添加到 mergedArray 中
-			mergedArray.push({ ...item1, ...matchingItem2 });
+export const mergeArraysByKey = (
+	array1: ArrayItem[],
+	array2: ArrayItem[],
+	key: string
+): ArrayItem[] => {
+	// 创建一个映射，用于存储 array1 中元素的 id 与其索引的对应关系
+	const map = new Map<number, ArrayItem>();
+	array1.forEach((item) => {
+		map.set(item[key], item);
+	});
+	// 遍历 array2，并与 array1 中的元素合并
+	array2.forEach((item2) => {
+		const item1 = map.get(item2[key]);
+		if (item1) {
+			// 如果 array1 中存在相同 id 的元素，则合并它们
+			map.set(item2[key], { ...item1, ...item2 });
+		} else {
+			// 如果不存在，则将 array2 中的元素添加到映射中
+			map.set(item2[key], item2);
 		}
 	});
-	return mergedArray;
-}
+	// 返回合并后的数组
+	return Array.from(map.values());
+};
 
 /**
  * @description 使用递归过滤出需要渲染在左侧菜单的列表 (需剔除 isHide == true 的菜单)
@@ -548,4 +555,25 @@ export function findMenuByPath(
 		}
 	}
 	return null;
+}
+
+/**
+ * @description 递归提升meta.title 提成到与 meta 同级
+ * @param {Array} menuList 菜单列表
+ * @returns {Array} 菜单
+ */
+export function elevateTitles(menuList) {
+	return menuList.map((item) => {
+		// 创建一个新对象，包含原始对象的所有属性
+		const newItem = { ...item };
+		// 如果meta对象存在，提取title并添加到新对象中
+		if (item.meta) {
+			newItem.title = item.meta.title;
+		}
+		// 如果存在子菜单，递归处理子菜单
+		if (item.children) {
+			newItem.children = elevateTitles(item.children);
+		}
+		return newItem;
+	});
 }

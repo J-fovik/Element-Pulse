@@ -152,3 +152,27 @@ interface RouteRecordRaw {
 
 ```
 ````
+
+## 菜单权限
+
+只需要处理 @/stores/modules/user.ts (三种方式控制菜单权限)
+
+```
+    // 获取菜单权限
+	const authMenuListGet = async () => {
+		// 一：根据前端定义路由
+		const frontRouteList = appMenus;
+
+		// 二：根据接口返回路由
+		const { data } = await getAuthMenuListApi();
+		const backRouteList = elevateTitles(data);
+
+		// 三：根据后端name数组过滤前端定义的路由
+		const frontFilterFrontRouteList = filterRoutes(
+			appMenus,
+			authMenuNameList.data.menuNameList
+		);
+		authMenuList.value = backRouteList;
+	};
+
+```
