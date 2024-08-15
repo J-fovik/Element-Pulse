@@ -291,7 +291,7 @@ export const flattenArray = (arr: any) => {
  * @description 根据给定的函数将数组对象分成两个数组：一个满足条件，一个不满足
  * @param {Array} array 要处理的数组对象
  * @param {Function} fn  一个函数，用于测试数组对象中的每个属性
- * @returns {Array} 第一个数组是满足函数返回条件的数组，第二个数组是不满足条件的数组
+ * @returns {[Array,Array]} 第一个数组是满足函数返回条件的数组，第二个数组是不满足条件的数组
  */
 export const partitionObject = <T>(array: T[], fn: (item: T) => boolean): [T[], T[]] => {
 	return array.reduce(
