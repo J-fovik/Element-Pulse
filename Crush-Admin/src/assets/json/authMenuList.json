@@ -307,6 +307,21 @@
 						"requiresAuth": true,
 						"isKeepAlive": true
 					}
+				},
+				{
+					"path": "/assembly/miniTool",
+					"name": "miniTool",
+					"component": "/assembly/miniTool/index",
+					"meta": {
+						"icon": "Menu",
+						"title": "组件小工具",
+						"isLink": "",
+						"isHide": false,
+						"isFull": false,
+						"isAffix": false,
+						"requiresAuth": true,
+						"isKeepAlive": true
+					}
 				}
 			]
 		},

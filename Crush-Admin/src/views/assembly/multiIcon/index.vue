@@ -13,11 +13,9 @@
 			<MultiIcon name="ele-Trophy" color="var(--el-color-primary)" :size="30" />
 		</div>
 		<el-descriptions title="配置项 📚" :column="1" border class="mt20">
-			<el-descriptions-item label="name">
-				svg 图标组件名字 / svg 路径 url
-			</el-descriptions-item>
-			<el-descriptions-item label="size"> svg 大小，默认 '14' </el-descriptions-item>
-			<el-descriptions-item label="color"> svg 颜色 </el-descriptions-item>
+			<el-descriptions-item label="name"> svg 图标组件名字 / 路径 url </el-descriptions-item>
+			<el-descriptions-item label="size">svg 大小，默认 '14'</el-descriptions-item>
+			<el-descriptions-item label="color">svg 颜色</el-descriptions-item>
 		</el-descriptions>
 		<el-alert title="可查看 图标管理 菜单" type="warning" :closable="false" class="my20" />
 	</Container>

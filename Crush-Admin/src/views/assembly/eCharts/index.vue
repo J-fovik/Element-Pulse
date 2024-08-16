@@ -141,9 +141,11 @@
 			<el-descriptions :column="1" border>
 				<el-descriptions-item label="options"> 图表配置选项</el-descriptions-item>
 				<el-descriptions-item label="renderer">
-					图表渲染方式('canvas' | 'svg',默认'canvas')
+					图表渲染方式('canvas' | 'svg')，默认'canvas'
 				</el-descriptions-item>
-				<el-descriptions-item label="theme"> 图表主题,默认'light'</el-descriptions-item>
+				<el-descriptions-item label="theme">
+					图表主题('dark' | 'light')，默认'light'
+				</el-descriptions-item>
 				<el-descriptions-item label="width"> 图标宽度，默认'100%' </el-descriptions-item>
 				<el-descriptions-item label="height"> 图标高度，默认'100%' </el-descriptions-item>
 				<el-descriptions-item label="onClick">

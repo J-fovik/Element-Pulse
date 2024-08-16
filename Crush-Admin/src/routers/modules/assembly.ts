@@ -164,5 +164,20 @@ export default {
 			},
 			component: () => import('@/views/assembly/tablePlus/index.vue'),
 		},
+		{
+			path: '/assembly/miniTool',
+			name: 'miniTool',
+			meta: {
+				icon: 'Menu',
+				title: '组件小工具',
+				isLink: '',
+				isHide: false,
+				isFull: false,
+				isAffix: false,
+				requiresAuth: true,
+				isKeepAlive: true,
+			},
+			component: () => import('@/views/assembly/miniTool/index.vue'),
+		},
 	],
 };

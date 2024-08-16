@@ -1,6 +1,6 @@
 <template>
 	<div class="card container justify-center items-center">
-		<FlopTime></FlopTime>
+		<FlopTime />
 	</div>
 </template>
 
