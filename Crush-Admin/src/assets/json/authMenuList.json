@@ -37,7 +37,7 @@
 			"redirect": "/proTable/useTableDemo",
 			"meta": {
 				"icon": "MessageBox",
-				"title": "超级表格",
+				"title": "表格菜单",
 				"isLink": "",
 				"isHide": false,
 				"isFull": false,
@@ -52,7 +52,7 @@
 					"component": "/proTable/useTableDemo/index",
 					"meta": {
 						"icon": "Menu",
-						"title": "超级表格Demo",
+						"title": "表格菜单Demo",
 						"isLink": "",
 						"isHide": false,
 						"isFull": false,
@@ -67,7 +67,7 @@
 							"component": "/proTable/useTableDemo/detail/index",
 							"meta": {
 								"icon": "Menu",
-								"title": "超级表格Demo详情",
+								"title": "表格菜单Demo详情",
 								"activeMenu": "/proTable/useTableDemo",
 								"isLink": "",
 								"isHide": true,
@@ -85,7 +85,7 @@
 					"component": "/proTable/useTableDemo2/index",
 					"meta": {
 						"icon": "Menu",
-						"title": "超级表格Demo2",
+						"title": "表格菜单Demo2",
 						"isLink": "",
 						"isHide": false,
 						"isFull": false,
@@ -219,6 +219,21 @@
 					}
 				},
 				{
+					"path": "/assembly/multiIcon",
+					"name": "multiIcon",
+					"component": "/assembly/multiIcon/index",
+					"meta": {
+						"icon": "Menu",
+						"title": "多功能图标",
+						"isLink": "",
+						"isHide": false,
+						"isFull": false,
+						"isAffix": false,
+						"requiresAuth": true,
+						"isKeepAlive": true
+					}
+				},
+				{
 					"path": "/assembly/wangEditor",
 					"name": "wangEditor",
 					"component": "/assembly/wangEditor/index",
@@ -284,7 +299,7 @@
 					"component": "/assembly/tablePlus/index",
 					"meta": {
 						"icon": "Menu",
-						"title": "表格二次封装",
+						"title": "超级表格",
 						"isLink": "",
 						"isHide": false,
 						"isFull": false,
@@ -411,7 +426,7 @@
 					"component": "/icon/awesome/index",
 					"meta": {
 						"icon": "Menu",
-						"title": "awe字体图标",
+						"title": "awe 字体图标",
 						"isLink": "",
 						"isHide": false,
 						"isFull": false,
@@ -426,7 +441,7 @@
 					"component": "/icon/element/index",
 					"meta": {
 						"icon": "Menu",
-						"title": "ele字体图标",
+						"title": "ele 字体图标",
 						"isLink": "",
 						"isHide": false,
 						"isFull": false,
@@ -441,7 +456,7 @@
 					"component": "/icon/iocnfont/index",
 					"meta": {
 						"icon": "Menu",
-						"title": "ali字体图标",
+						"title": "ali 字体图标",
 						"isLink": "",
 						"isHide": false,
 						"isFull": false,

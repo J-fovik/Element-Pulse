@@ -6,7 +6,7 @@ export default {
 		icon: 'MessageBox',
 		order: 3,
 		requiresAuth: true,
-		title: '超级表格',
+		title: '表格菜单',
 		isLink: '',
 		isHide: false,
 		isFull: false,
@@ -21,7 +21,7 @@ export default {
 			meta: {
 				icon: 'Menu',
 				requiresAuth: true,
-				title: '超级表格Demo',
+				title: '表格菜单Demo',
 				isLink: '',
 				isHide: false,
 				isFull: false,
@@ -36,7 +36,7 @@ export default {
 					meta: {
 						icon: 'Menu',
 						requiresAuth: true,
-						title: '超级表格Demo详情',
+						title: '表格菜单Demo详情',
 						activeMenu: '/proTable/useTableDemo',
 						isLink: '',
 						isHide: true,
@@ -54,7 +54,7 @@ export default {
 			meta: {
 				icon: 'Menu',
 				requiresAuth: true,
-				title: '超级表格Demo2',
+				title: '表格菜单Demo2',
 				isLink: '',
 				isHide: false,
 				isFull: false,

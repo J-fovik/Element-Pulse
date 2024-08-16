@@ -19,7 +19,7 @@ export default {
 			name: 'awesome',
 			meta: {
 				icon: 'Menu',
-				title: 'awe字体图标',
+				title: 'awe 字体图标',
 				isLink: '',
 				isHide: false,
 				isFull: false,
@@ -34,7 +34,7 @@ export default {
 			name: 'element',
 			meta: {
 				icon: 'Menu',
-				title: 'ele字体图标',
+				title: 'ele 字体图标',
 				isLink: '',
 				isHide: false,
 				isFull: false,
@@ -49,7 +49,7 @@ export default {
 			name: 'iocnfont',
 			meta: {
 				icon: 'Menu',
-				title: 'ali字体图标',
+				title: 'ali 字体图标',
 				isLink: '',
 				isHide: false,
 				isFull: false,

@@ -67,14 +67,7 @@ const initEditor = (editor: any) => {
 		editorRef.value.disable();
 	}
 };
-// 未缓存组价销毁
 onBeforeUnmount(() => {
-	const editor = editorRef.value;
-	if (editor == null) return;
-	editor.destroy();
-});
-// 缓存组价销毁
-onDeactivated(() => {
 	const editor = editorRef.value;
 	if (editor == null) return;
 	editor.destroy();

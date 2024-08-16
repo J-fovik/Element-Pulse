@@ -1,5 +1,11 @@
 <template>
 	<div>
+		<el-alert
+			title="ECharts 是对echarts的二次封装，官方文档请查看 ：https://echarts.apache.org/zh/index.html"
+			type="warning"
+			:closable="false"
+			class="mb20"
+		/>
 		<el-card
 			shadow="hover"
 			header="折线图"

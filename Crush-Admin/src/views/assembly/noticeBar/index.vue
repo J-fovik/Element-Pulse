@@ -1,5 +1,11 @@
 <template>
 	<div>
+		<el-alert
+			title="NoticeBar 封装的滚动通知栏，可搭配el-carousel(走马灯) 组件可以实现垂直滚动的效果，官方文档请查看 ：https://element-plus.org/zh-CN/component/carousel.html#carousel-attributes"
+			type="warning"
+			:closable="false"
+			class="mb20"
+		/>
 		<el-card shadow="hover" header="滚动通知栏：默认">
 			<NoticeBar
 				text="🎉🎉🔥一款基于 Vue3.4、TypeScript、Vite5、Pinia、Element-Plus 开源的后台管理框架，使用目前最新技术栈开发。在一定程度上提高您的开发效率。另外本项目还封装了一些常用组件、Hooks、utils、指令、动态路由、按钮级别权限控制等功能"

@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<el-card shadow="hover" header="表格二次封装">
+		<el-card shadow="hover" header="超级表格">
 			<el-alert
 				title="TablePlus 是el-table进行的二次封装，官方文档请查看 ：https://element-plus.org/zh-CN/component/table.html#%E5%9F%BA%E7%A1%80%E8%A1%A8%E6%A0%BC"
 				type="warning"

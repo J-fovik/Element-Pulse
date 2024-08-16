@@ -24,6 +24,12 @@
 		/>
 
 		<div class="descriptions-box card ml10">
+			<el-alert
+				title="TreeSelector 是el-tree树形控件进行的二次封装，官方文档请查看 ：https://element-plus.org/zh-CN/component/tree.html"
+				type="warning"
+				:closable="false"
+				class="mb20"
+			/>
 			<span> 树形筛选器 🍓🍇🍈🍉</span>
 			<div class="mt20">树形控件(单) ： {{ singleSelected }}</div>
 			<div class="mt20">树形控件(多) ： {{ manySelected }}</div>

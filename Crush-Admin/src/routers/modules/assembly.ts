@@ -75,6 +75,21 @@ export default {
 			component: () => import('@/views/assembly/svgIcon/index.vue'),
 		},
 		{
+			path: '/assembly/multiIcon',
+			name: 'multiIcon',
+			meta: {
+				icon: 'Menu',
+				title: '多功能图标',
+				isLink: '',
+				isHide: false,
+				isFull: false,
+				isAffix: false,
+				requiresAuth: true,
+				isKeepAlive: true,
+			},
+			component: () => import('@/views/assembly/multiIcon/index.vue'),
+		},
+		{
 			path: '/assembly/wangEditor',
 			name: 'wangEditor',
 			meta: {
@@ -139,7 +154,7 @@ export default {
 			name: 'tablePlus',
 			meta: {
 				icon: 'Menu',
-				title: '表格二次封装',
+				title: '超级表格',
 				isLink: '',
 				isHide: false,
 				isFull: false,
