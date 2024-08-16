@@ -2,9 +2,17 @@ import { defineStore } from 'pinia';
 import jsCookie from 'js-cookie';
 import { curryingRequest } from '@/hooks';
 import { getAuthButtonListApi, getAuthMenuListApi } from '@/api/modules/login';
-import { getFlatMenuList, getShowMenuList, getAllBreadcrumbList, filterRoutes } from '@/utils/menu';
-import { newModules } from '@/routers/base';
+import {
+	getFlatMenuList,
+	getShowMenuList,
+	getAllBreadcrumbList,
+	filterRoutes,
+	elevateTitles,
+} from '@/utils/menu';
+import { appMenus } from '@/routers/base';
 import { BY_NAME } from '@/config';
+import authMenuNameList from '@/assets/json/authMenuNameList.json';
+
 export const useUserStore = defineStore(`${BY_NAME}-user`, () => {
 	// 用户信息
 	const userInfo = ref({} as any);
@@ -22,8 +30,19 @@ export const useUserStore = defineStore(`${BY_NAME}-user`, () => {
 
 	// 获取菜单权限
 	const authMenuListGet = async () => {
+		// 一：根据前端定义路由
+		const frontRouteList = appMenus;
+
+		// 二：根据接口返回路由
 		const { data } = await getAuthMenuListApi();
-		authMenuList.value = newModules.sort((a: any, b: any) => a.meta.order - b.meta.order);
+		const backRouteList = elevateTitles(data);
+
+		// 三：根据后端name数组过滤前端定义的路由
+		const frontFilterFrontRouteList = filterRoutes(
+			appMenus,
+			authMenuNameList.data.menuNameList
+		);
+		authMenuList.value = frontFilterFrontRouteList;
 	};
 	// 获取按钮权限
 	const authButtonListGet = async () => {

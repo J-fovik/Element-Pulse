@@ -123,25 +123,56 @@ export function findMenuByPath(
 	}
 	return null;
 }
+
 /**
- * @description 根据name数组，对路由数组进行递归过滤
+ * @description 根据name数组,对路由数组进行递归过滤
  * @param {Array} routes 菜单列表
  * @param {Array} nameList name数组
- * @returns {Array}
+ * @returns {Array} 递归过滤后的name所在的对象 组成的数组（返回新数组，不改变原有数组）
  */
 export function filterRoutes(routes, nameList) {
-	return routes
-		.map((route) => {
-			// 存在子路由
+	// 创建一个中间变量来存储过滤后的结果
+	const filteredRoutes = [] as any;
+	// 遍历 routes 数组
+	routes.forEach((route) => {
+		// 检查 name 是否在 nameList 中
+		if (nameList.includes(route.name)) {
+			// 如果存在子路由，递归过滤子路由
 			if (route.children) {
-				route.children = filterRoutes(route.children, nameList);
-				// 子路由长度为空，删除key
-				if (route.children.length === 0) {
-					delete route.children;
+				// 创建子路由数组的副本
+				const childRoutes = route.children.slice();
+				// 递归过滤子路由
+				const filteredChildRoutes = filterRoutes(childRoutes, nameList);
+				// 如果子路由长度为空，不添加到结果数组
+				if (filteredChildRoutes.length > 0) {
+					filteredRoutes.push({ ...route, children: filteredChildRoutes });
 				}
+			} else {
+				// 如果没有子路由，直接添加到结果数组
+				filteredRoutes.push(route);
 			}
-			// 返回包含name的对象，否则为null
-			return nameList.includes(route.name) ? route : null;
-		})
-		.filter((route) => route !== null);
+		}
+	});
+	return filteredRoutes;
+}
+
+/**
+ * @description 递归提升meta.title 提成到与 meta 同级
+ * @param {Array} menuList 菜单列表
+ * @returns {Array} 菜单
+ */
+export function elevateTitles(menuList) {
+	return menuList.map((item) => {
+		// 创建一个新对象，包含原始对象的所有属性
+		const newItem = { ...item };
+		// 如果meta对象存在，提取title并添加到新对象中
+		if (item.meta) {
+			newItem.title = item.meta.title;
+		}
+		// 如果存在子菜单，递归处理子菜单
+		if (item.children) {
+			newItem.children = elevateTitles(item.children);
+		}
+		return newItem;
+	});
 }
