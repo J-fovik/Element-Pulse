@@ -13,6 +13,17 @@ export const loginApi = (data: object) => {
 		data,
 	});
 };
+
+// 用户登录
+export const loginFormal = (data: object) => {
+	return request({
+		url: `/login`,
+		method: 'post',
+		data,
+		baseURL: import.meta.env.VITE_API_BASE_URL,
+	});
+};
+
 // 获取权限菜单
 export const getAuthMenuListApi = () => {
 	// return request({

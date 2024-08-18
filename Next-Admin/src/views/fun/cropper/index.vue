@@ -42,6 +42,7 @@
 </template>
 
 <script setup lang="ts" name="funCropper">
+import { downloadBase64Image } from '/@/utils/fileOperation';
 /** 定义实例 */
 const cropperJsRef = ref<any>(null);
 const vueCropperRef = ref<any>(null);
@@ -64,6 +65,7 @@ const updateCropperJsImg = (img: any) => {
 const updateVueCropperImg = (img: any) => {
 	console.log(img);
 	state.vueCropperImg = img;
+	// downloadBase64Image(img, 'aaa.png');
 };
 </script>
 
