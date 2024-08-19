@@ -402,6 +402,21 @@
 						"requiresAuth": true,
 						"isKeepAlive": true
 					}
+				},
+				{
+					"path": "/function/formRules",
+					"name": "formRules",
+					"component": "/function/formRules/index",
+					"meta": {
+						"icon": "Menu",
+						"title": "多表单验证",
+						"isLink": "",
+						"isHide": false,
+						"isFull": false,
+						"isAffix": false,
+						"requiresAuth": true,
+						"isKeepAlive": true
+					}
 				}
 			]
 		},

@@ -77,5 +77,20 @@ export default {
 			},
 			component: () => import('@/views/function/draggable/index.vue'),
 		},
+		{
+			path: '/function/formRules',
+			name: 'formRules',
+			meta: {
+				icon: 'Menu',
+				requiresAuth: true,
+				title: '多表单验证',
+				isLink: '',
+				isHide: false,
+				isFull: false,
+				isAffix: false,
+				isKeepAlive: true,
+			},
+			component: () => import('@/views/function/formRules/index.vue'),
+		},
 	],
 };

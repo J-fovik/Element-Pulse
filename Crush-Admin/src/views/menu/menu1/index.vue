@@ -34,19 +34,18 @@ const state = reactive({
 	vueCropperImg: '/src/assets/images/avatar.png', // 裁剪图片的地址
 });
 const updateVueCropperImg = (img: any) => {
+	console.log(img);
 	state.vueCropperImg = img;
 };
 </script>
 <style scoped lang="scss">
-.croppers-container {
-	.cropper-img-warp {
-		text-align: center;
-		.cropper-img {
-			margin: auto;
-			width: 150px;
-			height: 150px;
-			border-radius: 100%;
-		}
+.cropper-img-warp {
+	text-align: center;
+	.cropper-img {
+		margin: auto;
+		width: 150px;
+		height: 150px;
+		border-radius: 100%;
 	}
 }
 </style>

@@ -108,6 +108,7 @@ const beforeUpload = (file) => {
 		reader.readAsDataURL(file);
 		reader.onload = () => {
 			options.img = reader.result;
+			console.log(reader.result);
 		};
 	}
 };

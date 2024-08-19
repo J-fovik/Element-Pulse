@@ -55,6 +55,8 @@ const editCropper = (imgs: string) => {
 // 更换
 const onSubmit = () => {
 	state.cropperImgBase64 = state.cropper.getCroppedCanvas().toDataURL('image/jpeg');
+	console.log(state.cropperImgBase64);
+
 	// emits('updateImg', state.cropperImgBase64); // 发射事件，并传递裁剪后的图片
 	// state.isShowDialog = false;
 };

@@ -45,7 +45,7 @@ request.interceptors.response.use(
 			return res.data;
 		} else {
 			// 请求成功
-			if (res.data.code === 200) {
+			if (res.data.code === 0 || res.data.code === 200) {
 				return res.data;
 			} else {
 				// 登录失效

@@ -76,6 +76,15 @@
 					>
 						删除
 					</el-button>
+					<el-button
+						type="danger"
+						:icon="FolderOpened"
+						plain
+						:disabled="tableBaseOptions.selectedKeys.length == 0"
+						@click="exportExcel"
+					>
+						导出兑换码
+					</el-button>
 				</el-space>
 			</template>
 			<template #table>
@@ -135,7 +144,8 @@
 	</div>
 </template>
 <script setup lang="ts" name="useTableDemo">
-import { CirclePlus, Delete } from '@element-plus/icons-vue';
+import { CirclePlus, Delete, FolderOpened } from '@element-plus/icons-vue';
+import { sleep } from '@/utils/other';
 import {
 	useForm,
 	useTable,
@@ -154,17 +164,8 @@ import {
 	STATUS_OPTIONS,
 } from './options'; // 模拟接口数据
 import { createTableColumns } from './table'; // 表头配置
-import // getUserList,
-//   deleteUser,
-//   editUser,
-//   addUser,
-//   changeUserStatus,
-//   resetUserPassWord,
-//   exportUserInfo,
-//   BatchAddUser,
-//   getUserStatus,
-//   getUserGender
-'@/api/modules/user';
+import { exportCode } from '@/api/modules/file';
+import { downloadBlob } from '@/utils/fileOperation';
 // 页面唯一元素控制
 const [activeKey, setActiveKey] = useBasicsState<string | null>(null);
 // 表单hooks
@@ -217,12 +218,38 @@ const { data: typeList } = useAsyncWatchData<Array<any>>(
 const selectable = (row: any) => {
 	return row.status !== '1';
 };
+// 导出Excel
+const exportExcel = async () => {
+	const { res, err } = await curryingRequest(
+		() =>
+			exportCode({
+				beginTime: '',
+				endTime: '',
+				redemptionCode: '',
+				loginName: '',
+				phoneNumber: '',
+				exchangeType: '',
+				currentPage: tableBaseOptions.pagination.current,
+				pageSize: tableBaseOptions.pagination.pageSize,
+				pagingOrNot: 1,
+			}),
+		{
+			after: () => setActiveKey(''),
+			before: () => setActiveKey('导出Excel'),
+		}
+	);
+	// 下载文件
+	if (res) {
+		downloadBlob(res, `兑换码一览表.xlsx`);
+	}
+};
 // 获取表格列表
 const {
 	data: tableData,
 	loading,
 	initData,
 } = useAsyncNoInitData(async () => {
+	await sleep(1000);
 	// const { res, err } = await curryingRequest(() =>
 	//     getUserList({
 	//         ...form.value,

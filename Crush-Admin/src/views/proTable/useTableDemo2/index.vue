@@ -139,6 +139,7 @@
 </template>
 <script setup lang="ts" name="useTableDemo2">
 import { CirclePlus, Delete } from '@element-plus/icons-vue';
+import { sleep } from '@/utils/other';
 import {
 	useForm,
 	useTable,
@@ -229,6 +230,7 @@ const {
 	loading,
 	initData,
 } = useAsyncData(async () => {
+	await sleep(1000);
 	// const { res, err } = await curryingRequest(() =>
 	//     getUserList({
 	//         ...form.value,
