@@ -417,6 +417,21 @@
 						"requiresAuth": true,
 						"isKeepAlive": true
 					}
+				},
+				{
+					"path": "/function/tableRules",
+					"name": "tableRules",
+					"component": "/function/tableRules/index",
+					"meta": {
+						"icon": "Menu",
+						"title": "表格验证",
+						"isLink": "",
+						"isHide": false,
+						"isFull": false,
+						"isAffix": false,
+						"requiresAuth": true,
+						"isKeepAlive": true
+					}
 				}
 			]
 		},

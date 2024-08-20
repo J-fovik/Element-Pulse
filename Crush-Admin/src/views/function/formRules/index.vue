@@ -7,7 +7,7 @@
 			<FormRulesTwo ref="pagesFormRulesTwoRef" />
 		</el-card>
 		<el-card shadow="hover" header="表单组件3" class="mt15">
-			<FormRulesThree ref="pagesFormRulesThreeRef" />
+			<FormRulesThree :data="state.formRulesThreeData" ref="pagesFormRulesThreeRef" />
 		</el-card>
 		<div style="height: 100px"></div>
 		<el-card class="footerCard flex justify-end items-end">
@@ -42,6 +42,7 @@ const state = reactive({
 		autograph: 'lyt123456',
 		occupation: '1',
 	},
+	formRulesThreeData: { createUser: 'aaaa', editUser: 'bbbb', user: 'cccc', department: '555' },
 });
 
 // 表单组件验证
@@ -68,7 +69,7 @@ const onSubmitForm = () => {
 		ElMessage.success('表单全部验证成功');
 		console.log(state.formRulesOneData);
 		console.log(pagesFormRulesTwoRef.value.getFormData());
-		console.log(pagesFormRulesThreeRef.value.getFormData());
+		console.log(state.formRulesThreeData);
 	});
 };
 // 重置表单

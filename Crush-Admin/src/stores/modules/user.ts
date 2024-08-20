@@ -7,6 +7,7 @@ import {
 	getShowMenuList,
 	getAllBreadcrumbList,
 	filterRoutes,
+	reduceRoutes,
 	elevateTitles,
 } from '@/utils/arrayOperation';
 import { appMenus } from '@/routers/base';
@@ -40,11 +41,8 @@ export const useUserStore = defineStore(`${BY_NAME}-user`, () => {
 		const { data } = await getAuthMenuListApi();
 		const backRouteList = elevateTitles(data);
 
-		// 三：根据后端name数组过滤前端定义的路由
-		const frontFilterFrontRouteList = filterRoutes(
-			appMenus,
-			authMenuNameList.data.menuNameList
-		);
+		// 三：根据后端name数组重组前端定义的路由
+		const reduceRoutesList = reduceRoutes(appMenus, authMenuNameList.data.menuNameList);
 		authMenuList.value = backRouteList;
 	};
 	// 获取按钮权限

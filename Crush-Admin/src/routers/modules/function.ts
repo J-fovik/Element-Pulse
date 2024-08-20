@@ -92,5 +92,20 @@ export default {
 			},
 			component: () => import('@/views/function/formRules/index.vue'),
 		},
+		{
+			path: '/function/tableRules',
+			name: 'tableRules',
+			meta: {
+				icon: 'Menu',
+				requiresAuth: true,
+				title: '表格验证',
+				isLink: '',
+				isHide: false,
+				isFull: false,
+				isAffix: false,
+				isKeepAlive: true,
+			},
+			component: () => import('@/views/function/tableRules/index.vue'),
+		},
 	],
 };

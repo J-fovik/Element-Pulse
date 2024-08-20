@@ -521,6 +521,32 @@ export function filterRoutes(routes, nameList) {
 }
 
 /**
+ * @description 根据name数组,对路由数组进行递归重组
+ * @param {Array} routes 菜单列表
+ * @param {Array} nameList name数组
+ * @returns {Array} 递归重组后的name所在的对象 组成的新数组
+ */
+export function reduceRoutes(routes: Array<any>, nameList: any): Array<any> {
+	return routes.reduce((menus, next) => {
+		// 判断是否存在子菜单
+		const menuChildren = next.children
+			? next.children.filter((child: any) => nameList?.includes(child.name))
+			: [];
+		// 判断是否存在子菜单
+		if (menuChildren.length) {
+			menus.push({ ...next, children: menuChildren });
+		}
+		// 判断一级菜单是否显示
+		const isMenu = nameList?.includes(next.name);
+		// 判断一级菜单是否显示 并且不存在子菜单
+		if (isMenu && !menuChildren.length) {
+			menus.push({ ...next, children: null });
+		}
+		return menus;
+	}, []);
+}
+
+/**
  * @description 使用递归过滤需要缓存的菜单 name
  * @param {Array} menuList 所有菜单列表
  * @param {Array} keepAliveNameArr 缓存的菜单 name ['**','**'](额外)

@@ -51,6 +51,13 @@
 </template>
 
 <script setup lang="ts" name="FormRulesThree">
+// 定义父组件传过来的值
+const props = defineProps({
+	data: {
+		type: Object,
+		default: () => {},
+	},
+});
 // 定义变量内容
 const state = reactive({
 	form: { createUser: '', editUser: '', user: '', department: '' },
@@ -61,11 +68,12 @@ const state = reactive({
 		department: { required: true, message: '请输入所属部门', trigger: 'blur' },
 	},
 });
-const getFormData = () => {
-	return state.form;
+// 赋值回显
+const initForm = () => {
+	state.form = props.data as any;
 };
-// 向父组件暴露以下方法
-defineExpose({
-	getFormData,
+// 页面加载时
+onActivated(() => {
+	initForm();
 });
 </script>
