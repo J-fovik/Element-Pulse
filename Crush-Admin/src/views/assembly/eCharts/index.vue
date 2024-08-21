@@ -9,6 +9,7 @@
 		<el-card
 			shadow="hover"
 			header="折线图"
+			class="mt10"
 			:body-style="{ padding: '10px' }"
 			:header-style="{ padding: '10px' }"
 		>
@@ -93,7 +94,6 @@
 			</template>
 		</el-card>
 		<OrderTrend class="mt10" />
-		<MapEcharts class="mt10" />
 		<el-card
 			shadow="hover"
 			header="配置项 📚"

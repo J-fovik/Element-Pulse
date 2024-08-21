@@ -33,7 +33,12 @@
 				</div>
 			</div>
 
-			<el-alert title="感谢优秀的 `gsap`，项目地址：https://www.npmjs.com/package/gsap" type="success" :closable="false" class="mb15 mt30"></el-alert>
+			<el-alert
+				title="感谢优秀的 `gsap`，项目地址：https://www.npmjs.com/package/gsap"
+				type="success"
+				:closable="false"
+				class="mb15 mt30"
+			></el-alert>
 			<el-row :gutter="20">
 				<el-col :sm="6" class="mb15" v-for="(v, k) in state.topCardItemList" :key="k">
 					<div class="countup-card-item countup-card-item-box" :style="{ background: `var(${v.color})` }">
