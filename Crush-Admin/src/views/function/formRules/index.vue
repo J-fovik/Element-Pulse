@@ -27,9 +27,9 @@
 
 <script setup lang="ts" name="formRules">
 import { ElMessage } from 'element-plus';
-import FormRulesOne from './component/FormRulesOne.vue';
-import FormRulesTwo from './component/FormRulesTwo.vue';
-import FormRulesThree from './component/FormRulesThree.vue';
+import FormRulesOne from './components/FormRulesOne.vue';
+import FormRulesTwo from './components/FormRulesTwo.vue';
+import FormRulesThree from './components/FormRulesThree.vue';
 
 // 定义变量内容
 const pagesFormRulesOneRef = ref();
