@@ -72,9 +72,17 @@ export const useTable = (columns: TableCustomColumnData[], callBack: () => void)
 		selectRow.value = row; // 赋值当前数据
 		if (callBack) callBack();
 	};
-	// 处理表格数据
-	const extendTableList = (list: Array<any>) => {
+	// 处理表格数据(表格数据，需要转数字组成的数组)
+	const extendTableList = (list: Array<any>, numberKeys: Array<string> = []) => {
 		return list.map((item, index) => {
+			// 指定key转数字
+			if (numberKeys.length) {
+				numberKeys.forEach((key) => {
+					if (item[key] !== undefined) {
+						item[key] = item[key] * 1 ?? 0;
+					}
+				});
+			}
 			return {
 				...item,
 				sortTableNo: createRowNo(index),

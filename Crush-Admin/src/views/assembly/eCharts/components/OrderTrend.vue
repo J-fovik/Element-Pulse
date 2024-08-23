@@ -67,12 +67,14 @@ const xData = ref<string[]>([]);
 // 图表配置
 const options = computed(() => {
 	return {
+		// 间距
 		grid: {
 			left: '5%',
 			right: '5%',
 			top: '12%',
 			bottom: '22%',
 		},
+		// 底部滑条
 		dataZoom: [
 			{
 				show: true,
@@ -87,6 +89,7 @@ const options = computed(() => {
 				end: 100,
 			},
 		],
+		// X轴配置
 		xAxis: {
 			type: 'category',
 			offset: 2,
@@ -125,6 +128,7 @@ const options = computed(() => {
 				},
 			},
 		},
+		// Y轴配置
 		yAxis: {
 			type: 'value',
 			axisLine: {

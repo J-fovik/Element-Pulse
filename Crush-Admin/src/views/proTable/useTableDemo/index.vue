@@ -261,7 +261,7 @@ const {
 	// if (err) return;
 	// 赋值总页数
 	tableBaseOptions.pagination.total = TABLE_DATA.total;
-	return extendTableList(TABLE_DATA.tableData); // 处理数据
+	return extendTableList(TABLE_DATA.tableData, ['money']); // 处理数据
 });
 // onActivated 可用于跳转页面返回刷新列表
 onActivated(() => {
