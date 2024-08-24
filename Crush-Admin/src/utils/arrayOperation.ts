@@ -567,7 +567,7 @@ export function getKeepAliveRouterName(
  * @description 递归查询当前 path 所对应的菜单对象
  * @param {Array} menuList 菜单列表
  * @param {String} path 当前访问地址
- * @returns {Object | null}对应的菜单对象
+ * @returns {Object | null} 对应的菜单对象
  */
 export function findMenuByPath(
 	menuList: Menu.MenuOptions[],
@@ -603,3 +603,23 @@ export function elevateTitles(menuList) {
 		return newItem;
 	});
 }
+
+/**
+ * @description 数组对象指定key转数字
+ * @param {Array} list 数组对象
+ * @param {Array} numberKeys 数组对象内需要转数字的字符串组成的数组
+ * @returns {Array} 处理后数组
+ */
+export const turnArrayKeys = (list: Array<any>, numberKeys: Array<string> = []) => {
+	return list.map((item) => {
+		// 指定key转数字
+		if (numberKeys.length) {
+			numberKeys.forEach((key) => {
+				if (item[key] !== undefined) {
+					item[key] = item[key] * 1 ?? 0;
+				}
+			});
+		}
+		return item;
+	});
+};

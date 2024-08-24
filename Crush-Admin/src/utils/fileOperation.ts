@@ -166,6 +166,43 @@ export const getImageWidthHeight: GetImageWidthHeightFn = (url: string) => {
 };
 
 /**
+ * @description 截取文件后缀
+ * @param {String} url 图片路径
+ * @param {Boolean} isSpot 是否要'.'
+ * @returns {String} 文件后缀
+ */
+export const splitFileExtension = (url: string, isSpot: boolean = true) => {
+	return (isSpot ? '.' : '') + url.split('.').pop();
+};
+
+/**
+ * @description 下载图片
+ * @param {String} imageSrc 图片路径
+ * @param {String} name 名称
+ * @returns
+ */
+export function downImage(imageSrc, name) {
+	let image = new Image();
+	// 处理canvas 跨域问题
+	image.setAttribute('crossOrigin', 'anonymous');
+	image.onload = function () {
+		let canvas = document.createElement('canvas') as any;
+		let context = canvas.getContext('2d') as any;
+		canvas.width = image.width;
+		canvas.height = image.height;
+		context.drawImage(image, 0, 0, image.width, image.height);
+		let url = canvas.toDataURL('image/png'); // 图片编码数据
+		let a = document.createElement('a') as any;
+		let event = new MouseEvent('click'); // 创建一个单击事件
+		a.download = name || 'image'; // 设置图片名称
+		a.href = url; // 将生成的URL设置为a.href属性
+		a.dispatchEvent(event); // 触发a的单击事件
+		(a = null), (canvas = null);
+	};
+	image.src = imageSrc;
+}
+
+/**
  * @description 左右翻转
  * @param {ImageData} imageData 图片路径
  * @returns {ImageData} 翻转后的图片路径

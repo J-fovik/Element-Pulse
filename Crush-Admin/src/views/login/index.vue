@@ -10,8 +10,8 @@
 					<img class="login-icon" src="@/assets/svgIcons/logo.svg" alt="" />
 					<h2 class="logo-text">{{ APP_TITLE }}</h2>
 				</div>
-				<!-- <LoginForm /> -->
-				<LoginFormal />
+				<LoginForm />
+				<!-- <LoginFormal /> -->
 			</div>
 		</div>
 	</div>
