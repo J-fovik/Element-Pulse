@@ -79,7 +79,7 @@ export const useTable = (columns: TableCustomColumnData[], callBack: () => void)
 			if (numberKeys.length) {
 				numberKeys.forEach((key) => {
 					if (item[key] !== undefined) {
-						item[key] = item[key] * 1 ?? 0;
+						item[key] = item[key] * 1;
 					}
 				});
 			}

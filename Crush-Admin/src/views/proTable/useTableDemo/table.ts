@@ -24,7 +24,7 @@ export const createTableColumns = (): TableCustomColumnData[] => {
 			align: 'center',
 			headerAlign: 'center',
 			formatter: (record) => {
-				return textFormat(record.name ? record.name : '暂无姓名');
+				return textFormat(record.name);
 			},
 		},
 		{
