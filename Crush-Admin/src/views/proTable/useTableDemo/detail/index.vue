@@ -63,6 +63,7 @@
 								placeholder="请选择结束时间"
 								format="YYYY/MM/DD"
 								value-format="YYYY-MM-DD"
+								:disabled-date="disabledDate"
 							/>
 						</el-form-item>
 					</el-col>
@@ -161,6 +162,12 @@ const validateData = async (formEl: any) => {
 			else submitData('addApi');
 		} else return false;
 	});
+};
+// 设置结束日期不能超出一个月范围
+const disabledDate = (current: any) => {
+	const start = dayjs(form.value.startDate);
+	const end = start.add(3, 'month').endOf('day');
+	return current < start || current > end;
 };
 /* 提交数据 */
 const submitData = async (type: 'addApi' | 'editApi') => {

@@ -12,6 +12,7 @@
 				</div>
 				<LoginForm />
 				<!-- <LoginFormal /> -->
+				<!-- <LoginFormUrl /> -->
 			</div>
 		</div>
 	</div>
@@ -20,6 +21,8 @@
 <script setup lang="ts" name="login">
 import LoginForm from './components/LoginForm.vue';
 import LoginFormal from './components/LoginFormal.vue';
+import LoginFormUrl from './components/LoginFormUrl.vue';
+
 const APP_TITLE = import.meta.env.VITE_GLOB_APP_TITLE;
 </script>
 

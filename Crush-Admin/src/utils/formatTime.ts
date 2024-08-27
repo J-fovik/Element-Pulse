@@ -101,6 +101,18 @@ export const getPastTime = (num: number, unit: dayjs.ManipulateType, format = 'Y
 };
 
 /**
+ * @description 获取未来时间
+ * @description format格式,请查看：https://dayjs.fenxianglu.cn/category/display.html#%E6%A0%BC%E5%BC%8F%E5%8C%96
+ * @param {Number} num 时间数量
+ * @param {String} unit dayjs.ManipulateType的格式（可悬停在dayjs.ManipulateType上查看）
+ * @param {String} format 需要转换的格式（默认 YYYY-MM-DD）
+ * @returns {String} 返回需要的时间字符串
+ */
+export const getFutureTime = (num: number, unit: dayjs.ManipulateType, format = 'YYYY-MM-DD') => {
+	return dayjs().add(num, unit).format(format);
+};
+
+/**
  * @description 日期时间转换
  * @description 例如，如果 value 是 "20230405123045"，函数将返回 "2023-04-05 12:30:45"。
  * @param {String} value 传入日期时间

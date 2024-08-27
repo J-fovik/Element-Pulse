@@ -64,17 +64,17 @@ const clickScrollTo = (id: string) => {
 // 监听滚动事件
 const setScrollTop = ({ scrollTop }) => {
 	// 这里需要根据实际的锚点位置来设置条件
-	if (scrollTop > 0 && scrollTop <= 360) {
+	if (scrollTop > 0 && scrollTop <= 600) {
 		currentNavigationId.value = '#C_G_A_L';
-	} else if (scrollTop > 360 && scrollTop <= 880) {
+	} else if (scrollTop > 600 && scrollTop <= 1650) {
 		currentNavigationId.value = '#P_J_J_G';
-	} else if (scrollTop > 880 && scrollTop <= 1400) {
+	} else if (scrollTop > 1650 && scrollTop <= 2700) {
 		currentNavigationId.value = '#P_J_L_C';
-	} else if (scrollTop > 1400 && scrollTop <= 1920) {
+	} else if (scrollTop > 2700 && scrollTop <= 3750) {
 		currentNavigationId.value = '#P_J_B_G_Z_Y';
-	} else if (scrollTop > 1920 && scrollTop <= 2440) {
+	} else if (scrollTop > 3750 && scrollTop <= 4800) {
 		currentNavigationId.value = '#P_J_L_Y';
-	} else if (scrollTop > 2440) {
+	} else if (scrollTop > 4800) {
 		currentNavigationId.value = '#W_M_D_Y_S';
 	}
 };
@@ -90,6 +90,6 @@ const setScrollTop = ({ scrollTop }) => {
 }
 
 .anchor-point {
-	height: 500px; // 示例高度，根据实际情况调整
+	height: 1000px; // 示例高度，根据实际情况调整
 }
 </style>
