@@ -171,8 +171,8 @@ export const getImageWidthHeight: GetImageWidthHeightFn = (url: string) => {
  * @param {Boolean} isSpot 是否要'.'
  * @returns {String} 文件后缀
  */
-export const splitFileExtension = (url: string, isSpot: boolean = true) => {
-	return (isSpot ? '.' : '') + url.split('.').pop();
+export const fileSuffix = (url: string, isSpot: boolean = true) => {
+	return (isSpot ? '.' : '') + url.split('.').at(-1);
 };
 
 /**

@@ -107,5 +107,20 @@ export default {
 			},
 			component: () => import('@/views/function/tableRules/index.vue'),
 		},
+		{
+			path: '/function/anchorPoint',
+			name: 'anchorPoint',
+			meta: {
+				icon: 'Menu',
+				requiresAuth: true,
+				title: '锚点滚动',
+				isLink: '',
+				isHide: false,
+				isFull: false,
+				isAffix: false,
+				isKeepAlive: true,
+			},
+			component: () => import('@/views/function/anchorPoint/index.vue'),
+		},
 	],
 };

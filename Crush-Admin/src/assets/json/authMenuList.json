@@ -432,6 +432,21 @@
 						"requiresAuth": true,
 						"isKeepAlive": true
 					}
+				},
+				{
+					"path": "/function/anchorPoint",
+					"name": "anchorPoint",
+					"component": "/function/anchorPoint/index",
+					"meta": {
+						"icon": "Menu",
+						"title": "锚点滚动",
+						"isLink": "",
+						"isHide": false,
+						"isFull": false,
+						"isAffix": false,
+						"requiresAuth": true,
+						"isKeepAlive": true
+					}
 				}
 			]
 		},
