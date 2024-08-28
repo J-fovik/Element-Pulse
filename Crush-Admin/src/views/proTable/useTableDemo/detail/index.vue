@@ -63,7 +63,7 @@
 								placeholder="请选择结束时间"
 								format="YYYY/MM/DD"
 								value-format="YYYY-MM-DD"
-								:disabled-date="disabledDate"
+								:disabled-date="(current: any) =>disabledDate(current,form.startDate,3,'month')"
 							/>
 						</el-form-item>
 					</el-col>
@@ -88,12 +88,12 @@
 
 <script setup lang="ts" name="useTableDemoDetail">
 import dayjs from 'dayjs';
+import { disabledDate } from '@/utils/formatTime';
 import { validatePhoneOrLandline } from '@/utils/rules'; // 校验工具
 import { moneyFormat } from '@/utils/commonFunction';
 import { useForm, useBasicsState, useAsyncData, curryingRequest } from '@/hooks';
 import { useJumpTabStore } from '@/stores';
 // import { addApi, editApi, detailApi } from '/@/api/test';
-
 const { jumpTabName } = useJumpTabStore();
 const route = useRoute();
 
@@ -162,12 +162,6 @@ const validateData = async (formEl: any) => {
 			else submitData('addApi');
 		} else return false;
 	});
-};
-// 设置结束日期不能超出一个月范围
-const disabledDate = (current: any) => {
-	const start = dayjs(form.value.startDate);
-	const end = start.add(3, 'month').endOf('day');
-	return current < start || current > end;
 };
 /* 提交数据 */
 const submitData = async (type: 'addApi' | 'editApi') => {
