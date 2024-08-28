@@ -12,6 +12,7 @@ declare module 'vue' {
     500: typeof import('./components/ErrorMessage/500.vue')['default']
     Container: typeof import('./components/Container/index.vue')['default']
     CountUp: typeof import('./components/CountUp/index.vue')['default']
+    CropperJs: typeof import('./components/CropperJs/index.vue')['default']
     CustomTableMould: typeof import('./components/CustomTableMould/index.vue')['default']
     Dot: typeof import('./components/Dot/index.vue')['default']
     ECharts: typeof import('./components/ECharts/index.vue')['default']

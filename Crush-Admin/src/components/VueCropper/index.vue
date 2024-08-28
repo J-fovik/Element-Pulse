@@ -30,6 +30,21 @@
 		</el-row>
 		<br />
 		<el-row>
+			<el-col :span="4">
+				<el-upload
+					action="#"
+					:http-request="requestUpload"
+					:before-upload="beforeUpload"
+					:show-file-list="false"
+				>
+					<el-button>
+						选择
+						<el-icon class="el-icon--right">
+							<Upload />
+						</el-icon>
+					</el-button>
+				</el-upload>
+			</el-col>
 			<el-col :span="12">
 				<el-button circle :icon="Plus" @click="changeScale(1)"></el-button>
 				<el-button circle :icon="Minus" @click="changeScale(-1)"></el-button>
@@ -37,13 +52,14 @@
 				<el-button circle :icon="RefreshRight" @click="rotateRight()"></el-button>
 			</el-col>
 			<el-col :span="8">
-				<el-button type="primary" @click="submitImg()">提 交</el-button>
+				<el-button size="default" @click="emits('close')">取 消</el-button>
+				<el-button type="primary" @click="onSubmit">提 交</el-button>
 			</el-col>
 		</el-row>
 	</el-dialog>
 </template>
 
-<script setup name="VueCropper" lang="ts">
+<script setup lang="ts" name="VueCropper">
 import { Plus, Minus, RefreshLeft, RefreshRight } from '@element-plus/icons-vue';
 import 'vue-cropper/dist/index.css';
 import { VueCropper } from 'vue-cropper';
@@ -66,9 +82,10 @@ const props = withDefaults(
 );
 /* 父组件方法 */
 const emits = defineEmits(['close', 'success']);
+
 // 图片裁剪数据
 const options = reactive({
-	img: props.imgSrc, // 裁剪图片的地址
+	img: props.imgSrc as any, // 裁剪图片的地址
 	autoCrop: true, // 是否默认生成截图框
 	autoCropWidth: props.autoCropWidth, // 默认生成截图框宽度
 	autoCropHeight: props.autoCropHeight, // 默认生成截图框高度
@@ -76,6 +93,20 @@ const options = reactive({
 	outputType: 'png', // 默认生成截图为PNG格式
 	previews: {} as any, // 预览数据
 });
+/** 覆盖默认上传行为 */
+const requestUpload = () => {};
+/** 上传预处理 */
+const beforeUpload = (file) => {
+	if (file.type.indexOf('image/') == -1) {
+		toast('文件格式错误，请上传图片类型,如：JPG，PNG后缀的文件。');
+	} else {
+		const reader = new FileReader();
+		reader.readAsDataURL(file);
+		reader.onload = () => {
+			options.img = reader.result;
+		};
+	}
+};
 /** 向左旋转 */
 const rotateLeft = () => {
 	cropperRef.value.rotateLeft();
@@ -94,8 +125,9 @@ const realTime = (data) => {
 	options.previews = data;
 };
 /** 提交图片 */
-const submitImg = () => {
+const onSubmit = () => {
 	cropperRef.value.getCropData((data) => {
+		console.log(data);
 		emits('success', data); // 发射事件，并传递裁剪后的图片 DataURL
 		toast('修改成功');
 		emits('close');

@@ -39,7 +39,8 @@
 					<el-button @click="onCopy(clipboardThree.copyVal)">复制链接</el-button>
 				</template>
 			</el-input>
-			<el-input placeholder="先点击上方 `复制链接` 按钮，然后 `Ctrl + V` 进行粘贴！ " v-model="clipboardThree.shearVal" class="mt15"> </el-input>
+			<el-input placeholder="先点击上方 `复制链接` 按钮，然后 `Ctrl + V` 进行粘贴！ " v-model="clipboardThree.shearVal" class="mt15">
+			</el-input>
 		</el-card>
 	</div>
 </template>
@@ -50,7 +51,7 @@ import { useClipboard } from '@vueuse/core';
 import { ElMessage } from 'element-plus';
 
 // 定义变量内容
-const { copyText, clipboard, removeFragmentTag } = commonFunction();
+const { copyText, clipboard } = commonFunction();
 const clipboardOne = reactive({
 	copyVal: '111111',
 	shearVal: '',
@@ -66,7 +67,7 @@ const clipboardThree = reactive({
 // 输入框去掉标签
 const inputRemoveTag = (e: any) => {
 	// 处理赋值
-	clipboardTwo.shearVal = removeFragmentTag(e);
+	clipboardTwo.shearVal = e;
 };
 // copy为方法 ，isSupported为支不支持，text为返回粘贴内容，source为复制内容
 const { copy, isSupported, text } = useClipboard({ source: clipboardThree.copyVal });
