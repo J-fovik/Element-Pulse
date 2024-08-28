@@ -286,12 +286,11 @@ export const resolveIdNumberInfo = (IdNumber: string) => {
 /**
  * @description 禁用时间段
  * @description 根据初始时间（startDate）和当前时间（current）的延后，确定一个时间段。
- * @description 如果在给定的时间段内，则返回true，表示该日期被禁用；否则返回false。
  * @param {any} current - 当前时间，通常是Date对象或dayjs对象。
  * @param {any} startDate - 初始时间，通常是Date对象或dayjs对象。
  * @param {Number} num - 时间数量，表示从起始时间延后多少个单位时间。
  * @param {String} unit - dayjs.ManipulateType的时间单位，例如'day', 'month', 'year'等。
- * @returns {Boolean} - 返回一个布尔值，表示该日期是否被禁用。
+ * @returns {Boolean} - 返回一个布尔值，表示该日期是否被禁用。（如果在给定的时间段内，则返回true，表示该日期被禁用；否则返回false。）
  */
 export const disabledDate = (
 	current: any,
