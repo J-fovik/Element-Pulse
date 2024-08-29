@@ -447,6 +447,21 @@
 						"requiresAuth": true,
 						"isKeepAlive": true
 					}
+				},
+				{
+					"path": "/function/qrCode",
+					"name": "qrCode",
+					"component": "/function/qrCode/index",
+					"meta": {
+						"icon": "Menu",
+						"title": "二维码",
+						"isLink": "",
+						"isHide": false,
+						"isFull": false,
+						"isAffix": false,
+						"requiresAuth": true,
+						"isKeepAlive": true
+					}
 				}
 			]
 		},

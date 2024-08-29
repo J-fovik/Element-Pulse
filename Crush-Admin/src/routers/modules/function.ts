@@ -122,5 +122,20 @@ export default {
 			},
 			component: () => import('@/views/function/anchorPoint/index.vue'),
 		},
+		{
+			path: '/function/qrCode',
+			name: 'qrCode',
+			meta: {
+				icon: 'Menu',
+				requiresAuth: true,
+				title: '二维码',
+				isLink: '',
+				isHide: false,
+				isFull: false,
+				isAffix: false,
+				isKeepAlive: true,
+			},
+			component: () => import('@/views/function/qrCode/index.vue'),
+		},
 	],
 };
