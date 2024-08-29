@@ -176,6 +176,20 @@ export const fileSuffix = (url: string, isSpot: boolean = true) => {
 };
 
 /**
+ * @description 生成base64
+ * @param {File} file 文件
+ * @returns {Promise} base64格式文件
+ */
+export function getBase64(file) {
+	return new Promise((resolve, reject) => {
+		const reader = new FileReader();
+		reader.readAsDataURL(file);
+		reader.onload = () => resolve(reader.result);
+		reader.onerror = (error) => reject(error);
+	});
+}
+
+/**
  * @description 下载图片
  * @param {String} imageSrc 图片路径
  * @param {String} name 名称
