@@ -45,7 +45,7 @@ export const useUserStore = defineStore(`${BY_NAME}-user`, () => {
 		// const reduceRoutesList = reduceRoutes(appMenus, authMenuNameList.data.menuNameList);
 		const reduceRoutesList = reduceRoutes(appMenus, Session.get('menu'));
 
-		authMenuList.value = reduceRoutesList;
+		authMenuList.value = backRouteList;
 	};
 	// 获取按钮权限
 	const authButtonListGet = async () => {
