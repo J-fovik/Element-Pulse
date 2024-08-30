@@ -135,21 +135,6 @@ export default {
 			component: () => import('@/views/assembly/noticeBar/index.vue'),
 		},
 		{
-			path: '/assembly/tagInput',
-			name: 'tagInput',
-			meta: {
-				icon: 'Menu',
-				title: '可输入标签',
-				isLink: '',
-				isHide: false,
-				isFull: false,
-				isAffix: false,
-				requiresAuth: true,
-				isKeepAlive: true,
-			},
-			component: () => import('@/views/assembly/tagInput/index.vue'),
-		},
-		{
 			path: '/assembly/tablePlus',
 			name: 'tablePlus',
 			meta: {

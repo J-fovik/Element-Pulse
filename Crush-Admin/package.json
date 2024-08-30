@@ -36,6 +36,7 @@
 		"qrcode": "^1.5.4",
 		"screenfull": "^6.0.2",
 		"sortablejs": "^1.15.2",
+		"typed.js": "^2.1.0",
 		"unplugin-auto-import": "^0.17.8",
 		"unplugin-vue-components": "^0.27.0",
 		"vite-plugin-full-reload": "^1.2.0",

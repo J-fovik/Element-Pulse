@@ -137,5 +137,20 @@ export default {
 			},
 			component: () => import('@/views/function/qrCode/index.vue'),
 		},
+		{
+			path: '/function/typedJs',
+			name: 'typedJs',
+			meta: {
+				icon: 'Menu',
+				requiresAuth: true,
+				title: '打字效果',
+				isLink: '',
+				isHide: false,
+				isFull: false,
+				isAffix: false,
+				isKeepAlive: true,
+			},
+			component: () => import('@/views/function/typedJs/index.vue'),
+		},
 	],
 };

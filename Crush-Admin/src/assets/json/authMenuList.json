@@ -279,21 +279,6 @@
 					}
 				},
 				{
-					"path": "/assembly/tagInput",
-					"name": "tagInput",
-					"component": "/assembly/tagInput/index",
-					"meta": {
-						"icon": "Menu",
-						"title": "可输入标签",
-						"isLink": "",
-						"isHide": false,
-						"isFull": false,
-						"isAffix": false,
-						"requiresAuth": true,
-						"isKeepAlive": true
-					}
-				},
-				{
 					"path": "/assembly/tablePlus",
 					"name": "tablePlus",
 					"component": "/assembly/tablePlus/index",
@@ -455,6 +440,21 @@
 					"meta": {
 						"icon": "Menu",
 						"title": "二维码",
+						"isLink": "",
+						"isHide": false,
+						"isFull": false,
+						"isAffix": false,
+						"requiresAuth": true,
+						"isKeepAlive": true
+					}
+				},
+				{
+					"path": "/function/typedJs",
+					"name": "typedJs",
+					"component": "/function/typedJs/index",
+					"meta": {
+						"icon": "Menu",
+						"title": "打字效果",
 						"isLink": "",
 						"isHide": false,
 						"isFull": false,

@@ -7,7 +7,9 @@
 				:closable="false"
 				class="mb15"
 			/>
-			<img :src="state.qrcodeUrl" alt="" />
+			<div class="flex-col my20 flx-center">
+				<img :src="state.qrcodeUrl" alt="" />
+			</div>
 		</el-card>
 		<el-card shadow="hover" header="useQRCode" class="mt20">
 			<el-alert
@@ -16,7 +18,9 @@
 				:closable="false"
 				class="mb15"
 			/>
-			<img :src="state.useQRCodeUrl" alt="" />
+			<div class="flex-col my20 flx-center">
+				<img :src="state.useQRCodeUrl" alt="" />
+			</div>
 		</el-card>
 	</div>
 </template>
