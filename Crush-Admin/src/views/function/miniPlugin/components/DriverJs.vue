@@ -1,19 +1,18 @@
 <template>
-	<el-card shadow="hover" header="引导页 🍓🍇🍈🍉">
+	<div>
 		<el-alert
-			title="引导页对于一些第一次进入项目的人很有用，你可以简单介绍下项目的功能。本 Demo 是基于 driver.js."
+			title="感谢优秀的 `driver.js`，本 Demo 是基于：https://www.npmjs.com/package/driver.js/v/1.3.0"
 			type="warning"
-			:closable="false"
 		/>
 		<div>
 			<el-button class="mt20" type="primary" @click.prevent.stop="driverObj.drive()">
 				打开引导页 🤹‍♂️
 			</el-button>
 		</div>
-	</el-card>
+	</div>
 </template>
 
-<script setup lang="ts" name="guide">
+<script setup lang="ts" name="DriverJs">
 import { driver } from 'driver.js';
 import 'driver.js/dist/driver.css';
 

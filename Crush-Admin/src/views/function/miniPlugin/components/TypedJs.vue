@@ -1,19 +1,19 @@
 <template>
-	<Container>
+	<div>
 		<el-alert
-			title="感谢优秀的 `typed.js`，项目地址：https://www.npmjs.com/package/typed.js/v/2.0.12"
-			type="success"
+			title="感谢优秀的 `typed.js`，本 Demo 是基于：https://www.npmjs.com/package/typed.js/v/2.0.12"
+			type="warning"
 		/>
-		<div class="flex-col mt200 flx-center">
+		<div class="flex-col mt20 flx-center">
 			<p ref="typedRef" />
 			<el-button type="primary" class="mt35" style="width: 200px" @click="onceAgain">
 				开始打字
 			</el-button>
 		</div>
-	</Container>
+	</div>
 </template>
 
-<script setup name="typedJs">
+<script setup name="TypedJs">
 import Typed from 'typed.js';
 let instance = null;
 const typedRef = ref();
@@ -25,7 +25,7 @@ const onceAgain = () => {
 	// 开始
 	instance?.start();
 };
-onActivated(() => {
+onMounted(() => {
 	if (typedRef.value) {
 		instance = new Typed(typedRef.value, {
 			strings: [text.value, 'Second sentence'], // 打印内容
@@ -34,7 +34,7 @@ onActivated(() => {
 		});
 	}
 });
-onDeactivated(() => {
+onUnmounted(() => {
 	instance?.destroy();
 });
 </script>

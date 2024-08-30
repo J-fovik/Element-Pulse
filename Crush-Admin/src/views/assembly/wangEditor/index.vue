@@ -1,7 +1,7 @@
 <template>
 	<Container>
 		<el-alert
-			title="富文本编辑器目前使用 wangeditor 插件完成，官方文档请查看 ：https://www.wangeditor.com/v5/installation.html#cdn"
+			title="WangEditor 是对wangEditor的二次封装，官方文档请查看 ：https://www.wangeditor.com/v5/installation.html#cdn"
 			type="warning"
 			:closable="false"
 		/>

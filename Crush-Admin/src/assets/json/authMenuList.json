@@ -313,7 +313,7 @@
 		{
 			"path": "/function",
 			"name": "function",
-			"redirect": "/function/guide",
+			"redirect": "/function/tabs",
 			"meta": {
 				"icon": "Coin",
 				"title": "功能插件",
@@ -325,21 +325,6 @@
 				"isKeepAlive": true
 			},
 			"children": [
-				{
-					"path": "/function/guide",
-					"name": "guide",
-					"component": "/function/guide/index",
-					"meta": {
-						"icon": "Menu",
-						"title": "引导页",
-						"isLink": "",
-						"isHide": false,
-						"isFull": false,
-						"isAffix": false,
-						"requiresAuth": true,
-						"isKeepAlive": true
-					}
-				},
 				{
 					"path": "/function/tabs",
 					"name": "tabs",
@@ -449,12 +434,12 @@
 					}
 				},
 				{
-					"path": "/function/typedJs",
-					"name": "typedJs",
-					"component": "/function/typedJs/index",
+					"path": "/function/miniPlugin",
+					"name": "miniPlugin",
+					"component": "/function/miniPlugin/index",
 					"meta": {
 						"icon": "Menu",
-						"title": "打字效果",
+						"title": "小插件",
 						"isLink": "",
 						"isHide": false,
 						"isFull": false,

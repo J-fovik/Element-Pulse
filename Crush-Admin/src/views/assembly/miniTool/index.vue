@@ -5,8 +5,8 @@
 		</el-card>
 		<el-card shadow="hover" class="mb20" header="CountUp 数字滚动">
 			<el-alert
-				title="感谢优秀的 `gsap`，项目地址：https://www.npmjs.com/package/gsap"
-				type="success"
+				title="CountUp 是基于`gsap`插件，官方文档请查看 ：https://www.npmjs.com/package/gsap"
+				type="warning"
 				:closable="false"
 				class="my15"
 			></el-alert>
@@ -32,8 +32,8 @@
 		</el-card>
 		<el-card shadow="hover" header="CropperJs 裁剪图片" class="mb20">
 			<el-alert
-				title="感谢优秀的 `cropperjs`，项目地址：https://mraining.github.io/Cropperjs.html"
-				type="success"
+				title="感谢优秀的 `cropperjs`，本 Demo 是基于：https://mraining.github.io/Cropperjs.html"
+				type="warning"
 				:closable="false"
 				class="mb15"
 			></el-alert>
@@ -112,33 +112,33 @@
 				<el-descriptions-item label="label">标签文本</el-descriptions-item>
 			</el-descriptions>
 		</el-card>
-		<el-card shadow="hover" header="SwitchDark 可输入标签" class="mb20">
+		<el-card shadow="hover" header="TagInput 可输入标签" class="mb20">
 			<el-alert
 				title="TagInput 是el-tag动态编辑标签进行的二次封装，官方文档请查看 ：https://element-plus.org/zh-CN/component/tag.html"
 				type="warning"
 				:closable="false"
 			/>
-			<div class="flx-center">
+			<div class="flx-center flex-col">
 				<div class="mt20">
 					<TagInput v-model="tagValue" />
 				</div>
 				<div class="my20">绑定值：{{ tagValue }}</div>
-				<el-descriptions title="配置项 📚" :column="1" border>
-					<el-descriptions-item label="modelValue">
-						双向绑定的 value 值，使用示例： v-model="content">
-					</el-descriptions-item>
-				</el-descriptions>
 			</div>
+			<el-descriptions title="配置项 📚" :column="1" border>
+				<el-descriptions-item label="modelValue">
+					双向绑定的 value 值，使用示例： v-model="content">
+				</el-descriptions-item>
+			</el-descriptions>
 		</el-card>
-		<el-card shadow="hover" header="TagInput 切换主题" class="mb20">
+		<el-card shadow="hover" header="SwitchDark 切换主题" class="mb20">
 			<div class="flx-center">
 				<SwitchDark />
 			</div>
 		</el-card>
 		<el-card shadow="hover" header="VueCropper 裁剪图片" class="mb20">
 			<el-alert
-				title="感谢优秀的 `vue-cropper`，项目地址：https://vue-cropper.vercel.app/#/demo-crop"
-				type="success"
+				title="感谢优秀的 `vue-cropper`，本 Demo 是基于：https://vue-cropper.vercel.app/#/demo-crop"
+				type="warning"
 				:closable="false"
 				class="my20"
 			></el-alert>

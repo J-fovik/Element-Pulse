@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<el-card shadow="hover" header="qrcode">
+		<el-card shadow="hover" header="qrcode" class="mb20">
 			<el-alert
 				title="感谢优秀的 `qrcode`，项目地址：https://www.npmjs.com/package/qrcode"
 				type="success"
@@ -11,7 +11,7 @@
 				<img :src="state.qrcodeUrl" alt="" />
 			</div>
 		</el-card>
-		<el-card shadow="hover" header="useQRCode" class="mt20">
+		<el-card shadow="hover" header="useQRCode" class="mb20">
 			<el-alert
 				title="感谢优秀的 `useQRCode`，地址：https://vueuse.org/integrations/useQRCode"
 				type="success"

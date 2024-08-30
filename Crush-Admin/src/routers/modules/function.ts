@@ -1,7 +1,7 @@
 export default {
 	path: '/function',
 	name: 'function',
-	redirect: '/function/guide',
+	redirect: '/function/tabs',
 	meta: {
 		icon: 'Coin',
 		order: 6,
@@ -14,21 +14,6 @@ export default {
 		isKeepAlive: true,
 	},
 	children: [
-		{
-			path: '/function/guide',
-			name: 'guide',
-			meta: {
-				icon: 'Menu',
-				requiresAuth: true,
-				title: '引导页',
-				isLink: '',
-				isHide: false,
-				isFull: false,
-				isAffix: false,
-				isKeepAlive: true,
-			},
-			component: () => import('@/views/function/guide/index.vue'),
-		},
 		{
 			path: '/function/tabs',
 			name: 'tabs',
@@ -138,19 +123,19 @@ export default {
 			component: () => import('@/views/function/qrCode/index.vue'),
 		},
 		{
-			path: '/function/typedJs',
-			name: 'typedJs',
+			path: '/function/miniPlugin',
+			name: 'miniPlugin',
 			meta: {
 				icon: 'Menu',
 				requiresAuth: true,
-				title: '打字效果',
+				title: '小插件',
 				isLink: '',
 				isHide: false,
 				isFull: false,
 				isAffix: false,
 				isKeepAlive: true,
 			},
-			component: () => import('@/views/function/typedJs/index.vue'),
+			component: () => import('@/views/function/miniPlugin/index.vue'),
 		},
 	],
 };
