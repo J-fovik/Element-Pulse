@@ -15,7 +15,7 @@ import { directives } from '@/directives/index';
 import router from '@/routers';
 // 语言包
 import I18n from '@/languages/index';
-
+import VueGridLayout from 'vue-grid-layout';
 // 全局错误
 import errorHandler from '@/utils/errorHandler';
 // 样式
@@ -31,4 +31,4 @@ Object.keys(Icons).forEach((key) => {
 });
 // 自定义指令
 directives(app);
-app.use(ElementPlus).use(router).use(I18n).use(pinia).mount('#app');
+app.use(ElementPlus).use(router).use(I18n).use(VueGridLayout).use(pinia).mount('#app');

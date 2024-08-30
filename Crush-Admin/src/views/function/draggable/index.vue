@@ -1,7 +1,7 @@
 <template>
 	<Container>
 		<el-alert
-			title="可进行拖拽的组件，可改变原有数据。本 Demo 是基于 vuedraggable."
+			title="感谢优秀的 `vuedraggable`，本 Demo 是基于：https://www.npmjs.com/package/vuedraggable"
 			type="warning"
 			:closable="false"
 		/>

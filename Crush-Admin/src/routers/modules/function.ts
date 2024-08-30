@@ -123,6 +123,36 @@ export default {
 			component: () => import('@/views/function/qrCode/index.vue'),
 		},
 		{
+			path: '/function/splitpanes',
+			name: 'splitpanes',
+			meta: {
+				icon: 'Menu',
+				requiresAuth: true,
+				title: '窗格拆分器',
+				isLink: '',
+				isHide: false,
+				isFull: false,
+				isAffix: false,
+				isKeepAlive: true,
+			},
+			component: () => import('@/views/function/splitpanes/index.vue'),
+		},
+		{
+			path: '/function/gridLayout',
+			name: 'gridLayout',
+			meta: {
+				icon: 'Menu',
+				requiresAuth: true,
+				title: '栅格拖拽布局',
+				isLink: '',
+				isHide: false,
+				isFull: false,
+				isAffix: false,
+				isKeepAlive: true,
+			},
+			component: () => import('@/views/function/gridLayout/index.vue'),
+		},
+		{
 			path: '/function/miniPlugin',
 			name: 'miniPlugin',
 			meta: {

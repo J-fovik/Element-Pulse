@@ -434,6 +434,36 @@
 					}
 				},
 				{
+					"path": "/function/splitpanes",
+					"name": "splitpanes",
+					"component": "/function/splitpanes/index",
+					"meta": {
+						"icon": "Menu",
+						"title": "窗格拆分器",
+						"isLink": "",
+						"isHide": false,
+						"isFull": false,
+						"isAffix": false,
+						"requiresAuth": true,
+						"isKeepAlive": true
+					}
+				},
+				{
+					"path": "/function/gridLayout",
+					"name": "gridLayout",
+					"component": "/function/gridLayout/index",
+					"meta": {
+						"icon": "Menu",
+						"title": "栅格拖拽布局",
+						"isLink": "",
+						"isHide": false,
+						"isFull": false,
+						"isAffix": false,
+						"requiresAuth": true,
+						"isKeepAlive": true
+					}
+				},
+				{
 					"path": "/function/miniPlugin",
 					"name": "miniPlugin",
 					"component": "/function/miniPlugin/index",
