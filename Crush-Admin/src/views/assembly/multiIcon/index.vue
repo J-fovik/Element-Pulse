@@ -29,7 +29,7 @@
 				type="warning"
 				:closable="false"
 			/>
-			<div class="icon-list">
+			<div class="flx-justify-between my20">
 				<SvgIcon name="xianxingdaoyu" />
 				<SvgIcon name="xianxingdiqiu" />
 				<SvgIcon name="xianxingditu" />
@@ -54,6 +54,12 @@
 					图标的样式，默认样式为 { width: "100px", height: "100px" }
 				</el-descriptions-item>
 			</el-descriptions>
+			<el-alert
+				title="仅支持 @/src/assets/svgIcons 下文件，可看./build/proxy文件"
+				type="warning"
+				:closable="false"
+				class="my20"
+			/>
 		</el-card>
 	</div>
 </template>
@@ -61,13 +67,4 @@
 <script setup lang="ts" name="multiIcon">
 import avatar from '@/assets/images/avatar.png';
 </script>
-<style scoped lang="scss">
-.icon-list {
-	box-sizing: border-box;
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: space-between;
-	width: 100%;
-	padding: 40px 50px 0;
-}
-</style>
+<style scoped lang="scss"></style>
