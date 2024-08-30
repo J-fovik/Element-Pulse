@@ -4,7 +4,7 @@
 
 import { ElMessage } from 'element-plus';
 import { useClipboard } from '@vueuse/core';
-// import clipboard from 'vue-clipboard3';
+import clipboard from 'vue-clipboard3';
 
 /**
  * @description 获取指定范围内的随机整数
@@ -48,29 +48,29 @@ export const randomStr = (length: number) => {
  * @param {*} value 要复制的文本
  * @returns {Promise}
  */
-// export const copyText = (value: any) => {
-// 	if (!value) return ElMessage.error('请输入文本');
-// 	const { toClipboard } = clipboard();
-// 	return new Promise((resolve, reject) => {
-// 		try {
-// 			//复制
-// 			toClipboard(value);
-// 			//下面可以设置复制成功的提示框等操作
-// 			ElMessage.success('复制成功');
-// 			resolve(value);
-// 		} catch (e) {
-// 			//复制失败
-// 			ElMessage.error('复制失败');
-// 			reject(e);
-// 		}
-// 	});
-// };
+export const copyText = (value: any) => {
+	if (!value) return ElMessage.error('请输入文本');
+	const { toClipboard } = clipboard();
+	return new Promise((resolve, reject) => {
+		try {
+			//复制
+			toClipboard(value);
+			//下面可以设置复制成功的提示框等操作
+			ElMessage.success('复制成功');
+			resolve(value);
+		} catch (e) {
+			//复制失败
+			ElMessage.error('复制失败');
+			reject(e);
+		}
+	});
+};
 
 /**
  * @description 点击复制文本(浏览器自带)
  * @param {*} value 要复制的文本
  */
-export const clipboard = (value: any) => {
+export const writeText = (value: any) => {
 	if (!value) return ElMessage.error('请输入文本');
 	navigator.clipboard.writeText(value);
 	ElMessage.success('复制成功，内容为：' + value);

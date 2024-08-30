@@ -40,6 +40,7 @@
 		"unplugin-vue-components": "^0.27.0",
 		"vite-plugin-full-reload": "^1.2.0",
 		"vue": "^3.4.21",
+		"vue-clipboard3": "^2.0.0",
 		"vue-cropper": "^1.1.4",
 		"vue-i18n": "^9.10.1",
 		"vue-router": "^4.3.0",
