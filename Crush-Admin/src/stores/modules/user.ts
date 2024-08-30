@@ -41,9 +41,11 @@ export const useUserStore = defineStore(`${BY_NAME}-user`, () => {
 		const { data } = await getAuthMenuListApi();
 		const backRouteList = elevateTitles(data);
 
-		// 三：根据后端name数组重组前端定义的路由
-		const reduceRoutesList = reduceRoutes(appMenus, authMenuNameList.data.menuNameList);
-		authMenuList.value = backRouteList;
+		// 三：根据后端name数组重组前端定义的路由(目前用缓存模拟的)
+		// const reduceRoutesList = reduceRoutes(appMenus, authMenuNameList.data.menuNameList);
+		const reduceRoutesList = reduceRoutes(appMenus, Session.get('menu'));
+
+		authMenuList.value = reduceRoutesList;
 	};
 	// 获取按钮权限
 	const authButtonListGet = async () => {
