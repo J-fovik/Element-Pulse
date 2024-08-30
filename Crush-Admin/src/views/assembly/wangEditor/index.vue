@@ -24,13 +24,13 @@
 </template>
 
 <script setup lang="ts" name="wangEditor">
-import { upLoadImage } from '@/api/modules/file';
+import { uploadImage } from '@/api/modules/file';
 import { curryingRequest } from '@/hooks';
 const content = ref('');
 // 图片上传
 const uploadImg = async (file: any) => {
 	// 图片上传
-	const { res } = await curryingRequest(() => upLoadImage({ file }));
+	const { res } = await curryingRequest(() => uploadImage({ file }));
 	// 返回图片路径
 	return res?.data;
 	// return 'https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg';

@@ -294,6 +294,21 @@
 					}
 				},
 				{
+					"path": "/assembly/uploadFile",
+					"name": "uploadFile",
+					"component": "/assembly/uploadFile/index",
+					"meta": {
+						"icon": "Menu",
+						"title": "上传文件",
+						"isLink": "",
+						"isHide": false,
+						"isFull": false,
+						"isAffix": false,
+						"requiresAuth": true,
+						"isKeepAlive": true
+					}
+				},
+				{
 					"path": "/assembly/miniTool",
 					"name": "miniTool",
 					"component": "/assembly/miniTool/index",

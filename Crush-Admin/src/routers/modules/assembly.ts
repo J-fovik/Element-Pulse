@@ -150,6 +150,21 @@ export default {
 			component: () => import('@/views/assembly/tablePlus/index.vue'),
 		},
 		{
+			path: '/assembly/uploadFile',
+			name: 'uploadFile',
+			meta: {
+				icon: 'Menu',
+				title: '上传文件',
+				isLink: '',
+				isHide: false,
+				isFull: false,
+				isAffix: false,
+				requiresAuth: true,
+				isKeepAlive: true,
+			},
+			component: () => import('@/views/assembly/uploadFile/index.vue'),
+		},
+		{
 			path: '/assembly/miniTool',
 			name: 'miniTool',
 			meta: {
