@@ -8,7 +8,7 @@
 	<i v-else :class="getIconName" :style="setIconSvgStyle" />
 </template>
 
-<script setup lang="ts" name="MultiIcon">
+<script setup lang="ts" name="IconCase">
 // 定义父组件传过来的值
 const props = defineProps({
 	// svg 图标组件名字

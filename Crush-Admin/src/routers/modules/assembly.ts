@@ -60,21 +60,6 @@ export default {
 			component: () => import('@/views/assembly/treeSelector/index.vue'),
 		},
 		{
-			path: '/assembly/svgIcon',
-			name: 'svgIcon',
-			meta: {
-				icon: 'Menu',
-				requiresAuth: true,
-				title: 'SVG 图标',
-				isLink: '',
-				isHide: false,
-				isFull: false,
-				isAffix: false,
-				isKeepAlive: true,
-			},
-			component: () => import('@/views/assembly/svgIcon/index.vue'),
-		},
-		{
 			path: '/assembly/multiIcon',
 			name: 'multiIcon',
 			meta: {
