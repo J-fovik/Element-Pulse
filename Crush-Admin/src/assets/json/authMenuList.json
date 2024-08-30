@@ -146,7 +146,7 @@
 		{
 			"path": "/assembly",
 			"name": "assembly",
-			"redirect": "/assembly/selectIcon",
+			"redirect": "/assembly/iconSelector",
 			"meta": {
 				"icon": "Briefcase",
 				"title": "常用组件",
@@ -159,9 +159,9 @@
 			},
 			"children": [
 				{
-					"path": "/assembly/selectIcon",
-					"name": "selectIcon",
-					"component": "/assembly/selectIcon/index",
+					"path": "/assembly/iconSelector",
+					"name": "iconSelector",
+					"component": "/assembly/iconSelector/index",
 					"meta": {
 						"icon": "Menu",
 						"title": "图标选择器",

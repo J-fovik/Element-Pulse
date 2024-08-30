@@ -1,7 +1,7 @@
 export default {
 	path: '/assembly',
 	name: 'assembly',
-	redirect: '/assembly/selectIcon',
+	redirect: '/assembly/iconSelector',
 	meta: {
 		icon: 'Briefcase',
 		order: 5,
@@ -15,8 +15,8 @@ export default {
 	},
 	children: [
 		{
-			path: '/assembly/selectIcon',
-			name: 'selectIcon',
+			path: '/assembly/iconSelector',
+			name: 'iconSelector',
 			meta: {
 				icon: 'Menu',
 				requiresAuth: true,
@@ -27,7 +27,7 @@ export default {
 				isAffix: false,
 				isKeepAlive: true,
 			},
-			component: () => import('@/views/assembly/selectIcon/index.vue'),
+			component: () => import('@/views/assembly/iconSelector/index.vue'),
 		},
 		{
 			path: '/assembly/selectFilter',
