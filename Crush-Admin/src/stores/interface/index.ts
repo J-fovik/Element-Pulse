@@ -40,12 +40,3 @@ export interface TabsMenuProps {
 export interface TabsState {
 	tabsMenuList: TabsMenuProps[];
 }
-
-/* AuthState */
-export interface AuthState {
-	routeName: string;
-	authButtonList: {
-		[key: string]: string[];
-	};
-	authMenuList: Menu.MenuOptions[];
-}
