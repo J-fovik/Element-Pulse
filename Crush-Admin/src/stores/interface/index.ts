@@ -49,8 +49,3 @@ export interface AuthState {
 	};
 	authMenuList: Menu.MenuOptions[];
 }
-
-/* KeepAliveState */
-export interface KeepAliveState {
-	keepAliveName: string[];
-}
