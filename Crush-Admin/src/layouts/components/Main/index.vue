@@ -61,7 +61,6 @@ watch(
 		immediate: true,
 	}
 );
-
 // 解决详情页 keep-alive 问题
 const wrapperMap = new Map();
 function createComponentWrapper(component, route) {
