@@ -39,7 +39,7 @@ export const useUserStore = defineStore(`${BY_NAME}-user`, () => {
 		const backRouteList = elevateTitles(data);
 
 		// 三：根据后端name数组过滤前端定义的路由
-		const reduceRoutesList = reduceRoutes(appMenus, authMenuNameList.data.menuNameList);
+		const reduceRoutesList = reduceRoutes(appMenus, Session.get('menu'));
 		authMenuList.value = backRouteList;
 	};
 	// 获取按钮权限
