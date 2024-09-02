@@ -17,6 +17,53 @@
 			}
 		},
 		{
+			"path": "/auth",
+			"name": "auth",
+			"redirect": "/auth/menu",
+			"meta": {
+				"icon": "Lock",
+				"title": "权限管理",
+				"isLink": "",
+				"isHide": false,
+				"isFull": false,
+				"isAffix": false,
+				"requiresAuth": true,
+				"isKeepAlive": true
+			},
+			"children": [
+				{
+					"path": "/auth/menu",
+					"name": "authMenu",
+					"component": "/auth/menu/index",
+					"meta": {
+						"icon": "Menu",
+						"title": "菜单权限",
+						"isLink": "",
+						"isHide": false,
+						"isFull": false,
+						"isAffix": false,
+						"requiresAuth": true,
+						"isKeepAlive": true
+					}
+				},
+				{
+					"path": "/auth/button",
+					"name": "authButton",
+					"component": "/auth/button/index",
+					"meta": {
+						"icon": "Menu",
+						"title": "按钮权限",
+						"isLink": "",
+						"isHide": false,
+						"isFull": false,
+						"isAffix": false,
+						"requiresAuth": true,
+						"isKeepAlive": true
+					}
+				}
+			]
+		},
+		{
 			"path": "/function",
 			"name": "function",
 			"redirect": "/function/guide",
