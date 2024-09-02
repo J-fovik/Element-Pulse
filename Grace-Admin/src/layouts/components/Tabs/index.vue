@@ -56,7 +56,7 @@ onMounted(() => {
 watch(
 	() => route.fullPath,
 	() => {
-		if (route.meta.isFull) return;
+		// if (route.meta.isFull) return;
 		tabsMenuValue.value = route.fullPath;
 		const tabsParams = {
 			icon: route.meta.icon as string,

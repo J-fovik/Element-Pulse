@@ -1,4 +1,4 @@
-import { getFlatMenuList,elevateTitles } from '@/utils/menu';
+import { getFlatMenuList,elevateTitles } from '@/utils';
 
 // 模块
 const modules = import.meta.glob('./modules/*.ts', { eager: true });

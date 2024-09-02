@@ -1,15 +1,14 @@
 <template>
 	<!-- Logo -->
 	<div class="flx-center">
-		<img v-if="isDark" class="logo-img" src="@/assets/svgIcons/dragonWhite.svg" alt="logo" />
-		<img v-else class="logo-img" src="@/assets/svgIcons/dragonBlack.svg" alt="logo" />
+		<SvgIcon name="yuelong1" :color="primary" :iconStyle="{ width: '50px', height: '50px' }" />
 	</div>
 </template>
 <script setup lang="ts" name="Logo">
 import { useGlobalStore } from '@/stores';
 const globalStore = useGlobalStore();
-// 主题
-const isDark = computed(() => globalStore.isDark);
+// 主题色
+const primary = computed(() => globalStore.primary);
 </script>
 <style scoped lang="scss">
 .logo-img {

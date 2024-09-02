@@ -2,7 +2,7 @@ import { storeToRefs } from 'pinia';
 import { ElMessage } from 'element-plus';
 import { DEFAULT_PRIMARY } from '@/config';
 import { useGlobalStore } from '@/stores/modules/global';
-import { getLightColor, getDarkColor } from '@/utils/color';
+import { getLightColor, getDarkColor } from '@/utils';
 import { menuTheme } from '@/assets/styles/theme/menu';
 import { asideTheme } from '@/assets/styles/theme/aside';
 import { headerTheme } from '@/assets/styles/theme/header';

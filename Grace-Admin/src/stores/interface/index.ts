@@ -35,22 +35,3 @@ export interface TabsMenuProps {
 	close: boolean;
 	isKeepAlive: boolean;
 }
-
-/* TabsState */
-export interface TabsState {
-	tabsMenuList: TabsMenuProps[];
-}
-
-/* AuthState */
-export interface AuthState {
-	routeName: string;
-	authButtonList: {
-		[key: string]: string[];
-	};
-	authMenuList: Menu.MenuOptions[];
-}
-
-/* KeepAliveState */
-export interface KeepAliveState {
-	keepAliveName: string[];
-}

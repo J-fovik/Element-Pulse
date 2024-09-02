@@ -1,8 +1,8 @@
 import { createRouter, createWebHashHistory, createWebHistory } from 'vue-router';
-import { useUserStore } from '@/stores/modules/user';
+import { useUserStore } from '@/stores';
 import NProgress from '@/config/nprogress';
 import jsCookie from 'js-cookie';
-import { collectAllRouteNames } from '@/utils/menu';
+import { collectAllRouteNames } from '@/utils';
 import { RouteRecordRaw } from 'vue-router';
 import { HOME_URL, LOGIN_URL } from '@/config';
 import { appRoutes } from '@/routers/base';
@@ -38,15 +38,7 @@ const staticRouter: RouteRecordRaw[] = [
 			requiresAuth: true,
 		},
 	},
-	// 全屏页面
-	{
-		path: '/dataScreen',
-		name: 'dataScreen',
-		meta: {
-			requiresAuth: true,
-		},
-		component: () => import('@/views/dataScreen/index.vue'),
-	},
+	// 这里可写全屏路由
 ];
 
 /**

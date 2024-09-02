@@ -2,7 +2,7 @@ import axios, { AxiosError, InternalAxiosRequestConfig, AxiosResponse } from 'ax
 import { LOGIN_URL } from '@/config';
 import jsCookie from 'js-cookie';
 import { ElMessage } from 'element-plus';
-import { useUserStore } from '@/stores/modules/user';
+import { useUserStore } from '@/stores';
 import router from '@/routers';
 const request = axios.create({
 	// 默认地址请求地址，可在 .env.** 文件中修改

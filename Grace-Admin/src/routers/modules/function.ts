@@ -62,20 +62,5 @@ export default {
 			],
 			component: () => import('@/views/function/tabs/index.vue'),
 		},
-		{
-			path: '/function/draggable',
-			name: 'draggable',
-			meta: {
-				icon: 'Menu',
-				requiresAuth: true,
-				title: '拖拽组件',
-				isLink: '',
-				isHide: false,
-				isFull: false,
-				isAffix: false,
-				isKeepAlive: true,
-			},
-			component: () => import('@/views/function/draggable/index.vue'),
-		},
 	],
 };

@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia';
-import jsCookie from 'js-cookie';
+import { Session } from '@/utils/storage';
 import { curryingRequest } from '@/hooks';
 import { getAuthButtonListApi, getAuthMenuListApi } from '@/api/modules/login';
 import {
@@ -7,8 +7,9 @@ import {
 	getShowMenuList,
 	getAllBreadcrumbList,
 	filterRoutes,
+	reduceRoutes,
 	elevateTitles,
-} from '@/utils/menu';
+} from '@/utils';
 import { appMenus } from '@/routers/base';
 import { BY_NAME } from '@/config';
 import authMenuNameList from '@/assets/json/authMenuNameList.json';
@@ -38,10 +39,7 @@ export const useUserStore = defineStore(`${BY_NAME}-user`, () => {
 		const backRouteList = elevateTitles(data);
 
 		// 三：根据后端name数组过滤前端定义的路由
-		const frontFilterFrontRouteList = filterRoutes(
-			appMenus,
-			authMenuNameList.data.menuNameList
-		);
+		const reduceRoutesList = reduceRoutes(appMenus, authMenuNameList.data.menuNameList);
 		authMenuList.value = backRouteList;
 	};
 	// 获取按钮权限
