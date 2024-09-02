@@ -35,8 +35,3 @@ export interface TabsMenuProps {
 	close: boolean;
 	isKeepAlive: boolean;
 }
-
-/* TabsState */
-export interface TabsState {
-	tabsMenuList: TabsMenuProps[];
-}
