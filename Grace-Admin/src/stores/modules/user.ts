@@ -42,7 +42,7 @@ export const useUserStore = defineStore(`${BY_NAME}-user`, () => {
 			appMenus,
 			authMenuNameList.data.menuNameList
 		);
-		authMenuList.value = frontFilterFrontRouteList;
+		authMenuList.value = backRouteList;
 	};
 	// 获取按钮权限
 	const authButtonListGet = async () => {

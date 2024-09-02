@@ -1,5 +1,5 @@
 import { createRouter, createWebHashHistory, createWebHistory } from 'vue-router';
-import { useUserStore } from '@/stores/modules/user';
+import { useUserStore } from '@/stores';
 import NProgress from '@/config/nprogress';
 import { Session } from '@/utils/storage';
 import { collectAllArrKeys } from '@/utils/arrayOperation';

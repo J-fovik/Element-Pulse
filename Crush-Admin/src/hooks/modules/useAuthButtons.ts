@@ -2,7 +2,7 @@
  * @name 页面按钮权限
  */
 
-import { useUserStore } from '@/stores/modules/user';
+import { useUserStore } from '@/stores';
 
 // 按钮权限
 export const useAuthButtons = () => {

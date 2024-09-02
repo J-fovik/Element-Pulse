@@ -69,8 +69,8 @@ export const useTabsStore = defineStore(`tabs`, () => {
 		await updateLocal();
 	};
 	// 设置标签
-	const setTabs = async (tabsMenuList: any) => {
-		tabsMenuList.value = tabsMenuList;
+	const setTabs = async (tabsList: any) => {
+		tabsMenuList.value = tabsList;
 		await updateLocal();
 	};
 	// 设置当前标签标题
