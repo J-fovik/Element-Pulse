@@ -92,9 +92,9 @@ import { disabledDate } from '@/utils/formatTime';
 import { validatePhoneOrLandline } from '@/utils/rules'; // 校验工具
 import { moneyFormat } from '@/utils/commonFunction';
 import { useForm, useBasicsState, useAsyncData, curryingRequest } from '@/hooks';
-import { useJumpTabStore } from '@/stores';
+import { useTabsStore } from '@/stores';
 // import { addApi, editApi, detailApi } from '/@/api/test';
-const { jumpTabName } = useJumpTabStore();
+const { jumpTabName } = useTabsStore();
 const route = useRoute();
 
 /* 弹窗状态控制 */

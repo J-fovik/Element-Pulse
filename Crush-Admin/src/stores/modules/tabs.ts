@@ -1,4 +1,3 @@
-import router from '@/routers';
 import { defineStore } from 'pinia';
 import { getUrlWithParams } from '@/utils/objectOperation';
 import { useKeepAliveStore } from './keepAlive';
@@ -10,7 +9,12 @@ import { Local } from '@/utils/storage';
  */
 
 export const useTabsStore = defineStore(`tabs`, () => {
+	// 缓存仓库
 	const keepAliveStore = useKeepAliveStore();
+	// 路由信息
+	const route = useRoute();
+	// 路由控制
+	const router = useRouter();
 	// tabs标签页
 	const tabsMenuList = ref(Local.get(`tabs`) ?? ([] as any));
 	// 添加标签
@@ -80,6 +84,23 @@ export const useTabsStore = defineStore(`tabs`, () => {
 		});
 		await updateLocal();
 	};
+	// 返回
+	/* 首先删除当前标签，如果传入name，则重定向到该name，否则查找route.query.name，有则跳转route.query.name，最后则跳转到上级页面 */
+	const jumpTabName = (name?: string) => {
+		if (route.meta.isAffix) return;
+		removeTabs(route.fullPath);
+		// 手动控制跳转
+		if (name) {
+			router.replace({ name });
+		} else {
+			// 需保证路由配置此name
+			if (route.query.name) {
+				router.replace({ name: route.query.name as string });
+			} else {
+				router.replace({ path: (route.meta.activeMenu as string) ?? '/home' });
+			}
+		}
+	};
 	// 更新缓存
 	const updateLocal = () => {
 		Local.set(`tabs`, tabsMenuList.value);
@@ -92,6 +113,7 @@ export const useTabsStore = defineStore(`tabs`, () => {
 		closeMultipleTab,
 		setTabs,
 		setTabsTitle,
+		jumpTabName,
 		updateLocal,
 	};
 });

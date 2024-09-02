@@ -14,10 +14,9 @@
 </template>
 
 <script setup lang="ts" name="tabsDetail">
-import { useTabsStore, useJumpTabStore } from '@/stores';
+import { useTabsStore } from '@/stores';
 const route = useRoute();
-const { jumpTabName } = useJumpTabStore();
-const tabStore = useTabsStore();
-tabStore.setTabsTitle(`No.${route.params.id} - ${route.meta.title}`);
+const { setTabsTitle, jumpTabName } = useTabsStore();
+setTabsTitle(`No.${route.params.id} - ${route.meta.title}`);
 const value = ref('');
 </script>
