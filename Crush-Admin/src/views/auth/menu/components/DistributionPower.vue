@@ -6,16 +6,22 @@
 		:destroy-on-close="true"
 		@close="emits('close')"
 	>
-		<TreeSelector
+		<el-tree
+			ref="treeRef"
 			:data="getShowMenuList(appMenus)"
-			id="name"
-			multiple
-			:default-value="manySelected"
-			:default-props="{
+			show-checkbox
+			node-key="name"
+			:expand-on-click-node="true"
+			:check-on-click-node="true"
+			:check-strictly="false"
+			:default-expanded-keys="manySelected"
+			:default-checked-keys="manySelected"
+			:highlight-current="true"
+			:props="{
 				children: 'children',
 				label: 'title',
 			}"
-			@change="changeTreeFilterMany"
+			@check="handleCheckChange"
 		/>
 		<template #footer>
 			<el-space>
@@ -28,16 +34,20 @@
 
 <script setup lang="ts" name="DistributionPower">
 // 如果是后端返回路由或者返回name数组，要用前端路由进行展示 appMenus
+import { ElTree } from 'element-plus';
 import { getShowMenuList } from '@/utils/arrayOperation';
 import { appMenus } from '@/routers/base';
 import { Session } from '@/utils/storage';
+// 树形控件实例
+const treeRef = ref<InstanceType<typeof ElTree>>();
 /* 父组件方法 */
 const emits = defineEmits(['close', 'success']);
 const manySelected = ref();
-// 多选选中
-const changeTreeFilterMany = (e: any) => {
-	manySelected.value = e;
+// 选中
+const handleCheckChange = () => {
+	manySelected.value = treeRef.value?.getCheckedKeys();
 };
+// 提交
 const onSubmit = () => {
 	Session.set('menu', manySelected.value);
 	emits('success');

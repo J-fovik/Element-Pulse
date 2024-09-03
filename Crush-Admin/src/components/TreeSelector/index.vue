@@ -28,7 +28,7 @@
 				:check-strictly="false"
 				:current-node-key="!multiple ? selected : ''"
 				:highlight-current="!multiple"
-				:expand-on-click-node="false"
+				:expand-on-click-node="true"
 				:check-on-click-node="multiple"
 				:props="defaultProps"
 				:filter-node-method="filterNode"

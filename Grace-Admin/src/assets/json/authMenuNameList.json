@@ -12,8 +12,7 @@
 			"authMenu",
 			"authButton",
 			"assembly",
-			"iconSelector",
-			"selectFilter"
+			"iconSelector"
 		],
 		"menuNameListAll": [
 			"home",
@@ -27,7 +26,6 @@
 			"authButton",
 			"assembly",
 			"iconSelector",
-			"selectFilter",
 			"treeSelector",
 			"multiIcon",
 			"wangEditor",
