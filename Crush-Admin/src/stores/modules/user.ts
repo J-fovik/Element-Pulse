@@ -52,7 +52,6 @@ export const useUserStore = defineStore(`user`, () => {
 		const { data } = await getAuthButtonListApi();
 		authButtonList.value = data;
 	};
-
 	// 菜单权限列表 ==> 左侧菜单栏渲染，需要剔除 isHide == true
 	const showMenuListGet = () => getShowMenuList(authMenuList.value);
 	// 菜单权限列表 ==> 扁平化之后的一维数组菜单，支持多级

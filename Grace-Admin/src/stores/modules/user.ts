@@ -14,7 +14,7 @@ import { appMenus } from '@/routers/base';
 import { BY_NAME } from '@/config';
 import authMenuNameList from '@/assets/json/authMenuNameList.json';
 
-export const useUserStore = defineStore(`${BY_NAME}-user`, () => {
+export const useUserStore = defineStore(`user`, () => {
 	// 用户信息
 	const userInfo = ref({} as any);
 	// 当前页面的 router name，用来做按钮权限筛选

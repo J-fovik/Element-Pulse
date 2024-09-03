@@ -7,12 +7,10 @@
 		@close="emits('close')"
 	>
 		<TreeSelector
-			:data="appMenus"
-			class="ml10"
+			:data="getShowMenuList(appMenus)"
 			id="name"
 			multiple
 			:default-value="manySelected"
-			title="树形控件(多)"
 			:default-props="{
 				children: 'children',
 				label: 'title',
@@ -29,6 +27,7 @@
 </template>
 
 <script setup lang="ts" name="DistributionPower">
+import { getShowMenuList } from '@/utils';
 // 如果是后端返回路由或者返回name数组，要用前端路由进行展示 appMenus
 import { appMenus } from '@/routers/base';
 import { Session } from '@/utils/storage';
