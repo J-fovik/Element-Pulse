@@ -28,7 +28,7 @@
 </template>
 
 <script setup lang="ts" name="Avatar">
-import jsCookie from 'js-cookie';
+import { Session } from '@/utils/storage';
 import { LOGIN_URL } from '@/config';
 import { logoutApi } from '@/api/modules/login';
 import { useUserStore } from '@/stores';
@@ -50,14 +50,15 @@ const logout = () => {
 	}).then(async () => {
 		// 执行退出登录接口
 		await logoutApi();
-		// 请空用户信息
-		setUserInfo({});
 		// 清除Cookie
-		await jsCookie.remove('userToken');
-		// 删除用户信息
-		jsCookie.remove('userInfo');
-		// 到登陆页
+		await Session.remove('userToken');
+		// 清空Session缓存
+		Session.clear();
+		// 清空用户信息
+		setUserInfo({});
+		// 到登录页
 		router.push(LOGIN_URL);
+		// 消息提示
 		ElMessage.success('退出登录成功！');
 	});
 };

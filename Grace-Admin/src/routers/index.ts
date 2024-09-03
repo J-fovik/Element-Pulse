@@ -1,7 +1,7 @@
 import { createRouter, createWebHashHistory, createWebHistory } from 'vue-router';
 import { useUserStore } from '@/stores';
+import { Session } from '@/utils/storage';
 import NProgress from '@/config/nprogress';
-import jsCookie from 'js-cookie';
 import { collectAllRouteNames } from '@/utils';
 import { RouteRecordRaw } from 'vue-router';
 import { HOME_URL, LOGIN_URL } from '@/config';
@@ -121,7 +121,7 @@ router.beforeEach(async (to) => {
 	// 查询用户信息
 	const userStore = useUserStore();
 	// 用户cookie
-	const userToken = jsCookie.get('userToken');
+	const userToken = Session.get('userToken');
 	// 是否需要认证
 	if (to.meta.requiresAuth) {
 		// 不存在用户信息时

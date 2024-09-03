@@ -42,7 +42,7 @@
 
 <script setup lang="ts">
 import md5 from 'md5';
-import jsCookie from 'js-cookie';
+import { Session } from '@/utils/storage';
 import type { FormInstance } from 'element-plus';
 import { ElNotification } from 'element-plus';
 import { HOME_URL } from '@/config';
@@ -89,7 +89,7 @@ const login = (formEl: FormInstance | undefined) => {
 		);
 		if (err) return;
 		// 设置用户信息
-		jsCookie.set('userToken', res?.data.access_token);
+		Session.set('userToken', res?.data.access_token);
 		// 清空 tabs、keepAlive 数据
 		tabsStore.setTabs([]);
 		keepAliveStore.setKeepAliveName([]);

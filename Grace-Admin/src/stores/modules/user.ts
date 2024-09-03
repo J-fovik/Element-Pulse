@@ -65,7 +65,7 @@ export const useUserStore = defineStore(`user`, () => {
 		await Promise.all([authMenuListGet(), authButtonListGet()]);
 		// 设置token
 		// if (res?.data.token) {
-		// 	jsCookie.set('userToken', res?.data.token);
+		// 	Session.set('userToken', res?.data.token);
 		// }
 
 		// 设置用户信息

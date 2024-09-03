@@ -40,7 +40,6 @@ request.interceptors.request.use(
 request.interceptors.response.use(
 	async (res: AxiosResponse) => {
 		const { setUserInfo } = useUserStore();
-		const messageStore = useMessageStore();
 		// 文件类型
 		if (['blob', 'arraybuffer'].includes(res.config.responseType as string)) {
 			return res.data;
@@ -51,6 +50,7 @@ request.interceptors.response.use(
 			} else {
 				// 登录失效
 				if ([1002, 1003].includes(res.data.code)) {
+					const messageStore = useMessageStore();
 					// 关闭获取消息
 					messageStore.pause();
 					// 删除token
