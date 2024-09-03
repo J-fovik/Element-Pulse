@@ -90,7 +90,7 @@ const restoreInitValue = () => {
 	];
 };
 onActivated(() => {
-	layoutList.value = Session.get('gridList');
+	layoutList.value = Session.get('gridList') ?? layoutList.value;
 });
 </script>
 

@@ -31,7 +31,7 @@
 import { Session } from '@/utils/storage';
 import { LOGIN_URL } from '@/config';
 import { logoutApi } from '@/api/modules/login';
-import { useUserStore } from '@/stores';
+import { useUserStore, useMessageStore } from '@/stores';
 import { ElMessageBox, ElMessage } from 'element-plus';
 import { useBasicsState } from '@/hooks';
 import InfoDialog from './InfoDialog.vue';
@@ -40,6 +40,7 @@ import PasswordDialog from './PasswordDialog.vue';
 const [activeKey, setActiveKey] = useBasicsState<string | null>(null);
 const router = useRouter();
 const { setUserInfo } = useUserStore();
+const messageStore = useMessageStore();
 
 // 退出登录
 const logout = () => {
@@ -50,12 +51,17 @@ const logout = () => {
 	}).then(async () => {
 		// 执行退出登录接口
 		await logoutApi();
-		// 请空用户信息
-		setUserInfo({});
+		// 关闭获取消息
+		await messageStore.pause();
 		// 清除Cookie
 		await Session.remove('userToken');
-		// 到登陆页
+		// 清空Session缓存
+		Session.clear();
+		// 清空用户信息
+		setUserInfo({});
+		// 到登录页
 		router.push(LOGIN_URL);
+		// 消息提示
 		ElMessage.success('退出登录成功！');
 	});
 };

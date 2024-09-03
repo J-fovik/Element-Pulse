@@ -1,6 +1,9 @@
 import { defineStore } from 'pinia';
 import { useBasicsMap, curryingRequest } from '@/hooks';
-// 字典仓库
+
+/**
+ * @name 字典仓库
+ */
 export const useDictionaryStore = defineStore('dictionary', () => {
 	// 字典信息
 	const { basicsMap, hasValue, getValue, addValue } = useBasicsMap<Array<any>>([]);

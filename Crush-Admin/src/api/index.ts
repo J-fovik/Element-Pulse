@@ -2,7 +2,7 @@ import axios, { AxiosError, InternalAxiosRequestConfig, AxiosResponse } from 'ax
 import { LOGIN_URL } from '@/config';
 import { Session } from '@/utils/storage';
 import { ElMessage } from 'element-plus';
-import { useUserStore } from '@/stores';
+import { useUserStore, useMessageStore } from '@/stores';
 import router from '@/routers';
 const request = axios.create({
 	// 默认地址请求地址，可在 .env.** 文件中修改
@@ -40,6 +40,7 @@ request.interceptors.request.use(
 request.interceptors.response.use(
 	async (res: AxiosResponse) => {
 		const { setUserInfo } = useUserStore();
+		const messageStore = useMessageStore();
 		// 文件类型
 		if (['blob', 'arraybuffer'].includes(res.config.responseType as string)) {
 			return res.data;
@@ -50,8 +51,12 @@ request.interceptors.response.use(
 			} else {
 				// 登录失效
 				if ([1002, 1003].includes(res.data.code)) {
+					// 关闭获取消息
+					messageStore.pause();
 					// 删除token
 					Session.remove('userToken');
+					// 清空Session缓存
+					Session.clear();
 					// 清除用户信息
 					setUserInfo({});
 					// 去登录页

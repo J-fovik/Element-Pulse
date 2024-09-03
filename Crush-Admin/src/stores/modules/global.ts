@@ -3,6 +3,7 @@ import { GlobalState } from '@/stores/interface';
 import { DEFAULT_PRIMARY } from '@/config';
 import piniaPersistConfig from '@/stores/helper/persist';
 import { BY_NAME } from '@/config';
+
 /**
  * @name 全局配置仓库
  */

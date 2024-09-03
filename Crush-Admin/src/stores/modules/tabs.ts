@@ -5,9 +5,8 @@ import { TabsMenuProps } from '@/stores/interface';
 import { Local } from '@/utils/storage';
 
 /**
- * @name Tab仓库
+ * @name Tabs仓库
  */
-
 export const useTabsStore = defineStore(`tabs`, () => {
 	// 缓存仓库
 	const keepAliveStore = useKeepAliveStore();

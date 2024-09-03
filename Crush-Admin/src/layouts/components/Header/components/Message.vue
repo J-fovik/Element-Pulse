@@ -9,7 +9,7 @@
 			:persistent="false"
 		>
 			<template #reference>
-				<el-badge :value="5" class="item" @click="togglePopover">
+				<el-badge :value="messageStore.messageNum" class="item" @click="togglePopover">
 					<i :class="'iconfont icon-xiaoxi_xiao'" class="toolBar-icon"></i>
 				</el-badge>
 			</template>
@@ -71,6 +71,9 @@
 </template>
 
 <script setup lang="ts" name="Message">
+import { useMessageStore } from '@/stores';
+// 消息
+const messageStore = useMessageStore();
 const activeName = ref('first');
 const visible = ref(false);
 // 获取消息列表
