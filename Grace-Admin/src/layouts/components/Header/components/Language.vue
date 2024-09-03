@@ -1,7 +1,7 @@
 <template>
 	<!-- 语言设置 -->
 	<el-dropdown trigger="click" @command="changeLanguage">
-		<i :class="'iconfont icon-zhongyingwen'" class="toolBar-icon"></i>
+		<i :class="'iconfont icon-zhongyingwen1'" class="toolBar-icon"></i>
 		<template #dropdown>
 			<el-dropdown-menu>
 				<el-dropdown-item

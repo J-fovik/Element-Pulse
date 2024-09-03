@@ -10,7 +10,7 @@
 		>
 			<template #reference>
 				<el-badge :value="5" class="item" @click="togglePopover">
-					<i :class="'iconfont icon-xiaoxi'" class="toolBar-icon"></i>
+					<i :class="'iconfont icon-xiaoxi_xiao'" class="toolBar-icon"></i>
 				</el-badge>
 			</template>
 			<el-tabs v-model="activeName">

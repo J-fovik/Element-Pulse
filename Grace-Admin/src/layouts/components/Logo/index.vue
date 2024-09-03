@@ -1,7 +1,7 @@
 <template>
 	<!-- Logo -->
 	<div class="flx-center">
-		<SvgIcon name="yuelong1" :color="primary" :iconStyle="{ width: '50px', height: '50px' }" />
+		<i :class="'iconfont icon-yuelong1'" class="font30" :style="{ color: primary }"></i>
 	</div>
 </template>
 <script setup lang="ts" name="Logo">

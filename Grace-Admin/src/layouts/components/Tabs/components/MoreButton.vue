@@ -2,7 +2,7 @@
 	<!-- 更多按钮 -->
 	<el-dropdown trigger="click" :teleported="false">
 		<div class="more-button">
-			<i :class="'iconfont icon-xiala'"></i>
+			<el-icon size="20"><ArrowDownBold /></el-icon>
 		</div>
 		<template #dropdown>
 			<el-dropdown-menu>
