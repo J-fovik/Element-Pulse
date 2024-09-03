@@ -132,22 +132,26 @@ router.beforeEach(async (to) => {
 	const userToken = Session.get('userToken');
 	// 是否需要认证
 	if (to.meta.requiresAuth) {
-		// // 判断token
-		if (userToken) {
-			// 判断是否可以获取到用户信息
-			const isLogin = await userStore.initUserInfo();
-			// 业务判断 路由拦截
-			if (!isLogin)
+		// 不存在用户信息时
+		if (!userStore.userInfo.userId) {
+			// 判断token
+			if (userToken) {
+				// 判断是否可以获取到用户信息
+				const isLogin = await userStore.initUserInfo();
+				// 业务判断 路由拦截
+				if (!isLogin)
+					return {
+						path: '/login',
+						query: { redirect: to.fullPath },
+					};
+			} else {
 				return {
 					path: '/login',
 					query: { redirect: to.fullPath },
 				};
-		} else {
-			return {
-				path: '/login',
-				query: { redirect: to.fullPath },
-			};
+			}
 		}
+
 		// 权限控制
 		if (!collectAllArrKeys(userStore.authMenuList)?.includes(to.name as any)) {
 			// 详情页面不做权限处理;

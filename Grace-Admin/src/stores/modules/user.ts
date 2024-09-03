@@ -72,6 +72,7 @@ export const useUserStore = defineStore(`user`, () => {
 		setUserInfo({
 			...userInfo,
 			name: BY_NAME,
+			userId: 'userId',
 		});
 		// 获取成功
 		return true;
