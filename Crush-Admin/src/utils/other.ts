@@ -287,3 +287,45 @@ export const debounce = (callback, wait: number = 500) => {
 		}, wait);
 	};
 };
+
+/**
+ * @description 并发控制函数，用于同时执行多个Promise，但同时保持执行的数量不超过指定限制。
+ * @param {Promise[]} promises - 一个Promise对象的数组，每个Promise代表一个异步操作。
+ * @param {number} limit - 同时执行的Promise的最大数量。
+ * @returns {Promise} 返回一个新的Promise，当所有Promise执行完毕时，该Promise会被解决。
+ */
+export const concurrentPromises = (promises: any, limit: number = 2) => {
+	// 返回一个新的Promise，其解决和拒绝回调将在所有Promise执行完毕后执行。
+	return new Promise((resolve, reject) => {
+		// 初始化计数器i和结果数组result。
+		let i = 0;
+		let result = [] as any;
+		// 定义执行器函数，用于执行Promise并处理结果。
+		const executor = () => {
+			// 如果所有Promise都已执行完毕，则解决外层Promise。
+			if (i >= promises.length) {
+				return resolve(result);
+			}
+			// 获取当前Promise。
+			const promise = promises[i++];
+			// 解析Promise并处理成功和失败的情况。
+			Promise.resolve(promise)
+				.then((value) => {
+					// 将成功结果添加到result数组中。
+					result.push(value);
+					// 如果还有Promise未执行完毕，则继续执行下一个Promise。
+					if (i < promises.length) {
+						executor();
+					} else {
+						// 如果所有Promise都已执行完毕，则解决外层Promise。
+						resolve(result);
+					}
+				})
+				.catch(reject); // 捕获并拒绝Promise执行过程中的任何错误。
+		};
+		// 循环调用执行器函数，直到达到限制或Promise数组长度。
+		for (let j = 0; j < limit && j < promises.length; j++) {
+			executor();
+		}
+	});
+};
