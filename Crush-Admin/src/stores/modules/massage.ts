@@ -32,7 +32,7 @@ export const useMessageStore = defineStore('message', () => {
 		// // 处理错误
 		// if (err) return [];
 		const data = {
-			msgList: [{ createTime: '20240818094921' }, { createTime: '20220818094928' }],
+			msgList: [] as any,
 			totalCount: 9,
 		};
 		// 开始
