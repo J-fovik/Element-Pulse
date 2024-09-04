@@ -17,7 +17,6 @@ declare module 'vue' {
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     SelectIcon: typeof import('./components/SelectIcon/index.vue')['default']
-    SvgIcon: typeof import('./components/SvgIcon/index.vue')['default']
     SwitchDark: typeof import('./components/SwitchDark/index.vue')['default']
     TreeSelector: typeof import('./components/TreeSelector/index.vue')['default']
     WangEditor: typeof import('./components/WangEditor/index.vue')['default']

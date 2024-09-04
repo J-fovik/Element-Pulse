@@ -7,7 +7,7 @@
 			</div>
 			<div class="login-form">
 				<div class="login-logo">
-					<img class="login-icon" src="@/assets/svgIcons/logo.svg" alt="" />
+					<img class="login-icon" src="@/assets/images/logo.svg" alt="" />
 					<h2 class="logo-text">{{ APP_TITLE }}</h2>
 				</div>
 				<LoginForm />
@@ -26,7 +26,7 @@ const APP_TITLE = import.meta.env.VITE_GLOB_APP_TITLE;
 	height: 100%;
 	min-height: 550px;
 	background-color: #eeeeee;
-	background-image: url('@/assets/svgIcons/login_bg.svg');
+	background-image: url('@/assets/images/login_bg.svg');
 	background-size: 100% 100%;
 	background-size: cover;
 	.login-box {

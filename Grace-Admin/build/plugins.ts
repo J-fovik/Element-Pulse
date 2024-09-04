@@ -3,7 +3,6 @@ import { PluginOption } from 'vite';
 import { VitePWA } from 'vite-plugin-pwa';
 import { createHtmlPlugin } from 'vite-plugin-html';
 import { visualizer } from 'rollup-plugin-visualizer';
-import { createSvgIconsPlugin } from 'vite-plugin-svg-icons';
 import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
 import viteCompression from 'vite-plugin-compression';
@@ -30,11 +29,6 @@ export const createVitePlugins = (viteEnv: ViteEnv): (PluginOption | PluginOptio
 			inject: {
 				data: { title: VITE_GLOB_APP_TITLE },
 			},
-		}),
-		// 使用 svg 图标
-		createSvgIconsPlugin({
-			iconDirs: [resolve(process.cwd(), 'src/assets/svgIcons')],
-			symbolId: 'icon-[dir]-[name]',
 		}),
 		// 自动导入vue相关函数，如: ref、reactive、toRef等
 		AutoImport({
