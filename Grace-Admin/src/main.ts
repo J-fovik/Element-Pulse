@@ -3,8 +3,6 @@ import App from './App.vue';
 // pinia 仓库
 import { createPinia } from 'pinia';
 import piniaPluginPersistedstate from 'pinia-plugin-persistedstate';
-// 导入并注册 SVG 图标
-import 'virtual:svg-icons-register';
 // element plus
 import ElementPlus from 'element-plus';
 // element 图标
