@@ -28,8 +28,8 @@ export const USER_STATUS = [
 ];
 
 /**
- * @description 默认导出，找到匹配的元素
- * @returns {Object | Null} 找出第一个符合条件的成员
+ * 默认导出，找到匹配的元素
+ * @returns {Object | null} 找出第一个符合条件的成员
  */
 export default (options: Array<any>, value: string) => {
 	return options.find((item) => item.value === value);

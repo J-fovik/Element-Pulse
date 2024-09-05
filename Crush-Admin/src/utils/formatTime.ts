@@ -5,12 +5,12 @@
 import dayjs from 'dayjs';
 
 /**
- * @description dayjs时间日期转换
+ * dayjs时间日期转换
  * @description format格式请查看：https://dayjs.fenxianglu.cn/category/display.html#%E6%A0%BC%E5%BC%8F%E5%8C%96
- * @param {String} value 传入日期时间，dayjs 格式
- * @param {String} format 需要转换的时间格式字符串（默认 YYYYMMDD）
- * @param {String} empty 需要转换的拼接符
- * @returns {String} 返回需要的时间字符串
+ * @param {string} value 传入日期时间，dayjs 格式
+ * @param {string} format 需要转换的时间格式字符串（默认 YYYYMMDD）
+ * @param {string} empty 需要转换的拼接符
+ * @returns {string} 返回需要的时间字符串
  */
 export const formatDayjs = (value: string, format: string = 'YYYYMMDD', empty = '-') => {
 	if (value) {
@@ -20,15 +20,15 @@ export const formatDayjs = (value: string, format: string = 'YYYYMMDD', empty = 
 };
 
 /**
- * @description new Date时间日期转换
+ * new Date时间日期转换
  * @description format 字符串随意，如 `YYYY-mm、YYYY-mm-dd`
  * @description format 季度："YYYY-mm-dd HH:MM:SS QQQQ"
  * @description format 星期："YYYY-mm-dd HH:MM:SS WWW"
  * @description format 几周："YYYY-mm-dd HH:MM:SS ZZZ"
  * @description format 季度 + 星期 + 几周："YYYY-mm-dd HH:MM:SS WWW QQQQ ZZZ"
- * @param {String} date 传入日期时间，new Date() 格式
- * @param {String} format 需要转换的时间格式字符串
- * @returns {String} 返回拼接后的时间字符串
+ * @param {string} date 传入日期时间，new Date() 格式
+ * @param {string} format 需要转换的时间格式字符串
+ * @returns {string} 返回拼接后的时间字符串
  */
 export function formatNewDate(date: Date, format: string): string {
 	let we = date.getDay(); // 星期
@@ -89,35 +89,36 @@ export function formatNewDate(date: Date, format: string): string {
 }
 
 /**
- * @description 获取过去时间
+ * 获取过去时间
  * @description format格式,请查看：https://dayjs.fenxianglu.cn/category/display.html#%E6%A0%BC%E5%BC%8F%E5%8C%96
- * @param {Number} num 时间数量
- * @param {String} unit dayjs.ManipulateType的格式（可悬停在dayjs.ManipulateType上查看）
- * @param {String} format 需要转换的格式（默认 YYYY-MM-DD）
- * @returns {String} 返回需要的时间字符串
+ * @param {number} num 时间数量
+ * @param {string} unit dayjs.ManipulateType的格式（可悬停在dayjs.ManipulateType上查看）
+ * @param {string} format 需要转换的格式（默认 YYYY-MM-DD）
+ * @returns {string} 返回需要的时间字符串
  */
 export const getPastTime = (num: number, unit: dayjs.ManipulateType, format = 'YYYY-MM-DD') => {
 	return dayjs().subtract(num, unit).format(format);
 };
 
 /**
- * @description 获取未来时间
+ * 获取未来时间
  * @description format格式,请查看：https://dayjs.fenxianglu.cn/category/display.html#%E6%A0%BC%E5%BC%8F%E5%8C%96
- * @param {Number} num 时间数量
- * @param {String} unit dayjs.ManipulateType的格式（可悬停在dayjs.ManipulateType上查看）
- * @param {String} format 需要转换的格式（默认 YYYY-MM-DD）
- * @returns {String} 返回需要的时间字符串
+ * @param {number} num 时间数量
+ * @param {string} unit dayjs.ManipulateType的格式（可悬停在dayjs.ManipulateType上查看）
+ * @param {string} format 需要转换的格式（默认 YYYY-MM-DD）
+ * @returns {string} 返回需要的时间字符串
  */
 export const getFutureTime = (num: number, unit: dayjs.ManipulateType, format = 'YYYY-MM-DD') => {
 	return dayjs().add(num, unit).format(format);
 };
 
 /**
- * @description 日期时间转换
- * @description 例如，如果 value 是 "20230405123045"，函数将返回 "2023-04-05 12:30:45"。
- * @param {String} value 传入日期时间
- * @param {String} empty 默认无值状态
- * @returns {String} 返回需要的时间字符串
+ * 日期时间转换
+ * @param {string} value 传入日期时间
+ * @param {string} empty 默认无值状态
+ * @returns {string} 返回需要的时间字符串
+ * @example
+ * turnDateTime('20230405123045') // 2023-04-05 12:30:45
  */
 export const turnDateTime = (value: string, empty = '-') => {
 	if (value) {
@@ -134,9 +135,9 @@ export const turnDateTime = (value: string, empty = '-') => {
 };
 
 /**
- * @description 获取给定日期value所在的年份中的周数
- * @param {String} value 传入日期时间
- * @returns {Number} 返回第几周数字值
+ * 获取给定日期value所在的年份中的周数
+ * @param {string} value 传入日期时间
+ * @returns {number} 返回第几周数字值
  */
 export function getWeek(value: Date): number {
 	let temptTime = new Date(value.getTime());
@@ -155,15 +156,15 @@ export function getWeek(value: Date): number {
 }
 
 /**
- * @description 将时间转换为 `几秒前`、`几分钟前`、`几小时前`、`几天前`
+ * 将时间转换为 `几秒前`、`几分钟前`、`几小时前`、`几天前`
  * @description param 10秒：  10 * 1000
  * @description param 1分：   60 * 1000
  * @description param 1小时： 60 * 60 * 1000
  * @description param 24小时：60 * 60 * 24 * 1000
  * @description param 3天：   60 * 60* 24 * 1000 * 3
- * @param {String} value 当前时间，new Date() 格式或者字符串时间格式
- * @param {String} format 需要转换的时间格式字符串（默认 YYYY-mm-dd）
- * @returns {String} 返回多久前，超过3天内返回日期
+ * @param {string} value 当前时间，new Date() 格式或者字符串时间格式
+ * @param {string} format 需要转换的时间格式字符串（默认 YYYY-mm-dd）
+ * @returns {string} 返回多久前，超过3天内返回日期
  */
 export function formatPast(value: string | Date, format: string = 'YYYY-mm-dd'): string {
 	// 传入格式处理、存储转换值
@@ -201,8 +202,8 @@ export function formatPast(value: string | Date, format: string = 'YYYY-mm-dd'):
 }
 
 /**
- * @description 获取当前时间对应的提示语
- * @returns {String} 提示语
+ * 获取当前时间对应的提示语
+ * @returns {string} 提示语
  */
 export function formatAxis() {
 	let hours = new Date().getHours();
@@ -217,7 +218,7 @@ export function formatAxis() {
 }
 
 /**
- * @description new Date 获取现在时间
+ * new Date 获取现在时间
  * @returns {Array} [ '2024-08-05', '11:30:45', '星期一' ]
  */
 export function getNowNewDate() {
@@ -251,7 +252,7 @@ export function getNowNewDate() {
 }
 
 /**
- * @description dayjs 获取现在时间
+ * dayjs 获取现在时间
  * @returns {Array} [ '2024-08-05', '11:30:45', '星期一' ]
  */
 export function getNowDayjs() {
@@ -262,10 +263,10 @@ export function getNowDayjs() {
 }
 
 /**
- * @description 获取两个日期之间的天数
- * @param {String} date1 日期1
- * @param {String} date2 日期2
- * @returns {Number} 相差天数
+ * 获取两个日期之间的天数
+ * @param {string} date1 日期1
+ * @param {string} date2 日期2
+ * @returns {number} 相差天数
  */
 export function daysBetween(date1: any, date2: any) {
 	const oneDay = 24 * 60 * 60 * 1000;
@@ -273,8 +274,8 @@ export function daysBetween(date1: any, date2: any) {
 }
 
 /**
- * @description 解析身份证信息
- * @param {String} IdNumber 身份证号码
+ * 解析身份证信息
+ * @param {string} IdNumber 身份证号码
  * @returns {Object} {生日，性别}
  */
 export const resolveIdNumberInfo = (IdNumber: string) => {
@@ -284,13 +285,13 @@ export const resolveIdNumberInfo = (IdNumber: string) => {
 };
 
 /**
- * @description 禁用时间段
+ * 禁用时间段
  * @description 根据初始时间（startDate）和当前时间（current）的延后，确定一个时间段。
  * @param {any} current - 当前时间，通常是Date对象或dayjs对象。
  * @param {any} startDate - 初始时间，通常是Date对象或dayjs对象。
- * @param {Number} num - 时间数量，表示从起始时间延后多少个单位时间。
- * @param {String} unit - dayjs.ManipulateType的时间单位，例如'day', 'month', 'year'等。
- * @returns {Boolean} - 返回一个布尔值，表示该日期是否被禁用。（如果在给定的时间段内，则返回true，表示该日期被禁用；否则返回false。）
+ * @param {number} num - 时间数量，表示从起始时间延后多少个单位时间。
+ * @param {string} unit - dayjs.ManipulateType的时间单位，例如'day', 'month', 'year'等。
+ * @returns {boolean} - 返回一个布尔值，表示该日期是否被禁用。（如果在给定的时间段内，则返回true，表示该日期被禁用；否则返回false。）
  */
 export const disabledDate = (
 	current: any,

@@ -6,8 +6,9 @@ import type { DirectiveBinding } from 'vue';
 import type { App } from 'vue';
 
 /**
- * @name 用户权限指令
- * @directive 按钮权限指令 v-auth*
+ * @name 按钮权限指令
+ * @example
+ * v-auth | v-auths | v-auth-all
  */
 export function authDirective(app: App) {
 	// 按钮权限指令（v-auth="xxx" 或 v-auth="['xxx', 'xxx']"）

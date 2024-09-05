@@ -46,11 +46,11 @@ export const tryHideFullScreenLoading = () => {
 /* ****************************   消息提示函数   *********************************/
 
 /**
- * @description 消息提示函数
- * @param {String} message 消息内容
- * @param {String} type type类型（默认为 success ）
- * @param {String} title 标题（默认为空）
- * @param {Boolean} dangerouslyUseHTMLString 是否解析标签（默认为 false）
+ * 消息提示函数
+ * @param {string} message 消息内容
+ * @param {'success' | 'warning' | 'info' | 'error'} type type类型（默认为 success ）
+ * @param {string} title 标题（默认为空）
+ * @param {boolean} dangerouslyUseHTMLString 是否解析标签（默认为 false）
  * @returns ElNotification
  */
 export function toast(
@@ -71,10 +71,10 @@ export function toast(
 /* ****************************   确认模态框   *********************************/
 
 /**
- * @description 确认模态框
- * @param {String} content 提示内容（默认为 '提示内容'）
- * @param {String} type 类型（默认为 warning ）
- * @param {String} title 模态框标题（默认为空）
+ * 确认模态框
+ * @param {string} content 提示内容（默认为 '提示内容'）
+ * @param {'warning' | 'info' | 'success' | 'error'} type 类型（默认为 warning ）
+ * @param {string} title 模态框标题（默认为空）
  * @returns ElMessageBox.confirm
  */
 export function showModal(
@@ -92,9 +92,9 @@ export function showModal(
 /* ****************************   弹出输入框   *********************************/
 
 /**
- * @description 弹出输入框
- * @param {String} tip 提示信息
- * @param {String} value 输入框内容
+ * 弹出输入框
+ * @param {string} tip 提示信息
+ * @param {string} value 输入框内容
  * @returns ElMessageBox.prompt
  */
 export function showPrompt(tip: any, value = '') {
@@ -108,11 +108,11 @@ export function showPrompt(tip: any, value = '') {
 /* ****************************   操作数据信息   *********************************/
 
 /**
- * @description 操作单条数据信息 (二次确认【删除、禁用、启用、重置密码】)
+ * 操作单条数据信息 (二次确认【删除、禁用、启用、重置密码】)
  * @param {Function} api 操作数据接口的api方法 (必传)
  * @param {Object} params 携带的操作数据参数 {id,params} (必传)
- * @param {String} message 提示信息 (必传)
- * @param {String} confirmType icon类型 (不必传,默认为 warning)
+ * @param {string} message 提示信息 (必传)
+ * @param {'' | 'warning' | 'info' | 'success' | 'error'} confirmType icon类型 (不必传,默认为 warning)
  * @returns {Promise}
  */
 export const useHandleData = (

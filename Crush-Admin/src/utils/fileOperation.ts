@@ -3,9 +3,9 @@
  */
 
 /**
- * @description 根据文件url获取文件名
- * @param {String} url 文件url
- * @returns {String} 文件名称 + 文件类型 （如：file.pdf）
+ * 根据文件url获取文件名
+ * @param {string} url 文件url
+ * @returns {string} 文件名称 + 文件类型 （如：file.pdf）
  */
 export function getFileName(url: string) {
 	const num = url.lastIndexOf('/') + 1;
@@ -16,9 +16,9 @@ export function getFileName(url: string) {
 }
 
 /**
- * @description 文件大小格式化
- * @param {Number} size 文件大小
- * @returns {String} 处理后的文件大小
+ * 文件大小格式化
+ * @param {number} size 文件大小
+ * @returns {string} 处理后的文件大小
  */
 export const formatFileSize = (size: number) => {
 	const units = ['B', 'KB', 'MB', 'GB'];
@@ -31,10 +31,10 @@ export const formatFileSize = (size: number) => {
 };
 
 /**
- * @description 将文件字节大小转成带单位的文件大小（更灵活）
- * @param {Number} size 文件大小
- * @param {Number} decimals 保留几位小数（默认2位）
- * @returns {String} 处理后的文件大小
+ * 将文件字节大小转成带单位的文件大小（更灵活）
+ * @param {number} size 文件大小
+ * @param {number} decimals 保留几位小数（默认2位）
+ * @returns {string} 处理后的文件大小
  */
 export const sizeTostr = (size: number, decimals = 2) => {
 	if (size === 0) return '0 Bytes';
@@ -46,10 +46,10 @@ export const sizeTostr = (size: number, decimals = 2) => {
 };
 
 /**
- * @description 根据文件地址下载文件
- * @param {String} url 文件路径
- * @param {String} target 打开方式
- * @param {String} fileName 文件名称
+ * 根据文件地址下载文件
+ * @param {string} url 文件路径
+ * @param {'_self' | '_blank'} target 打开方式
+ * @param {string} fileName 文件名称
  * @returns {Promise}
  */
 export function downloadByUrl({
@@ -114,9 +114,9 @@ export function downloadByUrl({
 }
 
 /**
- * @description download二进制文件
+ * download二进制文件
  * @param {*} res 请求返回结果（文件流）
- * @param {String} name 文件名称
+ * @param {string} name 文件名称
  */
 export const downloadBlob = (res: any, name?: string) => {
 	const blob = new Blob([res], {
@@ -133,8 +133,8 @@ export const downloadBlob = (res: any, name?: string) => {
 };
 
 /**
- * @description 下载base64图片
- * @param {String} base64String base64文件地址
+ * 下载base64图片
+ * @param {string} base64string base64文件地址
  * @param {String} name 文件名称
  */
 export const downloadBase64Image = (base64String: string, name: string) => {
@@ -148,8 +148,8 @@ export const downloadBase64Image = (base64String: string, name: string) => {
 };
 
 /**
- * @description 获取图片的原始宽高尺寸
- * @param {String} url 图片路径
+ * 获取图片的原始宽高尺寸
+ * @param {string} url 图片路径
  * @returns {Promise<{ width: number, height: number }>} 返回一个Promise，解析为包含图片宽度和高度的Object
  */
 export const getImageWidthHeight: GetImageWidthHeightFn = (url: string) => {
@@ -166,17 +166,17 @@ export const getImageWidthHeight: GetImageWidthHeightFn = (url: string) => {
 };
 
 /**
- * @description 截取文件后缀
- * @param {String} url 图片路径
- * @param {Boolean} isSpot 是否要'.'
- * @returns {String} 文件后缀
+ * 截取文件后缀
+ * @param {string} url 图片路径
+ * @param {boolean} isSpot 是否要'.'
+ * @returns {string} 文件后缀
  */
 export const fileSuffix = (url: string, isSpot: boolean = true) => {
 	return (isSpot ? '.' : '') + url.split('.').at(-1);
 };
 
 /**
- * @description 生成base64
+ * 生成base64
  * @param {File} file 文件
  * @returns {Promise} base64格式文件
  */
@@ -190,9 +190,9 @@ export function getBase64(file) {
 }
 
 /**
- * @description 下载图片
- * @param {String} imageSrc 图片路径
- * @param {String} name 名称
+ * 下载图片
+ * @param {string} imageSrc 图片路径
+ * @param {string} name 名称
  * @returns
  */
 export function downImage(imageSrc, name) {
@@ -217,7 +217,7 @@ export function downImage(imageSrc, name) {
 }
 
 /**
- * @description 左右翻转
+ * 左右翻转
  * @param {ImageData} imageData 图片路径
  * @returns {ImageData} 翻转后的图片路径
  */
@@ -241,7 +241,7 @@ export const flipSideToSide = (imageData: ImageData) => {
 };
 
 /**
- * @description 上下翻转
+ * 上下翻转
  * @param {ImageData} imageData 图片路径
  * @returns {ImageData} 翻转后的图片路径
  */
@@ -265,7 +265,7 @@ export const flipUpsideDown = (imageData: ImageData) => {
 };
 
 /**
- * @description 左旋转
+ * 左旋转
  * @param {ImageData} imageData 图片路径
  * @returns {ImageData} 翻转后的图片路径
  */
@@ -289,7 +289,7 @@ export const leftRotate = (imageData: ImageData) => {
 };
 
 /**
- * @description 右旋转
+ * 右旋转
  * @param {ImageData} imageData 图片路径
  * @returns {ImageData} 翻转后的图片路径
  */

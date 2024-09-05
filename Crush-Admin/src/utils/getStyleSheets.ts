@@ -5,7 +5,7 @@
 import * as svg from '@element-plus/icons-vue';
 
 /**
- * @description 获取 iconfont(阿里) 字体图标
+ * 获取 iconfont(阿里) 字体图标
  * @returns {Promise}
  */
 const getAlicdnIconfont = () => {
@@ -40,7 +40,7 @@ const getAlicdnIconfont = () => {
 };
 
 /**
- * @description 获取 fontawesome 字体图标
+ * 获取 fontawesome 字体图标
  * @returns {Promise}
  */
 const getAwesomeIconfont = () => {
@@ -78,7 +78,7 @@ const getAwesomeIconfont = () => {
 };
 
 /**
- * @description 获取 element plus 的字体图标
+ * 获取 element plus 的字体图标
  * @returns {Promise}
  */
 const getElementPlusIconfont = () => {
@@ -96,7 +96,7 @@ const getElementPlusIconfont = () => {
 };
 
 /**
- * @description 获取字体图标 `document.styleSheets`
+ * 获取字体图标 `document.styleSheets`
  * @method ali 获取 iconfont 字体图标 `<i class="iconfont 图标类名"></i>`
  * @method ali 获取 fontawesome 字体图标 `<i class="fa 图标类名"></i>`
  * @method ele 获取 element plus 字体图标 `<i class="图标类名"></i>`

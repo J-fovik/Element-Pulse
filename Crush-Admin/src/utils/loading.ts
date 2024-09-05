@@ -5,7 +5,7 @@
 import '@/assets/styles/loading2.css';
 
 /**
- * @description 页面全局 Loading
+ * 页面全局 Loading
  * @method start 创建 loading
  * @method done 移除 loading
  */

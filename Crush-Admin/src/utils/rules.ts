@@ -3,9 +3,9 @@
  */
 
 /**
- * @description 验证手机号
- * @param {String} val 当前值字符串
- * @returns {Boolean} 符合返回true，否则false
+ * 验证手机号
+ * @param {string} val 当前值字符串
+ * @returns {boolean} 符合返回true，否则false
  */
 export function phoneRule(val: string) {
 	return (
@@ -14,9 +14,9 @@ export function phoneRule(val: string) {
 }
 
 /**
- * @description 验证座机号码
- * @param {String} val 当前值字符串
- * @returns {Boolean} 符合返回true，否则false
+ * 验证座机号码
+ * @param {string} val 当前值字符串
+ * @returns {boolean} 符合返回true，否则false
  */
 export const landlinePhoneRule = (val: string) => {
 	// 使用正则表达式来验证中国大陆的座机号码格式
@@ -26,9 +26,9 @@ export const landlinePhoneRule = (val: string) => {
 };
 
 /**
- * @description 验证网址格式(url地址)
- * @param {String} val 当前值字符串
- * @returns {Boolean} 符合返回true，否则false
+ * 验证网址格式(url地址)
+ * @param {string} val 当前值字符串
+ * @returns {boolean} 符合返回true，否则false
  */
 export function websiteRule(val: string) {
 	return (
@@ -40,9 +40,9 @@ export function websiteRule(val: string) {
 }
 
 /**
- * @description 验证IP地址
- * @param {String} val 当前值字符串
- * @returns {Boolean} 符合返回true，否则false
+ * 验证IP地址
+ * @param {string} val 当前值字符串
+ * @returns {boolean} 符合返回true，否则false
  */
 export function iPAddressRule(val: string) {
 	// 验证 IPv4 地址
@@ -59,9 +59,9 @@ export function iPAddressRule(val: string) {
 }
 
 /**
- * @description 验证邮箱地址
- * @param {String} val 当前值字符串
- * @returns {Boolean} 符合返回true，否则false
+ * 验证邮箱地址
+ * @param {string} val 当前值字符串
+ * @returns {boolean} 符合返回true，否则false
  */
 export function emailRule(val: string) {
 	// 使用复杂的正则表达式来验证邮箱格式
@@ -74,9 +74,9 @@ export function emailRule(val: string) {
 }
 
 /**
- * @description 验证邮政编码
- * @param {String} val 当前值字符串
- * @returns {Boolean} 符合返回true，否则false
+ * 验证邮政编码
+ * @param {string} val 当前值字符串
+ * @returns {boolean} 符合返回true，否则false
  */
 export function postalCodeRule(val: string): boolean {
 	if (!val) return false;
@@ -84,36 +84,36 @@ export function postalCodeRule(val: string): boolean {
 }
 
 /**
- * @description 验证汉字
- * @param {String} val 当前值字符串
- * @returns {Boolean} 符合返回true，否则false
+ * 验证汉字
+ * @param {string} val 当前值字符串
+ * @returns {boolean} 符合返回true，否则false
  */
 export const chineseCharacterRule = (val: string) => {
 	return val && /^[\u4e00-\u9fa5]+$/.test(val);
 };
 
 /**
- * @description 验证数字
- * @param {String} val 当前值字符串
- * @returns {Boolean} 符合返回true，否则false
+ * 验证数字
+ * @param {string} val 当前值字符串
+ * @returns {boolean} 符合返回true，否则false
  */
 export const numberRule = (val: string) => {
 	return val && /^[-]?\d+$/.test(val);
 };
 
 /**
- * @description 验证英文
- * @param {String} val 当前值字符串
- * @returns {Boolean} 符合返回true，否则false
+ * 验证英文
+ * @param {string} val 当前值字符串
+ * @returns {boolean} 符合返回true，否则false
  */
 export const englishRule = (val: string) => {
 	return val && /^[a-zA-Z]+$/.test(val);
 };
 
 /**
- * @description 验证全特殊字符
- * @param {String} val 当前值字符串
- * @returns {Boolean} 符合返回true，否则false
+ * 验证全特殊字符
+ * @param {string} val 当前值字符串
+ * @returns {boolean} 符合返回true，否则false
  */
 export const specialCharactersRule = (val: string) => {
 	return (
@@ -125,27 +125,27 @@ export const specialCharactersRule = (val: string) => {
 };
 
 /**
- * @description 验证字母数字组合
- * @param {String} val 当前值字符串
- * @returns {Boolean} 符合返回true，否则false
+ * 验证字母数字组合
+ * @param {string} val 当前值字符串
+ * @returns {boolean} 符合返回true，否则false
  */
 export const alphanumericRule = (val: string) => {
 	return val && /^[0-9a-zA-Z]*$/.test(val);
 };
 
 /**
- * @description 验证字母汉字组合
- * @param {String} val 当前值字符串
- * @returns {Boolean} 符合返回true，否则false
+ * 验证字母汉字组合
+ * @param {string} val 当前值字符串
+ * @returns {boolean} 符合返回true，否则false
  */
 export const alphabetChineseCharactersRule = (val: string) => {
 	return val && /^[a-zA-Z\u4e00-\u9fa5]+$/.test(val);
 };
 
 /**
- * @description 验证身份证号码
- * @param {String} val 当前值字符串
- * @returns {Boolean} 符合返回true，否则false
+ * 验证身份证号码
+ * @param {string} val 当前值字符串
+ * @returns {boolean} 符合返回true，否则false
  */
 export const identityCardRule = (val: string) => {
 	return (
@@ -158,18 +158,18 @@ export const identityCardRule = (val: string) => {
 };
 
 /**
- * @description 验证姓名，包括少数民族名字
- * @param {String} val 当前值字符串
- * @returns {Boolean} 符合返回true，否则false
+ * 验证姓名，包括少数民族名字
+ * @param {string} val 当前值字符串
+ * @returns {boolean} 符合返回true，否则false
  */
 export function fullNameRule(val: string) {
 	return val && /^[\u4e00-\u9fa5]{1,6}(·[\u4e00-\u9fa5]{1,6}){0,2}$/.test(val);
 }
 
 /**
- * @description 验证车牌号码
- * @param {String} val 当前值字符串
- * @returns {Boolean} 符合返回true，否则false
+ * 验证车牌号码
+ * @param {string} val 当前值字符串
+ * @returns {boolean} 符合返回true，否则false
  */
 export function numberplateRule(val: string) {
 	return (
@@ -181,9 +181,9 @@ export function numberplateRule(val: string) {
 }
 
 /**
- * @description 验证时间格式为24小时制(HH:mm:ss)
- * @param {String} time 判断时间
- * @returns {Boolean} 符合返回true，否则false
+ * 验证时间格式为24小时制(HH:mm:ss)
+ * @param {string} time 判断时间
+ * @returns {boolean} 符合返回true，否则false
  */
 export const twentyFourRule = (time: string) => {
 	const reg = /^(?:[01]\d|2[0-3]):[0-5]\d:[0-5]\d$/;
@@ -191,9 +191,9 @@ export const twentyFourRule = (time: string) => {
 };
 
 /**
- * @description 验证强密码 (字母+数字+特殊字符，长度在6-16之间)
- * @param {String} val 当前值字符串
- * @returns {Boolean} 符合返回true，否则false
+ * 验证强密码 (字母+数字+特殊字符，长度在6-16之间)
+ * @param {string} val 当前值字符串
+ * @returns {boolean} 符合返回true，否则false
  */
 export function strongPasswordRule(val: string) {
 	return /^(?![a-zA-z]+$)(?!\d+$)(?![!@#$%^&\.*]+$)(?![a-zA-z\d]+$)(?![a-zA-z!@#$%^&\.*]+$)(?![\d!@#$%^&\.*]+$)[a-zA-Z\d!@#$%^&\.*]{6,16}$/.test(
@@ -202,16 +202,16 @@ export function strongPasswordRule(val: string) {
 }
 
 /**
- * @description 版本号
- * @param {String} version 当前值字符串
- * @returns {Boolean} 符合返回true，否则false
+ * 版本号
+ * @param {string} version 当前值字符串
+ * @returns {boolean} 符合返回true，否则false
  */
 export const validateVersion = (version: any) => {
 	return /^\d+\.\d+\.\d+$/.test(version);
 };
 
 /**
- * @description 验证element表单输入是否为有效的手机号
+ * 验证element表单输入是否为有效的手机号
  * @param {Object} rule - 验证规则对象，通常包含一些验证信息，如是否必填等
  * @param {string} value - 待验证的表单输入值
  * @param {Function} callback - 验证结束后的回调函数，用于通知验证结果
@@ -224,7 +224,7 @@ export function validatePhone(rule: any, value: any, callback: any) {
 }
 
 /**
- * @description 验证element表单输入是否为有效的手机号或座机号
+ * 验证element表单输入是否为有效的手机号或座机号
  * @param {Object} rule - 验证规则对象，通常包含一些验证信息，如是否必填等
  * @param {string} value - 待验证的表单输入值
  * @param {Function} callback - 验证结束后的回调函数，用于通知验证结果

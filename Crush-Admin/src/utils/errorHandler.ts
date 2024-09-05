@@ -5,7 +5,7 @@
 import { ElNotification } from 'element-plus';
 
 /**
- * @description 全局代码错误捕捉
+ * 全局代码错误捕捉
  * @param {*} error 错误信息
  */
 const errorHandler = (error: any) => {

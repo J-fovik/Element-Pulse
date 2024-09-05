@@ -3,9 +3,9 @@
  */
 
 /**
- * @description 获取数据类型
+ * 获取数据类型
  * @param {unknown} value 需要判断类型的数据
- * @returns {String} 该数据的数据类型
+ * @returns {string} 该数据的数据类型
  */
 export function getType(value: any) {
 	if (value === null) return 'null';
@@ -14,135 +14,135 @@ export function getType(value: any) {
 }
 
 /**
- * @description 判断值是否为某个数据类型
+ * 判断值是否为某个数据类型
  * @param {unknown} value 需要判断类型的数据
- * @param {String} type 判断的类型
- * @returns {Boolean} 该数据是此类型 返回true，否则为false
+ * @param {string} type 判断的类型
+ * @returns {boolean} 该数据是此类型 返回true，否则为false
  */
 export function is(value: unknown, type: string) {
 	return Object.prototype.toString.call(value) === `[object ${type}]`;
 }
 
 /**
- * @description 是否为数值
+ * 是否为数值
  * @param {unknown} value 需要判断类型的数据
- * @returns {Boolean} 为 'Number' 返回true，否则为false
+ * @returns {boolean} 为 'Number' 返回true，否则为false
  */
 export function isNumber(value: unknown) {
 	return Object.prototype.toString.call(value) === '[object Number]';
 }
 
 /**
- * @description 是否为字符串
+ * 是否为字符串
  * @param {unknown} value 需要判断类型的数据
- * @returns {Boolean} 为 'String' 返回true，否则为false
+ * @returns {boolean} 为 'String' 返回true，否则为false
  */
 export function isString(value: unknown) {
 	return Object.prototype.toString.call(value) === '[object String]';
 }
 
 /**
- * @description 是否为布尔值
+ * 是否为布尔值
  * @param {unknown} value 需要判断类型的数据
- * @returns {Boolean} 为 'Boolean' 返回true，否则为false
+ * @returns {boolean} 为 'Boolean' 返回true，否则为false
  */
 export function isBoolean(value: unknown) {
 	return Object.prototype.toString.call(value) === '[object Boolean]';
 }
 
 /**
- * @description 是否为日期
+ * 是否为日期
  * @param {unknown} value 需要判断类型的数据
- * @returns {Boolean} 为 'Date' 返回true，否则为false
+ * @returns {boolean} 为 'Date' 返回true，否则为false
  */
 export function isDate(value: unknown) {
 	return Object.prototype.toString.call(value) === '[object Date]';
 }
 
 /**
- * @description 是否为正则
+ * 是否为正则
  * @param {unknown} value 需要判断类型的数据
- * @returns {Boolean} 为 'RegExp' 返回true，否则为false
+ * @returns {boolean} 为 'RegExp' 返回true，否则为false
  */
 export function isRegExp(value: unknown) {
 	return Object.prototype.toString.call(value) === '[object RegExp]';
 }
 
 /**
- * @description 是否为set
+ * 是否为set
  * @param {unknown} value 需要判断类型的数据
- * @returns {Boolean} 为 'Set' 返回true，否则为false
+ * @returns {boolean} 为 'Set' 返回true，否则为false
  */
 export function isSet(value: unknown) {
 	return Object.prototype.toString.call(value) === '[object Set]';
 }
 
 /**
- * @description 是否为map
+ * 是否为map
  * @param {unknown} value 需要判断类型的数据
- * @returns {Boolean} 为 'Map' 返回true，否则为false
+ * @returns {boolean} 为 'Map' 返回true，否则为false
  */
 export function isMap(value: unknown) {
 	return Object.prototype.toString.call(value) === '[object Map]';
 }
 
 /**
- * @description 是否为函数
+ * 是否为函数
  * @param {unknown} value 需要判断类型的数据
- * @returns {Boolean} 为 'Function' 返回true，否则为false
+ * @returns {boolean} 为 'Function' 返回true，否则为false
  */
 export function isFunction<T = Function>(value: unknown): value is T {
 	return Object.prototype.toString.call(value) === '[object Function]';
 }
 
 /**
- * @description 是否为异步函数
+ * 是否为异步函数
  * @param {unknown} value 需要判断类型的数据
- * @returns {Boolean} 为 'AsyncFunction' 返回true，否则为false
+ * @returns {boolean} 为 'AsyncFunction' 返回true，否则为false
  */
 export function isAsyncFunction<T = any>(value: unknown): value is Promise<T> {
 	return Object.prototype.toString.call(value) === '[object AsyncFunction]';
 }
 
 /**
- * @description 是否为对象
+ * 是否为对象
  * @param {unknown} value 需要判断类型的数据
- * @returns {Boolean} 为 'Object' 返回true，否则为false
+ * @returns {boolean} 为 'Object' 返回true，否则为false
  */
 export function isObject(value: unknown): value is Record<any, any> {
 	return value !== null && Object.prototype.toString.call(value) === '[object Object]';
 }
 /**
- * @description 是否为数组
+ * 是否为数组
  * @param {unknown} value 需要判断类型的数据
- * @returns {Boolean} 为 'Array' 返回true，否则为false
+ * @returns {boolean} 为 'Array' 返回true，否则为false
  */
 export function isArray(value: any): value is Array<any> {
 	return value && Array.isArray(value);
 }
 
 /**
- * @description 是否为null
+ * 是否为null
  * @param {unknown} value 需要判断类型的数据
- * @returns {Boolean} 为 'Null' 返回true，否则为false
+ * @returns {boolean} 为 'Null' 返回true，否则为false
  */
 export function isNull(value: unknown): value is null {
 	return value === null;
 }
 
 /**
- * @description 是否未定义
+ * 是否未定义
  * @param {unknown} value 需要判断类型的数据
- * @returns {Boolean} 为 'Undefined' 返回true，否则为false
+ * @returns {boolean} 为 'Undefined' 返回true，否则为false
  */
 export function isUndefined(value: unknown): value is undefined {
 	return value === undefined;
 }
 
 /**
- * @description 是否为promise
+ * 是否为promise
  * @param {unknown} value 需要判断类型的数据
- * @returns {Boolean} 为 'Promise' 和 'Object' 且有 then 和 catch 的方法 返回true，否则为false
+ * @returns {boolean} 为 'Promise' 和 'Object' 且有 then 和 catch 的方法 返回true，否则为false
  */
 export function isPromise<T = any>(value: unknown): value is Promise<T> {
 	return (
@@ -154,17 +154,17 @@ export function isPromise<T = any>(value: unknown): value is Promise<T> {
 }
 
 /**
- * @description 是否为 null || undefined
+ * 是否为 null || undefined
  * @param {unknown} value 需要判断类型的数据
- * @returns {Boolean} 为 'Null' || 'Undefined' 返回true，否则为false
+ * @returns {boolean} 为 'Null' || 'Undefined' 返回true，否则为false
  */
 export function isNullOrUnDef(value: unknown): value is null | undefined {
 	return isUndefined(value) || isNull(value);
 }
 
 /**
- * @description 是否为客户端环境
- * @returns {Boolean} 为真 返回true，否则为false
+ * 是否为客户端环境
+ * @returns {boolean} 为真 返回true，否则为false
  */
 export const isClient = (): boolean => {
 	// 检查window对象是否存在
@@ -172,9 +172,9 @@ export const isClient = (): boolean => {
 };
 
 /**
- * @description 是否为浏览器
+ * 是否为浏览器
  * @param {unknown} value 需要判断类型的数据
- * @returns {Boolean} 为真返回true，否则为false
+ * @returns {boolean} 为真返回true，否则为false
  */
 export const isWindow = (value: any): value is Window => {
 	return (
@@ -183,16 +183,16 @@ export const isWindow = (value: any): value is Window => {
 };
 
 /**
- * @description 是否为 DOM 元素
+ * 是否为 DOM 元素
  * @param {unknown} value 需要判断类型的数据
- * @returns {Boolean} 为'Object' 且 否具有tagName属性 返回true，否则为false
+ * @returns {boolean} 为'Object' 且 否具有tagName属性 返回true，否则为false
  */
 export const isElement = (value: unknown): value is Element => {
 	return isObject(value) && !!value.tagName;
 };
 
 /**
- * @description 检测数据是否为空数据
+ * 检测数据是否为空数据
  * @param {unknown} data - 需要检测的数据
  * @returns {boolean} - 如果数据为空，返回true；否则返回false
  */

@@ -5,9 +5,10 @@
 const mode = import.meta.env.VITE_ROUTER_MODE;
 
 /**
- * @description 从当前页面的URL中提取查询参数
- * @description www.baidu.com?id=1&type=2
- * @returns {Object} 返回一个包含参数键值对的对象 如：{id: "1", type: "2"}
+ * 从当前页面的URL中提取查询参数
+ * @returns {Object} 返回一个包含参数键值对的对象
+ * @example
+ * getQueryObject('www.baidu.com?id=1&type=2') // {id: "1", type: "2"}
  */
 export const getQueryObject: () => Record<string, string> = () => {
 	// 获取 URL 中的查询参数部分，兼容 hash 模式
@@ -27,10 +28,12 @@ export const getQueryObject: () => Record<string, string> = () => {
 };
 
 /**
- * @description 将对象格式化为 URL 查询参数字符串
+ * 将对象格式化为 URL 查询参数字符串
  * @param {Object} obj - 包含键值对的对象
  * @param {boolean} [tag = true] - 是否在返回的字符串中包含问号 (?)
- * @returns {String} URL查询参数的字符串 如："?id=1&type=2"  或 "id=1&type=2"
+ * @returns {string} URL查询参数的字符串
+ * @example
+ * formatObjToParamStr({ id: 1, type: 2},false) // "id=1&type=2"
  */
 export const formatObjToParamStr = (obj: object, tag: boolean = true): string => {
 	// 存储的数组
@@ -44,9 +47,11 @@ export const formatObjToParamStr = (obj: object, tag: boolean = true): string =>
 };
 
 /**
- * @description 将对象格式化为 URL 查询参数字符串
+ * 将对象格式化为 URL 查询参数字符串
  * @param {Object} obj - 包含键值对的对象
- * @returns {String} URL查询参数的字符串 如："?id=1&type=2"
+ * @returns {string} URL查询参数的字符串
+ * @example
+ * queryParams({ id: 1, type: 2}) // "?id=1&type=2"
  */
 export function queryParams(obj: object) {
 	let q = [] as any;
@@ -66,11 +71,12 @@ export function queryParams(obj: object) {
 }
 
 /**
- * @description 从指定 URL 中获取指定名称的查询参数的值。
- * @description www.baidu.com?id=1&type=2
- * @param {String} name  要获取的查询参数的名称
- * @param {String} [url=window.location.href]  要解析的 URL 字符串（默认为当前页面 URL）
- * @returns {String} 查询参数的值，如果没有找到则返回空字符串 getUrlParam('id','www.baidu.com?id=1&type=2') // 1
+ * 从指定 URL 中获取指定名称的查询参数的值。
+ * @param {string} name  要获取的查询参数的名称
+ * @param {string} [url=window.location.href]  要解析的 URL 字符串（默认为当前页面 URL）
+ * @returns {string} 查询参数的值，如果没有找到则返回空字符串
+ * @example
+ * getUrlParam('id','www.baidu.com?id=1&type=2') // 1
  */
 export const getUrlParam = (name: any, url: any) => {
 	// 如果未提供 url 参数，则使用当前页面的 URL
@@ -93,7 +99,7 @@ export const getUrlParam = (name: any, url: any) => {
 };
 
 /**
- * @description 判断两个对象是否相同
+ * 判断两个对象是否相同
  * @param {Object} a 要比较的对象一
  * @param {Object} b 要比较的对象二
  * @returns 相同返回 true，反之则反
@@ -130,7 +136,7 @@ export function isObjectValueEqual(a: object, b: object): boolean {
 }
 
 /**
- * @description 挑选对象属性
+ * 挑选对象属性
  * @param {any} obj - 要筛选的对象
  * @param {any[]} props - 在对象里筛选的键列表 如：['a', 'c'];
  * @returns {Object} 筛选后返回的新对象  如：{ a: 1, c: 3 }
@@ -140,17 +146,17 @@ export const pickObjectKey = (obj: any, ...props: any[]): Object => {
 };
 
 /**
- * @description 检查对象是否包含指定属性。
+ * 检查对象是否包含指定属性。
  * @param {Object} obj - 要检查的对象
- * @param {String} key - 要检查的属性名
- * @returns {Boolean} 如果对象包含指定属性，返回 true；否则返回 false
+ * @param {string} key - 要检查的属性名
+ * @returns {boolean} 如果对象包含指定属性，返回 true；否则返回 false
  */
 export function objectHasKey(obj: any, key: string) {
 	return Object.prototype.hasOwnProperty.call(obj, key);
 }
 
 /**
- * @description 对象深克隆
+ * 对象深克隆
  * @param {Object} obj 源对象
  * @returns {Object} 克隆后的对象
  */
@@ -172,9 +178,9 @@ export function deepClone(obj: EmptyObjectType) {
 }
 
 /**
- * @description 对象转JSON字符串
+ * 对象转JSON字符串
  * @param {Object} obj 源对象
- * @returns {String} JSON字符串
+ * @returns {string} JSON字符串
  */
 export const toJSON = (obj: any) => {
 	return JSON.stringify(obj, (_, value) => {
@@ -193,8 +199,8 @@ export const toJSON = (obj: any) => {
 };
 
 /**
- * @description 获取不同路由模式所对应的 url + params
- * @returns {String} 路由地址 + params
+ * 获取不同路由模式所对应的 url + params
+ * @returns {string} 路由地址 + params
  */
 export function getUrlWithParams() {
 	const url = {

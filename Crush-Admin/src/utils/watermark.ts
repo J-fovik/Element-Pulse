@@ -3,9 +3,9 @@
  */
 
 /**
- * @description 页面添加水印效果
- * @param {String} str 水印文本
- * @returns {String} 唯一值
+ * 页面添加水印效果
+ * @param {string} str 水印文本
+ * @returns {string} 唯一值
  */
 const setWatermark = (str: string) => {
 	const id = '1.23452384164.123412416';
@@ -35,7 +35,7 @@ const setWatermark = (str: string) => {
 };
 
 /**
- * @description 页面添加水印效果
+ * 页面添加水印效果
  * @method set 设置水印
  * @method del 删除水印
  */

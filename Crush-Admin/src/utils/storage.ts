@@ -6,7 +6,7 @@ import jsCookie from 'js-cookie';
 import { BY_NAME } from '@/config';
 
 /**
- * @description window.localStorage 浏览器永久缓存
+ * window.localStorage 浏览器永久缓存
  * @method set 设置永久缓存
  * @method get 获取永久缓存
  * @method remove 移除永久缓存
@@ -37,7 +37,7 @@ export const Local = {
 };
 
 /**
- * @description window.sessionStorage 浏览器临时缓存
+ * window.sessionStorage 浏览器临时缓存
  * @method set 设置临时缓存
  * @method get 获取临时缓存
  * @method remove 移除临时缓存

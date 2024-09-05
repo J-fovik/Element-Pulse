@@ -3,29 +3,30 @@
  */
 
 import dayjs from 'dayjs';
+type Pos = 'both' | 'left' | 'right' | 'all';
 
 /**
- * @description 百分比格式化
+ * 百分比格式化
  * @param {*} value 传入的值
- * @param {String} empty 无值状态返回值 默认（'-'）
- * @returns {String} 返回处理后的数据
+ * @param {string} empty 无值状态返回值 默认（'-'）
+ * @returns {string} 返回处理后的数据
  */
 export const percentFormat = (value: any, empty = '-') => (value ? `${value}%` : empty);
 
 /**
- * @description 文本格式化
+ * 文本格式化
  * @param {*} value 传入的值
- * @param {String} empty 无值状态返回值 默认（'-'）
- * @returns {String} 返回处理后的数据
+ * @param {string} empty 无值状态返回值 默认（'-'）
+ * @returns {string} 返回处理后的数据
  */
 export const textFormat = (value: any, empty = '-') => (value ? value : empty);
 
 /**
- * @description 小数格式化
+ * 小数格式化
  * @param {*} value 传入的值
- * @param {Number} scale 保留的位数（默认两位小数）
- * @param {String} empty 默认无值状态 默认（'-'）
- * @returns {String} 返回处理后的数据
+ * @param {number} scale 保留的位数（默认两位小数）
+ * @param {string} empty 默认无值状态 默认（'-'）
+ * @returns {string} 返回处理后的数据
  */
 export const scaleFormat = (value: any, scale: number = 2, empty = '-') => {
 	if (value) {
@@ -35,11 +36,11 @@ export const scaleFormat = (value: any, scale: number = 2, empty = '-') => {
 };
 
 /**
- * @description 时间格式化
+ * 时间格式化
  * @param {*} value 传入的值
- * @param {String} format 需要的格式默认（'YYYY-MM-DD'）
- * @param {String} empty 默认无值状态 默认（'-'）
- * @returns {String} 返回处理后的数据
+ * @param {string} format 需要的格式默认（'YYYY-MM-DD'）
+ * @param {string} empty 默认无值状态 默认（'-'）
+ * @returns {string} 返回处理后的数据
  */
 export const dateFormat = (value: string, format: string = 'YYYY-MM-DD', empty = '-') => {
 	if (value) {
@@ -49,10 +50,10 @@ export const dateFormat = (value: string, format: string = 'YYYY-MM-DD', empty =
 };
 
 /**
- * @description 金额格式化
+ * 金额格式化
  * @param {*} val 传入的值
- * @param {String} empty 默认无值状态 默认（''）
- * @returns {String} 返回处理后的数据
+ * @param {string} empty 默认无值状态 默认（''）
+ * @returns {string} 返回处理后的数据
  */
 export const moneyFormat = (val: any, empty = '0') => {
 	if (val) {
@@ -66,29 +67,29 @@ export const moneyFormat = (val: any, empty = '0') => {
 };
 
 /**
- * @description 电话号码格式化
- * @param {String} phone 手机号码
- * @param {String} empty 默认无值状态 默认（'-'）
- * @returns {String} 处理后的手机号码(183-7983-6654)
+ * 电话号码格式化
+ * @param {string} phone 手机号码
+ * @param {string} empty 默认无值状态 默认（'-'）
+ * @returns {string} 处理后的手机号码(183-7983-6654)
  */
 export function phoneFormat(phone: string, empty = '-') {
 	return phone.replace(/(?=(\d{4})+$)/g, empty);
 }
 
 /**
- * @description 手机号脱敏格式化
- * @param {String} phone 手机号码
- * @returns {String} 处理后的手机号码(155****8810)
+ * 手机号脱敏格式化
+ * @param {string} phone 手机号码
+ * @returns {string} 处理后的手机号码(155****8810)
  */
 export function hidePhoneFormat(phone: string) {
 	return phone.replace(/^(\d{3})\d{4}(\d{4})$/, '$1****$2');
 }
 
 /**
- * @description 驼峰命名格式化
+ * 驼峰命名格式化
  * @description 将下划线命名转换为驼峰命名:"user_name" ==> "userName"
- * @param {String} str 下划线命名的字符串
- * @returns {String} 驼峰命名字符串
+ * @param {string} str 下划线命名的字符串
+ * @returns {string} 驼峰命名字符串
  */
 export const toHumpFormat = (str: string): string => {
 	if (!str) return str;
@@ -99,11 +100,11 @@ export const toHumpFormat = (str: string): string => {
 };
 
 /**
- * @description 数字转中文大写格式化
- * @param {String} val 当前值字符串
- * @param {String} unit 默认：仟佰拾亿仟佰拾万仟佰拾元角分
- * @param {String} v 初始值
- * @returns {String} 返回处理后的字符串
+ * 数字转中文大写格式化
+ * @param {string} val 当前值字符串
+ * @param {string} unit 默认：仟佰拾亿仟佰拾万仟佰拾元角分
+ * @param {string} v 初始值
+ * @returns {string} 返回处理后的字符串
  */
 export function numberCnUppercaseFormat(val: any, unit = '仟佰拾亿仟佰拾万仟佰拾元角分', v = '') {
 	// 当前内容字符串添加 2个0，为什么??
@@ -132,9 +133,9 @@ export function numberCnUppercaseFormat(val: any, unit = '仟佰拾亿仟佰拾�
 }
 
 /**
- * @description 大额数字格式化
- * @param {String | Number} val 当前值字符串
- * @returns {String | Number} 返回处理后的字符串
+ * 大额数字格式化
+ * @param {string | number} val 当前值字符串
+ * @returns {string | number} 返回处理后的字符串
  */
 export const numberFormat = (val: number | string): string | number => {
 	const num = (val as any) * 1;
@@ -152,10 +153,10 @@ export const numberFormat = (val: number | string): string | number => {
 };
 
 /**
- * @description 大小写转换格式化
- * @param {String} str 待转换的字符串
- * @param {Number} type 1:全大写 2:全小写 3:首字母大写
- * @returns {String} 转换后的字符串
+ * 大小写转换格式化
+ * @param {string} str 待转换的字符串
+ * @param {number} type 1:全大写 2:全小写 3:首字母大写
+ * @returns {string} 转换后的字符串
  */
 export function toCaseFormat(str: string, type: number = 1) {
 	switch (type) {
@@ -171,12 +172,12 @@ export function toCaseFormat(str: string, type: number = 1) {
 }
 
 /**
- * @description 密码强度
- * @param {String} val 当前值字符串
+ * 密码强度
+ * @param {string} val 当前值字符串
  * @description 弱：纯数字，纯字母，纯特殊字符
  * @description 中：字母+数字 | 字母+特殊字符 | 数字+特殊字符
  * @description 强：字母+数字+特殊字符
- * @returns {String} 返回处理后的字符串：弱、中、强
+ * @returns {string} 返回处理后的字符串：弱、中、强
  */
 export function passwordStrengthFormat(val: string) {
 	let v = '';
@@ -196,13 +197,12 @@ export function passwordStrengthFormat(val: string) {
 }
 
 /**
- * @description 去除空格格式化
+ * 去除空格格式化
  * @description both: 去除两边空格 | left: 去除左边空格 | right: 去除右边空格 | all: 去除所有空格
  * @param {string} str - 字符串
- * @param {string} pos - 去除空格的位置
- * @returns {String} 返回处理后的字符串
+ * @param {'both' | 'left' | 'right' | 'all'} pos - 去除空格的位置
+ * @returns {string} 返回处理后的字符串
  */
-type Pos = 'both' | 'left' | 'right' | 'all';
 export function trimFormat(str: string, pos: Pos = 'both'): string {
 	if (pos == 'both') {
 		return str.replace(/^\s+|\s+$/g, '');
@@ -218,10 +218,10 @@ export function trimFormat(str: string, pos: Pos = 'both'): string {
 }
 
 /**
- * @description 输入小数或整数(不可以负数)
- * @param {String} val 当前值字符串
- * @param {Number} decimalPlaces 保留的小数位数，默认2位
- * @returns {String} 返回处理后的字符串
+ * 输入小数或整数(不可以负数)
+ * @param {string} val 当前值字符串
+ * @param {number} decimalPlaces 保留的小数位数，默认2位
+ * @returns {string} 返回处理后的字符串
  */
 export function verifyNumberIntegerAndFloat(val: string, decimalPlaces: number = 2): string {
 	// 检查decimalPlaces是否为数字且在合理范围内
@@ -245,10 +245,10 @@ export function verifyNumberIntegerAndFloat(val: string, decimalPlaces: number =
 }
 
 /**
- * @description 输入数字(小数、整数或负数)
- * @param {String} val 当前值字符串
- * @param {Number} decimalPlaces 保留的小数位数，默认2位
- * @returns {String} 返回处理后的字符串
+ * 输入数字(小数、整数或负数)
+ * @param {string} val 当前值字符串
+ * @param {number} decimalPlaces 保留的小数位数，默认2位
+ * @returns {string} 返回处理后的字符串
  */
 export function verifyNumber(val: string, decimalPlaces: number = 2): string {
 	// 检查decimalPlaces是否为数字且在合理范围内
@@ -286,9 +286,9 @@ export function verifyNumber(val: string, decimalPlaces: number = 2): string {
 }
 
 /**
- * @description 正整数验证
- * @param {String} val 当前值字符串
- * @returns {String} 返回处理后的字符串
+ * 正整数验证
+ * @param {string} val 当前值字符串
+ * @returns {string} 返回处理后的字符串
  */
 export function verifyNumberInteger(val: string) {
 	// 匹配空格
@@ -306,9 +306,9 @@ export function verifyNumberInteger(val: string) {
 }
 
 /**
- * @description 验证百分比（不可以小数）
- * @param {String} val 当前值字符串
- * @returns {String} 返回处理后的字符串
+ * 验证百分比（不可以小数）
+ * @param {string} val 当前值字符串
+ * @returns {string} 返回处理后的字符串
  */
 export function verifyNumberPercentage(val: string): string {
 	// 匹配空格
@@ -324,9 +324,9 @@ export function verifyNumberPercentage(val: string): string {
 }
 
 /**
- * @description 验证百分比（可以小数）
- * @param {String} val 当前值字符串
- * @returns {String} 返回处理后的字符串
+ * 验证百分比（可以小数）
+ * @param {string} val 当前值字符串
+ * @returns {string} 返回处理后的字符串
  */
 export function verifyNumberPercentageFloat(val: string): string {
 	let v = verifyNumberIntegerAndFloat(val);
@@ -339,9 +339,9 @@ export function verifyNumberPercentageFloat(val: string): string {
 }
 
 /**
- * @description 去掉中文及空格
- * @param {String} val 当前值字符串
- * @returns {String} 返回处理后的字符串
+ * 去掉中文及空格
+ * @param {string} val 当前值字符串
+ * @returns {string} 返回处理后的字符串
  */
 export function verifyCnAndSpace(val: string) {
 	// 匹配中文与空格
@@ -353,9 +353,9 @@ export function verifyCnAndSpace(val: string) {
 }
 
 /**
- * @description 去掉英文及空格
- * @param {String} val 当前值字符串
- * @returns {String} 返回处理后的字符串
+ * 去掉英文及空格
+ * @param {string} val 当前值字符串
+ * @returns {string} 返回处理后的字符串
  */
 export function verifyEnAndSpace(val: string) {
 	// 匹配英文与空格
@@ -367,10 +367,10 @@ export function verifyEnAndSpace(val: string) {
 }
 
 // /**
-//  * @description 金额格式化
+//  * 金额格式化
 //  * @param {*} val 传入的值
-//  * @param {String} empty 默认无值状态 默认（''）
-//  * @returns {String} 返回处理后的数据
+//  * @param {string} empty 默认无值状态 默认（''）
+//  * @returns {string} 返回处理后的数据
 //  */
 // export function moneyFormat(val: any, empty = '') {
 // 	if (val) {

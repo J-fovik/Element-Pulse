@@ -6,19 +6,19 @@ import { ElMessage } from 'element-plus';
 import type { RouteRecordNormalized } from 'vue-router';
 
 /**
- * @description allArr 数组 是否包含 arr 数组里面的所有内容
+ * allArr 数组 是否全包含 arr 数组
  * @param {Array} allArr
  * @param {Array} arr 需要判断的数组
- * @returns {Boolean} 如果 全包含 返回 true；否则返回 false
+ * @returns {boolean} 如果 全包含 返回 true；否则返回 false
  */
 export function everyIncludes(allArr: Array<any>, arr: Array<any>) {
 	return arr.every((item) => allArr.includes(item));
 }
 
 /**
- * @description 数组删除某个值
+ * 数组删除某个值
  * @param {Array} arr 数组内容
- * @param {Number | String} val 要删除的值
+ * @param {number | string} val 要删除的值
  * @returns {Array} 删除后的数组
  */
 export const arrRemoveVal = (arr: any, val: any) => {
@@ -28,9 +28,9 @@ export const arrRemoveVal = (arr: any, val: any) => {
 };
 
 /**
- * @description 值是否存在于数组 (可用于选值存数组 并 展示激活状态)
+ * 值是否存在于数组 (可用于选值存数组 并 展示激活状态)
  * @param {Array} list 要判断的数组
- * @param {Number | String} key 要判断的值
+ * @param {number | string} key 要判断的值
  * @returns {boolean} - 如果数组中存在指定元素，返回 true；否则返回 false
  */
 export const isExistArray = (list: any[], key: any): boolean => {
@@ -38,20 +38,20 @@ export const isExistArray = (list: any[], key: any): boolean => {
 };
 
 /**
- * @description 找到匹配的元素
+ * 找到匹配的元素
  * @param {Array} options 要判断的数组
- * @param {String} value 要判断的值
- * @returns {Object | Null} 找出第一个符合条件的成员
+ * @param {string} value 要判断的值
+ * @returns {Object | null} 找出第一个符合条件的成员
  */
 export const findOption = (options: Array<any>, value: string) => {
 	return options.find((item) => item.value === value);
 };
 
 /**
- * @description 判断两数组是否相同,可做按钮鉴权(自动去重)
+ * 判断两数组是否相同,可做按钮鉴权(自动去重)
  * @param {Array} arr1 第一个数组
  * @param {Array} arr2 第二个数组
- * @returns {Boolean} 两数组相同返回 `true`，反之则 `false`
+ * @returns {boolean} 两数组相同返回 `true`，反之则 `false`
  */
 export function arraysAreEqual(arr1: any[], arr2: any[]): boolean {
 	const set1 = new Set(arr1);
@@ -60,10 +60,10 @@ export function arraysAreEqual(arr1: any[], arr2: any[]): boolean {
 }
 
 /**
- * @description 数组、数组对象去重
+ * 数组、数组对象去重
  * @description 它接受两个参数：arr 是要去重的数组，attr 是一个可选参数，用于数组对象的去重，即去重时使用的键值。
  * @param {Array} arr 数组内容
- * @param {String} attr 需要去重的键值（数组对象时才传）
+ * @param {string} attr 需要去重的键值（数组对象时才传）
  * @returns {Array} 去重后数组或数组对象
  */
 export function removeDuplicate(arr: EmptyArrayType, attr?: any) {
@@ -83,9 +83,9 @@ export function removeDuplicate(arr: EmptyArrayType, attr?: any) {
 }
 
 /**
- * @description 过滤掉 数组对象 中不存在该 key 的对象
+ * 过滤掉 数组对象 中不存在该 key 的对象
  * @param {Array} list 数组内容
- * @param {String} key  过滤掉该不存在该key的对象 (可不传，则是判断所有key)
+ * @param {string} key  过滤掉该不存在该key的对象 (可不传，则是判断所有key)
  * @returns {Array} 过滤后的数组对象
  */
 export function filterObjectsByKey(list: Array<any>, key?: any) {
@@ -121,7 +121,7 @@ export function filterObjectsByKey(list: Array<any>, key?: any) {
 }
 
 /**
- * @description 统计函数
+ * 统计函数
  * @param {Array} array - 要进行统计的数组 数组对象
  * @param {Function} generateKey - 回调传入key
  * @returns {Array} 处理后的数组对象
@@ -142,10 +142,10 @@ export function countBy<T>(array: Array<T>, generateKey: (item: T) => any): { [k
 }
 
 /**
- * @description 调换顺序
+ * 调换顺序
  * @param {Array} arr 数组内容
- * @param {Number} index1  当前的索引
- * @param {Number} index2  最终的索引
+ * @param {number} index1  当前的索引
+ * @param {number} index2  最终的索引
  * @returns {Array} 排好顺序的数组
  */
 export function swapArray(arr: Array<any>, index1: number, index2: number) {
@@ -154,9 +154,9 @@ export function swapArray(arr: Array<any>, index1: number, index2: number) {
 }
 
 /**
- * @description 上移
+ * 上移
  * @param {Array} arr 数组内容
- * @param {Number} index  当前的索引
+ * @param {number} index  当前的索引
  * @returns {Array} 排好顺序的数组
  */
 export function useArrayMoveUp(arr: Array<any>, index: number) {
@@ -168,9 +168,9 @@ export function useArrayMoveUp(arr: Array<any>, index: number) {
 }
 
 /**
- * @description 下移
+ * 下移
  * @param {Array} arr 数组内容
- * @param {Number} index  当前的索引
+ * @param {number} index  当前的索引
  * @returns {Array} 排好顺序的数组
  */
 export function useArrayMoveDown(arr: Array<any>, index: number) {
@@ -182,10 +182,10 @@ export function useArrayMoveDown(arr: Array<any>, index: number) {
 }
 
 /**
- * @description 置顶或置底
+ * 置顶或置底
  * @param {Array} arr 数组内容
- * @param {Number} index  当前的索引
- * @param {String} type  top 为置顶，bottom 为置底
+ * @param {number} index  当前的索引
+ * @param {'top' | 'bottom'} type  top 为置顶，bottom 为置底
  * @returns {Array} 排好顺序的数组
  */
 export function useArrayMove(arr: Array<any>, index: number, type?: 'top' | 'bottom') {
@@ -209,7 +209,7 @@ export function useArrayMove(arr: Array<any>, index: number, type?: 'top' | 'bot
 }
 
 /**
- * @description 数组的并集
+ * 数组的并集
  * @param {Array} arr1
  * @param {Array} arr2
  * @returns {Array} 去重后的合集数组
@@ -219,7 +219,7 @@ export function arrayUnion(arr1: Array<any>, arr2: Array<any>) {
 }
 
 /**
- * @description 数组的交集
+ * 数组的交集
  * @param {Array} arr1
  * @param {Array} arr2
  * @returns {Array} 去重后的交叉数组
@@ -229,7 +229,7 @@ export function arrayCross(arr1: Array<any>, arr2: Array<any>) {
 }
 
 /**
- * @description 数组的差集
+ * 数组的差集
  * @param {Array} arr1
  * @param {Array} arr2
  * @returns {Array} 去重后的交叉之外数组
@@ -241,43 +241,43 @@ export function arrayDiff(arr1: Array<any>, arr2: Array<any>) {
 }
 
 /**
- * @description 获取数组最大值
+ * 获取数组最大值
  * @param {Array} arr
- * @returns {Number} 最大值
+ * @returns {number} 最大值
  */
 export const arrMaxValue = (arr: number[]) => {
 	return Math.max.apply(null, arr);
 };
 
 /**
- * @description 获取数组最小值
+ * 获取数组最小值
  * @param {Array} arr
- * @returns {Number} 最小值
+ * @returns {number} 最小值
  */
 export const arrMinValue = (arr: number[]) => {
 	return Math.min.apply(null, arr);
 };
 
 /**
- * @description 数组求和
+ * 数组求和
  * @param {Array} arr
- * @returns {Number} 合计
+ * @returns {number} 合计
  */
 export const arrSummation = (arr: number[]) => {
 	return arr.reduce((pre, cur) => pre + cur);
 };
 
 /**
- * @description 获取数组平均值
+ * 获取数组平均值
  * @param {Array} arr
- * @returns {Number} 平均值
+ * @returns {number} 平均值
  */
 export const averageValue = (arr: number[]) => {
 	return arrSummation(arr) / arr.length;
 };
 
 /**
- * @description 简单数组扁平化
+ * 简单数组扁平化
  * @param {Array} arr
  * @returns {Array} 扁平化后的一维数组
  */
@@ -288,7 +288,7 @@ export const flattenArray = (arr: any) => {
 };
 
 /**
- * @description 根据给定的函数将数组对象分成两个数组：一个满足条件，一个不满足
+ * 根据给定的函数将数组对象分成两个数组：一个满足条件，一个不满足
  * @param {Array} array 要处理的数组对象
  * @param {Function} fn  一个函数，用于测试数组对象中的每个属性
  * @returns {[Array,Array]} 第一个数组是满足函数返回条件的数组，第二个数组是不满足条件的数组
@@ -308,14 +308,14 @@ export const partitionObject = <T>(array: T[], fn: (item: T) => boolean): [T[], 
 };
 
 /**
- * @description 根据key重组数组
- * @description 由[{yxmc: 'A', zySeq: 1 },{yxmc: 'B', zySeq: 2 },{ yxmc: 'A', zySeq: 3 }]
- * @description 变成[{yxmc: 'A', children:[1, 3]},{yxmc: 'B', children: [2] }]
+ * 根据key重组数组
  * @param {Array} array 要处理的数组
- * @param {String} groupByKey  用于分组的键 （yxmc）
- * @param {String} childName  要存储的数组key的名称 （children）
- * @param {String} mergeChildKey  要存储在子数组的键 （zySeq）
+ * @param {string} groupByKey  用于分组的键 （yxmc）
+ * @param {string} childName  要存储的数组key的名称 （children）
+ * @param {string} mergeChildKey  要存储在子数组的键 （zySeq）
  * @returns {Array} 重组后的数组
+ * @example
+ * groupByAndMergeChildArrays([{yxmc: 'A', zySeq: 1 },{yxmc: 'B', zySeq: 2 },{ yxmc: 'A', zySeq: 3 }]) // [{yxmc: 'A', children:[1, 3]},{yxmc: 'B', children: [2] }]
  */
 export const groupByAndMergeChildArrays = (
 	array: Array<any>,
@@ -341,10 +341,10 @@ export const groupByAndMergeChildArrays = (
 };
 
 /**
- * @description 根据两个数组中 相同的属性值 返回公共key存在的数组
+ * 根据两个数组中 相同的属性值 返回公共key存在的数组
  * @param {Array} array1 要处理的数组1
  * @param {Array} array2  要处理的数组2
- * @param {String} propertyName  两个数组都存在的key，并且要处理的key
+ * @param {string} propertyName  两个数组都存在的key，并且要处理的key
  * @returns {Array} 重组后的数组
  */
 export const getIntersectionByProperty = <T extends ArrayItem, K extends keyof T>(
@@ -369,10 +369,10 @@ export const getIntersectionByProperty = <T extends ArrayItem, K extends keyof T
 };
 
 /**
- * @description 根据两个数组中 相同的属性值 进行数组合并
+ * 根据两个数组中 相同的属性值 进行数组合并
  * @param {Array} array1 要处理的数组1
  * @param {Array} array2  要处理的数组2
- * @param {String} key  两个数组都存在的key，并且要处理的key
+ * @param {string} key  两个数组都存在的key，并且要处理的key
  * @returns {Array} 重组后的数组
  */
 export const mergeArraysByKey = (
@@ -401,7 +401,7 @@ export const mergeArraysByKey = (
 };
 
 /**
- * @description 使用递归过滤出需要渲染在左侧菜单的列表 (需剔除 isHide == true 的菜单)
+ * 使用递归过滤出需要渲染在左侧菜单的列表 (需剔除 isHide == true 的菜单)
  * @param {Array} menuList 菜单列表
  * @returns {Array} 递归过滤后的数组
  * */
@@ -414,7 +414,7 @@ export function getShowMenuList(menuList: Menu.MenuOptions[]) {
 }
 
 /**
- * @description 使用递归处理扁平化菜单, 方便添加动态路由(支持多级)
+ * 使用递归处理扁平化菜单, 方便添加动态路由(支持多级)
  * @param {Array} menuList 菜单列表
  * @returns {Array} 扁平化后的数组
  */
@@ -427,7 +427,7 @@ export function getFlattenMenuList(menuList: Menu.MenuOptions[]): Menu.MenuOptio
 }
 
 /**
- * @description 使用递归处理扁平化菜单, 方便添加动态路由(支持多级)
+ * 使用递归处理扁平化菜单, 方便添加动态路由(支持多级)
  * @param {Array} routes 菜单列表
  * @returns {Array} 扁平化后的数组
  */
@@ -448,7 +448,7 @@ export const getFlatMenuList = (routes: any) => {
 };
 
 /**
- * @description 使用递归找出所有面包屑
+ * 使用递归找出所有面包屑
  * @param {Array} menuList 菜单列表
  * @param {Array} parent 父级菜单
  * @param {Object} result 处理后的结果
@@ -468,7 +468,7 @@ export const getAllBreadcrumbList = (
 };
 
 /**
- * @description 递归来收集数组中所有元素的某个键的值
+ * 递归来收集数组中所有元素的某个键的值
  * @param {Array} Array 数组列表
  * @param {string} key 要收集的键（默认name）
  * @returns {Array} 存储所有key值的一维数组 ['**','**']
@@ -489,7 +489,7 @@ export function collectAllArrKeys(Array: any, key: string = 'name'): string[] {
 }
 
 /**
- * @description 根据name数组,对路由数组进行递归过滤
+ * 根据name数组,对路由数组进行递归过滤
  * @param {Array} routes 菜单列表
  * @param {Array} nameList name数组
  * @returns {Array} 递归过滤后的name所在的对象 组成的数组（返回新数组，不改变原有数组）
@@ -521,7 +521,7 @@ export function filterRoutes(routes, nameList) {
 }
 
 /**
- * @description 根据name数组,对路由数组进行递归重组
+ * 根据name数组,对路由数组进行递归重组
  * @param {Array} routes 菜单列表
  * @param {Array} nameList name数组
  * @returns {Array} 递归重组后的name所在的对象 组成的新数组
@@ -547,7 +547,7 @@ export function reduceRoutes(routes: Array<any>, nameList: any): Array<any> {
 }
 
 /**
- * @description 使用递归过滤需要缓存的菜单 name
+ * 使用递归过滤需要缓存的菜单 name
  * @param {Array} menuList 所有菜单列表
  * @param {Array} keepAliveNameArr 缓存的菜单 name ['**','**'](额外)
  * @returns {Array} 存储所有需要缓存的name所组成的一维数组
@@ -564,9 +564,9 @@ export function getKeepAliveRouterName(
 }
 
 /**
- * @description 递归查询当前 path 所对应的菜单对象
+ * 递归查询当前 path 所对应的菜单对象
  * @param {Array} menuList 菜单列表
- * @param {String} path 当前访问地址
+ * @param {string} path 当前访问地址
  * @returns {Object | null} 对应的菜单对象
  */
 export function findMenuByPath(
@@ -584,7 +584,7 @@ export function findMenuByPath(
 }
 
 /**
- * @description 递归提升meta.title 提成到与 meta 同级
+ * 递归提升meta.title 提成到与 meta 同级
  * @param {Array} menuList 菜单列表
  * @returns {Array} 菜单
  */
@@ -605,7 +605,7 @@ export function elevateTitles(menuList) {
 }
 
 /**
- * @description 数组对象指定key转数字
+ * 数组对象指定key转数字
  * @param {Array} list 数组对象
  * @param {Array} numberKeys 数组对象内需要转数字的字符串组成的数组
  * @returns {Array} 处理后数组
