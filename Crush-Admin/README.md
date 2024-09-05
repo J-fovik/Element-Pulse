@@ -167,7 +167,7 @@ interface RouteRecordRaw {
 		const { data } = await getAuthMenuListApi();
 		const backRouteList = elevateTitles(data);
 
-		// 三：根据后端name数组过滤前端定义的路由(目前用缓存模拟的，首次使用需要先给权限保存缓存才行)
+		// 三：根据后端name数组过滤前端定义的路由(目前用缓存模拟的，首次使用需要先给权限保存缓存才行)，这种情况暂不支持三级菜单
 		const reduceRoutesList = reduceRoutes(appMenus, Session.get('menu'));
 		authMenuList.value = backRouteList;
 	};
