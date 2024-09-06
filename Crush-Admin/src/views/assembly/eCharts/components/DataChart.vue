@@ -46,17 +46,17 @@ import * as echarts from 'echarts';
 import dayjs from 'dayjs';
 import { useBasicsState } from '@/hooks';
 // 控制时间选择
-const [chartDay, setChartDay] = useBasicsState(30, () => initData());
+const [chartDay, setChartDay] = useBasicsState(1, () => initData());
 // 时间
 const chartDayTitle = computed(() => {
 	switch (chartDay.value) {
-		case 30:
+		case 1:
 			return '最近一个月';
-		case 90:
+		case 3:
 			return '最近三个月';
-		case 180:
+		case 6:
 			return '最近半年';
-		case 365:
+		case 12:
 			return '最近一年';
 		default:
 			return '';
@@ -212,7 +212,7 @@ const chartOption = computed(() => {
 });
 // 模拟数据
 const initData = () => {
-	chartsData.value = new Array(chartDay.value).fill(0).map((el, idx) => ({
+	chartsData.value = new Array(30).fill(0).map((el, idx) => ({
 		x: dayjs()
 			.day(idx - 2)
 			.format('YYYY-MM-DD'),

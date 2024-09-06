@@ -214,6 +214,7 @@ const options = computed(() => {
 });
 // 获取数据
 const initData = async () => {
+	// 请求数据
 	if (chartDay.value === 1) {
 		// 设置数据
 		yData.value = [
