@@ -36,7 +36,7 @@
 			</div>
 		</template>
 		<div style="height: 400px">
-			<ECharts :options="options" />
+			<ECharts :options="chartOption" />
 		</div>
 	</el-card>
 </template>
@@ -65,7 +65,7 @@ const yData = ref<number[]>([]);
 // 时间轴
 const xData = ref<string[]>([]);
 // 图表配置
-const options = computed(() => {
+const chartOption = computed(() => {
 	return {
 		// 间距
 		grid: {
