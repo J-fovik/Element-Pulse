@@ -9,8 +9,8 @@ export const columns: TableCustomColumnData[] = [
 		align: 'center',
 	},
 	{
-		title: '数值',
-		key: 'value',
+		title: '类型',
+		key: 'type',
 		show: true,
 		align: 'center',
 	},

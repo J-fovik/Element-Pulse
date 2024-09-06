@@ -15,10 +15,23 @@
 						</el-form-item>
 					</template>
 				</el-table-column>
-				<el-table-column prop="value" label="数值" align="center">
+				<el-table-column prop="type" label="类型" align="center">
 					<template #default="{ row, $index }">
-						<el-form-item :prop="'tableData.' + $index + '.value'" :rules="rules.value">
-							<el-input v-model="row.value" placeholder="请输入数值" />
+						<el-form-item :prop="'tableData.' + $index + '.type'" :rules="rules.type">
+							<el-select
+								v-model="row.type"
+								filterable
+								placeholder="请选择类型"
+								:disabled="typeList.length == 0"
+							>
+								<el-option
+									v-for="item in computedTypeList"
+									:key="item.value"
+									:label="item.label"
+									:value="item.value"
+									:disabled="item.disabled"
+								/>
+							</el-select>
 						</el-form-item>
 					</template>
 				</el-table-column>
@@ -84,8 +97,8 @@ const [activeKey, setActiveKey] = useBasicsState<string | null>(null);
 // 表单
 const { form, formRef } = useForm(() => ({
 	tableData: [
-		{ label: '1', value: '2', startTime: '2023-10-18', endTime: '2023-11-10' },
-		{ label: '', value: '', startTime: '', endTime: '' },
+		{ label: '1', type: '2', startTime: '2023-10-18', endTime: '2023-11-10' },
+		{ label: '', type: '', startTime: '', endTime: '' },
 	] as any,
 }));
 // 表单验证
@@ -97,10 +110,10 @@ const rules = {
 			trigger: 'blur',
 		},
 	],
-	value: [
+	type: [
 		{
 			required: false,
-			message: '请输入数值',
+			message: '请选择类型',
 		},
 	],
 	startTime: {
@@ -118,7 +131,38 @@ const rules = {
 		},
 	},
 };
-
+// 类型数组
+const typeList = ref([
+	{
+		label: '类型一',
+		value: '1',
+	},
+	{
+		label: '类型二',
+		value: '2',
+	},
+	{
+		label: '类型三',
+		value: '3',
+	},
+	{
+		label: '类型四',
+		value: '4',
+	},
+	{
+		label: '类型五',
+		value: '5',
+	},
+] as any);
+// 计算禁用类型
+const computedTypeList = computed(() => {
+	return typeList.value.map((o) => {
+		return {
+			...o,
+			disabled: form.value.tableData.some((table) => table.type === o.value),
+		};
+	});
+});
 // 表格验证
 const onValidate = (formEl: any) => {
 	if (form.value.tableData.length <= 0) return ElMessage.warning('请先点击增加一行');
@@ -131,7 +175,7 @@ const onValidate = (formEl: any) => {
 };
 // 添加空数据
 const addTableItem = () => {
-	form.value.tableData.push({ label: '', value: '', startTime: '', endTime: '' });
+	form.value.tableData.push({ label: '', type: '', startTime: '', endTime: '' });
 };
 // 删除
 const deleteTableItem = (len: number) => {
