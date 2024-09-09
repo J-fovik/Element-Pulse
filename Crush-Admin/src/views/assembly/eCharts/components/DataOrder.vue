@@ -45,6 +45,8 @@
 import { useBasicsState } from '@/hooks';
 // 控制时间选择
 const [chartDay, setChartDay] = useBasicsState(1, () => initData());
+// chatLoading控制
+const [chatLoading, setChatLoading] = useBasicsState<boolean>(false);
 // 时间
 const chartDayTitle = computed(() => {
 	switch (chartDay.value) {
@@ -107,6 +109,18 @@ const chartOption = computed(() => {
 // 获取折线图数据
 const initData = async () => {
 	// 请求数据
+	// const { res, err } = await curryingRequest(
+	// 	() =>
+	// 		SYSTEM_APIS.lineChartInfoQuery({
+	// 			month: chartDay.value,
+	// 		}),
+	// 	{
+	// 		before: () => setChatLoading(true),
+	// 		after: () => setChatLoading(false),
+	// 	}
+	// );
+	// // 处理错误
+	// if (err) return;
 	// 设置时间
 	xData.value = [
 		'2023/04/19',

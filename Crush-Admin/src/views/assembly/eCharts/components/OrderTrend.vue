@@ -45,6 +45,8 @@ import echarts from '@/components/ECharts/config';
 import { useBasicsState } from '@/hooks';
 // 控制时间选择
 const [chartDay, setChartDay] = useBasicsState(1, () => initData());
+// chatLoading控制
+const [chatLoading, setChatLoading] = useBasicsState<boolean>(false);
 // 时间
 const chartDayTitle = computed(() => {
 	switch (chartDay.value) {
