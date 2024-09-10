@@ -216,6 +216,156 @@ export function downImage(imageSrc, name) {
 	image.src = imageSrc;
 }
 
+export interface ImgInfo {
+	name: string;
+	fileType: string;
+	size: number;
+	imgUrl: string;
+	width: number;
+	height: number;
+	imageData: ImageData;
+	blob: Blob;
+}
+
+/**
+ * 获取解析图片数据
+ * @param {Array} files 文件数组
+ * @param {Function} callback 回调
+ */
+export const getImgInfo = (files: FileList, callback: (imgInfo: ImgInfo | null) => void) => {
+	if (!files) {
+		callback(null);
+	}
+	for (let i = 0, l = files.length; i < l; i++) {
+		const file = files[i];
+		const { type } = file;
+		const typeArr = type.split('/');
+		if (typeArr[0] !== 'image') return;
+		let fileType = typeArr[1].toUpperCase();
+		var reader = new FileReader();
+		reader.onload = function (e: any) {
+			const buffer = e.target.result;
+			const imageType = getImageType(buffer);
+			if (imageType) {
+				fileType = imageType;
+			}
+			const blob = new Blob([buffer]);
+			fileOrBlobToDataURL(blob, function (dataUrl: string | null) {
+				if (dataUrl) {
+					const image = new Image();
+					image.onload = function () {
+						const width = image.width;
+						const height = image.height;
+						const imageData = getCanvasImgData(dataUrl, width, height);
+						if (imageData) {
+							const imgInfo: ImgInfo = {
+								name: file.name,
+								fileType,
+								size: file.size,
+								width,
+								height,
+								imgUrl: dataUrl,
+								imageData,
+								blob,
+							};
+							callback(imgInfo);
+						} else {
+							callback(null);
+						}
+					};
+					image.onerror = function () {
+						callback(null);
+					};
+					image.src = dataUrl;
+				} else {
+					callback(null);
+				}
+			});
+		};
+		reader.readAsArrayBuffer(file);
+	}
+};
+
+/**
+ * 根据buffer中的文件头信息判断图片类型
+ * @param {ArrayBuffer} buffer 文件
+ * @returns {string} 文件类型
+ */
+export const getImageType = (buffer: ArrayBuffer) => {
+	let fileType = '';
+	if (buffer) {
+		const view = new DataView(buffer);
+		const first4Byte = view.getUint32(0, false);
+		const hexValue = Number(first4Byte).toString(16).toUpperCase();
+		switch (hexValue) {
+			case 'FFD8FFDB':
+				fileType = 'JPG';
+				break;
+			case 'FFD8FFE0':
+			case 'FFD8FFE1':
+			case 'FFD8FFE2':
+			case 'FFD8FFE3':
+				fileType = 'JPEG';
+				break;
+			case '89504E47':
+				fileType = 'PNG';
+				break;
+			case '47494638':
+				fileType = 'GIF';
+				break;
+			case '52494646':
+				fileType = 'WEBP';
+				break;
+			default:
+				break;
+		}
+	}
+	return fileType;
+};
+
+/**
+ * File或Blob对象转DataURL
+ * @param {Object} obj 文件
+ * @param {Function} cb 回调
+ */
+export const fileOrBlobToDataURL = (obj: File | Blob, cb: (result: string | null) => void) => {
+	if (!obj) {
+		cb(null);
+		return;
+	}
+	const reader = new FileReader();
+	reader.readAsDataURL(obj);
+	reader.onload = function (e) {
+		if (e.target) {
+			cb(e.target.result as string);
+		} else {
+			cb(null);
+		}
+	};
+};
+
+/**
+ * 获取图片二进制数据
+ * @param {string} imgUrl 图片路径
+ * @param {number} width 图片宽
+ * @param {number} height 图片高
+ * @returns {ImageData} 图片路径
+ */
+export const getCanvasImgData = (imgUrl: string, width: number = 0, height: number = 0) => {
+	if (imgUrl && width && height) {
+		const img = new Image();
+		img.src = imgUrl;
+		const canvas = document.createElement('canvas') as HTMLCanvasElement;
+		const ctx = canvas.getContext('2d') as CanvasRenderingContext2D;
+		canvas.width = width;
+		canvas.height = height;
+		ctx.drawImage(img, 0, 0, width, height);
+		const imageData = ctx.getImageData(0, 0, width, height) as ImageData;
+		return imageData;
+	}
+	return null;
+};
+
 /**
  * 左右翻转
  * @param {ImageData} imageData 图片路径
