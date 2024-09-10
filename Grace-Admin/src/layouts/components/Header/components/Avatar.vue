@@ -30,7 +30,6 @@
 <script setup lang="ts" name="Avatar">
 import { Session } from '@/utils/storage';
 import { LOGIN_URL } from '@/config';
-import { logoutApi } from '@/api/modules/login';
 import { useUserStore } from '@/stores';
 import { ElMessageBox, ElMessage } from 'element-plus';
 import { useBasicsState } from '@/hooks';
@@ -48,8 +47,6 @@ const logout = () => {
 		cancelButtonText: '取消',
 		type: 'warning',
 	}).then(async () => {
-		// 执行退出登录接口
-		await logoutApi();
 		// 清除Cookie
 		await Session.remove('userToken');
 		// 清空Session缓存

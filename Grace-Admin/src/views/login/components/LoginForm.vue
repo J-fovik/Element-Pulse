@@ -47,10 +47,9 @@ import type { FormInstance } from 'element-plus';
 import { ElNotification } from 'element-plus';
 import { HOME_URL } from '@/config';
 import { getTimeState } from '@/utils';
-import { loginApi } from '@/api/modules/login';
 import { useKeepAliveStore, useTabsStore, useUserStore } from '@/stores';
 import { CircleClose, UserFilled } from '@element-plus/icons-vue';
-import { useForm, useBasicsState, curryingRequest } from '@/hooks';
+import { useForm, useBasicsState, curryingRequestUrl, URL } from '@/hooks';
 // 项目名称
 const APP_TITLE = import.meta.env.VITE_GLOB_APP_TITLE;
 
@@ -76,12 +75,14 @@ const login = (formEl: FormInstance | undefined) => {
 	if (!formEl) return;
 	formEl.validate(async (valid) => {
 		if (!valid) return;
-		const { res, err } = await curryingRequest(
-			() =>
-				loginApi({
+		const { res, err } = await curryingRequestUrl(
+			{
+				url: URL.USER.LOGIN,
+				data: {
 					...form.value,
 					password: md5(form.value.password),
-				}),
+				},
+			},
 			{
 				before: () => setActiveKey('login'),
 				after: () => setActiveKey(null),

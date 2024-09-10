@@ -5,14 +5,6 @@ import request from '@/api';
 /**
  * @name 登录模块
  */
-// 用户登录
-export const loginApi = (data: object) => {
-	return request({
-		url: `/geeker/login`,
-		method: 'post',
-		data,
-	});
-};
 // 获取权限菜单
 export const getAuthMenuListApi = () => {
 	// return request({
@@ -30,11 +22,4 @@ export const getAuthButtonListApi = () => {
 	//   data
 	// });
 	return authButtonList;
-};
-// 退出登录
-export const logoutApi = () => {
-	return request({
-		url: `/geeker/logout`,
-		method: 'post',
-	});
 };
