@@ -9,6 +9,8 @@ const request = axios.create({
 	baseURL: import.meta.env.VITE_API_URL as string,
 	// 设置超时时间
 	timeout: (10 * 3000) as number,
+	// 请求方式
+	method: 'post',
 	// 请求头
 	headers: {
 		'Content-Type': 'application/json',
