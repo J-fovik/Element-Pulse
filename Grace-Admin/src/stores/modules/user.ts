@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia';
 import { Session } from '@/utils/storage';
-import { curryingRequest } from '@/hooks';
+import { curryingRequestUrl, URL } from '@/hooks';
 import { getAuthButtonListApi, getAuthMenuListApi } from '@/api/modules/login';
 import {
 	getFlatMenuList,
@@ -58,7 +58,10 @@ export const useUserStore = defineStore(`user`, () => {
 	// 获取用户信息
 	const initUserInfo = async () => {
 		// // 获取用户信息
-		// const { res, err } = await curryingRequest(() => getUserInfo());
+		// const { res, err } = await curryingRequestUrl({
+		// 	url: URL.PUBLIC.GET_LIST,
+		// 	data: {},
+		// });
 		// // 处理错误
 		// if (err) return false;
 		// 获取权限列表

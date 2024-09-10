@@ -111,7 +111,7 @@ const initData = async () => {
 	// 请求数据
 	// const { res, err } = await curryingRequest(
 	// 	() =>
-	// 		SYSTEM_APIS.lineChartInfoQuery({
+	// 		getLineChartData({
 	// 			month: chartDay.value,
 	// 		}),
 	// 	{
