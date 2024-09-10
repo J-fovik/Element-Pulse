@@ -2,6 +2,16 @@
  * @name 文件相关
  */
 
+export interface ImgInfo {
+	name: string;
+	fileType: string;
+	size: number;
+	imgUrl: string;
+	width: number;
+	height: number;
+	imageData: ImageData;
+	blob: Blob;
+}
 /**
  * 根据文件url获取文件名
  * @param {string} url 文件url
@@ -214,17 +224,6 @@ export function downImage(imageSrc, name) {
 		(a = null), (canvas = null);
 	};
 	image.src = imageSrc;
-}
-
-export interface ImgInfo {
-	name: string;
-	fileType: string;
-	size: number;
-	imgUrl: string;
-	width: number;
-	height: number;
-	imageData: ImageData;
-	blob: Blob;
 }
 
 /**
