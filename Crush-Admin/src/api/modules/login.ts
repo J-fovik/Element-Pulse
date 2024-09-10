@@ -42,10 +42,3 @@ export const getAuthButtonListApi = () => {
 	// });
 	return authButtonList;
 };
-// 退出登录
-export const logoutApi = () => {
-	return request({
-		url: `/geeker/logout`,
-		method: 'post',
-	});
-};
