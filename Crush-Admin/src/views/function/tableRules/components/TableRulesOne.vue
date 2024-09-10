@@ -103,13 +103,15 @@ const { form, formRef } = useForm(() => ({
 }));
 // 表单验证
 const rules = {
-	label: [
-		{
-			required: true,
-			message: '请输入名称',
-			trigger: 'blur',
+	label: {
+		required: true,
+		validator: (rule: any, value: any, callback: any) => {
+			if (!value) callback(new Error('请输入名称'));
+			if (form.value.tableData.filter((item: any) => item.label === value).length > 1)
+				callback(new Error('子项名称不允许重复'));
+			callback();
 		},
-	],
+	},
 	type: [
 		{
 			required: false,
