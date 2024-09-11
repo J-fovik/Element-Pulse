@@ -135,6 +135,21 @@ export default {
 			component: () => import('@/views/assembly/tablePlus/index.vue'),
 		},
 		{
+			path: '/assembly/rollNumber',
+			name: 'rollNumber',
+			meta: {
+				icon: 'Menu',
+				title: '滚动数字',
+				isLink: '',
+				isHide: false,
+				isFull: false,
+				isAffix: false,
+				requiresAuth: true,
+				isKeepAlive: true,
+			},
+			component: () => import('@/views/assembly/rollNumber/index.vue'),
+		},
+		{
 			path: '/assembly/uploadFile',
 			name: 'uploadFile',
 			meta: {

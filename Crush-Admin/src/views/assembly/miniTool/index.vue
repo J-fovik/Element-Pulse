@@ -3,33 +3,6 @@
 		<el-card shadow="hover" header="Container 容器" class="mb20">
 			<Container />
 		</el-card>
-		<el-card shadow="hover" class="mb20" header="CountUp 数字滚动">
-			<el-alert
-				title="CountUp 是基于`gsap`插件，官方文档请查看 ：https://www.npmjs.com/package/gsap"
-				type="warning"
-				:closable="false"
-				class="my15"
-			></el-alert>
-			<el-row :gutter="15">
-				<el-col :sm="6" v-for="(v, k) in recommendList" :key="k">
-					<div class="data" :style="{ 'background-color': v.bg }">
-						<el-icon class="element">
-							<component :is="v.icon" :color="v.iconColor" />
-						</el-icon>
-						<div class="data-auto">
-							<div>{{ v.title }}</div>
-							<div class="my5 font10">{{ v.msg }}</div>
-							<div class="font20">
-								<CountUp :value="v.num" />
-							</div>
-						</div>
-					</div>
-				</el-col>
-			</el-row>
-			<el-descriptions :column="1" border class="mt20">
-				<el-descriptions-item label="value">滚动数字值</el-descriptions-item>
-			</el-descriptions>
-		</el-card>
 		<el-card shadow="hover" header="CropperJs 裁剪图片" class="mb20">
 			<el-alert
 				title="感谢优秀的 `cropperjs`，本 Demo 是基于：https://mraining.github.io/Cropperjs.html"
@@ -112,6 +85,11 @@
 				<el-descriptions-item label="label">标签文本</el-descriptions-item>
 			</el-descriptions>
 		</el-card>
+		<el-card shadow="hover" header="SwitchDark 切换主题" class="mb20">
+			<div class="flx-center">
+				<SwitchDark />
+			</div>
+		</el-card>
 		<el-card shadow="hover" header="TagInput 可输入标签" class="mb20">
 			<el-alert
 				title="TagInput 是el-tag动态编辑标签进行的二次封装，官方文档请查看 ：https://element-plus.org/zh-CN/component/tag.html"
@@ -129,11 +107,6 @@
 					双向绑定的 value 值，使用示例： v-model="content">
 				</el-descriptions-item>
 			</el-descriptions>
-		</el-card>
-		<el-card shadow="hover" header="SwitchDark 切换主题" class="mb20">
-			<div class="flx-center">
-				<SwitchDark />
-			</div>
 		</el-card>
 		<el-card shadow="hover" header="VueCropper 裁剪图片" class="mb20">
 			<el-alert
@@ -182,41 +155,6 @@ const state = reactive({
 		'https://img2.baidu.com/it/u=1978192862,2048448374&fm=253&fmt=auto&app=138&f=JPEG?w=504&h=500',
 	vueCropperImg: '/src/assets/images/avatar.png', // 裁剪图片的地址
 });
-// 获取数据
-const recommendList = [
-	{
-		title: '优惠券',
-		msg: '现金券、折扣券、营销必备',
-		num: 22,
-		icon: 'Food',
-		bg: '#48D18D',
-		iconColor: '#64d89d',
-	},
-	{
-		title: '多人拼团',
-		msg: '社交电商、开辟流量',
-		num: 5532,
-		icon: 'ShoppingCart',
-		bg: '#F95959',
-		iconColor: '#F86C6B',
-	},
-	{
-		title: '分销中心',
-		msg: '轻松招募分销员，成功推广奖励',
-		num: 5233,
-		icon: 'School',
-		bg: '#8595F4',
-		iconColor: '#92A1F4',
-	},
-	{
-		title: '秒杀',
-		msg: '超低价抢购引导更多销量',
-		num: 100,
-		icon: 'AlarmClock',
-		bg: '#FEBB50',
-		iconColor: '#FDC566',
-	},
-];
 
 // 更新CropperJs图片
 const updateCropperJsImg = (img: any) => {
@@ -232,35 +170,6 @@ const updateVueCropperImg = (img: any) => {
 </script>
 
 <style scoped lang="scss">
-/* CountUp 数字滚动 */
-.data {
-	position: relative;
-	height: 120px;
-	border-radius: 3px;
-	overflow: hidden;
-	cursor: pointer;
-	&:hover {
-		.element {
-			right: 0px !important;
-			bottom: 0px !important;
-			transition: all ease 0.3s;
-		}
-	}
-	.element {
-		position: absolute;
-		right: -10px;
-		bottom: -10px;
-		font-size: 70px;
-		transform: rotate(-30deg);
-		transition: all ease 0.3s;
-	}
-	.data-auto {
-		padding: 15px;
-		position: absolute;
-		left: 0;
-		top: 5%;
-	}
-}
 /* VueCropper 裁剪图片 */
 .cropper-img-warp {
 	text-align: center;

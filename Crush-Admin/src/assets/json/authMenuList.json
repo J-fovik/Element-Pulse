@@ -279,6 +279,21 @@
 					}
 				},
 				{
+					"path": "/assembly/rollNumber",
+					"name": "rollNumber",
+					"component": "/assembly/rollNumber/index",
+					"meta": {
+						"icon": "Menu",
+						"title": "滚动数字",
+						"isLink": "",
+						"isHide": false,
+						"isFull": false,
+						"isAffix": false,
+						"requiresAuth": true,
+						"isKeepAlive": true
+					}
+				},
+				{
 					"path": "/assembly/uploadFile",
 					"name": "uploadFile",
 					"component": "/assembly/uploadFile/index",

@@ -332,3 +332,39 @@ export const concurrentPromises = (promises: any, limit: number = 2) => {
 		}
 	});
 };
+
+/**
+ * 创建一个平滑的数字动画函数。
+ * @param {number} from  动画开始时的数字值。
+ * @param {number} to  动画结束时的数字值。
+ * @param {number} [duration=1000]  动画持续的时间，以毫秒为单位。
+ * @param {Function} onUpdate  动画过程中的回调函数，当动画更新时会被调用，可以用来更新UI或者执行其他操作。
+ */
+export const animation = ({ from, to, duration = 3000, onUpdate }: any) => {
+	// 赋值开始数字
+	let value = from;
+	// 记录开始时间
+	const start = Date.now();
+	//  速度 = (终点 - 起点) / 总的时间
+	const speed = (to - from) / duration;
+	// 辅助函数，让value变化一点
+	function _run() {
+		// 时间
+		const t = Date.now() - start;
+		// 如果时间超过了运动时间
+		if (t >= duration) {
+			// 把value设置为终点
+			value = to;
+			// 存在并执行函数，传入当前值
+			onUpdate && onUpdate(value);
+			return;
+		}
+		// 改变value值 (form + 时间 + 速度)
+		value = from + t * speed;
+		// 存在并执行函数，传入当前值
+		onUpdate && onUpdate(value);
+		// 注册下一次变化
+		requestAnimationFrame(_run);
+	}
+	_run();
+};
