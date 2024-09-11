@@ -4,7 +4,7 @@
 </template>
 
 <script setup name="Statistic">
-import { useTransition } from '@vueuse/core';
+import { TransitionPresets, useTransition } from '@vueuse/core';
 // 接受父组件参数
 const props = defineProps({
 	value: {
@@ -17,6 +17,7 @@ const initial = ref(0);
 // 最终值
 const final = useTransition(initial, {
 	duration: 3000, // 过渡持续时间
+	// transition: TransitionPresets.easeInOutCubic, // 过渡效果
 	onFinished: () => {
 		// 可以在这里处理过渡结束的事件
 	},
