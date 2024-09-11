@@ -150,6 +150,21 @@ export default {
 			component: () => import('@/views/assembly/rollNumber/index.vue'),
 		},
 		{
+			path: '/assembly/cropImage',
+			name: 'cropImage',
+			meta: {
+				icon: 'Menu',
+				title: '裁剪图片',
+				isLink: '',
+				isHide: false,
+				isFull: false,
+				isAffix: false,
+				requiresAuth: true,
+				isKeepAlive: true,
+			},
+			component: () => import('@/views/assembly/cropImage/index.vue'),
+		},
+		{
 			path: '/assembly/uploadFile',
 			name: 'uploadFile',
 			meta: {

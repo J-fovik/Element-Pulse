@@ -3,7 +3,7 @@
 	{{ final.toFixed(0) }}
 </template>
 
-<script setup name="Transitional">
+<script setup name="Statistic">
 import { useTransition } from '@vueuse/core';
 // 接受父组件参数
 const props = defineProps({

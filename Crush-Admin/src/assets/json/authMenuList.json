@@ -294,6 +294,21 @@
 					}
 				},
 				{
+					"path": "/assembly/cropImage",
+					"name": "cropImage",
+					"component": "/assembly/cropImage/index",
+					"meta": {
+						"icon": "Menu",
+						"title": "裁剪图片",
+						"isLink": "",
+						"isHide": false,
+						"isFull": false,
+						"isAffix": false,
+						"requiresAuth": true,
+						"isKeepAlive": true
+					}
+				},
+				{
 					"path": "/assembly/uploadFile",
 					"name": "uploadFile",
 					"component": "/assembly/uploadFile/index",
