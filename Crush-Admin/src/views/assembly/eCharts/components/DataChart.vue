@@ -42,8 +42,6 @@
 </template>
 
 <script lang="ts" setup name="DataChart">
-import * as echarts from 'echarts';
-import dayjs from 'dayjs';
 import { useBasicsState } from '@/hooks';
 // 控制时间选择
 const [chartDay, setChartDay] = useBasicsState(1, () => initData());
@@ -65,161 +63,101 @@ const chartDayTitle = computed(() => {
 	}
 });
 // 图表数据
-const chartsData = ref<AnyObject[]>([]);
+const yData = ref<any>([]);
+// 时间轴
+const xData = ref<string[]>([]);
 // 图表配置
 const chartOption = computed(() => {
-	return (
-		chartsData.value.length && {
-			grid: {
-				left: '3%',
-				right: '3%',
-				top: '12%',
-				bottom: '22%',
+	return {
+		tooltip: {
+			trigger: 'axis',
+		},
+		dataZoom: [
+			{
+				show: true,
+				realtime: true,
+				start: 0,
+				end: 100,
 			},
-			dataZoom: [
-				{
-					show: true,
-					realtime: true,
-					start: 0,
-					end: 100,
-				},
-				{
-					type: 'inside',
-					realtime: true,
-					start: 0,
-					end: 100,
-				},
-			],
-			xAxis: {
-				type: 'category',
-				offset: 2,
-				data: chartsData.value.map((item) => item.x),
-				boundaryGap: false,
-				axisLabel: {
-					color: '#4E5969',
-					formatter(value: number, idx: number) {
-						if (idx === 0) return '';
-						if (idx === chartsData.value.length - 1) return '';
-						return `${value}`;
-					},
-				},
-				axisLine: {
-					show: false,
-				},
-				axisTick: {
-					show: false,
-				},
-				splitLine: {
-					show: true,
-					interval: (idx: number) => {
-						if (idx === 0) return false;
-						if (idx === chartsData.value.length - 1) return false;
-						return true;
-					},
-					lineStyle: {
-						color: '#E5E8EF',
-					},
-				},
-				axisPointer: {
-					show: true,
-					lineStyle: {
-						color: '#23ADFF',
-						width: 2,
-					},
-				},
+			{
+				type: 'inside',
+				realtime: true,
+				start: 0,
+				end: 100,
 			},
-			yAxis: {
-				type: 'value',
-				axisLine: {
-					show: false,
-				},
-				splitLine: {
-					show: true,
-					lineStyle: {
-						type: 'dashed',
-						color: '#E5E8EF',
-					},
-				},
-			},
-			tooltip: {
-				trigger: 'axis',
-				formatter(params: any) {
-					const [firstElement] = params;
-					return `<div>
-							<p class="tooltip-title">${firstElement.axisValueLabel}</p>
-							<div class="content-panel">
-								<span>订单量</span>
-								<span class="tooltip-value">${firstElement.value}</span>
-							</div>
-          				</div>`;
-				},
-				className: 'echarts-tooltip-diy',
-			},
-			series: [
-				{
-					data: chartsData.value.map((item) => item.y),
-					type: 'line',
-					smooth: true,
-					symbolSize: 12,
-					emphasis: {
-						focus: 'series',
-						itemStyle: {
-							borderWidth: 2,
-						},
-					},
-					markPoint: {
-						data: [
-							{ type: 'max', name: 'Max' },
-							{ type: 'min', name: 'Min' },
-						],
-					},
-					markLine: {
-						data: [{ type: 'average', name: 'Avg', silent: true }],
-					},
-					lineStyle: {
-						width: 3,
-						color: new echarts.graphic.LinearGradient(0, 0, 1, 0, [
-							{
-								offset: 0,
-								color: 'rgba(30, 231, 255, 1)',
-							},
-							{
-								offset: 0.5,
-								color: 'rgba(36, 154, 255, 1)',
-							},
-							{
-								offset: 1,
-								color: 'rgba(111, 66, 251, 1)',
-							},
-						]),
-					},
-					showSymbol: false,
-					areaStyle: {
-						opacity: 0.8,
-						color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
-							{
-								offset: 0,
-								color: 'rgba(17, 126, 255, 0.16)',
-							},
-							{
-								offset: 1,
-								color: 'rgba(17, 128, 255, 0)',
-							},
-						]),
-					},
-				},
-			],
-		}
-	);
+		],
+		legend: {
+			data: yData.value.map((o: any) => o.name),
+		},
+		grid: {
+			left: '3%',
+			right: '3%',
+			top: '12%',
+			bottom: '22%',
+		},
+		xAxis: {
+			type: 'category',
+			boundaryGap: false,
+			data: xData.value,
+		},
+		yAxis: {
+			type: 'value',
+		},
+		series: yData.value,
+	};
 });
-// 模拟数据
-const initData = () => {
-	chartsData.value = new Array(30).fill(0).map((el, idx) => ({
-		x: dayjs()
-			.day(idx - 2)
-			.format('YYYY-MM-DD'),
-		y: (Math.random() * 10000).toFixed(2),
-	}));
+// 获取折线图数据
+const initData = async () => {
+	// 请求数据
+	// const { res, err } = await curryingRequest(
+	// 	() =>
+	// 		getLineChartData({
+	// 			month: chartDay.value,
+	// 		}),
+	// 	{
+	// 		before: () => setChatLoading(true),
+	// 		after: () => setChatLoading(false),
+	// 	}
+	// );
+	// // 处理错误
+	// if (err) return;
+	// 设置时间
+	xData.value = [
+		'2023/04/19',
+		'2023/04/20',
+		'2023/04/21',
+		'2023/04/22',
+		'2023/04/23',
+		'2023/04/24',
+		'2023/04/25',
+	]; //res?.data.dateList;
+	yData.value = [
+		{
+			name: '查重订单',
+			type: 'line',
+			data: [120, 132, 101, 134, 6, 230, 210],
+		},
+		{
+			name: '降重订单',
+			type: 'line',
+			data: [220, 466, 191, 234, 290, 330, 310],
+		},
+		{
+			name: '排版订单',
+			type: 'line',
+			data: [150, 777, 201, 154, 190, 330, 410],
+		},
+		{
+			name: 'AI写作订单',
+			type: 'line',
+			data: [320, 1332, 909, 88, 390, 330, 320],
+		},
+	];
+	// // // 设置数据
+	// yData.value = res?.data.lineChartInfoVoList.map((o: any) => {
+	// 	o.type = 'line';
+	// 	return o;
+	// });
 };
 initData();
 </script>

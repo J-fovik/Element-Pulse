@@ -41,12 +41,10 @@
 	</el-card>
 </template>
 
-<script lang="ts" setup name="DataChart">
-import { useBasicsState } from '@/hooks';
+<script lang="ts" setup name="DataTrend">
+import { useBasicsState, useAsyncData } from '@/hooks';
 // 控制时间选择
 const [chartDay, setChartDay] = useBasicsState(1, () => initData());
-// chatLoading控制
-const [chatLoading, setChatLoading] = useBasicsState<boolean>(false);
 // 时间
 const chartDayTitle = computed(() => {
 	switch (chartDay.value) {
@@ -63,9 +61,39 @@ const chartDayTitle = computed(() => {
 	}
 });
 // 图表数据
-const yData = ref<any>([]);
-// 时间轴
-const xData = ref<string[]>([]);
+const chartsData = ref({
+	xData: [
+		'2023/04/19',
+		'2023/04/20',
+		'2023/04/21',
+		'2023/04/22',
+		'2023/04/23',
+		'2023/04/24',
+		'2023/04/25',
+	],
+	yData: [
+		{
+			name: '查重订单',
+			type: 'line',
+			data: [120, 132, 101, 134, 90, 230, 210],
+		},
+		{
+			name: '降重订单',
+			type: 'line',
+			data: [220, 182, 191, 234, 290, 330, 310],
+		},
+		{
+			name: '排版订单',
+			type: 'line',
+			data: [150, 232, 201, 154, 190, 330, 410],
+		},
+		{
+			name: 'AI写作订单',
+			type: 'line',
+			data: [320, 332, 301, 334, 390, 330, 320],
+		},
+	],
+});
 // 图表配置
 const chartOption = computed(() => {
 	return {
@@ -87,7 +115,7 @@ const chartOption = computed(() => {
 			},
 		],
 		legend: {
-			data: yData.value.map((o: any) => o.name),
+			data: chartData.value.yData.map((o: any) => o.name),
 		},
 		grid: {
 			left: '3%',
@@ -98,66 +126,38 @@ const chartOption = computed(() => {
 		xAxis: {
 			type: 'category',
 			boundaryGap: false,
-			data: xData.value,
+			data: chartData.value.xData,
 		},
 		yAxis: {
 			type: 'value',
 		},
-		series: yData.value,
+		series: chartData.value.yData.map((o: any) => {
+			o.type = 'line';
+			return o;
+		}),
 	};
 });
-// 获取折线图数据
-const initData = async () => {
-	// 请求数据
-	// const { res, err } = await curryingRequest(
-	// 	() =>
-	// 		getLineChartData({
-	// 			month: chartDay.value,
-	// 		}),
-	// 	{
-	// 		before: () => setChatLoading(true),
-	// 		after: () => setChatLoading(false),
-	// 	}
-	// );
-	// // 处理错误
-	// if (err) return;
-	// 设置时间
-	xData.value = [
-		'2023/04/19',
-		'2023/04/20',
-		'2023/04/21',
-		'2023/04/22',
-		'2023/04/23',
-		'2023/04/24',
-		'2023/04/25',
-	]; //res?.data.dateList;
-	yData.value = [
-		{
-			name: '查重订单',
-			type: 'line',
-			data: [120, 132, 101, 134, 90, 230, 210],
-		},
-		{
-			name: '降重订单',
-			type: 'line',
-			data: [220, 182, 191, 234, 290, 330, 310],
-		},
-		{
-			name: '排版订单',
-			type: 'line',
-			data: [150, 232, 201, 154, 190, 330, 410],
-		},
-		{
-			name: 'AI写作订单',
-			type: 'line',
-			data: [320, 332, 301, 334, 390, 330, 320],
-		},
-	];
-	// // // 设置数据
-	// yData.value = res?.data.lineChartInfoVoList.map((o: any) => {
-	// 	o.type = 'line';
-	// 	return o;
-	// });
-};
-initData();
+const {
+	data: chartData,
+	loading,
+	initData,
+} = useAsyncData(
+	async () => {
+		// 请求数据
+		// const { res, err } = await curryingRequest(
+		// 	() =>
+		// 		getLineChartData({
+		// 			month: chartDay.value,
+		// 		}),
+		// );
+		// // 处理错误
+		// if (err) return;
+		// 返回处理后的数据
+		return chartsData.value;
+	},
+	{
+		xData: [],
+		yData: [],
+	}
+);
 </script>

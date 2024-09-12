@@ -40,11 +40,13 @@
 		</div>
 	</el-card>
 </template>
-<script setup lang="ts" name="OrderTrend">
+<script setup lang="ts" name="OrderChart">
 import echarts from '@/components/ECharts/config';
-import { useBasicsState, useAsyncData } from '@/hooks';
+import { useBasicsState } from '@/hooks';
 // 控制时间选择
 const [chartDay, setChartDay] = useBasicsState(1, () => initData());
+// chatLoading控制
+const [chatLoading, setChatLoading] = useBasicsState<boolean>(false);
 // 时间
 const chartDayTitle = computed(() => {
 	switch (chartDay.value) {
@@ -61,36 +63,9 @@ const chartDayTitle = computed(() => {
 	}
 });
 // 图表数据
-const chartsData = ref({
-	xData: [
-		'2023/04/19',
-		'2023/04/20',
-		'2023/04/21',
-		'2023/04/22',
-		'2023/04/23',
-		'2023/04/24',
-		'2023/04/25',
-		'2023/04/26',
-		'2023/04/27',
-		'2023/04/28',
-		'2023/04/29',
-		'2023/04/30',
-		'2023/05/01',
-		'2023/05/02',
-		'2023/05/03',
-		'2023/05/04',
-		'2023/05/05',
-		'2023/05/06',
-		'2023/05/07',
-		'2023/05/08',
-		'2023/05/09',
-		'2023/05/10',
-	],
-	yData: [
-		3221, 3654, 3782, 4023, 4277, 4212, 105, 208, 356, 499, 866, 1065, 1865, 2522, 2699, 2254,
-		2344, 1986, 1602, 1787, 2654, 2877,
-	],
-});
+const yData = ref<number[]>([]);
+// 时间轴
+const xData = ref<string[]>([]);
 // 图表配置
 const chartOption = computed(() => {
 	return {
@@ -120,13 +95,13 @@ const chartOption = computed(() => {
 		xAxis: {
 			type: 'category',
 			offset: 2,
-			data: chartsData.value.xData,
+			data: xData.value,
 			boundaryGap: false,
 			axisLabel: {
 				color: '#4E5969',
 				formatter(value: number, idx: number) {
 					if (idx === 0) return '';
-					if (idx === chartsData.value.xData.length - 1) return '';
+					if (idx === xData.value.length - 1) return '';
 					return `${value}`;
 				},
 			},
@@ -140,7 +115,7 @@ const chartOption = computed(() => {
 				show: true,
 				interval: (idx: number) => {
 					if (idx === 0) return false;
-					if (idx === chartsData.value.xData.length - 1) return false;
+					if (idx === xData.value.length - 1) return false;
 					return true;
 				},
 				lineStyle: {
@@ -185,7 +160,7 @@ const chartOption = computed(() => {
 		},
 		series: [
 			{
-				data: chartsData.value.yData,
+				data: yData.value,
 				type: 'line',
 				smooth: true,
 				symbolSize: 12,
@@ -239,27 +214,112 @@ const chartOption = computed(() => {
 		],
 	};
 });
-const {
-	data: chartData,
-	loading,
-	initData,
-} = useAsyncData(
-	async () => {
-		// 请求数据
-		// const { res, err } = await curryingRequest(
-		// 	() =>
-		// 		getLineChartData({
-		// 			month: chartDay.value,
-		// 		}),
-		// );
-		// // 处理错误
-		// if (err) return;
-		// 返回处理后的数据
-		return chartsData.value;
-	},
-	{
-		xData: [],
-		yData: [],
+// 获取数据
+const initData = async () => {
+	// 请求数据
+	// const { res, err } = await curryingRequest(
+	// 	() =>
+	// 		getLineChartData({
+	// 			month: chartDay.value,
+	// 		}),
+	// );
+	// // 处理错误
+	// if (err) return;
+	// 返回处理后的数据
+	if (chartDay.value === 1) {
+		// 设置数据
+		yData.value = [
+			3221, 3654, 3782, 4023, 4277, 4212, 105, 208, 356, 499, 866, 1065, 1865, 2522, 2699,
+			2254, 2344, 1986, 1602, 1787, 2654, 2877,
+		];
+		// 设置时间
+		xData.value = [
+			'2023/04/19',
+			'2023/04/20',
+			'2023/04/21',
+			'2023/04/22',
+			'2023/04/23',
+			'2023/04/24',
+			'2023/04/25',
+			'2023/04/26',
+			'2023/04/27',
+			'2023/04/28',
+			'2023/04/29',
+			'2023/04/30',
+			'2023/05/01',
+			'2023/05/02',
+			'2023/05/03',
+			'2023/05/04',
+			'2023/05/05',
+			'2023/05/06',
+			'2023/05/07',
+			'2023/05/08',
+			'2023/05/09',
+			'2023/05/10',
+		];
+	} else if (chartDay.value === 3) {
+		// 设置数据
+		yData.value = [
+			222, 333, 444, 555, 866, 1065, 1865, 2522, 2699, 2254, 2344, 1986, 1602, 1787, 2654,
+			2877, 3221, 3654, 3782, 4023, 4277, 4212,
+		];
+		// 设置时间
+		xData.value = [
+			'2024/04/19',
+			'2024/04/20',
+			'2024/04/21',
+			'2024/04/22',
+			'2024/04/23',
+			'2024/04/24',
+			'2024/04/25',
+			'2024/04/26',
+			'2024/04/27',
+			'2024/04/28',
+			'2024/04/29',
+			'2024/04/30',
+			'2024/05/01',
+			'2024/05/02',
+			'2024/05/03',
+			'2024/05/04',
+			'2024/05/05',
+			'2024/05/06',
+			'2024/05/07',
+			'2024/05/08',
+			'2024/05/09',
+			'2024/05/10',
+		];
+	} else {
+		// 设置数据
+		yData.value = [
+			1865, 2522, 2699, 2254, 2344, 1986, 1602, 222, 333, 444, 555, 866, 1065, 1787, 2654,
+			2877, 3221, 3654, 3782, 4023, 4277, 4212,
+		];
+		// 设置时间
+		xData.value = [
+			'2025/04/19',
+			'2025/04/20',
+			'2025/04/21',
+			'2025/04/22',
+			'2025/04/23',
+			'2025/04/24',
+			'2025/04/25',
+			'2025/04/26',
+			'2025/04/27',
+			'2025/04/28',
+			'2025/04/29',
+			'2025/04/30',
+			'2025/05/01',
+			'2025/05/02',
+			'2025/05/03',
+			'2025/05/04',
+			'2025/05/05',
+			'2025/05/06',
+			'2025/05/07',
+			'2025/05/08',
+			'2025/05/09',
+			'2025/05/10',
+		];
 	}
-);
+};
+initData();
 </script>

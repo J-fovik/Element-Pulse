@@ -93,9 +93,10 @@
 				</div>
 			</template>
 		</el-card>
-		<OrderTrend class="mt10" />
 		<DataChart class="mt10" />
-		<DataOrder class="mt10" />
+		<DataTrend class="mt10" />
+		<OrderChart class="mt10" />
+		<OrderTrend class="mt10" />
 		<el-card
 			shadow="hover"
 			header="配置项 📚"
@@ -123,9 +124,10 @@
 
 <script setup lang="ts" name="eCharts">
 import { useGlobalStore } from '@/stores';
-import OrderTrend from './components/OrderTrend.vue';
 import DataChart from './components/DataChart.vue';
-import DataOrder from './components/DataOrder.vue';
+import DataTrend from './components/DataTrend.vue';
+import OrderChart from './components/OrderChart.vue';
+import OrderTrend from './components/OrderTrend.vue';
 import {
 	options1,
 	options2,
