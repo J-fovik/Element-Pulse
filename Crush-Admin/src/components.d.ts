@@ -18,6 +18,7 @@ declare module 'vue' {
     Dot: typeof import('./components/Dot/index.vue')['default']
     ECharts: typeof import('./components/ECharts/index.vue')['default']
     FlopTime: typeof import('./components/FlopTime/index.vue')['default']
+    Gsap: typeof import('./components/Gsap/index.vue')['default']
     IconCase: typeof import('./components/IconCase/index.vue')['default']
     IconSelect: typeof import('./components/IconSelect/index.vue')['default']
     Img: typeof import('./components/Upload/Img.vue')['default']

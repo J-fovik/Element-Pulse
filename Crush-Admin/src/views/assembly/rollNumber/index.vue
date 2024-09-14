@@ -1,12 +1,18 @@
 <template>
 	<div>
+		<el-alert
+			title="注意options配置的duration单位"
+			type="warning"
+			:closable="false"
+			class="mb15"
+		/>
 		<el-card shadow="hover" class="mb20" header="Animation 数字滚动">
 			<el-alert
 				title="Animation 是基于`animation`方法"
 				type="warning"
 				:closable="false"
 				class="my15"
-			></el-alert>
+			/>
 			<el-row :gutter="15">
 				<el-col :sm="6" v-for="(v, k) in recommendList" :key="k">
 					<div class="data" :style="{ 'background-color': v.bg }">
@@ -25,16 +31,19 @@
 			</el-row>
 			<el-descriptions :column="1" border class="mt20">
 				<el-descriptions-item label="value">滚动数字值</el-descriptions-item>
+				<el-descriptions-item label="options">
+					配置 {decimalPlaces（小数位数）、duration（动画持续时间，以豪秒为单位）}
+				</el-descriptions-item>
 			</el-descriptions>
 		</el-card>
 
 		<el-card shadow="hover" class="mb20" header="CountUp 数字滚动">
 			<el-alert
-				title="CountUp 是基于`gsap`插件，官方文档请查看 ：https://www.npmjs.com/package/gsap"
+				title="CountUp 是基于`countup.js`插件，官方文档请查看 ：https://www.npmjs.com/package/countup.js/v/2.6.0"
 				type="warning"
 				:closable="false"
 				class="my15"
-			></el-alert>
+			/>
 			<el-row :gutter="15">
 				<el-col :sm="6" v-for="(v, k) in recommendList" :key="k">
 					<div class="data" :style="{ 'background-color': v.bg }">
@@ -53,6 +62,40 @@
 			</el-row>
 			<el-descriptions :column="1" border class="mt20">
 				<el-descriptions-item label="value">滚动数字值</el-descriptions-item>
+				<el-descriptions-item label="options">
+					配置 {decimalPlaces（小数位数）、duration（动画持续时间，以秒为单位）}
+				</el-descriptions-item>
+			</el-descriptions>
+		</el-card>
+
+		<el-card shadow="hover" class="mb20" header="Gsap 数字滚动">
+			<el-alert
+				title="Gsap 是基于`gsap`插件，官方文档请查看 ：https://www.npmjs.com/package/gsap"
+				type="warning"
+				:closable="false"
+				class="my15"
+			/>
+			<el-row :gutter="15">
+				<el-col :sm="6" v-for="(v, k) in recommendList" :key="k">
+					<div class="data" :style="{ 'background-color': v.bg }">
+						<el-icon class="element">
+							<component :is="v.icon" :color="v.iconColor" />
+						</el-icon>
+						<div class="data-auto">
+							<div>{{ v.title }}</div>
+							<div class="my5 font10">{{ v.msg }}</div>
+							<div class="font20">
+								<Gsap :value="v.num" />
+							</div>
+						</div>
+					</div>
+				</el-col>
+			</el-row>
+			<el-descriptions :column="1" border class="mt20">
+				<el-descriptions-item label="value">滚动数字值</el-descriptions-item>
+				<el-descriptions-item label="options">
+					配置 {decimalPlaces（小数位数）、duration（动画持续时间，以秒为单位）}
+				</el-descriptions-item>
 			</el-descriptions>
 		</el-card>
 
@@ -62,7 +105,7 @@
 				type="warning"
 				:closable="false"
 				class="my15"
-			></el-alert>
+			/>
 			<el-row :gutter="15">
 				<el-col :sm="6" v-for="(v, k) in recommendList" :key="k">
 					<div class="data" :style="{ 'background-color': v.bg }">
@@ -82,6 +125,9 @@
 
 			<el-descriptions :column="1" border class="mt20">
 				<el-descriptions-item label="value">滚动数字值</el-descriptions-item>
+				<el-descriptions-item label="options">
+					配置 {decimalPlaces（小数位数）、duration（动画持续时间，以毫秒秒为单位）}
+				</el-descriptions-item>
 			</el-descriptions>
 		</el-card>
 	</div>

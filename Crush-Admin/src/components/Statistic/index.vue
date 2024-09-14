@@ -1,6 +1,6 @@
 <template>
 	<!-- 保留整数 -->
-	{{ final.toFixed(0) }}
+	{{ final.toFixed(props.options.decimalPlaces) }}
 </template>
 
 <script setup name="Statistic">
@@ -11,12 +11,16 @@ const props = defineProps({
 		type: Number,
 		default: 0,
 	},
+	options: {
+		type: Object,
+		default: () => ({ decimalPlaces: 0, duration: 3000 }), //decimalPlaces（小数位数）、duration（动画持续时间，以毫秒为单位）
+	},
 });
 // 初始值
 const initial = ref(0);
 // 最终值
 const final = useTransition(initial, {
-	duration: 3000, // 过渡持续时间
+	duration: props.options.duration, // 过渡持续时间
 	// transition: TransitionPresets.easeInOutCubic, // 过渡效果
 	onFinished: () => {
 		// 可以在这里处理过渡结束的事件

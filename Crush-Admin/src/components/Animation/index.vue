@@ -1,6 +1,6 @@
 <template>
 	<!-- 保留整数 -->
-	{{ final.toFixed(0) }}
+	{{ final.toFixed(props.options.decimalPlaces) }}
 </template>
 <script lang="ts" setup name="Animation">
 import { animation } from '@/utils/other';
@@ -9,6 +9,10 @@ const props = defineProps({
 	value: {
 		type: Number,
 		default: 0,
+	},
+	options: {
+		type: Object,
+		default: () => ({ decimalPlaces: 0, duration: 3000 }), //decimalPlaces（小数位数）、duration（动画持续时间，以毫秒为单位）
 	},
 });
 // 定义初始值
@@ -19,6 +23,7 @@ function AnimateToValue() {
 	animation({
 		from: 0,
 		to: props.value,
+		duration: props.options.duration,
 		onUpdate(val: number) {
 			final.value = val;
 		},

@@ -1,32 +1,40 @@
 <template>
-	<!-- 保留整数 -->
-	{{ initial.num.toFixed(0) }}
+	<span ref="countRef"></span>
 </template>
-<script setup name="CountUp">
-import gsap from 'gsap';
+
+<script setup lang="ts" name="CountUp">
+import { CountUp } from 'countup.js';
 // 接受父组件参数
 const props = defineProps({
 	value: {
 		type: Number,
-		default: 0,
+		required: true,
+	},
+	options: {
+		type: Object,
+		default: () => ({ decimalPlaces: 0, duration: 3 }), //decimalPlaces（小数位数）、duration（动画持续时间，以秒为单位）
 	},
 });
-// 定义初始值
-const initial = reactive({
-	num: 0,
-});
-// gsap的方法，传入初始值和一个对象{持续时间，最终值}
-function AnimateToValue() {
-	gsap.to(initial, {
-		duration: 3,
-		num: props.value * 1,
-	});
-}
+// 定义实例
+const countRef = ref<any>(null);
+let countUp: any;
 // 初始化执行
-AnimateToValue();
-// 监听props变化
+onMounted(() => {
+	countUp = new CountUp(countRef.value, props.value, props.options);
+	if (countUp.error) {
+		return;
+	}
+	// 开始变化
+	countUp.start();
+});
+
 watch(
 	() => props.value,
-	() => AnimateToValue()
+	(newVal) => {
+		if (countUp) {
+			// 更新数据
+			countUp.update(newVal);
+		}
+	}
 );
 </script>
