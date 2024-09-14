@@ -40,6 +40,26 @@ export function websiteRule(val: string) {
 }
 
 /**
+ * 验证硬盘路径
+ * @param {string} val 当前值字符串
+ * @returns {boolean} 符合返回true，否则false
+ */
+export const hardDrivePath = (val: any) => {
+	let windowsRegex = /^[a-zA-Z]:\\(?:[^\\\/:*?"<>|\r\n]+\\)*[^\\\/:*?"<>|\r\n]*$/;
+	let unixRegex = /^\/(?:[^\/\0]+\/)*[^\/\0]*$/;
+	// 检查是否是 Windows 路径
+	if (windowsRegex.test(val)) {
+		return true;
+	}
+	// 检查是否是 Unix/Linux/macOS 路径
+	if (unixRegex.test(val)) {
+		return true;
+	}
+	// 如果都不匹配，则路径格式不正确
+	return false;
+};
+
+/**
  * 验证IP地址
  * @param {string} val 当前值字符串
  * @returns {boolean} 符合返回true，否则false
