@@ -3,6 +3,11 @@
  */
 
 import dayjs from 'dayjs';
+import isBetween from 'dayjs/plugin/isBetween';
+import relativeTime from 'dayjs/plugin/relativeTime';
+// 使用插件
+dayjs.extend(isBetween);
+dayjs.extend(relativeTime);
 
 /**
  * dayjs时间日期转换
@@ -17,6 +22,30 @@ export const formatDayjs = (value: string, format: string = 'YYYYMMDD', empty = 
 		return dayjs(value).format(format);
 	}
 	return empty;
+};
+
+/**
+ * 距离现在相对时间
+ * @param {string} date 当前日期
+ * @returns {string} 距离现在相对时间
+ */
+export const fromPastTime = (date: string) => {
+	return dayjs().to(dayjs(date));
+};
+
+/**
+ * 判断当前时间是否在开始-结束时间内
+ * @param {string} start 开始日期
+ * @param {string} end 结束日期
+ * @returns {boolean} 在范围内返回 true 否则 false
+ */
+export const isBetweenTime = (start: string, end: string) => {
+	return dayjs(new Date()).isBetween(new Date(start), new Date(end));
+};
+
+// 查询时间是否相等
+export const isSameTime = (newTime: string | Date, oldTime: string) => {
+	return dayjs(newTime).isSame(oldTime, 'day');
 };
 
 /**

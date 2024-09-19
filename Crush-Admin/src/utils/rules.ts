@@ -231,6 +231,15 @@ export const validateVersion = (version: any) => {
 };
 
 /**
+ * 特殊字符正则
+ * @param {string} version 当前值字符串
+ * @returns {boolean} 符合返回true，否则false
+ */
+export const specialRegExp = (val: any) => {
+	return /[`~!@#$%^&*()_+<>?？\\:"{},.。，\/;'[\]]+/g.test(val);
+};
+
+/**
  * 验证element表单输入是否为有效的手机号
  * @param {Object} rule - 验证规则对象，通常包含一些验证信息，如是否必填等
  * @param {string} value - 待验证的表单输入值

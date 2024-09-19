@@ -133,6 +133,34 @@ export function numberCnUppercaseFormat(val: any, unit = '仟佰拾亿仟佰拾�
 }
 
 /**
+ * 数字转换为中文
+ * @param {number} num 当前数字
+ * @returns {string} 返回处理后的字符串
+ */
+export const numberToChinese = (num: number) => {
+	const chineseNumbers = ['零', '一', '二', '三', '四', '五', '六', '七', '八', '九'];
+	const units = ['', '十', '百', '千', '万'];
+	let result = '';
+
+	if (num === 0) {
+		return chineseNumbers[0];
+	}
+
+	const digits = num.toString().split('');
+
+	for (let i = 0; i < digits.length; i++) {
+		const digit = parseInt(digits[i], 10);
+		if (digit !== 0) {
+			result += chineseNumbers[digit] + units[digits.length - i - 1];
+		} else if (!result.endsWith('零')) {
+			result += chineseNumbers[digit];
+		}
+	}
+
+	return result;
+};
+
+/**
  * 大额数字格式化
  * @param {string | number} val 当前值字符串
  * @returns {string | number} 返回处理后的字符串

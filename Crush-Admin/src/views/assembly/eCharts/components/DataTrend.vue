@@ -119,7 +119,7 @@ const chartOption = computed(() => {
 		},
 		grid: {
 			left: '3%',
-			right: '3%',
+			right: '6%',
 			top: '12%',
 			bottom: '22%',
 		},
@@ -131,10 +131,26 @@ const chartOption = computed(() => {
 		yAxis: {
 			type: 'value',
 		},
-		series: chartData.value.yData.map((o: any) => {
-			o.type = 'line';
-			return o;
-		}),
+		series: chartData.value.yData.map((o: any) => ({
+			...o,
+			markLine: {
+				data: [
+					{
+						type: 'average',
+						name: '平均值',
+						// 可选的样式配置
+						lineStyle: {
+							// color: 'red',
+							type: 'dashed',
+						},
+						label: {
+							position: 'end', // 'start'|'middle'|'end'
+							formatter: '平均值:{c}',
+						},
+					},
+				],
+			},
+		})),
 	};
 });
 const {

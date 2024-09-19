@@ -8,6 +8,7 @@
 		"build:dev": "vue-tsc && vite build --mode development",
 		"build:test": "vue-tsc && vite build --mode test",
 		"build:pro": "vue-tsc && vite build --mode production",
+		"build": "vue-tsc && vite build --mode production",
 		"preview": "npm run build:dev && vite preview",
 		"lint:eslint": "eslint --fix --ext .js,.ts,.vue ./src",
 		"lint:prettier": "prettier --write \"src/**/*.{js,ts,json,tsx,css,less,scss,vue,html,md}\"",

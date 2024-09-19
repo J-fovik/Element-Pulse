@@ -28,6 +28,28 @@ export const USER_STATUS = [
 ];
 
 /**
+ * @description 专业
+ */
+export const MAJOR_OPTIONS = [
+	'哲学',
+	'经济学',
+	'法学',
+	'教育学',
+	'文学',
+	'历史学',
+	'理学',
+	'工学',
+	'农学',
+	'医学',
+	'军事学',
+	'管理学',
+	'其他',
+].map((item) => ({
+	label: item,
+	value: item,
+}));
+
+/**
  * 默认导出，找到匹配的元素
  * @returns {Object | null} 找出第一个符合条件的成员
  */

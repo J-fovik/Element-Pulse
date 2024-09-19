@@ -31,12 +31,8 @@
 		<br />
 		<el-row>
 			<el-col :span="4">
-				<el-upload
-					action="#"
-					:http-request="requestUpload"
-					:before-upload="beforeUpload"
-					:show-file-list="false"
-				>
+				<!-- 	:http-request="requestUpload" -->
+				<el-upload action="#" :before-upload="beforeUpload" :show-file-list="false">
 					<el-button>
 						选择
 						<el-icon class="el-icon--right">
