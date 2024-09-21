@@ -1,5 +1,5 @@
 <template>
-	<div style="border: 1px solid #ccc">
+	<div style="border: 1px solid #ccc; z-index: 1001">
 		<w-toolbar
 			v-if="hideToolbar"
 			:default-config="{
