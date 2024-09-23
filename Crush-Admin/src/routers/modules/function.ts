@@ -153,6 +153,21 @@ export default {
 			component: () => import('@/views/function/gridLayout/index.vue'),
 		},
 		{
+			path: '/function/jsonEditor',
+			name: 'jsonEditor',
+			meta: {
+				icon: 'Menu',
+				requiresAuth: true,
+				title: 'JSON编辑器',
+				isLink: '',
+				isHide: false,
+				isFull: false,
+				isAffix: false,
+				isKeepAlive: true,
+			},
+			component: () => import('@/views/function/jsonEditor/index.vue'),
+		},
+		{
 			path: '/function/miniPlugin',
 			name: 'miniPlugin',
 			meta: {

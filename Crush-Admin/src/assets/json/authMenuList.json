@@ -494,6 +494,21 @@
 					}
 				},
 				{
+					"path": "/function/jsonEditor",
+					"name": "jsonEditor",
+					"component": "/function/jsonEditor/index",
+					"meta": {
+						"icon": "Menu",
+						"title": "JSON编辑器",
+						"isLink": "",
+						"isHide": false,
+						"isFull": false,
+						"isAffix": false,
+						"requiresAuth": true,
+						"isKeepAlive": true
+					}
+				},
+				{
 					"path": "/function/miniPlugin",
 					"name": "miniPlugin",
 					"component": "/function/miniPlugin/index",
