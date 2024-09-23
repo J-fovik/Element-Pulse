@@ -279,6 +279,21 @@
 					}
 				},
 				{
+					"path": "/assembly/previewPdf",
+					"name": "previewPdf",
+					"component": "/assembly/previewPdf/index",
+					"meta": {
+						"icon": "Menu",
+						"title": "PDF预览",
+						"isLink": "",
+						"isHide": false,
+						"isFull": false,
+						"isAffix": false,
+						"requiresAuth": true,
+						"isKeepAlive": true
+					}
+				},
+				{
 					"path": "/assembly/rollNumber",
 					"name": "rollNumber",
 					"component": "/assembly/rollNumber/index",

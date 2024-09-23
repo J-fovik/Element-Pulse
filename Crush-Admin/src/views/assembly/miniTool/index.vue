@@ -1,5 +1,27 @@
 <template>
 	<div>
+		<el-card shadow="hover" header="Barcode" class="mb20">
+			<el-alert
+				title="Barcode 条形码目前使用 jsbarcode 插件完成，官方文档请查看 ：https://www.npmjs.com/package/jsbarcode"
+				type="warning"
+				:closable="false"
+			/>
+			<el-row :gutter="12" class="mt20">
+				<template v-for="(item, index) in barcodeList" :key="index">
+					<el-col :xs="24" :sm="24" :md="12" :lg="8" :xl="8">
+						<el-card shadow="hover" class="flex justify-center">
+							<Barcode :text="item.text" :type="item.type" :options="item.options" />
+						</el-card>
+					</el-col>
+				</template>
+			</el-row>
+			<el-descriptions title="配置项 📚" :column="1" border class="mt20">
+				<el-descriptions-item label="renderer"> 渲染方式 </el-descriptions-item>
+				<el-descriptions-item label="text">展示文本</el-descriptions-item>
+				<el-descriptions-item label="type">格式类型</el-descriptions-item>
+				<el-descriptions-item label="options">配置</el-descriptions-item>
+			</el-descriptions>
+		</el-card>
 		<el-card shadow="hover" header="Container 容器" class="mb20">
 			<Container />
 		</el-card>
@@ -82,4 +104,27 @@
 
 <script setup lang="ts" name="miniTool">
 const tagValue = ref('aaa,bbb,ccc');
+// 条形码数组
+const barcodeList = [
+	{
+		text: 'CODE128',
+		type: 'CODE128',
+		options: {},
+	},
+	{
+		text: 'CODE39',
+		type: 'CODE39',
+		options: {
+			lineColor: '#990000',
+		},
+	},
+	{
+		text: '123456',
+		type: 'pharmacode',
+		options: {
+			background: '#eee',
+			width: 5,
+		},
+	},
+];
 </script>

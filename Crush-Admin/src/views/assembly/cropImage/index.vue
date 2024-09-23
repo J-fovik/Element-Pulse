@@ -6,7 +6,7 @@
 				type="warning"
 				:closable="false"
 				class="mb15"
-			></el-alert>
+			/>
 			<div class="flx-center">
 				<div class="cropper-img-warp">
 					<div class="mb15 mt15">
