@@ -28,8 +28,7 @@
 		</el-card>
 
 		<div class="mt20">
-			<EmbedPdf v-if="activeKey === 'EmbedPdf'" :source="source" />
-
+			<EmbedPdf v-if="activeKey === 'EmbedPdf'" :source="pdf" />
 			<PreviewOffice
 				v-if="activeKey === 'PreviewDocx'"
 				:source="docx"
@@ -53,8 +52,6 @@ import { useBasicsState } from '@/hooks';
 // 页面唯一元素控制
 const [activeKey, setActiveKey] = useBasicsState<string | null>(null);
 // 文档地址
-const source =
-	'https://xiaoxian521.github.io/hyperlink/pdf/Cookie%E5%92%8CSession%E5%8C%BA%E5%88%AB%E7%94%A8%E6%B3%95.pdf';
 const pdf =
 	'https://xiaoxian521.github.io/hyperlink/pdf/Cookie%E5%92%8CSession%E5%8C%BA%E5%88%AB%E7%94%A8%E6%B3%95.pdf';
 const docx = 'http://static.shanhuxueyuan.com/test6.docx';
