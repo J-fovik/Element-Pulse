@@ -26,7 +26,7 @@
 				<el-button type="primary" @click="setActiveKey('PreviewPdf')">预览pdf</el-button>
 			</el-space>
 		</el-card>
-		
+
 		<div class="mt20">
 			<EmbedPdf v-if="activeKey === 'EmbedPdf'" :source="source" />
 
