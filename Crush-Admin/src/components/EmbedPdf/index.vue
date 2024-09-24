@@ -51,7 +51,7 @@
 		</div>
 	</el-card>
 </template>
-<script setup lang="ts" name="PreviewPdf">
+<script setup lang="ts" name="EmbedPdf">
 import VuePdfEmbed from 'vue-pdf-embed';
 
 // 定义父组件传过来的值

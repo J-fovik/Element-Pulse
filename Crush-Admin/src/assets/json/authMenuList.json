@@ -279,12 +279,12 @@
 					}
 				},
 				{
-					"path": "/assembly/previewPdf",
-					"name": "previewPdf",
-					"component": "/assembly/previewPdf/index",
+					"path": "/assembly/previewFile",
+					"name": "previewFile",
+					"component": "/assembly/previewFile/index",
 					"meta": {
 						"icon": "Menu",
-						"title": "PDF预览",
+						"title": "预览文件",
 						"isLink": "",
 						"isHide": false,
 						"isFull": false,

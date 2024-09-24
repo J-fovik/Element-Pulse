@@ -12,7 +12,7 @@
 					<div class="mb15 mt15">
 						<img class="cropper-img" :src="state.cropperJsImg" />
 					</div>
-					<el-button type="primary" size="default" @click="setActiveKey('CropperJs')">
+					<el-button type="primary" @click="setActiveKey('CropperJs')">
 						<el-icon>
 							<Crop />
 						</el-icon>
@@ -44,7 +44,7 @@
 					<div class="mb15 mt15">
 						<img class="cropper-img" :src="state.vueCropperImg" />
 					</div>
-					<el-button type="primary" size="default" @click="setActiveKey('VueCropper')">
+					<el-button type="primary" @click="setActiveKey('VueCropper')">
 						<el-icon>
 							<Crop />
 						</el-icon>

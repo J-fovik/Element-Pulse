@@ -135,19 +135,19 @@ export default {
 			component: () => import('@/views/assembly/tablePlus/index.vue'),
 		},
 		{
-			path: '/assembly/previewPdf',
-			name: 'previewPdf',
+			path: '/assembly/previewFile',
+			name: 'previewFile',
 			meta: {
 				icon: 'Menu',
 				requiresAuth: true,
-				title: 'PDF预览',
+				title: '预览文件',
 				isLink: '',
 				isHide: false,
 				isFull: false,
 				isAffix: false,
 				isKeepAlive: true,
 			},
-			component: () => import('@/views/assembly/previewPdf/index.vue'),
+			component: () => import('@/views/assembly/previewFile/index.vue'),
 		},
 		{
 			path: '/assembly/rollNumber',
