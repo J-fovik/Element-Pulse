@@ -59,7 +59,8 @@
 		"vue-pdf-embed": "^2.1.0",
 		"vue-router": "^4.3.0",
 		"vue3-puzzle-vcode": "^1.1.7",
-		"vuedraggable": "^4.1.0"
+		"vuedraggable": "^4.1.0",
+		"xgplayer": "^3.0.20"
 	},
 	"devDependencies": {
 		"@types/md5": "^2.3.5",

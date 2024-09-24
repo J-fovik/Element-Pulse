@@ -41,5 +41,6 @@ declare module 'vue' {
     TreeSelector: typeof import('./components/TreeSelector/index.vue')['default']
     VueCropper: typeof import('./components/VueCropper/index.vue')['default']
     WangEditor: typeof import('./components/WangEditor/index.vue')['default']
+    Xgplayer: typeof import('./components/Xgplayer/index.vue')['default']
   }
 }

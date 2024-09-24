@@ -2,22 +2,21 @@
 	<div>
 		<el-card header="EmbedPdf 嵌入式PEF" shadow="hover">
 			<el-alert
-				title="感谢优秀的 `vue-pdf-embed`，本 Demo 是基于：https://www.npmjs.com/package/vue-pdf-embed"
+				title="EmbedPdf 预览文件目前使用 vue-pdf-embed 插件完成，官方文档请查看 ：https://www.npmjs.com/package/vue-pdf-embed"
 				type="warning"
 				:closable="false"
-				class="mb15"
+				class="mb20"
 			/>
 			<el-button type="primary" @click="setActiveKey('EmbedPdf')">查看</el-button>
 		</el-card>
 
 		<el-card header="PreviewOffice 文件预览(docx、excel、pdf)" class="mt20" shadow="hover">
 			<el-alert
-				title="感谢优秀的 `vue-office/docx`，本 Demo 是基于：https://www.npmjs.com/package/@js-preview/pdf"
+				title="PreviewOffice 预览文件目前使用 vue-office/docx 插件完成，官方文档请查看 ：https://www.npmjs.com/package/@js-preview/pdf"
 				type="warning"
 				:closable="false"
-				class="mb15"
+				class="mb20"
 			/>
-
 			<el-space>
 				<el-button type="primary" @click="setActiveKey('PreviewDocx')">预览docx</el-button>
 				<el-button type="primary" @click="setActiveKey('PreviewExcel')">

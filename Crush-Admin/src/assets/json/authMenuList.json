@@ -324,6 +324,21 @@
 					}
 				},
 				{
+					"path": "/assembly/videoPlayer",
+					"name": "videoPlayer",
+					"component": "/assembly/videoPlayer/index",
+					"meta": {
+						"icon": "Menu",
+						"title": "视频播放器",
+						"isLink": "",
+						"isHide": false,
+						"isFull": false,
+						"isAffix": false,
+						"requiresAuth": true,
+						"isKeepAlive": true
+					}
+				},
+				{
 					"path": "/assembly/uploadFile",
 					"name": "uploadFile",
 					"component": "/assembly/uploadFile/index",

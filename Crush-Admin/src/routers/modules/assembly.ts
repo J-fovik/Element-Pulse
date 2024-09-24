@@ -180,6 +180,21 @@ export default {
 			component: () => import('@/views/assembly/cropImage/index.vue'),
 		},
 		{
+			path: '/assembly/videoPlayer',
+			name: 'videoPlayer',
+			meta: {
+				icon: 'Menu',
+				title: '视频播放器',
+				isLink: '',
+				isHide: false,
+				isFull: false,
+				isAffix: false,
+				requiresAuth: true,
+				isKeepAlive: true,
+			},
+			component: () => import('@/views/assembly/videoPlayer/index.vue'),
+		},
+		{
 			path: '/assembly/uploadFile',
 			name: 'uploadFile',
 			meta: {
