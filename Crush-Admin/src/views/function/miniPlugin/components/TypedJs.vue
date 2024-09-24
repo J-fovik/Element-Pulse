@@ -3,6 +3,7 @@
 		<el-alert
 			title="感谢优秀的 `typed.js`，本 Demo 是基于：https://www.npmjs.com/package/typed.js/v/2.0.12"
 			type="warning"
+			:closable="false"
 		/>
 		<div class="flex-col mt20 flx-center">
 			<p ref="typedRef" />

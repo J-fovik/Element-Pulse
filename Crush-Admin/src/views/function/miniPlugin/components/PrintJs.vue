@@ -3,6 +3,7 @@
 		<el-alert
 			title="感谢优秀的 `print-js`，本 Demo 是基于：https://www.jianshu.com/p/bc079fbb20c7"
 			type="warning"
+			:closable="false"
 		/>
 		<div class="flex-col mt20 flx-center">
 			<el-button @click="onPrintJs" class="mt20" type="primary"> 点击打印演示 </el-button>

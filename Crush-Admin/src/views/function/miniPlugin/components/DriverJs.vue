@@ -3,6 +3,7 @@
 		<el-alert
 			title="感谢优秀的 `driver.js`，本 Demo 是基于：https://www.npmjs.com/package/driver.js/v/1.3.0"
 			type="warning"
+			:closable="false"
 		/>
 		<div class="flex-col mt20 flx-center">
 			<el-button class="mt20" type="primary" @click.prevent.stop="driverObj.drive()">
