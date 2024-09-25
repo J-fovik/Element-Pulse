@@ -1,12 +1,13 @@
 <template>
-	<Container>
-		<el-alert
-			title="感谢优秀的 `vue-json-pretty`，本 Demo 是基于：https://www.npmjs.com/package/vue-json-pretty"
-			type="warning"
-			:closable="false"
-		/>
-		<el-card class="mt20">
-			<vue-json-pretty
+	<div>
+		<el-card shadow="hover" header="vue-json-pretty 编辑器">
+			<el-alert
+				title="感谢优秀的 `vue-json-pretty`，本 Demo 是基于：https://www.npmjs.com/package/vue-json-pretty"
+				type="warning"
+				:closable="false"
+				class="mb20"
+			/>
+			<VueJsonPretty
 				v-model:data="state.data"
 				:deep="state.deep"
 				:show-double-quotes="state.showDoubleQuotes"
@@ -18,12 +19,30 @@
 				:editable-trigger="state.editableTrigger"
 			/>
 		</el-card>
-	</Container>
+
+		<el-card shadow="hover" header="vue-json-viewer 编辑器" class="mt20">
+			<el-alert
+				title="感谢优秀的 `vue-json-viewer`，本 Demo 是基于：https://www.npmjs.com/package/vue-json-viewer"
+				type="warning"
+				:closable="false"
+				class="mb20"
+			/>
+			<VueJsonViewer
+				:value="defaultData"
+				:expand-depth="5"
+				boxed
+				sort
+				:copyable="{ copyText: '复制', copiedText: '复制成功' }"
+			/>
+		</el-card>
+	</div>
 </template>
 <script setup lang="ts" name="jsonEditor">
+// 引入vue-json-pretty组件以及样式
 import VueJsonPretty from 'vue-json-pretty';
 import 'vue-json-pretty/lib/styles.css';
-
+// 引入vue-json-viewer组件
+import VueJsonViewer from 'vue-json-viewer';
 const defaultData = {
 	status: 200,
 	text: '',
@@ -49,9 +68,7 @@ const defaultData = {
 		},
 	],
 };
-//  state.val 可以不用
 const state = reactive({
-	val: JSON.stringify(defaultData),
 	data: defaultData,
 	showLine: true,
 	showLineNumber: true,
@@ -62,26 +79,4 @@ const state = reactive({
 	editableTrigger: 'click' as any,
 	deep: 3,
 });
-
-watch(
-	() => state.val,
-	(newVal) => {
-		try {
-			state.data = JSON.parse(newVal);
-		} catch (err) {
-			// console.log('JSON ERROR');
-		}
-	}
-);
-
-watch(
-	() => state.data,
-	(newVal) => {
-		try {
-			state.val = JSON.stringify(newVal);
-		} catch (err) {
-			// console.log('JSON ERROR');
-		}
-	}
-);
 </script>
