@@ -32,7 +32,7 @@ export const useTable = (columns: TableCustomColumnData[], callBack: () => void)
 	const tableBaseOptions = reactive({
 		bordered: false, // 带边框
 		stripe: false, // 带斑马纹
-		selectedKeys: [] as Array<string | number>, // 存储多选数组
+		selectedKeys: [] as any, // 存储多选数组
 		pagination: {
 			total: 1, // 总页数
 			current: 1, // 当前页
