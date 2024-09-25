@@ -30,19 +30,21 @@
 			<VueJsonViewer
 				:value="defaultData"
 				:expand-depth="5"
-				boxed
-				sort
+				:theme="globalStore.isDark ? 'dark' : 'light'"
 				:copyable="{ copyText: '复制', copiedText: '复制成功' }"
 			/>
 		</el-card>
 	</div>
 </template>
 <script setup lang="ts" name="jsonEditor">
+import { useGlobalStore } from '@/stores';
 // 引入vue-json-pretty组件以及样式
 import VueJsonPretty from 'vue-json-pretty';
 import 'vue-json-pretty/lib/styles.css';
 // 引入vue-json-viewer组件
 import VueJsonViewer from 'vue-json-viewer';
+
+const globalStore = useGlobalStore();
 const defaultData = {
 	status: 200,
 	text: '',
