@@ -20,6 +20,8 @@ import VueGridLayout from 'vue-grid-layout';
 import errorHandler from '@/utils/errorHandler';
 // 样式
 import '@/assets/styles/app.scss';
+// 阻止默认事件
+import { addPreventDefault } from '@/utils/other';
 const app = createApp(App);
 const pinia = createPinia();
 // 仓库持久化
@@ -31,4 +33,5 @@ Object.keys(Icons).forEach((key) => {
 });
 // 自定义指令
 directives(app);
+addPreventDefault();
 app.use(ElementPlus).use(router).use(I18n).use(VueGridLayout).use(pinia).mount('#app');
