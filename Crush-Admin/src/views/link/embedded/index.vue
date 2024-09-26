@@ -7,7 +7,10 @@
 		></iframe>
 	</div>
 </template>
-
+<!-- Element ：https://element-plus.org/zh-CN/component/icon.html -->
+<!-- 艺术画板 ：https://songlh.top/paint-board/ -->
+<!-- 思维导图 ：https://wanglin2.github.io/mind-map/#/ -->
+<!-- PPT ：https://pipipi-pikachu.github.io/PPTist/ -->
 <script setup lang="ts" name="embedded"></script>
 
 <style scoped lang="scss">
