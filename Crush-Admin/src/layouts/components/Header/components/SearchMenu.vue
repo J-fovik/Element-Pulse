@@ -127,12 +127,13 @@ const handleClickMenu = () => {
 	searchMenu.value = '';
 	isShowSearch.value = false;
 };
-onMounted(() => {
-	document.addEventListener('keydown', keyboardOperation);
-});
-
-onUnmounted(() => {
-	document.removeEventListener('keydown', keyboardOperation);
+// 监听是否显示搜索
+watch(isShowSearch, (val) => {
+	if (val) {
+		document.addEventListener('keydown', keyboardOperation);
+	} else {
+		document.removeEventListener('keydown', keyboardOperation);
+	}
 });
 </script>
 
