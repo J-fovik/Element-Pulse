@@ -332,3 +332,21 @@ export const disabledDate = (
 	const end = start.add(num, unit).endOf('day');
 	return current < start || current > end;
 };
+
+/**
+ * 获取默认年份
+ */
+export const getGkYear = () => {
+	// 获取当前日期
+	const now = dayjs();
+	// 以9月1日位 分界日期
+	const boundaryDate = dayjs().month(8).date(1);
+	// 比较当前日期是否大于分界日期
+	if (now.isAfter(boundaryDate)) {
+		// 当前日期大于分界日期，展示明年
+		return now.add(1, 'year').year().toString();
+	} else {
+		// 当前日期小于等于分界日期，展示今年
+		return now.year().toString();
+	}
+};
