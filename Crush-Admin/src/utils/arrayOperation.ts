@@ -623,3 +623,19 @@ export const turnArrayKeys = (list: Array<any>, numberKeys: Array<string> = []) 
 		return item;
 	});
 };
+
+/**
+ * 数组转对象
+ * @param {Array} list 数组对象
+ * @param {string} key 当key的值
+ * @returns {Object} 处理后对象
+ */
+export const arrayToObject = <T extends ArrayItem>(array: T[], key: keyof T): Record<string, T> => {
+	// 使用 reduce 方法将数组转换为一个对象
+	return array.reduce((acc: Record<string, T>, item: T) => {
+		// 将当前项的指定键作为对象的键，当前项作为值
+		acc[item[key]] = item;
+		// 返回累加器对象
+		return acc;
+	}, {} as Record<string, T>); // 初始化累加器为一个空对象，并指定其类型
+};
