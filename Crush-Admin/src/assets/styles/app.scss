@@ -201,12 +201,12 @@ body,
 .text-price::before {
 	content: '¥';
 	font-size: 70%;
-	margin-right: 4rpx;
+	margin-right: 4px;
 }
 /* 百分比 */
 .text-rate::after {
 	content: '%';
-	margin-left: 4rpx;
+	margin-left: 4px;
 }
 /* 清空浮动 */
 .clearfix::after {
