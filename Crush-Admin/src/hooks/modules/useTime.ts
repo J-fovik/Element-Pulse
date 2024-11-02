@@ -16,7 +16,6 @@ export const useTime = (isUpdate: Boolean = false) => {
 	const nowTime = ref<string>(''); // 当前时间
 	// 更新时间
 	const updateTime = () => {
-		console.log(11);
 		const date = new Date();
 		year.value = date.getFullYear();
 		month.value = date.getMonth() + 1;

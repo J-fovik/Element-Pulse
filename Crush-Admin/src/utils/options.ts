@@ -11,6 +11,17 @@ export const ALL_OPTIONS = [
 		value: '',
 	},
 ];
+
+/**
+ * 不限
+ */
+export const NO_LIMIT_OPTIONS = [
+	{
+		label: '不限',
+		value: '',
+	},
+];
+
 /**
  * @description 用户性别
  */

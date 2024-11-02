@@ -27,6 +27,8 @@ import {
 import { LabelLayout, UniversalTransition } from 'echarts/features';
 //  ECharts 的 Canvas 渲染器模块
 import { CanvasRenderer } from 'echarts/renderers';
+// 圆环
+import { GraphicComponent } from 'echarts/components';
 // ECharts 的一个插件，用于生成液态填充图表
 import 'echarts-liquidfill';
 // 注册了所有的图表类型、组件和特性
@@ -51,6 +53,7 @@ echarts.use([
 	LabelLayout,
 	UniversalTransition,
 	CanvasRenderer,
+	GraphicComponent,
 ]);
 
 export default echarts;

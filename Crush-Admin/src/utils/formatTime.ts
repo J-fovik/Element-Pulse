@@ -5,9 +5,11 @@
 import dayjs from 'dayjs';
 import isBetween from 'dayjs/plugin/isBetween';
 import relativeTime from 'dayjs/plugin/relativeTime';
+import duration from 'dayjs/plugin/duration';
 // 使用插件
 dayjs.extend(isBetween);
 dayjs.extend(relativeTime);
+dayjs.extend(duration);
 
 /**
  * dayjs时间日期转换
@@ -349,4 +351,46 @@ export const getGkYear = () => {
 		// 当前日期小于等于分界日期，展示今年
 		return now.year().toString();
 	}
+};
+
+/**
+ * 将秒数格式化为小时、分钟和秒的字符串形式。
+ * @param {number} seconds - 需要格式化的秒数。
+ * @returns {string} 返回格式化为 "HH:MM:SS" 的字符串。
+ */
+export const dayJsFormatTime = (seconds) => {
+	// 使用 dayjs 将秒数转换为毫秒，然后格式化为 "HH:MM:SS"
+	return dayjs.duration(seconds, 'second').format('HH:mm:ss');
+};
+
+/**
+ * 将秒数格式化为小时、分钟和秒的字符串形式。
+ * @param {number} seconds - 需要格式化的秒数。
+ * @returns {string} 返回格式化为 "HH:MM:SS" 的字符串。
+ */
+export const formatTime = (seconds: number): string => {
+	// 计算小时数
+	const hours = Math.floor(seconds / 3600);
+	// 计算分钟数（秒数除以3600取余后，再除以60）
+	const minutes = Math.floor((seconds % 3600) / 60);
+	// 计算剩余秒数（秒数对60取余）
+	const secondsRemainder = Math.floor(seconds % 60);
+
+	// 返回格式化的时间字符串，确保小时、分钟和秒都是两位数
+	return `${hours < 10 ? '0' + hours : hours}:${minutes < 10 ? '0' + minutes : minutes}:${
+		secondsRemainder < 10 ? '0' + secondsRemainder : secondsRemainder
+	}`;
+};
+
+/**
+ * 当前年减一年的年份数组
+ */
+export const getYearOptions = () => {
+	const currentYear = new Date().getFullYear();
+	return [currentYear - 1, currentYear - 2, currentYear - 3].map((o: any) => {
+		return {
+			value: String(o),
+			label: String(o),
+		};
+	});
 };
