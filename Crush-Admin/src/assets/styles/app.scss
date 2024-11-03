@@ -197,6 +197,12 @@ body,
 .margin-auto {
 	margin: auto;
 }
+.border-none {
+	border: none;
+}
+.rounded50 {
+	border-radius: 50%;
+}
 /* 价格 */
 .text-price::before {
 	content: '¥';
@@ -321,7 +327,6 @@ body,
 		font-size: #{$i}px !important;
 	}
 }
-
 /* 外边距、内边距全局样式
 ------------------------------- */
 @for $i from 0 through 200 {
@@ -376,5 +381,11 @@ body,
 		padding-bottom: #{$i}px !important;
 		padding-left: #{$i}px !important;
 		padding-right: #{$i}px !important;
+	}
+}
+/* 圆角 */
+@for $i from 1 through 100 {
+	.rounded#{$i} {
+		border-radius: #{$i}px !important;
 	}
 }

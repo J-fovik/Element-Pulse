@@ -9,9 +9,11 @@
 		@close="emits('close')"
 	>
 		<div class="flex">
+			<!-- 当前图片 -->
 			<div class="cropper-warp-left">
 				<img :src="state.cropperImg" class="w-full h-full" ref="cropperRef" />
 			</div>
+			<!-- 预览 -->
 			<div class="cropper-warp-right">
 				<div class="text-center">预览</div>
 				<div class="cropper-warp-right-item">
@@ -31,6 +33,7 @@
 				</div>
 			</div>
 		</div>
+		<!-- 操作 -->
 		<template #footer>
 			<span class="dialog-footer">
 				<el-button @click="emits('close')" size="default">取 消</el-button>
@@ -56,7 +59,7 @@ const props = withDefaults(
 		title: '修改头像',
 	}
 );
-/* 父组件方法 */
+// 父组件方法
 const emits = defineEmits(['close', 'success']);
 // 定义变量内容
 const state = reactive({
@@ -68,7 +71,6 @@ const state = reactive({
 // 更换
 const onSubmit = () => {
 	state.cropperImgBase64 = state.instance.getCroppedCanvas().toDataURL('image/jpeg');
-	console.log(state.cropperImgBase64);
 	emits('success', state.cropperImgBase64); // 发射事件，并传递裁剪后的图片 DataURL
 	toast('修改成功');
 	emits('close');
@@ -91,6 +93,7 @@ const initCropper = () => {
 		});
 	}
 };
+// 初始化
 onMounted(() => {
 	setTimeout(() => {
 		initCropper();

@@ -32,6 +32,7 @@ const state = reactive({
 	qrcodeUrl: '',
 	useQRCodeUrl: '' as any,
 });
+// 重点是二维码信息（地址或者信息）
 const qrcodeInit = async (id: any) => {
 	state.qrcodeUrl = await QRCode.toDataURL(`https://www.paperred.com/exchange?id=${id}`, {
 		margin: 1,

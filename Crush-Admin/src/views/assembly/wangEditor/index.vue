@@ -37,9 +37,6 @@ const uploadImg = async (file: any) => {
 };
 </script>
 <style scoped lang="scss">
-.el-button {
-	margin-top: 20px;
-}
 :deep(.el-dialog__body) {
 	height: 700px !important;
 	overflow: auto;

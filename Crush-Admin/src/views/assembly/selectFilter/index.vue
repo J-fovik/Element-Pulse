@@ -30,6 +30,7 @@ const filterData = [
 	{
 		title: '物流状态(单)',
 		key: 'state',
+		isShow: true,
 		options: [
 			{
 				label: '全部',
@@ -65,6 +66,8 @@ const filterData = [
 	{
 		title: '商品类型(多)',
 		key: 'type',
+		isShow: true,
+		isCollapse: true,
 		multiple: true,
 		options: [
 			{

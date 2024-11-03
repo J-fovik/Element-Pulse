@@ -210,6 +210,21 @@ export default {
 			component: () => import('@/views/assembly/uploadFile/index.vue'),
 		},
 		{
+			path: '/assembly/proportion',
+			name: 'proportion',
+			meta: {
+				icon: 'Menu',
+				title: '比例进度条',
+				isLink: '',
+				isHide: false,
+				isFull: false,
+				isAffix: false,
+				requiresAuth: true,
+				isKeepAlive: true,
+			},
+			component: () => import('@/views/assembly/proportion/index.vue'),
+		},
+		{
 			path: '/assembly/miniTool',
 			name: 'miniTool',
 			meta: {

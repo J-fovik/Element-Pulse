@@ -1,5 +1,6 @@
 <template>
 	<div class="upload-box">
+		<!-- 图片上传 -->
 		<el-upload
 			v-model:file-list="_fileList"
 			action="#"
@@ -39,6 +40,7 @@
 		<div class="el-upload__tip">
 			<slot name="tip"></slot>
 		</div>
+		<!-- 图片展示 -->
 		<el-image-viewer
 			v-if="imgViewVisible"
 			:url-list="[viewImageUrl]"
@@ -65,7 +67,7 @@ interface UploadFileProps {
 	width?: string; // 组件宽度 ==> 非必传（默认为 150px）
 	borderRadius?: string; // 组件边框圆角 ==> 非必传（默认为 8px）
 }
-
+// 接受父组件参数
 const props = withDefaults(defineProps<UploadFileProps>(), {
 	fileList: () => [],
 	drag: true,

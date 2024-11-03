@@ -8,7 +8,7 @@ import { CountUp } from 'countup.js';
 const props = defineProps({
 	value: {
 		type: Number,
-		required: true,
+		required: true, // 数值
 	},
 	options: {
 		type: Object,

@@ -28,6 +28,7 @@ declare module 'vue' {
     Loading: typeof import('./components/Loading/index.vue')['default']
     NoticeBar: typeof import('./components/NoticeBar/index.vue')['default']
     PreviewOffice: typeof import('./components/PreviewOffice/index.vue')['default']
+    Proportion: typeof import('./components/Proportion/index.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     SearchItem: typeof import('./components/SearchItem/index.vue')['default']

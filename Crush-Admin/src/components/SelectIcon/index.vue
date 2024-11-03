@@ -1,5 +1,6 @@
 <template>
-	<div class="icon-box">
+	<div class="w-full">
+		<!-- 全局搜索框 -->
 		<el-input
 			ref="inputRef"
 			v-model="valueIcon"
@@ -13,8 +14,10 @@
 				<el-button :icon="customIcons[modelValue]" @click="dialogVisible = true" />
 			</template>
 		</el-input>
+		<!-- 对话框 -->
 		<el-dialog v-model="dialogVisible" :title="title" top="50px" width="66%">
 			<el-input
+				class="mb10"
 				v-model="inputValue"
 				placeholder="搜索图标"
 				:prefix-icon="Icons.Search"
@@ -92,42 +95,36 @@ const iconsList = computed((): { [key: string]: any } => {
 });
 </script>
 <style scoped lang="scss">
-.icon-box {
-	width: 100%;
-	.el-button {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		font-size: 18px;
-		color: var(--el-text-color-regular);
-	}
-	:deep(.el-dialog__body) {
-		max-height: 90vh !important;
-		padding: 25px 20px 20px;
-		.el-input {
-			margin-bottom: 10px;
-		}
-		.icon-list {
-			display: grid;
-			grid-template-columns: repeat(auto-fill, 115px);
-			justify-content: space-evenly;
-			max-height: 70vh;
-			.icon-item {
-				display: flex;
-				flex-direction: column;
-				align-items: center;
-				width: 42px;
-				padding: 20px 30px;
-				cursor: pointer;
-				transition: all 0.2s;
-				&:hover {
-					transform: scale(1.3);
-				}
-				span {
-					margin-top: 5px;
-					line-height: 20px;
-					text-align: center;
-				}
+.el-button {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 18px;
+	color: var(--el-text-color-regular);
+}
+:deep(.el-dialog__body) {
+	max-height: 90vh !important;
+	padding: 25px 20px 20px;
+	.icon-list {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, 115px);
+		justify-content: space-evenly;
+		max-height: 70vh;
+		.icon-item {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			width: 42px;
+			padding: 20px 30px;
+			cursor: pointer;
+			transition: all 0.2s;
+			&:hover {
+				transform: scale(1.3);
+			}
+			span {
+				margin-top: 5px;
+				line-height: 20px;
+				text-align: center;
 			}
 		}
 	}

@@ -40,7 +40,7 @@
 				class="my20"
 			></el-alert>
 			<div class="flx-center">
-				<div class="cropper-img-warp">
+				<div class="text-center">
 					<div class="mb15 mt15">
 						<img class="cropper-img" :src="state.vueCropperImg" />
 					</div>
@@ -94,13 +94,10 @@ const updateVueCropperImg = (img: any) => {
 
 <style scoped lang="scss">
 /* VueCropper 裁剪图片 */
-.cropper-img-warp {
-	text-align: center;
-	.cropper-img {
-		margin: auto;
-		width: 150px;
-		height: 150px;
-		border-radius: 100%;
-	}
+.cropper-img {
+	margin: auto;
+	width: 150px;
+	height: 150px;
+	border-radius: 100%;
 }
 </style>

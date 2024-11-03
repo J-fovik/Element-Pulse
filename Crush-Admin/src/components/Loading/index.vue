@@ -1,8 +1,8 @@
 <template>
 	<!-- loading加载 -->
-	<div class="loading-box">
-		<div class="loading-wrap">
-			<span class="dot dot-spin"><i></i><i></i><i></i><i></i></span>
+	<div class="flex items-center justify-center w-full h-full">
+		<div class="flex items-center justify-center p98">
+			<span class="dot"><i></i><i></i><i></i><i></i></span>
 		</div>
 	</div>
 </template>
@@ -10,20 +10,6 @@
 <script setup lang="ts" name="Loading"></script>
 
 <style scoped lang="scss">
-.loading-box {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	width: 100%;
-	height: 100%;
-	.loading-wrap {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		padding: 98px;
-	}
-}
 .dot {
 	position: relative;
 	box-sizing: border-box;

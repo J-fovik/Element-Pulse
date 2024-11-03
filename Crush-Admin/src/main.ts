@@ -33,5 +33,5 @@ Object.keys(Icons).forEach((key) => {
 });
 // 自定义指令
 directives(app);
-addPreventDefault();
+// addPreventDefault();
 app.use(ElementPlus).use(router).use(I18n).use(VueGridLayout).use(pinia).mount('#app');

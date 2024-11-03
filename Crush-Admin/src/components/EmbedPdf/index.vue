@@ -2,7 +2,9 @@
 	<el-card>
 		<template #header>
 			<div class="flex justify-between items-center">
+				<!-- 页码 -->
 				<div v-if="showAllPages">共{{ total }}页</div>
+				<!-- 分页 -->
 				<div v-else>
 					<el-pagination
 						v-model:current-page="currentPage"
@@ -14,6 +16,7 @@
 						{{ currentPage }} / {{ total }}
 					</el-pagination>
 				</div>
+				<!-- 操作 -->
 				<el-space>
 					<el-checkbox v-model="showAllPages" @change="showAllPagesChange">
 						显示所有页面
@@ -37,6 +40,7 @@
 				</el-space>
 			</div>
 		</template>
+		<!-- pdf -->
 		<div v-loading="loading" element-loading-text="加载中">
 			<el-scrollbar>
 				<vue-pdf-embed

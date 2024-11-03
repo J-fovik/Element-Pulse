@@ -30,6 +30,7 @@ const props = defineProps({
 const barcodeRef = ref(null);
 
 onMounted(() => {
+	// 赋值配置
 	const opt = { ...props.options, format: props.type };
 	JsBarcode(barcodeRef.value, props.text, opt);
 });

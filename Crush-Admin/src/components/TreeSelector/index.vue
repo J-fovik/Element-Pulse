@@ -1,8 +1,10 @@
 <template>
 	<div class="card treeSelector">
+		<!-- 标题 -->
 		<h4 v-if="title" class="title sle">
 			{{ title }}
 		</h4>
+		<!-- 搜索框 -->
 		<div class="search">
 			<el-input v-model="filterText" placeholder="输入关键字进行过滤" clearable />
 			<el-dropdown trigger="click">
@@ -17,6 +19,7 @@
 				</template>
 			</el-dropdown>
 		</div>
+		<!-- 树形控件 -->
 		<el-scrollbar :style="{ height: title ? `calc(100% - 95px)` : `calc(100% - 56px)` }">
 			<el-tree
 				ref="treeRef"

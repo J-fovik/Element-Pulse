@@ -27,9 +27,12 @@ defineProps({
 	modelValue: String,
 });
 
+// 赋值图标
 const icons = ref(Object.keys(iconList));
 
+// 父组件方法
 const emit = defineEmits(['update:modelValue']);
+// 切换图标
 const handleChange = (icon) => {
 	emit('update:modelValue', icon);
 };
