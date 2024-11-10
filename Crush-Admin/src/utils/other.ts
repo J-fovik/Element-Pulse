@@ -394,3 +394,14 @@ export const addPreventDefault = () => {
 		(ev) => isImgElement(ev?.target) && ev.preventDefault()
 	);
 };
+
+/**
+ * 设置高亮
+ * @param {any} text  要判断是否高亮的文字
+ * @param {any} keyword  高亮关键词
+ */
+export const setHightLightStr = (text: any, keyword: any) => {
+	let hightLightStr = `<span style="color: #ffa864">$&</span>`;
+	let reg = new RegExp(keyword, 'gi');
+	return text.replace(reg, hightLightStr);
+};

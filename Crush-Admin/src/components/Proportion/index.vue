@@ -16,13 +16,11 @@
 const props = withDefaults(
 	defineProps<{
 		background?: any;
-		color?: any;
 		width?: any;
 		isAnimate?: boolean;
 	}>(),
 	{
 		background: '#FFA864',
-		color: '#FFA864',
 		width: '0',
 		isAnimate: true,
 	}

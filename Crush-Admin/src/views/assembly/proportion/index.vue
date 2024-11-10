@@ -1,6 +1,11 @@
 <template>
-	<div>
-		<el-card shadow="hover" header="比例条">
+	<el-card shadow="hover">
+		<el-alert
+			title="Proportion 是自定义封装的比例条以及进度条的组件"
+			type="warning"
+			:closable="false"
+		/>
+		<el-card shadow="hover" header="比例条" class="mt20">
 			<div
 				v-for="(item, index) in list"
 				:key="index"
@@ -30,12 +35,18 @@
 			</div>
 			<div class="mt20">
 				<el-button :disabled="current < 1" @click="current--"> -</el-button>
-				<el-button :disabled="current >= list.length" @click="current++"> + </el-button>
+				<el-button :disabled="current >= list.length - 1" @click="current++"> + </el-button>
 			</div>
 		</el-card>
-	</div>
+		<el-descriptions title="配置项 📚" :column="1" border class="my20">
+			<el-descriptions-item label="background"> 进度条背景 </el-descriptions-item>
+			<el-descriptions-item label="width"> 进度条宽度 </el-descriptions-item>
+			<el-descriptions-item label="isAnimate"> 是否有动画 </el-descriptions-item>
+		</el-descriptions>
+	</el-card>
 </template>
 <script setup lang="ts" name="proportion">
+import { setHightLightStr } from '@/utils/other';
 const list = ref([
 	{ title: '名称1', content: '80%', width: '80' },
 	{ title: '名称2', content: '70%', width: '70' },
