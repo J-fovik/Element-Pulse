@@ -22,6 +22,16 @@ export const percentFormat = (value: any, empty = '-') => (value ? `${value}%` :
 export const textFormat = (value: any, empty = '-') => (value ? value : empty);
 
 /**
+ * 文本单位格式化
+ * @param {*} value 传入的值
+ * @param {string} company 有值带的单位
+ * @param {string} empty 无值状态返回值 默认（'-'）
+ * @returns {string} 返回处理后的数据
+ */ export const textCompany = (value: any, company: string, empty = '-') => {
+	return value == '0' ? empty : value ? value + company : empty;
+};
+
+/**
  * 小数格式化
  * @param {*} value 传入的值
  * @param {number} scale 保留的位数（默认两位小数）

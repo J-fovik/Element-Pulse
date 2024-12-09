@@ -46,7 +46,6 @@
 	</el-card>
 </template>
 <script setup lang="ts" name="proportion">
-import { setHightLightStr } from '@/utils/other';
 const list = ref([
 	{ title: '名称1', content: '80%', width: '80' },
 	{ title: '名称2', content: '70%', width: '70' },

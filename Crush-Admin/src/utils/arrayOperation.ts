@@ -584,6 +584,24 @@ export function findMenuByPath(
 }
 
 /**
+ * 递归查询当前 key 所对应的对象
+ * @param {Array} menuList 列表
+ * @param {string} key 当前key
+ * @param {string} value 当前值
+ * @returns {Object | null} 对应的菜单对象
+ */
+const findListByKey = (menuList: Array<any>, key: string, value: any): any | null => {
+	for (const item of menuList) {
+		if (item[key] === value) return item;
+		if (item.children) {
+			const res = findListByKey(item.children, key, value);
+			if (res) return res;
+		}
+	}
+	return null;
+};
+
+/**
  * 递归提升meta.title 提成到与 meta 同级
  * @param {Array} menuList 菜单列表
  * @returns {Array} 菜单
@@ -625,7 +643,7 @@ export const turnArrayKeys = (list: Array<any>, numberKeys: Array<string> = []) 
 };
 
 /**
- * 数组转对象
+ * 数组转对象(重复key会覆盖)
  * @param {Array} list 数组对象
  * @param {string} key 当key的值
  * @returns {Object} 处理后对象
@@ -638,4 +656,46 @@ export const arrayToObject = <T extends ArrayItem>(array: T[], key: keyof T): Re
 		// 返回累加器对象
 		return acc;
 	}, {} as Record<string, T>); // 初始化累加器为一个空对象，并指定其类型
+};
+
+/**
+ * 数组转对象(重复值存数组)（可用作字典）
+ * @param {Array} list 数组对象
+ * @param {string} key 当key的值
+ * @returns {Object} 处理后对象
+ */
+export const groupArrayBy = <T extends ArrayItem, K extends keyof T>(
+	array: T[],
+	key: K
+): { [key: string]: T[] } => {
+	return array.reduce((acc: { [key: string]: T[] }, item: T) => {
+		// 使用typeof获取键的类型，然后创建字符串索引签名
+		const itemKey = item[key] as string;
+		// 如果累加器中还没有这个key的键，则创建一个新数组
+		if (!acc[itemKey]) {
+			acc[itemKey] = [];
+		}
+		// 将当前项添加到对应key的数组中
+		acc[itemKey].push(item);
+		return acc;
+	}, {});
+};
+
+/**
+ * 计算丢失的最小数字
+ * @param {Array} list 要查找的数组
+ * @returns {number} 丢失的最小数
+ */
+export const smallestMissingNumber = (list: Array<any>) => {
+	let sortedNumbers = [...list].sort((a, b) => a - b); // 对数组进行排序
+	let smallestMissing = 1; // // 初始化最小缺失数字为1
+	for (let i = 0; i < sortedNumbers.length; i++) {
+		// 如果当前数字不等于最小缺失数字，则找到了缺失的最小数字
+		if (sortedNumbers[i] !== smallestMissing) {
+			return smallestMissing;
+		}
+		// 否则，更新最小缺失数字
+		smallestMissing++;
+	}
+	return smallestMissing;
 };

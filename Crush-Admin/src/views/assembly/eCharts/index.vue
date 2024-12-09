@@ -97,6 +97,10 @@
 		<DataTrend class="mt10" />
 		<OrderChart class="mt10" />
 		<OrderTrend class="mt10" />
+		<OrderTrend class="mt10" />
+		<el-card shadow="hover" class="mt10">
+			<CircleIndex :value="4" />
+		</el-card>
 		<el-card
 			shadow="hover"
 			header="配置项 📚"
