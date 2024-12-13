@@ -240,6 +240,29 @@ export const specialRegExp = (val: any) => {
 };
 
 /**
+ * 正整数验证
+ * @param {string} value 当前值字符串
+ * @returns {boolean} 符合返回true，否则false
+ */
+export const positiveIntegerRule = (value: string): boolean => {
+	// 首先，确保输入不是空字符串
+	if (!value) {
+		return false;
+	}
+	// 使用正则表达式来检查输入是否为正整数
+	const isPositiveInteger = /^\d+$/.test(value);
+	// 如果输入是正整数，进一步检查它是否在1到1000之间
+	if (isPositiveInteger) {
+		const numberValue = parseInt(value, 10);
+		if (numberValue > 0 && numberValue <= 1000) {
+			return true;
+		}
+	}
+	// 如果输入不是正整数或不在指定范围内，返回false
+	return false;
+};
+
+/**
  * 验证element表单输入是否为有效的手机号
  * @param {Object} rule - 验证规则对象，通常包含一些验证信息，如是否必填等
  * @param {string} value - 待验证的表单输入值

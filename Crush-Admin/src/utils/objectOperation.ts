@@ -4,6 +4,7 @@
 
 const mode = import.meta.env.VITE_ROUTER_MODE;
 
+import { ElMessage } from 'element-plus';
 /**
  * 从当前页面的URL中提取查询参数
  * @returns {Object} 返回一个包含参数键值对的对象
@@ -209,3 +210,45 @@ export function getUrlWithParams() {
 	};
 	return url[mode];
 }
+
+/**
+ * 校验数据
+ * @param {Object} dataObj 数据对象
+ * @param {Object} ruleObj 规则对象
+ * @returns {boolean} 校验通过返回true，否则返回false
+ */
+export const validateForm = (dataObj: any, ruleObj: any) => {
+	for (const key in ruleObj) {
+		const rule = ruleObj[key];
+		const value = dataObj[key];
+		// 检查是否有自定义校验函数
+		if (typeof rule === 'object' && rule.validator) {
+			const isValid = rule.validator(value);
+			if (!isValid) {
+				ElMessage({
+					type: 'error',
+					message: rule.message,
+				});
+				return false; // 自定义校验失败，立即返回 false
+			}
+		} else {
+			// 标准校验逻辑
+			if (Array.isArray(value)) {
+				if (value.length === 0) {
+					ElMessage({
+						type: 'error',
+						message: rule,
+					});
+					return false; // 发现无效输入，立即返回 false
+				}
+			} else if (value === undefined || value === null || value === '') {
+				ElMessage({
+					type: 'error',
+					message: rule,
+				});
+				return false; // 发现无效输入，立即返回 false
+			}
+		}
+	}
+	return true; // 所有字段都有效，返回 true
+};

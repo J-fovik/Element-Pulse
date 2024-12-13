@@ -3,6 +3,7 @@
  */
 
 import dayjs from 'dayjs';
+import { numberToChineseCharacter } from 'pixiu-number-toolkit';
 type Pos = 'both' | 'left' | 'right' | 'all';
 
 /**
@@ -188,6 +189,11 @@ export const numberFormat = (val: number | string): string | number => {
 		return `${(num / Math.pow(10000, i)).toFixed(1)}${sizesValue}`;
 	}
 	return val;
+};
+
+// 数字转换为中文
+export const numberToChinesea = (num: number) => {
+	return numberToChineseCharacter(num);
 };
 
 /**

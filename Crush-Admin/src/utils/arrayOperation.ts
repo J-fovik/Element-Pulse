@@ -6,12 +6,12 @@ import { ElMessage } from 'element-plus';
 import type { RouteRecordNormalized } from 'vue-router';
 
 /**
- * allArr 数组 是否全包含 arr 数组
- * @param {Array} allArr
- * @param {Array} arr 需要判断的数组
- * @returns {boolean} 如果 全包含 返回 true；否则返回 false
+ * 判断一个数组是否是另一个数组的子集(allArr是否全包含arr)
+ * @param {Array} allArr 全部元素的数组
+ * @param {Array} arr 需要判断是否为子集的数组
+ * @returns {boolean} 如果 arr 是 allArr 的子集，返回 true；否则返回 false
  */
-export function everyIncludes(allArr: Array<any>, arr: Array<any>) {
+export function isArraySubset(allArr: Array<any>, arr: Array<any>) {
 	return arr.every((item) => allArr.includes(item));
 }
 
@@ -88,7 +88,7 @@ export function removeDuplicate(arr: EmptyArrayType, attr?: any) {
  * @param {string} key  过滤掉该不存在该key的对象 (可不传，则是判断所有key)
  * @returns {Array} 过滤后的数组对象
  */
-export function filterObjectsByKey(list: Array<any>, key?: any) {
+export function filterArrayByProperty(list: Array<any>, key?: any) {
 	// 如果传key
 	if (key) {
 		// 使用 filter 方法创建一个新数组，包含所有存在的 key 属性
@@ -118,27 +118,6 @@ export function filterObjectsByKey(list: Array<any>, key?: any) {
 			return true;
 		});
 	}
-}
-
-/**
- * 统计函数
- * @param {Array} array - 要进行统计的数组 数组对象
- * @param {Function} generateKey - 回调传入key
- * @returns {Array} 处理后的数组对象
- */
-export function countBy<T>(array: Array<T>, generateKey: (item: T) => any): { [key: string]: any } {
-	const result: { [key: string]: number } = {};
-	// 遍历数组
-	for (const u of array) {
-		// 回调获取key
-		const key = generateKey(u);
-		if (result[key]) {
-			result[key]++;
-		} else {
-			result[key] = 1;
-		}
-	}
-	return result;
 }
 
 /**
@@ -293,7 +272,7 @@ export const flattenArray = (arr: any) => {
  * @param {Function} fn  一个函数，用于测试数组对象中的每个属性
  * @returns {[Array,Array]} 第一个数组是满足函数返回条件的数组，第二个数组是不满足条件的数组
  */
-export const partitionObject = <T>(array: T[], fn: (item: T) => boolean): [T[], T[]] => {
+export const partitionArray = <T>(array: T[], fn: (item: T) => boolean): [T[], T[]] => {
 	return array.reduce(
 		(acc: [T[], T[]], item: T) => {
 			if (fn(item)) {
@@ -308,16 +287,16 @@ export const partitionObject = <T>(array: T[], fn: (item: T) => boolean): [T[], 
 };
 
 /**
- * 根据key重组数组
+ * 根据指定键分组数组并收集子键的值
  * @param {Array} array 要处理的数组
  * @param {string} groupByKey  用于分组的键 （yxmc）
  * @param {string} childName  要存储的数组key的名称 （children）
  * @param {string} mergeChildKey  要存储在子数组的键 （zySeq）
  * @returns {Array} 重组后的数组
  * @example
- * groupByAndMergeChildArrays([{yxmc: 'A', zySeq: 1 },{yxmc: 'B', zySeq: 2 },{ yxmc: 'A', zySeq: 3 }]) // [{yxmc: 'A', children:[1, 3]},{yxmc: 'B', children: [2] }]
+ * groupByAndCollectChildKeys([{yxmc: 'A', zySeq: 1 },{yxmc: 'B', zySeq: 2 },{ yxmc: 'A', zySeq: 3 }]) // [{yxmc: 'A', children:[1, 3]},{yxmc: 'B', children: [2] }]
  */
-export const groupByAndMergeChildArrays = (
+export const groupByAndCollectChildKeys = (
 	array: Array<any>,
 	groupByKey: any,
 	childName: any,
@@ -347,7 +326,7 @@ export const groupByAndMergeChildArrays = (
  * @param {string} propertyName  两个数组都存在的key，并且要处理的key
  * @returns {Array} 重组后的数组
  */
-export const getIntersectionByProperty = <T extends ArrayItem, K extends keyof T>(
+export const mergeArrayItemsByCommonProperty = <T extends ArrayItem, K extends keyof T>(
 	array1: T[],
 	array2: T[],
 	propertyName: K
@@ -564,19 +543,19 @@ export function getKeepAliveRouterName(
 }
 
 /**
- * 递归查询当前 path 所对应的菜单对象
+ * 递归查找与路径匹配的菜单对象
  * @param {Array} menuList 菜单列表
  * @param {string} path 当前访问地址
- * @returns {Object | null} 对应的菜单对象
+ * @returns {Object | null} 对应的菜单对象，如果未找到则返回 null
  */
-export function findMenuByPath(
+export function findMenuRecursivelyByPath(
 	menuList: Menu.MenuOptions[],
 	path: string
 ): Menu.MenuOptions | null {
 	for (const item of menuList) {
 		if (item.path === path) return item;
 		if (item.children) {
-			const res = findMenuByPath(item.children, path);
+			const res = findMenuRecursivelyByPath(item.children, path);
 			if (res) return res;
 		}
 	}
@@ -584,17 +563,21 @@ export function findMenuByPath(
 }
 
 /**
- * 递归查询当前 key 所对应的对象
- * @param {Array} menuList 列表
- * @param {string} key 当前key
- * @param {string} value 当前值
- * @returns {Object | null} 对应的菜单对象
+ * 递归查找具有指定键值对的列表对象(递归查询当前 key 所对应的对象)
+ * @param {Array} list 列表
+ * @param {string} key 查找的键
+ * @param {string} value 查找的值
+ * @returns {Object | null} 对应的对象，如果未找到则返回 null
  */
-const findListByKey = (menuList: Array<any>, key: string, value: any): any | null => {
-	for (const item of menuList) {
+export const findObjectRecursivelyByKeyValue = (
+	list: Array<any>,
+	key: string,
+	value: any
+): any | null => {
+	for (const item of list) {
 		if (item[key] === value) return item;
 		if (item.children) {
-			const res = findListByKey(item.children, key, value);
+			const res = findObjectRecursivelyByKeyValue(item.children, key, value);
 			if (res) return res;
 		}
 	}
@@ -680,6 +663,56 @@ export const groupArrayBy = <T extends ArrayItem, K extends keyof T>(
 		return acc;
 	}, {});
 };
+
+/**
+ * 数组转对象(重复值存数组)（可用作字典）
+ * @param {Array} list 数组对象
+ * @param {string} key 当key的值
+ * @returns {Object} 处理后对象
+ */
+export const objectGroupBy = <T>(array: T[], key: keyof T) => {
+	return Object.groupBy(array, (item: any) => item[key].toString());
+};
+
+/**
+ * 将数组项分组到对象中（重复值存数组）
+ * @param {Array} array 数组对象
+ * @param {Function} callback 回调函数，用于从数组元素中提取键值
+ * @returns {Object} 处理后对象
+ */
+export const groupArrayItemsIntoObject = <T>(array: T[], callback: (item: T) => string) => {
+	const result: { [key: string]: T[] } = {};
+	array.forEach((item) => {
+		const key = callback(item);
+		if (!result[key]) {
+			result[key] = [];
+		}
+		result[key].push(item);
+	});
+
+	return result;
+};
+
+/**
+ * 统计函数
+ * @param {Array} array - 要进行统计的数组 数组对象
+ * @param {Function} generateKey - 回调传入key
+ * @returns {Array} 处理后的数组对象
+ */
+export function countBy<T>(array: Array<T>, generateKey: (item: T) => any): { [key: string]: any } {
+	const result: { [key: string]: number } = {};
+	// 遍历数组
+	for (const u of array) {
+		// 回调获取key
+		const key = generateKey(u);
+		if (result[key]) {
+			result[key]++;
+		} else {
+			result[key] = 1;
+		}
+	}
+	return result;
+}
 
 /**
  * 计算丢失的最小数字

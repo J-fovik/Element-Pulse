@@ -71,6 +71,21 @@ const chartOption = computed(() => {
 	return {
 		tooltip: {
 			trigger: 'axis',
+			formatter: function (params: any) {
+				if (params.length > 0) {
+					const formattedTime = params[0].axisValueLabel; // 获取X轴的时间标签
+					const seriesInfo = params
+						.map((param: any) => {
+							return `<div style="display: flex; justify-content: space-between;">
+                <span>${param.marker}${param.seriesName}</span>
+                <span style="margin-left: 30px">${param.value}元</span>
+              </div>`;
+						})
+						.join('');
+					return `${formattedTime}<br>${seriesInfo}`;
+				}
+				return '';
+			},
 		},
 		dataZoom: [
 			{
@@ -102,6 +117,9 @@ const chartOption = computed(() => {
 		},
 		yAxis: {
 			type: 'value',
+			name: '元', // 添加单位
+			nameLocation: 'end', // 单位位置
+			nameGap: 15, // 单位与轴线之间的距离
 		},
 		series: yData.value,
 	};

@@ -42,6 +42,7 @@
 		"pinia": "^2.1.7",
 		"pinia-plugin-persistedstate": "^3.2.1",
 		"pinyin-pro": "^3.24.2",
+		"pixiu-number-toolkit": "^3.0.11",
 		"print-js": "^1.6.0",
 		"qrcode": "^1.5.4",
 		"screenfull": "^6.0.2",

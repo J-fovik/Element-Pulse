@@ -158,6 +158,31 @@ export function isMobile() {
 }
 
 /**
+ * 来源
+ * @returns {string} 来源
+ */
+export const getExtensionSource = () => {
+	const urlSource = document.referrer ?? '';
+	// 判断存在
+	if (urlSource) {
+		const urlPattern = /^(?:https?:\/\/)?([^\/]+)(\/.*)/;
+		const match = urlPattern.exec(urlSource);
+		return match && match.length ? match[1] : '';
+	}
+	return urlSource;
+};
+
+/**
+ * 半角转为全角
+ * @param {string} 半角字符串
+ */
+export const toFullWidth = (str: string) => {
+	return str.replace(/[\u0020-\u007E]/g, (match: any) => {
+		return String.fromCharCode(match.charCodeAt(0) + 0xfee0);
+	});
+};
+
+/**
  * 去除字符串的HTML标签
  * @param {string} htmlString - 包含HTML标签的字符串
  * @returns {string} - 返回去除HTML标签后的纯文本内容
