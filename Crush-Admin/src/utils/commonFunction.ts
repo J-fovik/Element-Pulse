@@ -25,11 +25,12 @@ export const textFormat = (value: any, empty = '-') => (value ? value : empty);
 /**
  * 文本单位格式化
  * @param {*} value 传入的值
- * @param {string} company 有值带的单位
+ * @param {string} unit 有值带的单位
  * @param {string} empty 无值状态返回值 默认（'-'）
  * @returns {string} 返回处理后的数据
- */ export const textCompany = (value: any, company: string, empty = '-') => {
-	return value == '0' ? empty : value ? value + company : empty;
+ */
+export const unitFormat = (value: any, unit: string, empty = '-') => {
+	return [undefined, null, , 0, '0'].includes(value) ? empty : value ? value + unit : empty;
 };
 
 /**
@@ -53,7 +54,7 @@ export const scaleFormat = (value: any, scale: number = 2, empty = '-') => {
  * @param {string} empty 默认无值状态 默认（'-'）
  * @returns {string} 返回处理后的数据
  */
-export const dateFormat = (value: string, format: string = 'YYYY-MM-DD', empty = '-') => {
+export const dateFormat = (value: any, format: string = 'YYYY-MM-DD', empty = '-') => {
 	if (value) {
 		return dayjs(value).format(format);
 	}
@@ -62,14 +63,14 @@ export const dateFormat = (value: string, format: string = 'YYYY-MM-DD', empty =
 
 /**
  * 金额格式化
- * @param {*} val 传入的值
+ * @param {*} value 传入的值
  * @param {string} empty 默认无值状态 默认（''）
  * @returns {string} 返回处理后的数据
  */
-export const moneyFormat = (val: any, empty = '0') => {
-	if (val) {
+export const moneyFormat = (value: any, empty = '0') => {
+	if (value) {
 		// 字符串转成数组
-		const v = val.toString().split('.');
+		const v = value.toString().split('.');
 		v[0] = v[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 		// 数组转字符串
 		return v.join('.');
@@ -79,21 +80,21 @@ export const moneyFormat = (val: any, empty = '0') => {
 
 /**
  * 电话号码格式化
- * @param {string} phone 手机号码
+ * @param {string | number} phone 手机号码
  * @param {string} empty 默认无值状态 默认（'-'）
  * @returns {string} 处理后的手机号码(183-7983-6654)
  */
-export function phoneFormat(phone: string, empty = '-') {
-	return phone.replace(/(?=(\d{4})+$)/g, empty);
+export function phoneFormat(phone: string | number, empty = '-') {
+	return phone.toString().replace(/(?=(\d{4})+$)/g, empty);
 }
 
 /**
  * 手机号脱敏格式化
- * @param {string} phone 手机号码
+ * @param { string | number} phone 手机号码
  * @returns {string} 处理后的手机号码(155****8810)
  */
-export function hidePhoneFormat(phone: string) {
-	return phone.replace(/^(\d{3})\d{4}(\d{4})$/, '$1****$2');
+export function hidePhoneFormat(phone: string | number) {
+	return phone.toString().replace(/^(\d{3})\d{4}(\d{4})$/, '$1****$2');
 }
 
 /**
@@ -112,23 +113,23 @@ export const toHumpFormat = (str: string): string => {
 
 /**
  * 数字转中文大写格式化
- * @param {string} val 当前值字符串
+ * @param {*} value 当前值字符串
  * @param {string} unit 默认：仟佰拾亿仟佰拾万仟佰拾元角分
  * @param {string} v 初始值
  * @returns {string} 返回处理后的字符串
  */
-export function numberCnUppercaseFormat(val: any, unit = '仟佰拾亿仟佰拾万仟佰拾元角分', v = '') {
+export function numberCnUppercaseFormat(value: any, unit = '仟佰拾亿仟佰拾万仟佰拾元角分', v = '') {
 	// 当前内容字符串添加 2个0，为什么??
-	val += '00';
+	value += '00';
 	// 返回某个指定的字符串值在字符串中首次出现的位置，没有出现，则该方法返回 -1
-	let lookup = val.indexOf('.');
+	let lookup = value.indexOf('.');
 	// substring：不包含结束下标内容，substr：包含结束下标内容
-	if (lookup >= 0) val = val.substring(0, lookup) + val.substr(lookup + 1, 2);
-	// 根据内容 val 的长度，截取返回对应大写
-	unit = unit.substr(unit.length - val.length);
+	if (lookup >= 0) value = value.substring(0, lookup) + value.substr(lookup + 1, 2);
+	// 根据内容 value 的长度，截取返回对应大写
+	unit = unit.substr(unit.length - value.length);
 	// 循环截取拼接大写
-	for (let i = 0; i < val.length; i++) {
-		v += '零壹贰叁肆伍陆柒捌玖'.substr(val.substr(i, 1), 1) + unit.substr(i, 1);
+	for (let i = 0; i < value.length; i++) {
+		v += '零壹贰叁肆伍陆柒捌玖'.substr(value.substr(i, 1), 1) + unit.substr(i, 1);
 	}
 	// 正则处理
 	v = v
@@ -144,40 +145,70 @@ export function numberCnUppercaseFormat(val: any, unit = '仟佰拾亿仟佰拾�
 }
 
 /**
- * 数字转换为中文
- * @param {number} num 当前数字
- * @returns {string} 返回处理后的字符串
+ * 数字转换为中文表示
+ * @param {number | string} value 需要转换的数字
+ * @returns {string} 返回转换后的中文数字字符串
  */
-export const numberToChinese = (num: number) => {
+export const numberConvertChineseFormat = (value: any): string => {
+	// 中文数字数组，对应阿拉伯数字 0-9
 	const chineseNumbers = ['零', '一', '二', '三', '四', '五', '六', '七', '八', '九'];
-	const units = ['', '十', '百', '千', '万'];
-	let result = '';
-
-	if (num === 0) {
+	// 单位数组，对应 '十', '百', '千'
+	const units = ['', '十', '百', '千'];
+	// 大单位数组，对应 '万', '亿', '兆'，这里 '兆' 作为最大的单位
+	const bigUnits = ['', '万', '亿', '兆'];
+	// 如果数字为 0，直接返回中文 '零'
+	if (value === 0) {
 		return chineseNumbers[0];
 	}
-
-	const digits = num.toString().split('');
-
+	let result = ''; // 初始化结果字符串
+	let zeroFlag = false; // 零标志，用于处理连续的零
+	// 将数字转换为字符串并反转，方便从低位到高位处理
+	const digits = value.toString().split('').reverse();
 	for (let i = 0; i < digits.length; i++) {
-		const digit = parseInt(digits[i], 10);
+		const digit = parseInt(digits[i], 10); // 获取当前位的数字
+		const unitIndex = i % 4; // 计算单位索引，用于 '十', '百', '千'
+		const bigUnitIndex = Math.floor(i / 4); // 计算大单位索引，用于 '万', '亿', '兆'
+		// 如果当前位不是零
 		if (digit !== 0) {
-			result += chineseNumbers[digit] + units[digits.length - i - 1];
-		} else if (!result.endsWith('零')) {
-			result += chineseNumbers[digit];
+			// 拼接当前位的中文数字和单位，并添加到结果字符串前
+			result = chineseNumbers[digit] + units[unitIndex] + result;
+			zeroFlag = false; // 重置零标志
+		} else {
+			// 如果当前位是零，并且之前没有设置零标志
+			if (!zeroFlag) {
+				result = chineseNumbers[digit] + result; // 添加 '零' 到结果字符串前
+				zeroFlag = true; // 设置零标志
+			}
+		}
+		// 在每四位数字后添加大单位，并重置零标志
+		if (unitIndex === 0 && i > 0) {
+			result = bigUnits[bigUnitIndex] + result;
+			zeroFlag = false;
 		}
 	}
+	// 替换 '一十' 为 '十'
+	result = result.replace('一十', '十');
+	// 移除多余的 '零'，并确保结果字符串不以 '零' 结尾
+	result = result.replace(/零+/g, '零').replace(/零$/, '');
+	return result; // 返回转换后的中文数字字符串
+};
 
-	return result;
+/**
+ * 数字转换为中文表示
+ * @param {number | string} value 当前数字
+ * @returns {string} 返回处理后的字符串
+ */
+export const numberToChineseFormat = (value: any) => {
+	return numberToChineseCharacter(value);
 };
 
 /**
  * 大额数字格式化
- * @param {string | number} val 当前值字符串
+ * @param {string | number} value 当前值字符串
  * @returns {string | number} 返回处理后的字符串
  */
-export const numberFormat = (val: number | string): string | number => {
-	const num = (val as any) * 1;
+export const numberFormat = (value: number | string): string | number => {
+	const num = (value as any) * 1;
 	if (num > 10000) {
 		let sizesValue = '';
 		if (num > 10000 && num < 99999999) {
@@ -188,12 +219,7 @@ export const numberFormat = (val: number | string): string | number => {
 		const i = Math.floor(Math.log(num) / Math.log(10000));
 		return `${(num / Math.pow(10000, i)).toFixed(1)}${sizesValue}`;
 	}
-	return val;
-};
-
-// 数字转换为中文
-export const numberToChinesea = (num: number) => {
-	return numberToChineseCharacter(num);
+	return value;
 };
 
 /**
@@ -217,22 +243,23 @@ export function toCaseFormat(str: string, type: number = 1) {
 
 /**
  * 密码强度
- * @param {string} val 当前值字符串
+ * @param {string} value 当前值字符串
  * @description 弱：纯数字，纯字母，纯特殊字符
  * @description 中：字母+数字 | 字母+特殊字符 | 数字+特殊字符
  * @description 强：字母+数字+特殊字符
  * @returns {string} 返回处理后的字符串：弱、中、强
  */
-export function passwordStrengthFormat(val: string) {
+export function passwordStrengthFormat(value: string) {
 	let v = '';
 	// 弱：纯数字，纯字母，纯特殊字符
-	if (/^(?:\d+|[a-zA-Z]+|[!@#$%^&\.*]+){6,16}$/.test(val)) v = '弱';
+	if (/^(?:\d+|[a-zA-Z]+|[!@#$%^&\.*]+){6,16}$/.test(value)) v = '弱';
 	// 中：字母+数字，字母+特殊字符，数字+特殊字符
-	if (/^(?![a-zA-z]+$)(?!\d+$)(?![!@#$%^&\.*]+$)[a-zA-Z\d!@#$%^&\.*]{6,16}$/.test(val)) v = '中';
+	if (/^(?![a-zA-z]+$)(?!\d+$)(?![!@#$%^&\.*]+$)[a-zA-Z\d!@#$%^&\.*]{6,16}$/.test(value))
+		v = '中';
 	// 强：字母+数字+特殊字符
 	if (
 		/^(?![a-zA-z]+$)(?!\d+$)(?![!@#$%^&\.*]+$)(?![a-zA-z\d]+$)(?![a-zA-z!@#$%^&\.*]+$)(?![\d!@#$%^&\.*]+$)[a-zA-Z\d!@#$%^&\.*]{6,16}$/.test(
-			val
+			value
 		)
 	)
 		v = '强';
@@ -263,17 +290,17 @@ export function trimFormat(str: string, pos: Pos = 'both'): string {
 
 /**
  * 输入小数或整数(不可以负数)
- * @param {string} val 当前值字符串
+ * @param {string} value 当前值字符串
  * @param {number} decimalPlaces 保留的小数位数，默认2位
  * @returns {string} 返回处理后的字符串
  */
-export function verifyNumberIntegerAndFloat(val: string, decimalPlaces: number = 2): string {
+export function verifyNumberIntegerAndFloat(value: string, decimalPlaces: number = 2): string {
 	// 检查decimalPlaces是否为数字且在合理范围内
 	if (typeof decimalPlaces !== 'number' || decimalPlaces < 0 || decimalPlaces > 20) {
 		throw new Error('decimalPlaces must be a number between 0 and 20');
 	}
 	// 匹配空格
-	let v = val.replace(/(^\s*)|(\s*$)/g, '');
+	let v = value.replace(/(^\s*)|(\s*$)/g, '');
 	// 只能是数字和小数点，不能是其他输入
 	v = v.replace(/[^\d.]/g, '');
 	// 以0开始只能输入一个
@@ -290,17 +317,17 @@ export function verifyNumberIntegerAndFloat(val: string, decimalPlaces: number =
 
 /**
  * 输入数字(小数、整数或负数)
- * @param {string} val 当前值字符串
+ * @param {string} value 当前值字符串
  * @param {number} decimalPlaces 保留的小数位数，默认2位
  * @returns {string} 返回处理后的字符串
  */
-export function verifyNumber(val: string, decimalPlaces: number = 2): string {
+export function verifyNumber(value: string, decimalPlaces: number = 2): string {
 	// 检查decimalPlaces是否为数字且在合理范围内
 	if (typeof decimalPlaces !== 'number' || decimalPlaces < 0 || decimalPlaces > 20) {
 		throw new Error('decimalPlaces must be a number between 0 and 20');
 	}
 	// 去除所有空格
-	let v = val.replace(/\s+/g, '');
+	let v = value.replace(/\s+/g, '');
 	// 只保留数字、负号和小数点，去掉其他字符
 	v = v.replace(/[^-\d.]/g, '');
 	// 处理负号，负号只能在开头，且只能出现一次
@@ -331,12 +358,12 @@ export function verifyNumber(val: string, decimalPlaces: number = 2): string {
 
 /**
  * 正整数验证
- * @param {string} val 当前值字符串
+ * @param {string} value 当前值字符串
  * @returns {string} 返回处理后的字符串
  */
-export function verifyNumberInteger(val: string) {
+export function verifyNumberInteger(value: string) {
 	// 匹配空格
-	let v = val.replace(/(^\s*)|(\s*$)/g, '');
+	let v = value.replace(/(^\s*)|(\s*$)/g, '');
 	// 去掉 '.' , 防止贴贴的时候出现问题 如 0.1.12.12
 	v = v.replace(/[\.]*/g, '');
 	// 去掉以 0 开始后面的数, 防止贴贴的时候出现问题 如 00121323
@@ -351,12 +378,12 @@ export function verifyNumberInteger(val: string) {
 
 /**
  * 验证百分比（不可以小数）
- * @param {string} val 当前值字符串
+ * @param {string} value 当前值字符串
  * @returns {string} 返回处理后的字符串
  */
-export function verifyNumberPercentage(val: string): string {
+export function verifyNumberPercentage(value: string): string {
 	// 匹配空格
-	let v = val.replace(/(^\s*)|(\s*$)/g, '');
+	let v = value.replace(/(^\s*)|(\s*$)/g, '');
 	// 只能是数字和小数点，不能是其他输入
 	v = v.replace(/[^\d]/g, '');
 	// 不能以0开始
@@ -369,11 +396,11 @@ export function verifyNumberPercentage(val: string): string {
 
 /**
  * 验证百分比（可以小数）
- * @param {string} val 当前值字符串
+ * @param {string} value 当前值字符串
  * @returns {string} 返回处理后的字符串
  */
-export function verifyNumberPercentageFloat(val: string): string {
-	let v = verifyNumberIntegerAndFloat(val);
+export function verifyNumberPercentageFloat(value: string): string {
+	let v = verifyNumberIntegerAndFloat(value);
 	// 数字超过100，赋值成最大值100
 	v = v.replace(/^[1-9]\d\d{1,3}$/, '100');
 	// 超过100之后不给再输入值
@@ -384,12 +411,12 @@ export function verifyNumberPercentageFloat(val: string): string {
 
 /**
  * 去掉中文及空格
- * @param {string} val 当前值字符串
+ * @param {string} value 当前值字符串
  * @returns {string} 返回处理后的字符串
  */
-export function verifyCnAndSpace(val: string) {
+export function verifyCnAndSpace(value: string) {
 	// 匹配中文与空格
-	let v = val.replace(/[\u4e00-\u9fa5\s]+/g, '');
+	let v = value.replace(/[\u4e00-\u9fa5\s]+/g, '');
 	// 匹配空格
 	v = v.replace(/(^\s*)|(\s*$)/g, '');
 	// 返回结果
@@ -398,12 +425,12 @@ export function verifyCnAndSpace(val: string) {
 
 /**
  * 去掉英文及空格
- * @param {string} val 当前值字符串
+ * @param {string} value 当前值字符串
  * @returns {string} 返回处理后的字符串
  */
-export function verifyEnAndSpace(val: string) {
+export function verifyEnAndSpace(value: string) {
 	// 匹配英文与空格
-	let v = val.replace(/[a-zA-Z]+/g, '');
+	let v = value.replace(/[a-zA-Z]+/g, '');
 	// 匹配空格
 	v = v.replace(/(^\s*)|(\s*$)/g, '');
 	// 返回结果
@@ -412,14 +439,14 @@ export function verifyEnAndSpace(val: string) {
 
 // /**
 //  * 金额格式化
-//  * @param {*} val 传入的值
+//  * @param {*} value 传入的值
 //  * @param {string} empty 默认无值状态 默认（''）
 //  * @returns {string} 返回处理后的数据
 //  */
-// export function moneyFormat(val: any, empty = '') {
-// 	if (val) {
+// export function moneyFormat(value: any, empty = '') {
+// 	if (value) {
 // 		// 将输入值转换为字符串
-// 		let newVal = val.toString();
+// 		let newVal = value.toString();
 // 		// 调用小数、整数或负数方法
 // 		let v: any = verifyNumber(newVal);
 // 		// 字符串转成数组

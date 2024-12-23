@@ -39,7 +39,6 @@ const qrcodeInit = async (id: any) => {
 	});
 };
 qrcodeInit('1');
-
 const useQRCodeInit = async (id: any) => {
 	state.useQRCodeUrl = await useQRCode(`https://vueuse.org?id=${id}`, {
 		errorCorrectionLevel: 'H',

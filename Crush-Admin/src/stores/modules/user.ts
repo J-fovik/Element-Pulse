@@ -58,7 +58,6 @@ export const useUserStore = defineStore(`user`, () => {
 	const flatMenuListGet = () => getFlatMenuList(authMenuList.value);
 	// 递归处理后的所有面包屑导航列表
 	const breadcrumbListGet = () => getAllBreadcrumbList(authMenuList.value);
-
 	// 获取用户信息
 	const initUserInfo = async () => {
 		// // 获取用户信息

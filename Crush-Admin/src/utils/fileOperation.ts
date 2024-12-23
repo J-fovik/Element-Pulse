@@ -46,7 +46,7 @@ export const formatFileSize = (size: number) => {
  * @param {number} decimals 保留几位小数（默认2位）
  * @returns {string} 处理后的文件大小
  */
-export const sizeTostr = (size: number, decimals = 2) => {
+export const sizeToStr = (size: number, decimals = 2) => {
 	if (size === 0) return '0 Bytes';
 	const k = 1024;
 	const dm = decimals < 0 ? 0 : decimals;

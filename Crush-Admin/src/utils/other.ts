@@ -158,18 +158,21 @@ export function isMobile() {
 }
 
 /**
- * 来源
- * @returns {string} 来源
+ * 获取扩展来源
+ * @returns {string} 来源的域名
  */
 export const getExtensionSource = () => {
 	const urlSource = document.referrer ?? '';
-	// 判断存在
+	// 判断是否存在来源URL
 	if (urlSource) {
-		const urlPattern = /^(?:https?:\/\/)?([^\/]+)(\/.*)/;
+		// 正则表达式用于提取域名
+		const urlPattern = /^(?:https?:\/\/)?([^\/]+)(?:\/.*)?/;
 		const match = urlPattern.exec(urlSource);
-		return match && match.length ? match[1] : '';
+		// 如果匹配成功，则返回域名，否则返回空字符串
+		return match ? match[1] : '';
 	}
-	return urlSource;
+	// 如果没有来源URL，则返回空字符串
+	return '';
 };
 
 /**

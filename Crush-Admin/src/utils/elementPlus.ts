@@ -10,6 +10,7 @@ import {
 	ElMessage,
 } from 'element-plus';
 import { isFunction } from '@/utils/type';
+
 /* ****************************    Loading 加载   *********************************/
 
 let loadingInstance: ReturnType<typeof ElLoading.service>;
@@ -146,6 +147,7 @@ export const message = (
 		});
 	}
 };
+
 /**
  * 关闭所有 `Message` 消息提示函数
  */

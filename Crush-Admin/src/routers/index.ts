@@ -2,7 +2,7 @@ import { createRouter, createWebHashHistory, createWebHistory } from 'vue-router
 import { useUserStore } from '@/stores';
 import NProgress from '@/config/nprogress';
 import { Session } from '@/utils/storage';
-import { collectAllArrKeys } from '@/utils/arrayOperation';
+import { collectKeySpecifiedValues } from '@/utils/arrayOperation';
 import { RouteRecordRaw } from 'vue-router';
 import { HOME_URL, LOGIN_URL } from '@/config';
 import { appRoutes } from '@/routers/base';
@@ -153,7 +153,7 @@ router.beforeEach(async (to) => {
 		}
 
 		// 权限控制
-		if (!collectAllArrKeys(userStore.authMenuList)?.includes(to.name as any)) {
+		if (!collectKeySpecifiedValues(userStore.authMenuList)?.includes(to.name as any)) {
 			// 详情页面不做权限处理;
 			if (!to.meta.activeMenu) {
 				return {
