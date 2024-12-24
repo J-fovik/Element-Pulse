@@ -12,13 +12,16 @@ export const useDictionaryStore = defineStore('dictionary', () => {
 		// const { res } = await curryingRequest(() => getDictionaryList({}));
 		// // 循环添加map数据
 		const list = [
-			{ label: 'aaa', type: 'A', value: '111' },
-			{ label: 'bbb', type: 'B', value: '222' },
-			{ label: 'ccc', type: 'C', value: '333' },
-			{ label: 'ddd', type: 'A', value: '444' },
-			{ label: 'eee', type: 'B', value: '444' },
+			{ name: 'aaa', type: 'A', code: '111', sort: 1 },
+			{ name: 'bbb', type: 'B', code: '222', sort: 2 },
+			{ name: 'ccc', type: 'C', code: '333', sort: 4 },
+			{ name: 'ddd', type: 'A', code: '444', sort: 3 },
+			{ name: 'eee', type: 'B', code: '444', sort: 5 },
 		];
-		list.forEach((item: any) => {
+		list?.sort((a: any, b: any) => a?.sort - b?.sort)?.forEach((item: any) => {
+			// 在每个对象中添加value属性
+			item.value = item?.code;
+			item.label = item?.name;
 			if (hasValue(item.type)) {
 				const dictionaryList = getValue(item.type) as Array<any>;
 				basicsMap.value.set(item.type, [...dictionaryList, item]);
