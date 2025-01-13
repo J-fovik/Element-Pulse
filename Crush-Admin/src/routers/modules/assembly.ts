@@ -225,6 +225,21 @@ export default {
 			component: () => import('@/views/assembly/proportion/index.vue'),
 		},
 		{
+			path: '/assembly/drag',
+			name: 'drag',
+			meta: {
+				icon: 'Menu',
+				title: '拖拽组件',
+				isLink: '',
+				isHide: false,
+				isFull: false,
+				isAffix: false,
+				requiresAuth: true,
+				isKeepAlive: true,
+			},
+			component: () => import('@/views/assembly/drag/index.vue'),
+		},
+		{
 			path: '/assembly/miniTool',
 			name: 'miniTool',
 			meta: {

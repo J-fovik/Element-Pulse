@@ -18,6 +18,7 @@ declare module 'vue' {
     CropperJs: typeof import('./components/CropperJs/index.vue')['default']
     CustomTableMould: typeof import('./components/CustomTableMould/index.vue')['default']
     Dot: typeof import('./components/Dot/index.vue')['default']
+    DraggableList: typeof import('./components/DraggableList/index.vue')['default']
     ECharts: typeof import('./components/ECharts/index.vue')['default']
     EmbedPdf: typeof import('./components/EmbedPdf/index.vue')['default']
     FlopTime: typeof import('./components/FlopTime/index.vue')['default']
@@ -42,6 +43,8 @@ declare module 'vue' {
     TagInput: typeof import('./components/TagInput/index.vue')['default']
     TreeSelector: typeof import('./components/TreeSelector/index.vue')['default']
     VueCropper: typeof import('./components/VueCropper/index.vue')['default']
+    VueDraggableListPlus: typeof import('./components/VueDraggableListPlus/index.vue')['default']
+    VueDraggablePlus: typeof import('./components/VueDraggablePlus/index.vue')['default']
     WangEditor: typeof import('./components/WangEditor/index.vue')['default']
     Xgplayer: typeof import('./components/Xgplayer/index.vue')['default']
   }

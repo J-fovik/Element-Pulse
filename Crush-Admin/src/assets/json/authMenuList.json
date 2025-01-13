@@ -369,6 +369,21 @@
 					}
 				},
 				{
+					"path": "/assembly/drag",
+					"name": "drag",
+					"component": "/assembly/drag/index",
+					"meta": {
+						"icon": "Menu",
+						"title": "拖拽组件",
+						"isLink": "",
+						"isHide": false,
+						"isFull": false,
+						"isAffix": false,
+						"requiresAuth": true,
+						"isKeepAlive": true
+					}
+				},
+				{
 					"path": "/assembly/miniTool",
 					"name": "miniTool",
 					"component": "/assembly/miniTool/index",
