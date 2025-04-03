@@ -12,7 +12,7 @@
 					:is-draggable="true"
 					item-class="bg-white px20 py5"
 				>
-					<template #row="{ record }">
+					<template #row="{ record, rowIndex }">
 						<div style="color: #333">{{ record.title }}</div>
 					</template>
 					<template #children="{ record }">
@@ -21,7 +21,7 @@
 							:is-draggable="true"
 							item-class="bg-white ml30"
 						>
-							<template #row="{ record }">
+							<template #row="{ record, rowIndex }">
 								<div style="color: #333">{{ record.title }}</div>
 							</template>
 						</VueDraggablePlus>

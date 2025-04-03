@@ -16,11 +16,11 @@ import { isFunction } from '@/utils/type';
 let loadingInstance: ReturnType<typeof ElLoading.service>;
 let needLoadingRequestCount = 0;
 // 开启 Loading
-const startLoading = () => {
+const startLoading = (text: any) => {
 	loadingInstance = ElLoading.service({
 		fullscreen: true,
 		lock: true,
-		text: 'Loading',
+		text: text,
 		background: 'rgba(0, 0, 0, 0.7)',
 	});
 };
@@ -31,9 +31,9 @@ const endLoading = () => {
 /**
  * @description 显示全屏加载
  */
-export const showFullScreenLoading = () => {
+export const showFullScreenLoading = (text = '加载中...') => {
 	if (needLoadingRequestCount === 0) {
-		startLoading();
+		startLoading(text);
 	}
 	needLoadingRequestCount++;
 };

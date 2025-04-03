@@ -21,7 +21,7 @@
 					</div>
 				</div>
 				<div v-if="item.children">
-					<slot name="children" :record="item" :rowIndex="index"></slot>
+					<slot name="children" :record="item" :seniorIndex="index"></slot>
 				</div>
 			</div>
 		</vue-draggable>
