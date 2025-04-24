@@ -4,7 +4,7 @@
 		:title="form.id ? (form.isReadOnly ? '表格详情' : '编辑表格') : '新增表格'"
 		width="80vw"
 		draggable
-		:close-on-click-modal="false"
+		:close-on-click-modal="true"
 		@close="emits('close')"
 	>
 		<el-form
