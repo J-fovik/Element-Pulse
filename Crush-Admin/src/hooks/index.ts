@@ -7,8 +7,10 @@ export { useBasicsState, useBasicsSet, useBasicsMap } from './modules/useBase'; 
 export { useCreateScript } from './modules/useCreateScript'; // 创建script标签
 export { useAuthButtons } from './modules/useAuthButtons'; // 按钮权限
 export { curryingRequest, curryingRequestUrl } from './modules/useRequest'; // 请求封装
+export { useNetworkStatus } from './modules/useNetworkStatus'; // 网络是否可用
 export { useForm, useTable } from './modules/useTable'; // 表格表单
 export { useTheme, useGray } from './modules/useTheme'; // 主题切换
 export { useCountDown } from './modules/useCountDown'; //  倒计时
-export { useOnline } from './modules/useOnline'; // 网络是否可用
+export { useInterval } from './modules/useInterval'; // 定时器
+export { useScreenSize } from './modules/useScreenSize'; // 屏幕尺寸监听
 export { useTime } from './modules/useTime'; // 获取本地时间
