@@ -132,6 +132,28 @@ export const getPastTime = (num: number, unit: dayjs.ManipulateType, format = 'Y
 };
 
 /**
+ * 获取过去时间
+ * @description format格式,请查看：https://dayjs.fenxianglu.cn/category/display.html#%E6%A0%BC%E5%BC%8F%E5%8C%96
+ * @param {number} num 时间数量
+ * @param {string} unit dayjs.ManipulateType的格式（可悬停在dayjs.ManipulateType上查看）
+ * @param {string} format 需要转换的格式（默认 YYYY-MM-DD）
+ * @param {string} startOfDay 带可选 midnight 参数
+ * @returns {string} 返回需要的时间字符串
+ */
+export const getPastStartOfTime = (
+	num: number,
+	unit: dayjs.ManipulateType,
+	format = 'YYYY-MM-DD HH:mm:ss',
+	startOfDay = false // 新增参数，是否设置为当天0点
+) => {
+	let time = dayjs().subtract(num, unit);
+	if (startOfDay) {
+		time = time.startOf('day'); // 设置为当天的0点
+	}
+	return time.format(format);
+};
+
+/**
  * 获取未来时间
  * @description format格式,请查看：https://dayjs.fenxianglu.cn/category/display.html#%E6%A0%BC%E5%BC%8F%E5%8C%96
  * @param {number} num 时间数量
