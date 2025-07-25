@@ -3,6 +3,7 @@ import request from '@/api';
 /**
  * @name 文件管理模块
  */
+
 // 上传图片
 export const uploadImage = (data: Object) => {
 	return request({
@@ -15,6 +16,7 @@ export const uploadImage = (data: Object) => {
 		},
 	});
 };
+
 // 导出兑换码
 export const exportCode = (data: Object) => {
 	return request({
@@ -37,6 +39,7 @@ export const uploadImg = (data: Object) => {
 		},
 	});
 };
+
 // 视频上传
 export const uploadVideo = (data: Object) => {
 	return request({

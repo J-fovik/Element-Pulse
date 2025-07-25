@@ -4,6 +4,8 @@ import { Session } from '@/utils/storage';
 import { ElMessage } from 'element-plus';
 import { useUserStore, useMessageStore } from '@/stores';
 import router from '@/routers';
+
+// 创建实例
 const request = axios.create({
 	// 默认地址请求地址，可在 .env.** 文件中修改
 	baseURL: import.meta.env.VITE_API_URL as string,
@@ -18,6 +20,7 @@ const request = axios.create({
 	// 跨域时候允许携带凭证
 	withCredentials: true,
 });
+
 // 请求拦截
 request.interceptors.request.use(
 	(config: InternalAxiosRequestConfig) => {
