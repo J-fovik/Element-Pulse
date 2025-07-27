@@ -42,6 +42,7 @@ declare module 'vue' {
     TablePlus: typeof import('./components/TablePlus/index.vue')['default']
     TagInput: typeof import('./components/TagInput/index.vue')['default']
     TreeSelector: typeof import('./components/TreeSelector/index.vue')['default']
+    VideoPlay: typeof import('./components/VideoPlay/index.vue')['default']
     VueCropper: typeof import('./components/VueCropper/index.vue')['default']
     VueDraggableListPlus: typeof import('./components/VueDraggableListPlus/index.vue')['default']
     VueDraggablePlus: typeof import('./components/VueDraggablePlus/index.vue')['default']

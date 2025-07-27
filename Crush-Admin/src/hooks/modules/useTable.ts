@@ -1,5 +1,5 @@
 /**
- * @name 菜单表格(表格,表单)
+ * @name 表格菜单(表格、表单、分页)
  */
 
 import type { FormInstance } from 'element-plus';
@@ -20,7 +20,7 @@ export interface TableCustomColumnData {
 	renderHeader?: (record: any) => any;
 }
 
-// 表格封装
+// 封装表格
 export const useTable = (columns: TableCustomColumnData[], callBack: () => void) => {
 	// 表头设置
 	const columnsData = ref<TableCustomColumnData[]>(columns);

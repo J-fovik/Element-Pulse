@@ -1,5 +1,19 @@
 <template>
 	<div>
+		<el-card shadow="hover" header="VideoPlay 原生视频播放器" class="mb20">
+			<el-alert
+				title="VideoPlay 播放器目前使用 video 原生组件完成"
+				type="warning"
+				:closable="false"
+				class="mb20"
+			/>
+			<el-button type="primary" @click="setActiveKey('VideoPlay')">原生视频播放器</el-button>
+			<VideoPlay
+				v-if="activeKey === 'VideoPlay'"
+				:data="{ videoUrl: url }"
+				@close="setActiveKey(null)"
+			/>
+		</el-card>
 		<el-card shadow="hover" header="Xgplayer 西瓜视频播放器" class="mb20">
 			<el-alert
 				title="Xgplayer 播放器目前使用 xgplayer 插件完成，官方文档请查看 ：https://www.npmjs.com/package/xgplayer"

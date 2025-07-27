@@ -1,31 +1,8 @@
 /**
  * @name 定时器
- * @description 提供可控制的定时器功能，支持手动启动和停止，组件卸载时自动清理
- * @param {Function} callback - 定时执行的回调函数
- * @param {number} delay - 执行间隔时间(毫秒)
- * @returns {Object} 定时器控制方法
- * @property {Function} start - 启动定时器
- * @property {Function} stop - 停止定时器
- * @example
- * // 基础用法
- * const { start, stop } = useInterval(() => {
- *   console.log('每秒执行一次')
- * }, 1000)
- *
- * // 手动控制
- * start() // 启动定时器
- * stop()  // 停止定时器
- *
- * @example
- * // 配合组件生命周期使用
- * onMounted(() => {
- *   start() // 组件挂载时启动
- * })
- *
- * onBeforeUnmount(() => {
- *   stop()  // 组件卸载前停止(useInterval已自动处理)
- * })
  */
+
+// 定时器
 export function useInterval(callback: () => void, delay: number) {
 	// 存储定时器ID，用于清理
 	let timer: number | any;

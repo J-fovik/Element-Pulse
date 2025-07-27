@@ -1,6 +1,7 @@
 /**
  * @name 操作性指令
  */
+
 import type { App, DirectiveBinding } from 'vue';
 import { ElMessage } from 'element-plus';
 interface ElType extends HTMLElement {

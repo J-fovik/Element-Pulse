@@ -1,8 +1,8 @@
 /**
  * @name 网络状态
- * @returns 返回当前网络连接状态
  */
 
+// 网络状态
 export function useNetworkStatus() {
 	const isOnline = ref(navigator.onLine);
 

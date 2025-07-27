@@ -92,12 +92,14 @@ interface RouteRecordRaw {
 	├── useCountDown.ts (倒计时)
 	├── useCreateScript.ts (创建script标签)
 	├── useDebounceCustomRef.ts (输入框防抖)
-	├── useDevice.ts (页面大小)
-	├── useOnline.ts (网络状态)
+	├── useInterval.ts (定时器)
+	├── useNetworkStatus.ts (网络状态)
 	├── useRequest.ts (请求二次封装)
+	├── useScreenSize.ts (屏幕尺寸)
 	├── useTable.ts (菜单表格包括表格、表单)
 	├── useTheme.ts (全局主题)
-	└── useTime.ts (获取本地时间)
+	├── useTime.ts (获取本地时间)
+	└── useWebSocket.ts (WebSocket)
 
 注释:useCreateScript, useDebounceCustomRef, useRequest 可放utils里
 ```

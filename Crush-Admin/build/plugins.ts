@@ -17,6 +17,7 @@ import FullReload from 'vite-plugin-full-reload'; // 修改代码重新编译加
 export const createVitePlugins = (viteEnv: ViteEnv): (PluginOption | PluginOption[])[] => {
 	const { VITE_GLOB_APP_TITLE, VITE_REPORT, VITE_PWA } = viteEnv;
 	return [
+		// vue
 		vue(),
 		// vue 可以使用 jsx/tsx 语法
 		vueJsx(),

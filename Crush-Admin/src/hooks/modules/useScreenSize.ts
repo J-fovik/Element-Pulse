@@ -1,18 +1,10 @@
 /**
- * @name 屏幕尺寸监听
- * @description 用于获取和监听浏览器窗口的尺寸变化
- * @returns {Object} 包含宽度和高度的响应式对象
- * @property {Ref<number>} width - 当前窗口宽度(响应式)
- * @property {Ref<number>} height - 当前窗口高度(响应式)
- * @example
- * // 在组件中使用
- * const { width, height } = useScreenSize()
- *
- * // 监听宽度变化
- * watch(width, (newVal) => {
- *   console.log('窗口宽度变为:', newVal)
- * })
+ * @name 屏幕尺寸
  */
+
+import { useWindowSize } from '@vueuse/core';
+
+// 屏幕尺寸监听
 export function useScreenSize() {
 	// 创建响应式引用存储窗口尺寸
 	const width = ref(window.innerWidth);
@@ -54,4 +46,16 @@ export function useScreenSize() {
 		width,
 		height,
 	};
+}
+
+// 响应式布局容器宽度判定设备
+export function useDevice() {
+	// 大屏（>=1200px）中屏（>=992px）小屏（>=768px）
+	const { width } = useWindowSize();
+	// 客户端
+	const isDesktop = computed(() => width.value > 992);
+	// 移动端
+	const isMobile = computed(() => !isDesktop.value);
+
+	return { isMobile, isDesktop };
 }

@@ -1,6 +1,7 @@
 /**
  * @name 非操作性指令
  */
+
 import type { App, DirectiveBinding, CSSProperties } from 'vue';
 interface IValue {
 	width?: number;

@@ -98,12 +98,6 @@ body,
 		text-align: left !important;
 	}
 }
-.bg-white {
-	background: white;
-}
-.bg-F9F9F9 {
-	background: #f9f9f9;
-}
 /*********************** flex **********************/
 .flx-center {
 	display: flex;
@@ -208,6 +202,12 @@ body,
 }
 .rounded50 {
 	border-radius: 50%;
+}
+.bg-white {
+	background: white;
+}
+.bg-F9F9F9 {
+	background: #f9f9f9;
 }
 /* 价格 */
 .text-price::before {
