@@ -143,6 +143,23 @@ export const downloadBlob = (res: any, name?: string) => {
 };
 
 /**
+ * 从 Blob 或二进制数据下载文件
+ * @param {Blob | ArrayBuffer} data - 文件数据（Blob 或二进制流）
+ * @param {string} [filename] - 可选，自定义文件名
+ */
+export const downloadFileFromBlob = (data: Blob | ArrayBuffer, filename?: string) => {
+	const blob = data instanceof Blob ? data : new Blob([data]);
+	const url = URL.createObjectURL(blob);
+	const link = document.createElement('a');
+	link.href = url;
+	link.download = filename || 'download'; // 默认文件名
+	document.body.appendChild(link);
+	link.click();
+	URL.revokeObjectURL(url);
+	document.body.removeChild(link);
+};
+
+/**
  * 下载base64图片
  * @param {string} base64string base64文件地址
  * @param {String} name 文件名称

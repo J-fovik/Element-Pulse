@@ -407,6 +407,18 @@ export const formatTime = (seconds: number): string => {
 };
 
 /**
+ * 分钟转小时
+ * @param {number} seconds - 需要格式化的分钟数。
+ * @returns {string} 返回小时。
+ */
+export const secondsToMinutes = (seconds: any) => {
+	const mins = Math.floor(seconds / 60);
+	const secs = seconds % 60;
+	// 使用padStart确保秒数总是两位数
+	return `${mins}:${secs.toString().padStart(2, '0')}`;
+};
+
+/**
  * 当前年减一年的年份数组
  */
 export const getYearOptions = () => {
