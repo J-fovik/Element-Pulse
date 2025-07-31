@@ -1,5 +1,10 @@
 <template>
-	<div class="card treeSelector">
+	<div
+		class="card treeSelector"
+		:style="{
+			width: width,
+		}"
+	>
 		<!-- 标题 -->
 		<h4 v-if="title" class="title sle">
 			{{ title }}
@@ -35,6 +40,7 @@
 				:check-on-click-node="multiple"
 				:props="defaultProps"
 				:filter-node-method="filterNode"
+				:default-expand-all="expandAll"
 				:default-checked-keys="multiple ? selected : []"
 				@node-click="handleNodeClick"
 				@check="handleCheckChange"
@@ -61,6 +67,7 @@ const props = withDefaults(
 		defaultValue?: any; // 默认选中的值 ==> 非必传
 		defaultProps?: any; // 默认配置==> 非必传
 		multiple?: boolean; // 是否为多选 ==> 非必传，默认为 false
+		expandAll?: boolean; // 是否为全部展开 ==> 非必传，默认为 false
 		title?: string; // treeFilter 标题 ==> 非必传
 		id?: string; // 选择的id ==> 非必传，默认为 “id”
 		width?: string; // 组件宽度 ==> 非必传，默认为 “220px”
@@ -75,6 +82,7 @@ const props = withDefaults(
 		},
 		multiple: false,
 		title: '',
+		expandAll: false,
 		id: 'id',
 		width: '220px',
 		icon: 'CaretRight',

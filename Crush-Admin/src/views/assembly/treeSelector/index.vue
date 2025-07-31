@@ -41,6 +41,9 @@
 				<el-descriptions-item label="multiple">
 					是否为多选，默认为 false
 				</el-descriptions-item>
+				<el-descriptions-item label="expandAll">
+					是否为全部展开，默认为 false
+				</el-descriptions-item>
 				<el-descriptions-item label="icon">
 					节点图标，默认 'CaretRight'
 				</el-descriptions-item>
