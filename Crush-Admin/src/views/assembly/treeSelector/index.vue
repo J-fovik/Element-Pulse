@@ -91,7 +91,8 @@ const changeTreeFilterMany = (e: any) => {
 		display: flex;
 		flex: 1;
 		flex-direction: column;
-		height: 100%;
+		/* height: 100%; */
+		overflow-y: auto !important;
 	}
 }
 </style>
