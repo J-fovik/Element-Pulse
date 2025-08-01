@@ -72,7 +72,7 @@ export const useUserStore = defineStore(`user`, () => {
 		// }
 		// 设置用户信息
 		setUserInfo({
-			...userInfo,
+			...userInfo.value,
 			name: BY_NAME,
 			userId: 'userId',
 		});
