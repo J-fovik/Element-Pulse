@@ -2,7 +2,7 @@
 	<el-drawer
 		:model-value="true"
 		title="权限分配"
-		:close-on-click-modal="false"
+		:close-on-click-modal="true"
 		:destroy-on-close="true"
 		@close="emits('close')"
 	>

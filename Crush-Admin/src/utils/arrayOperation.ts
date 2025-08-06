@@ -774,3 +774,21 @@ export function countBy<T>(arr: Array<T>, generateKey: (item: T) => any): { [key
 	}
 	return result;
 }
+
+/**
+ * 检查数组中是否存在重复项（基于回调函数生成的唯一键）
+ * @param array 要检查的数组
+ * @param callback 生成唯一键的回调函数，接收数组元素，返回字符串作为比较依据
+ * @returns 如果存在重复项返回 `true`，否则返回 `false`
+ */
+export function hasDuplicates<T>(array: T[], callback: (item: T) => string): boolean {
+	const seen = new Set<string>(); // 用于存储已见过的键
+	return array.some((item) => {
+		const key = callback(item); // 调用回调生成唯一键
+		if (seen.has(key)) {
+			return true; // 如果键已存在，说明有重复
+		}
+		seen.add(key); // 否则记录该键
+		return false;
+	});
+}
