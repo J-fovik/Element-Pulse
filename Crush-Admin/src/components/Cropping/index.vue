@@ -1,27 +1,89 @@
 <template>
-	<div
-		v-if="inSrc"
-		ref="tippyElRef"
-		:class="{ 're-circled': inCircled }"
-		:style="getWrapperStyle"
-	>
-		<img
-			v-show="isReady"
-			ref="imgElRef"
-			:style="getImageStyle"
-			:src="inSrc"
-			:alt="props.alt"
-			:crossorigin="props.crossorigin"
-		/>
+	<div>
+		<div
+			v-if="inSrc"
+			ref="tippyElRef"
+			:class="{ 're-circled': inCircled }"
+			:style="getWrapperStyle"
+		>
+			<img
+				v-show="isReady"
+				ref="imgElRef"
+				:style="getImageStyle"
+				:src="inSrc"
+				:alt="props.alt"
+				:crossorigin="props.crossorigin"
+			/>
+		</div>
+		<div class="mt20 flex flex-wrap justify-between">
+			<!-- 上传 -->
+			<el-upload accept="image/*" :before-upload="beforeUpload" :show-file-list="false">
+				<el-button circle :icon="Upload"> </el-button>
+			</el-upload>
+			<!-- 下载 -->
+			<el-button circle :icon="Download" @click="downloadBase64Image(imgBase64, 'cropping')">
+			</el-button>
+			<!-- 圆形、矩形裁剪 -->
+			<el-button
+				circle
+				:icon="Notification"
+				@click="
+					() => {
+						inCircled = !inCircled;
+						realTimeCroppered();
+					}
+				"
+			>
+			</el-button>
+			<!-- 重置 -->
+			<el-button circle :icon="Refresh" @click="handCropper('reset')"> </el-button>
+			<!-- 上移 -->
+			<el-button circle :icon="CaretTop" @click="handCropper('move', [0, -10])"></el-button>
+			<!-- 下移 -->
+			<el-button circle :icon="CaretBottom" @click="handCropper('move', [0, 10])"></el-button>
+			<!-- 左移 -->
+			<el-button circle :icon="CaretLeft" @click="handCropper('move', [-10, 0])"></el-button>
+			<!-- 右移 -->
+			<el-button circle :icon="CaretRight" @click="handCropper('move', [10, 0])"></el-button>
+			<!-- 水平翻转 -->
+			<el-button circle :icon="Guide" @click="handCropper('scaleX', -1)"></el-button>
+			<!-- 垂直翻转 -->
+			<el-button circle :icon="DCaret" @click="handCropper('scaleY', -1)"></el-button>
+			<!-- 逆时针旋转 -->
+			<el-button circle :icon="RefreshLeft" @click="handCropper('rotate', -45)"></el-button>
+			<!-- 顺时针旋转 -->
+			<el-button circle :icon="RefreshRight" @click="handCropper('rotate', 45)"></el-button>
+			<!-- 放大 -->
+			<el-button circle :icon="ZoomIn" @click="handCropper('zoom', 0.1)"></el-button>
+			<!-- 缩小 -->
+			<el-button circle :icon="ZoomOut" @click="handCropper('zoom', -0.1)"></el-button>
+		</div>
 	</div>
 </template>
 
 <script setup lang="ts" name="Cropping">
+import {
+	Upload,
+	Download,
+	Notification,
+	Refresh,
+	CaretTop,
+	CaretBottom,
+	CaretLeft,
+	CaretRight,
+	Guide,
+	DCaret,
+	RefreshLeft,
+	RefreshRight,
+	ZoomIn,
+	ZoomOut,
+} from '@element-plus/icons-vue';
 import Cropper from 'cropperjs';
 import 'cropperjs/dist/cropper.css';
 import { useResizeObserver } from '@vueuse/core';
 import { debounce } from '@/utils/other';
 import { isArray } from '@/utils/type';
+import { downloadBase64Image } from '@/utils/fileOperation';
 import type { CSSProperties } from 'vue';
 
 type Options = Cropper.Options;
@@ -205,5 +267,8 @@ useResizeObserver(tippyElRef, () => handCropper('reset'));
 	:deep(.cropper-face) {
 		border-radius: 50%;
 	}
+}
+.el-button + .el-button {
+	margin-left: 0px;
 }
 </style>
