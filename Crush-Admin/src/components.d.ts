@@ -14,7 +14,6 @@ declare module 'vue' {
     Barcode: typeof import('./components/Barcode/index.vue')['default']
     CircleIndex: typeof import('./components/CircleIndex/index.vue')['default']
     Container: typeof import('./components/Container/index.vue')['default']
-    copy: typeof import('./components/CropperJs copy/index.vue')['default']
     CountUp: typeof import('./components/CountUp/index.vue')['default']
     CropperJs: typeof import('./components/CropperJs/index.vue')['default']
     Cropping: typeof import('./components/Cropping/index.vue')['default']
