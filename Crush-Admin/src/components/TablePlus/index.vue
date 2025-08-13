@@ -5,6 +5,7 @@
 		:data="tableData"
 		@selection-change="handleSelectionChange"
 		v-loading="loading"
+		:border="border"
 	>
 		<el-table-column
 			type="selection"
@@ -42,6 +43,7 @@ const props = withDefaults(
 	defineProps<{
 		loading?: boolean; // loading
 		selection?: boolean; // 是否多选
+		border?: boolean; // 是否边框(可拖拽列)
 		tableData?: Array<any>; //表格数据
 		visibleColumnsData: Array<any>; // 可视表头
 		selectable?: ((row: any) => boolean) | undefined; // 选择函数,判断当前列是否可选
@@ -49,6 +51,7 @@ const props = withDefaults(
 	{
 		loading: false,
 		selection: false,
+		border: false,
 		tableData: () => [],
 		visibleColumnsData: () => [],
 		selectable: () => true,
