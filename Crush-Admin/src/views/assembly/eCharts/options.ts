@@ -62,12 +62,48 @@ export const options3 = {
 			name: '邮件营销',
 			type: 'line',
 			stack: '总量',
+			smooth: true,
+			showSymbol: true,
+			// 矢量画五角星
+			symbol: 'path://M150 0 L80 175 L250 75 L50 75 L220 175 Z',
+			symbolSize: 12,
+			yAxisIndex: 0,
+			areaStyle: {
+				color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+					{ offset: 0, color: 'rgba(250,180,101,0.3)' },
+					{ offset: 1, color: 'rgba(250,180,101,0)' },
+				]),
+				shadowColor: 'rgba(250,180,101,0.2)',
+				shadowBlur: 20,
+			},
+			itemStyle: { color: '#FF8000' },
 			data: [120, 132, 101, 134, 90, 230, 210],
 		},
 		{
 			name: '联盟广告',
 			type: 'line',
 			stack: '总量',
+			smooth: true,
+			showSymbol: true,
+			symbol: 'emptyCircle',
+			symbolSize: 12,
+			yAxisIndex: 0,
+			areaStyle: {
+				color: new echarts.graphic.LinearGradient(
+					0,
+					0,
+					0,
+					1,
+					[
+						{ offset: 0, color: 'rgba(199, 237, 250,0.5)' },
+						{ offset: 1, color: 'rgba(199, 237, 250,0.2)' },
+					],
+					false
+				),
+			},
+			itemStyle: {
+				color: '#3bbc86',
+			},
 			data: [220, 182, 191, 234, 290, 330, 310],
 		},
 		{
