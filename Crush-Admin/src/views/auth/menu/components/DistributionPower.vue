@@ -13,7 +13,7 @@
 			node-key="name"
 			:expand-on-click-node="true"
 			:check-on-click-node="true"
-			:check-strictly="false"
+			:check-strictly="checkStrictly"
 			:default-expanded-keys="manySelected"
 			:default-checked-keys="manySelected"
 			:highlight-current="true"
@@ -21,7 +21,7 @@
 				children: 'children',
 				label: 'title',
 			}"
-			@check="handleCheckChange"
+			@check="handleTreeCheck"
 		/>
 		<template #footer>
 			<el-space>
@@ -42,19 +42,35 @@ import { Session } from '@/utils/storage';
 const treeRef = ref<InstanceType<typeof ElTree>>();
 /* 父组件方法 */
 const emits = defineEmits(['close', 'success']);
-const manySelected = ref();
+// 勾选的权限
+const manySelected = ref([] as any);
+// 提交的权限
+const submitSelected = ref([] as any);
+// 是否严选
+const checkStrictly = ref(false);
 // 选中
 const handleCheckChange = () => {
 	manySelected.value = treeRef.value?.getCheckedKeys();
 };
+// 选中节点
+const handleTreeCheck = (...e) => {
+	const { checkedKeys, halfCheckedKeys } = e[1];
+	submitSelected.value = [...checkedKeys, ...halfCheckedKeys];
+};
 // 提交
 const onSubmit = () => {
-	Session.set('menu', manySelected.value);
+	Session.set('menu', submitSelected.value);
 	emits('success');
 	emits('close');
 };
 onMounted(() => {
+	// 用于传父节点
+	checkStrictly.value = true;
 	manySelected.value = Session.get('menu');
+	submitSelected.value = Session.get('menu');
+	setTimeout(() => {
+		checkStrictly.value = false;
+	}, 150);
 });
 </script>
 
