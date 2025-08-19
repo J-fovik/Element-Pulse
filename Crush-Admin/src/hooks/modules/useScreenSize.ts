@@ -48,7 +48,7 @@ export function useScreenSize() {
 	};
 }
 
-// 响应式布局容器宽度判定设备
+// 响应式布局容器宽度判定设备类型
 export function useDevice() {
 	// 大屏（>=1200px）中屏（>=992px）小屏（>=768px）
 	const { width } = useWindowSize();
