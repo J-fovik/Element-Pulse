@@ -58,6 +58,16 @@
 		<el-card shadow="hover" header="FlopTime 时钟" class="mb20">
 			<FlopTime />
 		</el-card>
+		<el-card shadow="hover" header="Fullscreen 局部全屏" class="mb20">
+			<Fullscreen class="p20 bg-white">
+				<template #default="{ fullscreen, toggleFullscreen }">
+					<div>当前状态: {{ fullscreen ? '全屏中' : '非全屏' }}</div>
+					<el-button type="primary" @click="toggleFullscreen">
+						{{ fullscreen ? '退出全屏' : '进入全屏' }}
+					</el-button>
+				</template>
+			</Fullscreen>
+		</el-card>
 		<el-card shadow="hover" header="Loading 加载动画" class="mb20">
 			<Loading />
 		</el-card>

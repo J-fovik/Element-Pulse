@@ -22,6 +22,7 @@ declare module 'vue' {
     ECharts: typeof import('./components/ECharts/index.vue')['default']
     EmbedPdf: typeof import('./components/EmbedPdf/index.vue')['default']
     FlopTime: typeof import('./components/FlopTime/index.vue')['default']
+    Fullscreen: typeof import('./components/Fullscreen/index.vue')['default']
     Gsap: typeof import('./components/Gsap/index.vue')['default']
     IconCase: typeof import('./components/IconCase/index.vue')['default']
     IconSelect: typeof import('./components/IconSelect/index.vue')['default']
