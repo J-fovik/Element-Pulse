@@ -154,6 +154,29 @@ export const getPastStartOfTime = (
 };
 
 /**
+ * 获取某个时间的前几分钟
+ * @param {string} str 时间字符串
+ * @param {number} num 时间数量
+ * @returns {string} 返回需要的时间字符串
+ */
+export const getDateFrontMinutes = (str, num) => {
+	var time = new Date(str);
+	time.setMinutes(time.getMinutes() - num);
+	return time;
+};
+
+/**
+ * 获取某个时间的前几分钟
+ * @param {string} str 时间字符串
+ * @param {number} num 时间数量
+ * @param {string} format 需要转换的格式（默认 YYYY-MM-DD HH:mm:ss）
+ * @returns {string} 返回需要的时间字符串
+ */
+export const getDayjsFrontMinutes = (str, num, format: string = 'YYYY-MM-DD HH:mm:ss') => {
+	return dayjs(str).subtract(num, 'minute').format(format);
+};
+
+/**
  * 获取未来时间
  * @description format格式,请查看：https://dayjs.fenxianglu.cn/category/display.html#%E6%A0%BC%E5%BC%8F%E5%8C%96
  * @param {number} num 时间数量
