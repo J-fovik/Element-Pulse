@@ -98,6 +98,28 @@
 		</el-card>
 		<el-card
 			shadow="hover"
+			header="雷达图"
+			class="mt10"
+			:content-style="{ padding: '10px' }"
+			:header-style="{ padding: '10px' }"
+		>
+			<div style="height: 400px">
+				<ECharts :options="options13" />
+			</div>
+		</el-card>
+		<el-card
+			shadow="hover"
+			header="键盘图"
+			class="mt10"
+			:content-style="{ padding: '10px' }"
+			:header-style="{ padding: '10px' }"
+		>
+			<div style="height: 400px">
+				<ECharts :options="options14" />
+			</div>
+		</el-card>
+		<el-card
+			shadow="hover"
 			class="mt10"
 			:content-style="{ padding: '10px' }"
 			:header-style="{ padding: '10px' }"
@@ -166,6 +188,8 @@ import {
 	options10,
 	options11,
 	options12,
+	options13,
+	options14,
 } from './options';
 const globalStore = useGlobalStore();
 // 主题色

@@ -1,5 +1,5 @@
 import echarts from '@/components/ECharts/config';
-
+let animationDuration = 3000; // 动画时长
 export const options1 = {
 	xAxis: {
 		type: 'category',
@@ -142,31 +142,6 @@ export const options4 = {
 	},
 	series: [
 		{
-			data: [120, 200, 150, 80, 70, 110, 130],
-			type: 'bar',
-			showBackground: true,
-			backgroundStyle: {
-				color: 'rgba(180, 180, 180, 0.2)',
-			},
-		},
-	],
-	grid: {
-		x: '15%',
-		y: '5%',
-		x2: '1%',
-		y2: '15%',
-	},
-};
-export const options5 = {
-	xAxis: {
-		type: 'category',
-		data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-	},
-	yAxis: {
-		type: 'value',
-	},
-	series: [
-		{
 			data: [
 				120,
 				{
@@ -190,6 +165,65 @@ export const options5 = {
 		x2: '1%',
 		y2: '15%',
 	},
+};
+export const options5 = {
+	tooltip: {
+		trigger: 'axis',
+		axisPointer: {
+			// 坐标轴指示器，坐标轴触发有效
+			type: 'shadow', // 默认为直线，可选为：'line' | 'shadow'
+		},
+	},
+	grid: {
+		top: 10,
+		left: '2%',
+		right: '2%',
+		bottom: '3%',
+		containLabel: true,
+	},
+	xAxis: [
+		{
+			type: 'category',
+			data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+			axisTick: {
+				alignWithLabel: true,
+			},
+		},
+	],
+	yAxis: [
+		{
+			type: 'value',
+			axisTick: {
+				show: false,
+			},
+		},
+	],
+	series: [
+		{
+			name: 'pageA',
+			type: 'bar',
+			stack: 'vistors',
+			barWidth: '60%',
+			data: [79, 52, 200, 334, 390, 330, 220],
+			animationDuration,
+		},
+		{
+			name: 'pageB',
+			type: 'bar',
+			stack: 'vistors',
+			barWidth: '60%',
+			data: [80, 52, 200, 334, 390, 330, 220],
+			animationDuration,
+		},
+		{
+			name: 'pageC',
+			type: 'bar',
+			stack: 'vistors',
+			barWidth: '60%',
+			data: [30, 52, 200, 334, 390, 330, 220],
+			animationDuration,
+		},
+	],
 };
 export const options6 = {
 	xAxis: {
@@ -788,4 +822,183 @@ export const options12 = {
 			],
 		},
 	],
+};
+export const options13 = {
+	tooltip: {
+		trigger: 'axis',
+		axisPointer: {
+			// 坐标轴指示器，坐标轴触发有效
+			type: 'shadow', // 默认为直线，可选为：'line' | 'shadow'
+		},
+	},
+	radar: {
+		radius: '66%',
+		center: ['50%', '42%'],
+		splitNumber: 8,
+		splitArea: {
+			areaStyle: {
+				color: 'rgba(127,95,132,.3)',
+				opacity: 1,
+				shadowBlur: 45,
+				shadowColor: 'rgba(0,0,0,.5)',
+				shadowOffsetX: 0,
+				shadowOffsetY: 15,
+			},
+		},
+		indicator: [
+			{ name: 'Sales', max: 10000 },
+			{ name: 'Administration', max: 20000 },
+			{ name: 'Information Technology', max: 20000 },
+			{ name: 'Customer Support', max: 20000 },
+			{ name: 'Development', max: 20000 },
+			{ name: 'Marketing', max: 20000 },
+		],
+	},
+	legend: {
+		left: 'center',
+		bottom: '10',
+		data: ['Allocated Budget', 'Expected Spending', 'Actual Spending'],
+	},
+	series: [
+		{
+			type: 'radar',
+			symbolSize: 0,
+			areaStyle: {
+				normal: {
+					shadowBlur: 13,
+					shadowColor: 'rgba(0,0,0,.2)',
+					shadowOffsetX: 0,
+					shadowOffsetY: 10,
+					opacity: 1,
+				},
+			},
+			data: [
+				{
+					value: [5000, 7000, 12000, 11000, 15000, 14000],
+					name: 'Allocated Budget',
+				},
+				{
+					value: [4000, 9000, 15000, 15000, 13000, 11000],
+					name: 'Expected Spending',
+				},
+				{
+					value: [5500, 11000, 12000, 15000, 12000, 12000],
+					name: 'Actual Spending',
+				},
+			],
+			animationDuration,
+		},
+	],
+};
+
+const xAxisData: number[] = [];
+const data: number[] = [];
+const data2: number[] = [];
+for (let i = 0; i < 50; i++) {
+	xAxisData.push(i);
+	data.push((Math.sin(i / 5) * (i / 5 - 10) + i / 6) * 5);
+	data2.push((Math.sin(i / 5) * (i / 5 + 10) + i / 6) * 3);
+}
+export const options14 = {
+	backgroundColor: '#08263a',
+	grid: {
+		left: '5%',
+		right: '5%',
+	},
+	xAxis: [
+		{
+			show: false,
+			data: xAxisData,
+		},
+		{
+			show: false,
+			data: xAxisData,
+		},
+	],
+	visualMap: {
+		show: false,
+		min: 0,
+		max: 50,
+		dimension: 0,
+		inRange: {
+			color: ['#4a657a', '#308e92', '#b1cfa5', '#f5d69f', '#f5898b', '#ef5055'],
+		},
+	},
+	yAxis: {
+		axisLine: {
+			show: false,
+		},
+		axisLabel: {
+			textStyle: {
+				color: '#4a657a',
+			},
+		},
+		splitLine: {
+			show: true,
+			lineStyle: {
+				color: '#08263f',
+			},
+		},
+		axisTick: {
+			show: false,
+		},
+	},
+	series: [
+		{
+			name: 'back',
+			type: 'bar',
+			data: data2,
+			z: 1,
+			itemStyle: {
+				normal: {
+					opacity: 0.4,
+					barBorderRadius: 5,
+					shadowBlur: 3,
+					shadowColor: '#111',
+				},
+			},
+		},
+		{
+			name: 'Simulate Shadow',
+			type: 'line',
+			data,
+			z: 2,
+			showSymbol: false,
+			animationDelay: 0,
+			animationEasing: 'linear',
+			animationDuration: 1200,
+			lineStyle: {
+				normal: {
+					color: 'transparent',
+				},
+			},
+			areaStyle: {
+				normal: {
+					color: '#08263a',
+					shadowBlur: 50,
+					shadowColor: '#000',
+				},
+			},
+		},
+		{
+			name: 'front',
+			type: 'bar',
+			data,
+			xAxisIndex: 1,
+			z: 3,
+			itemStyle: {
+				normal: {
+					barBorderRadius: 5,
+				},
+			},
+		},
+	],
+	animationEasing: 'elasticOut',
+	animationEasingUpdate: 'elasticOut',
+	animationDelay(idx) {
+		return idx * 20;
+	},
+	animationDelayUpdate(idx) {
+		return idx * 20;
+	},
 };
