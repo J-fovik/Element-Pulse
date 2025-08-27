@@ -92,6 +92,7 @@ interface RouteRecordRaw {
 	├── useCountDown.ts (倒计时)
 	├── useCreateScript.ts (创建script标签)
 	├── useDebounceCustomRef.ts (输入框防抖)
+	├── useFullscreenLoading.ts (全局Loading)
 	├── useInterval.ts (定时器)
 	├── useNetworkStatus.ts (网络状态)
 	├── useRequest.ts (请求二次封装)
@@ -110,6 +111,7 @@ interface RouteRecordRaw {
 ├── src/utils
 	├── arrayOperation.ts (数组相关方法)
 	├── color.ts (颜色主题相关)
+	├── china.ts (EChart地图)
 	├── commonFunction.ts (通用函数)
 	├── elementPlus.ts (Element组件二次封装)
 	├── errorHandler.ts (全局代码错误捕捉)
