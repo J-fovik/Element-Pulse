@@ -609,3 +609,183 @@ export const options10 = {
 		},
 	],
 };
+// export const options11 = {
+// 	tooltip: {
+// 		trigger: 'item',
+// 	},
+// 	geo: {
+// 		map: 'china', // 使用注册的地图名称
+// 		roam: true, // 开启缩放和平移
+// 		emphasis: {
+// 			label: {
+// 				show: true,
+// 			},
+// 		},
+// 	},
+// 	visualMap: {
+// 		show: false,
+// 		min: 0,
+// 		max: 100,
+// 		realtime: false,
+// 		calculable: false,
+// 		inRange: {
+// 			color: ['#d2e0f5', '#71A9FF'],
+// 		},
+// 	},
+// 	series: [
+// 		{
+// 			geoIndex: 0,
+// 			name: '地域分布',
+// 			type: 'map',
+// 			coordinateSystem: 'geo',
+// 			map: 'china',
+// 			symbolSize: 20,
+// 			itemStyle: {
+// 				color: '#ff0',
+// 			},
+// 			data: [
+// 				{ name: '北京', value: 100 },
+// 				{ name: '上海', value: 100 },
+// 				{ name: '广东', value: 100 },
+// 				{ name: '浙江', value: 90 },
+// 				{ name: '江西', value: 80 },
+// 				{ name: '山东', value: 70 },
+// 				{ name: '广西', value: 60 },
+// 				{ name: '河南', value: 50 },
+// 				{ name: '河南', value: 40 },
+// 				{ name: '青海', value: 70 },
+// 				{ name: '河南', value: 30 },
+// 				{ name: '黑龙江', value: 20 },
+// 				{ name: '新疆', value: 20 },
+// 				{ name: '云南', value: 20 },
+// 				{ name: '甘肃', value: 20 },
+// 			],
+// 		},
+// 	],
+// };
+export const options11 = {
+	tooltip: {
+		trigger: 'item',
+	},
+	geo: {
+		map: 'china',
+		roam: false,
+		emphasis: {
+			label: {
+				show: false,
+			},
+		},
+	},
+	visualMap: {
+		show: false,
+		min: 0,
+		max: 100,
+		realtime: false,
+		calculable: false,
+		inRange: {
+			color: ['#d2e0f5', '#71A9FF'],
+		},
+	},
+	series: [
+		{
+			geoIndex: 0,
+			name: '地域分布',
+			type: 'map',
+			coordinateSystem: 'geo',
+			map: 'china',
+			data: [
+				{ name: '北京', value: 100 },
+				{ name: '上海', value: 100 },
+				{ name: '广东', value: 100 },
+				{ name: '浙江', value: 90 },
+				{ name: '江西', value: 80 },
+				{ name: '山东', value: 70 },
+				{ name: '广西', value: 60 },
+				{ name: '河南', value: 50 },
+				{ name: '河南', value: 40 },
+				{ name: '青海', value: 70 },
+				{ name: '河南', value: 30 },
+				{ name: '黑龙江', value: 20 },
+				{ name: '新疆', value: 20 },
+				{ name: '云南', value: 20 },
+				{ name: '甘肃', value: 20 },
+			],
+		},
+	],
+};
+export const options12 = {
+	series: [
+		{
+			type: 'wordCloud',
+			rotationRange: [0, 0],
+			autoSize: {
+				enable: true,
+				minSize: 14,
+			},
+			textStyle: {
+				fontFamily: '微软雅黑,sans-serif',
+				color: function () {
+					return (
+						'rgb(' +
+						[
+							Math.round(Math.random() * 160),
+							Math.round(Math.random() * 160),
+							Math.round(Math.random() * 160),
+						].join(',') +
+						')'
+					);
+				},
+			},
+			data: [
+				{
+					name: 'Vue',
+					value: 10000,
+				},
+				{
+					name: 'React',
+					value: 9000,
+				},
+				{
+					name: '图表',
+					value: 4000,
+				},
+				{
+					name: '产品',
+					value: 7000,
+				},
+				{
+					name: 'vue-manage-system',
+					value: 2000,
+				},
+				{
+					name: 'element-plus',
+					value: 6000,
+				},
+				{
+					name: '管理系统',
+					value: 5000,
+				},
+				{
+					name: '前端',
+					value: 4000,
+				},
+				{
+					name: '测试',
+					value: 3000,
+				},
+				{
+					name: '后端',
+					value: 8000,
+				},
+				{
+					name: '软件开发',
+					value: 6000,
+				},
+				{
+					name: '程序员',
+					value: 4000,
+				},
+			],
+		},
+	],
+};
