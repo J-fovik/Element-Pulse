@@ -453,3 +453,24 @@ export const getYearOptions = () => {
 		};
 	});
 };
+
+// 辅助函数：根据小时差判定颜色
+const getColorByHours = (hours: number): string => {
+	if (hours >= 24) return 'purple'; // 24小时以上 → 紫色
+	if (hours >= 12) return 'red'; // 12-23小时 → 红色
+	if (hours >= 6) return 'yellow'; // 6-11小时 → 黄色
+	return ''; // 不足6小时 → 无特殊颜色（可自定义）
+};
+
+/**
+ * 返回时间区间的颜色
+ * @param date 传入日期
+ * @returns 数字
+ */
+export const fromPastTimeWithColor = (date: string) => {
+	const pastDate = dayjs(date);
+	const now = dayjs();
+	// 计算小时差（取整）
+	const hoursDiff = Math.floor(now.diff(pastDate, 'minute') / 60);
+	return getColorByHours(hoursDiff);
+};
