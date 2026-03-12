@@ -1,3 +1,13 @@
+import { openWindow } from './window';
+
+interface DownloadOptions<T = string> {
+	fileName?: string;
+	source: T;
+	target?: string;
+}
+
+const DEFAULT_FILENAME = 'downloaded_file';
+
 /**
  * @name 文件相关
  */
@@ -23,6 +33,38 @@ export function getFileName(url: string) {
 	// 把参数和文件名分割开
 	fileName = decodeURI(fileName.split('?')[0]);
 	return fileName;
+}
+
+/**
+ * 通过 URL 下载文件，支持跨域
+ * @throws {Error} - 当下载失败时抛出错误
+ */
+export async function downloadFileFromUrl({
+	fileName,
+	source,
+	target = '_blank',
+}: DownloadOptions): Promise<void> {
+	if (!source || typeof source !== 'string') {
+		throw new Error('Invalid URL.');
+	}
+
+	const isChrome = window.navigator.userAgent.toLowerCase().includes('chrome');
+	const isSafari = window.navigator.userAgent.toLowerCase().includes('safari');
+
+	if (/iP/.test(window.navigator.userAgent)) {
+		console.error('Your browser does not support download!');
+		return;
+	}
+
+	if (isChrome || isSafari) {
+		triggerDownload(source, resolveFileName(source, fileName));
+		return;
+	}
+	if (!source.includes('?')) {
+		source += '?download';
+	}
+
+	openWindow(source, { target });
 }
 
 /**
@@ -124,6 +166,102 @@ export function downloadByUrl({
 }
 
 /**
+ * 通过 Base64 下载文件
+ */
+export function downloadFileFromBase64({ fileName, source }: DownloadOptions) {
+	if (!source || typeof source !== 'string') {
+		throw new Error('Invalid Base64 data.');
+	}
+
+	const resolvedFileName = fileName || DEFAULT_FILENAME;
+	triggerDownload(source, resolvedFileName);
+}
+
+/**
+ * 通过图片 URL 下载图片文件
+ */
+export async function downloadFileFromImageUrl({ fileName, source }: DownloadOptions) {
+	const base64 = await urlToBase64(source);
+	downloadFileFromBase64({ fileName, source: base64 });
+}
+
+/**
+ * 下载文件，支持 Blob、字符串和其他 BlobPart 类型
+ */
+export function downloadFileFromBlobPart({
+	fileName = DEFAULT_FILENAME,
+	source,
+}: DownloadOptions<BlobPart>): void {
+	// 如果 data 不是 Blob，则转换为 Blob
+	const blob =
+		source instanceof Blob ? source : new Blob([source], { type: 'application/octet-stream' });
+
+	// 创建对象 URL 并触发下载
+	const url = URL.createObjectURL(blob);
+	triggerDownload(url, fileName);
+}
+
+/**
+ * img url to base64
+ * @param url
+ */
+export function urlToBase64(url: string, mineType?: string): Promise<string> {
+	return new Promise((resolve, reject) => {
+		let canvas = document.createElement('CANVAS') as HTMLCanvasElement | null;
+		const ctx = canvas?.getContext('2d');
+		const img = new Image();
+		img.crossOrigin = '';
+		img.addEventListener('load', () => {
+			if (!canvas || !ctx) {
+				return reject(new Error('Failed to create canvas.'));
+			}
+			canvas.height = img.height;
+			canvas.width = img.width;
+			ctx.drawImage(img, 0, 0);
+			const dataURL = canvas.toDataURL(mineType || 'image/png');
+			canvas = null;
+			resolve(dataURL);
+		});
+		img.src = url;
+	});
+}
+
+/**
+ * 通用下载触发函数
+ * @param href - 文件下载的 URL
+ * @param fileName - 下载文件的名称，如果未提供则自动识别
+ * @param revokeDelay - 清理 URL 的延迟时间 (毫秒)
+ */
+export function triggerDownload(
+	href: string,
+	fileName: string | undefined,
+	revokeDelay: number = 100,
+): void {
+	const defaultFileName = 'downloaded_file';
+	const finalFileName = fileName || defaultFileName;
+
+	const link = document.createElement('a');
+	link.href = href;
+	link.download = finalFileName;
+	link.style.display = 'none';
+
+	if (link.download === undefined) {
+		link.setAttribute('target', '_blank');
+	}
+
+	document.body.append(link);
+	link.click();
+	link.remove();
+
+	// 清理临时 URL 以释放内存
+	setTimeout(() => URL.revokeObjectURL(href), revokeDelay);
+}
+
+function resolveFileName(url: string, fileName?: string): string {
+	return fileName || url.slice(url.lastIndexOf('/') + 1) || DEFAULT_FILENAME;
+}
+
+/**
  * download二进制文件
  * @param {*} res 请求返回结果（文件流）
  * @param {string} name 文件名称
@@ -158,6 +296,21 @@ export const downloadFileFromBlob = (data: Blob | ArrayBuffer, filename?: string
 	URL.revokeObjectURL(url);
 	document.body.removeChild(link);
 };
+
+/**
+ * 通过 Blob 下载文件
+ */
+export function downloadFileFromBlobs({
+	fileName = DEFAULT_FILENAME,
+	source,
+}: DownloadOptions<Blob>): void {
+	if (!(source instanceof Blob)) {
+		throw new TypeError('Invalid Blob data.');
+	}
+
+	const url = URL.createObjectURL(source);
+	triggerDownload(url, fileName);
+}
 
 /**
  * 下载base64图片
@@ -202,19 +355,7 @@ export const fileSuffix = (url: string, isSpot: boolean = true) => {
 	return (isSpot ? '.' : '') + url.split('.').at(-1);
 };
 
-/**
- * 生成base64
- * @param {File} file 文件
- * @returns {Promise} base64格式文件
- */
-export function getBase64(file) {
-	return new Promise((resolve, reject) => {
-		const reader = new FileReader();
-		reader.readAsDataURL(file);
-		reader.onload = () => resolve(reader.result);
-		reader.onerror = (error) => reject(error);
-	});
-}
+ 
 
 /**
  * 下载图片
@@ -238,7 +379,7 @@ export function downImage(imageSrc, name) {
 		a.download = name || 'image'; // 设置图片名称
 		a.href = url; // 将生成的URL设置为a.href属性
 		a.dispatchEvent(event); // 触发a的单击事件
-		(a = null), (canvas = null);
+		((a = null), (canvas = null));
 	};
 	image.src = imageSrc;
 }
@@ -307,7 +448,7 @@ export const getImgInfo = (files: FileList, callback: (imgInfo: ImgInfo | null) 
  * @param {ArrayBuffer} buffer 文件
  * @returns {string} 文件类型
  */
-export const getImageType = (buffer: ArrayBuffer) => {
+export const getImageType = (buffer: any) => {
 	let fileType = '';
 	if (buffer) {
 		const view = new DataView(buffer);
@@ -337,6 +478,32 @@ export const getImageType = (buffer: ArrayBuffer) => {
 		}
 	}
 	return fileType;
+};
+
+/**
+ * 根据图片URL获取图片类型
+ * @param {string} url 图片地址
+ * @returns {Promise<string>} 文件类型
+ */
+export const getImageTypeFromUrl = async (url) => {
+	try {
+		// 1. 发起请求获取图片
+		const response = await fetch(url);
+
+		// 2. 检查请求是否成功
+		if (!response.ok) {
+			throw new Error('网络请求失败');
+		}
+
+		// 3. 将响应体转换为 ArrayBuffer
+		const buffer = await response.arrayBuffer();
+
+		// 4. 调用你原有的函数进行判断
+		return getImageType(buffer);
+	} catch (error) {
+		console.error('获取图片类型失败:', error);
+		return '';
+	}
 };
 
 /**
@@ -507,56 +674,3 @@ export const rightRotate = (imageData: ImageData) => {
 	}
 	return null;
 };
-
-/**
-	<template>
-		<Container>
-			<canvas ref="canvas" width="500" height="500"></canvas>
-			<button @click="flipImage('flipSideToSide')">Flip Image</button>
-			<button @click="flipImage('flipUpsideDown')">Flip Image</button>
-			<button @click="flipImage('leftRotate')">Flip Image</button>
-			<button @click="flipImage('rightRotate')">Flip Image</button>
-		</Container>
-	</template>
-
-	<script setup lang="ts" name="menu1">
-	import { flipSideToSide, flipUpsideDown, leftRotate, rightRotate } from '@/utils/fileOperation';
-	import imageSrc from '@/assets/images/allosaurus.png';
-	type FlipType = 'flipSideToSide' | 'flipUpsideDown' | 'leftRotate' | 'rightRotate';
-
-	const canvas = ref();
-	onMounted(() => {
-		const ctx = canvas.value.getContext('2d');
-		const image = new Image();
-		image.onload = () => {
-			ctx.drawImage(image, 0, 0, canvas.value.width, canvas.value.height);
-		};
-		image.src = imageSrc;
-	});
-	const flipImage = (type: FlipType) => {
-		const ctx = canvas.value.getContext('2d');
-		const imageData = ctx.getImageData(0, 0, canvas.value.width, canvas.value.height);
-		let flippedImageData: ImageData | null = null;
-		switch (type) {
-			case 'flipSideToSide':
-				flippedImageData = flipSideToSide(imageData);
-				break;
-			case 'flipUpsideDown':
-				flippedImageData = flipUpsideDown(imageData);
-				break;
-			case 'leftRotate':
-				flippedImageData = leftRotate(imageData);
-				break;
-			case 'rightRotate':
-				flippedImageData = rightRotate(imageData);
-				break;
-			default:
-				console.error('Unknown flip type');
-				return;
-		}
-		if (flippedImageData) {
-			ctx.putImageData(flippedImageData, 0, 0);
-		}
-	};
-	</script>
- */

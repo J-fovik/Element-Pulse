@@ -182,5 +182,20 @@ export default {
 			},
 			component: () => import('@/views/function/miniPlugin/index.vue'),
 		},
+		{
+			path: '/function/download',
+			name: 'download',
+			meta: {
+				icon: 'Menu',
+				requiresAuth: true,
+				title: '操作文件',
+				isLink: '',
+				isHide: false,
+				isFull: false,
+				isAffix: false,
+				isKeepAlive: true,
+			},
+			component: () => import('@/views/function/download/index.vue'),
+		},
 	],
 };

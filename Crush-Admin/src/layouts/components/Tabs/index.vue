@@ -57,9 +57,10 @@ watch(
 	() => {
 		// if (route.meta.isFull) return;
 		tabsMenuValue.value = route.fullPath;
+		const cur = userStore.flatMenuListGet().find((v: any) => v.path === route.fullPath);
 		const tabsParams = {
 			icon: route.meta.icon as string,
-			title: route.meta.title as string,
+			title: cur.meta.title ?? (route.meta.title as string),
 			path: route.fullPath,
 			name: route.name as string,
 			close: !route.meta.isAffix,
@@ -67,7 +68,7 @@ watch(
 		};
 		tabStore.addTabs(tabsParams);
 	},
-	{ immediate: true }
+	{ immediate: true },
 );
 
 // 初始化需要固定的 tabs

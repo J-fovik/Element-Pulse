@@ -582,6 +582,21 @@
 						"requiresAuth": true,
 						"isKeepAlive": true
 					}
+				},
+				{
+					"path": "/function/download",
+					"name": "download",
+					"component": "/function/download/index",
+					"meta": {
+						"icon": "Menu",
+						"title": "操作文件",
+						"isLink": "",
+						"isHide": false,
+						"isFull": false,
+						"isAffix": false,
+						"requiresAuth": true,
+						"isKeepAlive": true
+					}
 				}
 			]
 		},

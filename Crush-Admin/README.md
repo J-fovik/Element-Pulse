@@ -127,7 +127,8 @@ interface RouteRecordRaw {
 	├── setIconfont.ts (设置字体图标)
 	├── storage.ts (浏览器缓存相关)
 	├── type.ts (type类型相关)
-	└── watermark.ts (页面水印)
+    ├── watermark.ts (页面水印)
+	└── window.ts (浏览器操作相关)
 ```
 
 ## 字体图标
