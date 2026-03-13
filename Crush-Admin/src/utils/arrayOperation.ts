@@ -4,7 +4,10 @@
 
 import { ElMessage } from 'element-plus';
 import type { RouteRecordNormalized } from 'vue-router';
-
+interface TreeConfigOptions {
+	// 子属性的名称，默认为'children'
+	childProps: string;
+}
 /**
  * 数组的并集
  * @param {Array} arr1
@@ -33,7 +36,7 @@ export function arrayCross(arr1: Array<any>, arr2: Array<any>) {
  */
 export function arrayDiff(arr1: Array<any>, arr2: Array<any>) {
 	return Array.from(
-		new Set(arr1.concat(arr2).filter((o) => !arr1.includes(o) || !arr2.includes(o)))
+		new Set(arr1.concat(arr2).filter((o) => !arr1.includes(o) || !arr2.includes(o))),
 	);
 }
 
@@ -213,7 +216,7 @@ export const arrRemoveVal = (arr: any[], value: number | string, key?: string): 
 export const isArraySubset = (
 	allArr: Array<any>,
 	arr: Array<any>,
-	isEqual?: (a: any, b: any) => boolean
+	isEqual?: (a: any, b: any) => boolean,
 ) => {
 	// 定义默认比较函数，如果两个元素严格相等，则返回 true
 	const defaultIsEqual = (a: any, b: any) => a === b;
@@ -251,6 +254,20 @@ export const arraysAreEqual = (arr1: any[], arr2: any[]): boolean => {
 	const set1 = new Set(arr1);
 	const set2 = new Set(arr2);
 	return set1.size === set2.size && [...set1].every((item) => set2.has(item));
+};
+
+/**
+ * 根据指定字段对对象数组进行去重
+ * @param arr 要去重的对象数组
+ * @param key 去重依据的字段名
+ * @returns 去重后的对象数组
+ */
+export const uniqueByField = <T>(arr: T[], key: keyof T): T[] => {
+	const seen = new Map<any, T>();
+	return arr.filter((item) => {
+		const value = item[key];
+		return seen.has(value) ? false : (seen.set(value, item), true);
+	});
 };
 
 /**
@@ -305,7 +322,7 @@ export function filterArrayByProperty(arr: Array<any>, key?: any) {
 				}
 				// 检查所有属性是否存在
 				return Object.values(item).every(
-					(value) => value !== '' && value !== null && value !== undefined
+					(value) => value !== '' && value !== null && value !== undefined,
 				);
 			}
 			// 如果是对象且属性不为空，则保留
@@ -332,7 +349,7 @@ export const partitionArray = <T>(arr: T[], callback: (item: T) => boolean): [T[
 			}
 			return acc;
 		},
-		[[], []] as [T[], T[]]
+		[[], []] as [T[], T[]],
 	);
 };
 
@@ -348,7 +365,7 @@ export const groupByAndCollectChildKeys = (
 	arr: Array<any>,
 	groupByKey: any,
 	childName: any,
-	mergeChildKey?: any
+	mergeChildKey?: any,
 ) => {
 	return arr.reduce((acc, cur) => {
 		// 检查 acc 数组中是否已经存在相同 groupByKey 的项
@@ -392,7 +409,7 @@ export const groupByAndCollectChildKeys = (
 export const mergeArrayItemsByCommonProperty = <T extends ArrayItem, K extends keyof T>(
 	arr1: T[],
 	arr2: T[],
-	propertyName: K
+	propertyName: K,
 ): T[] => {
 	// 创建一个新的 Set，包含 arr1 中所有元素的指定属性值
 	const propertyValues = new Set(arr1.map((item) => item[propertyName]));
@@ -418,7 +435,7 @@ export const mergeArrayItemsByCommonProperty = <T extends ArrayItem, K extends k
 export const mergeArraysByKey = (
 	arr1: ArrayItem[],
 	arr2: ArrayItem[],
-	key: string
+	key: string,
 ): ArrayItem[] => {
 	// 创建一个映射，用于存储 arr1 中元素的 id 与其索引的对应关系
 	const map = new Map<number, ArrayItem>();
@@ -497,7 +514,7 @@ export const getFlatMenuList = (routes: any) => {
 export const getAllBreadcrumbList = (
 	menuList: Menu.MenuOptions[],
 	parent = [],
-	result: { [key: string]: any } = {}
+	result: { [key: string]: any } = {},
 ) => {
 	for (const item of menuList) {
 		result[item.path] = [...parent, item];
@@ -594,7 +611,7 @@ export const reduceRoutes = (routes: Array<any>, nameList: any): Array<any> => {
  */
 export function getKeepAliveRouterName(
 	menuList: Menu.MenuOptions[],
-	keepAliveNameArr: string[] = []
+	keepAliveNameArr: string[] = [],
 ) {
 	menuList.forEach((item) => {
 		item.meta.isKeepAlive && item.name && keepAliveNameArr.push(item.name);
@@ -630,7 +647,7 @@ export const findMenuRecursivelyByPath = (menuList: Array<any>, path: string) =>
 export const findObjectRecursivelyByKeyValue = (
 	arr: Array<any>,
 	value: any,
-	key: string = 'value'
+	key: string = 'value',
 ) => {
 	for (const item of arr) {
 		// 检查当前对象的指定键是否与给定的值匹配, 如果匹配，返回当前对象
@@ -694,12 +711,15 @@ export const turnArrayKeys = (arr: Array<any>, numberKeys: Array<string> = []) =
  */
 export const arrayToObject = <T extends ArrayItem>(arr: T[], key: keyof T): Record<string, T> => {
 	// 使用 reduce 方法将数组转换为一个对象
-	return arr.reduce((acc: Record<string, T>, item: T) => {
-		// 将当前项的指定键作为对象的键，当前项作为值
-		acc[item[key]] = item;
-		// 返回累加器对象
-		return acc;
-	}, {} as Record<string, T>); // 初始化累加器为一个空对象，并指定其类型
+	return arr.reduce(
+		(acc: Record<string, T>, item: T) => {
+			// 将当前项的指定键作为对象的键，当前项作为值
+			acc[item[key]] = item;
+			// 返回累加器对象
+			return acc;
+		},
+		{} as Record<string, T>,
+	); // 初始化累加器为一个空对象，并指定其类型
 };
 
 /**
@@ -720,7 +740,7 @@ export const groupByKeyUsingObjectMethod = <T>(arr: T[], key: keyof T) => {
  */
 export const groupByReduce = <T extends ArrayItem, K extends keyof T>(
 	arr: T[],
-	key: K
+	key: K,
 ): { [key: string]: T[] } => {
 	return arr.reduce((acc: { [key: string]: T[] }, item: T) => {
 		// 使用typeof获取键的类型，然后创建字符串索引签名
@@ -790,5 +810,96 @@ export function hasDuplicates<T>(array: T[], callback: (item: T) => string): boo
 		}
 		seen.add(key); // 否则记录该键
 		return false;
+	});
+}
+
+/**
+ * @zh_CN 遍历树形结构，并返回所有节点中指定的值。
+ * @param tree 树形结构数组
+ * @param getValue 获取节点值的函数
+ * @param options 作为子节点数组的可选属性名称。
+ * @returns 所有节点中指定的值的数组
+ */
+export function traverseTreeValues<T, V>(
+	tree: T[],
+	getValue: (node: T) => V,
+	options?: TreeConfigOptions,
+): V[] {
+	const result: V[] = [];
+	const { childProps } = options || {
+		childProps: 'children',
+	};
+
+	const dfs = (treeNode: T) => {
+		const value = getValue(treeNode);
+		result.push(value);
+		const children = (treeNode as Record<string, any>)?.[childProps];
+		if (!children) {
+			return;
+		}
+		if (children.length > 0) {
+			for (const child of children) {
+				dfs(child);
+			}
+		}
+	};
+
+	for (const treeNode of tree) {
+		dfs(treeNode);
+	}
+	return result.filter(Boolean);
+}
+
+/**
+ * 根据条件过滤给定树结构的节点，并以原有顺序返回所有匹配节点的数组。
+ * @param tree 要过滤的树结构的根节点数组。
+ * @param filter 用于匹配每个节点的条件。
+ * @param options 作为子节点数组的可选属性名称。
+ * @returns 包含所有匹配节点的数组。
+ */
+export function filterTree<T extends Record<string, any>>(
+	tree: T[],
+	filter: (node: T) => boolean,
+	options?: TreeConfigOptions,
+): T[] {
+	const { childProps } = options || {
+		childProps: 'children',
+	};
+
+	const _filterTree = (nodes: T[]): T[] => {
+		return nodes.filter((node: Record<string, any>) => {
+			if (filter(node as T)) {
+				if (node[childProps]) {
+					node[childProps] = _filterTree(node[childProps]);
+				}
+				return true;
+			}
+			return false;
+		});
+	};
+
+	return _filterTree(tree);
+}
+
+/**
+ * 根据条件重新映射给定树结构的节（便利重命名字段）
+ * @param tree 要过滤的树结构的根节点数组。
+ * @param mapper 用于map每个节点的条件。
+ * @param options 作为子节点数组的可选属性名称。
+ */
+export function mapTree<T, V extends Record<string, any>>(
+	tree: T[],
+	mapper: (node: T) => V,
+	options?: TreeConfigOptions,
+): V[] {
+	const { childProps } = options || {
+		childProps: 'children',
+	};
+	return tree.map((node) => {
+		const mapperNode: Record<string, any> = mapper(node);
+		if (mapperNode[childProps]) {
+			mapperNode[childProps] = mapTree(mapperNode[childProps], mapper, options);
+		}
+		return mapperNode as V;
 	});
 }

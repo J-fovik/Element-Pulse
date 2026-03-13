@@ -98,12 +98,12 @@ export function formatNewDate(date: Date, format: string): string {
 				? RegExp.$1.length > 2
 					? '星期' + week[we]
 					: '周' + week[we]
-				: week[we]
+				: week[we],
 		);
 	if (/(Q+)/.test(format))
 		format = format.replace(
 			RegExp.$1,
-			RegExp.$1.length == 4 ? '第' + quarter[qut] + '季度' : quarter[qut]
+			RegExp.$1.length == 4 ? '第' + quarter[qut] + '季度' : quarter[qut],
 		);
 	if (/(Z+)/.test(format))
 		format = format.replace(RegExp.$1, RegExp.$1.length == 3 ? '第' + z + '周' : z + '');
@@ -113,7 +113,7 @@ export function formatNewDate(date: Date, format: string): string {
 		if (r)
 			format = format.replace(
 				r[1],
-				RegExp.$1.length == 1 ? opt[k] : opt[k].padStart(RegExp.$1.length, '0')
+				RegExp.$1.length == 1 ? opt[k] : opt[k].padStart(RegExp.$1.length, '0'),
 			);
 	}
 	return format;
@@ -144,7 +144,7 @@ export const getPastStartOfTime = (
 	num: number,
 	unit: dayjs.ManipulateType,
 	format = 'YYYY-MM-DD HH:mm:ss',
-	startOfDay = false // 新增参数，是否设置为当天0点
+	startOfDay = false, // 新增参数，是否设置为当天0点
 ) => {
 	let time = dayjs().subtract(num, unit);
 	if (startOfDay) {
@@ -206,7 +206,7 @@ export const turnDateTime = (value: string, empty = '-') => {
 		}
 		return `${value.substring(0, 4)}-${value.substring(4, 6)}-${value.substring(
 			6,
-			8
+			8,
 		)} ${value.substring(8, 10)}:${value.substring(10, 12)}:${value.substring(12, 14)}`;
 	}
 	return empty;
@@ -375,7 +375,7 @@ export const disabledDate = (
 	current: any,
 	startDate: any,
 	num: number,
-	unit: dayjs.ManipulateType
+	unit: dayjs.ManipulateType,
 ) => {
 	const start = dayjs(startDate); // 开始日期
 	const end = start.add(num, unit).endOf('day');
@@ -474,3 +474,20 @@ export const fromPastTimeWithColor = (date: string) => {
 	const hoursDiff = Math.floor(now.diff(pastDate, 'minute') / 60);
 	return getColorByHours(hoursDiff);
 };
+/**
+ * 是否是日期对象
+ * @param value
+ * @returns boolean
+ */
+export function isDate(value: any): value is Date {
+	return value instanceof Date;
+}
+
+/**
+ * 是否是 dayjs 对象
+ * @param value
+ * @returns boolean
+ */
+export function isDayjsObject(value: any): value is dayjs.Dayjs {
+	return dayjs.isDayjs(value);
+}

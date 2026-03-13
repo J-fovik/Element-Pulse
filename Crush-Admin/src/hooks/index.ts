@@ -13,5 +13,6 @@ export { useForm, useTable } from './modules/useTable'; // 表格表单
 export { useTheme, useGray } from './modules/useTheme'; // 主题切换
 export { useWebSocket } from './modules/useWebSocket'; // WebSocket
 export { useCountDown } from './modules/useCountDown'; //  倒计时
+export { useWatermark } from './modules/useWatermark'; // 使用水印
 export { useInterval } from './modules/useInterval'; // 定时器
 export { useTime } from './modules/useTime'; // 获取本地时间

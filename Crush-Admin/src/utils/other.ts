@@ -5,6 +5,14 @@
 import { ElMessage } from 'element-plus';
 import { useClipboard, useEventListener } from '@vueuse/core';
 import clipboard from 'vue-clipboard3';
+export interface VisibleDomRect {
+	bottom: number;
+	height: number;
+	left: number;
+	right: number;
+	top: number;
+	width: number;
+}
 
 /**
  * 获取指定范围内的随机整数
@@ -148,7 +156,7 @@ export const lazyImg = (el: string, arr: EmptyArrayType) => {
 export function isMobile() {
 	if (
 		navigator.userAgent.match(
-			/('phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone')/i
+			/('phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone')/i,
 		)
 	) {
 		return true;
@@ -419,6 +427,42 @@ export const addPreventDefault = () => {
 	useEventListener(
 		window.document,
 		'dragstart',
-		(ev) => isImgElement(ev?.target) && ev.preventDefault()
+		(ev) => isImgElement(ev?.target) && ev.preventDefault(),
 	);
 };
+
+/**
+ * 获取元素可见信息
+ * @param element
+ */
+export function getElementVisibleRect(element?: HTMLElement | null | undefined): VisibleDomRect {
+	if (!element) {
+		return {
+			bottom: 0,
+			height: 0,
+			left: 0,
+			right: 0,
+			top: 0,
+			width: 0,
+		};
+	}
+	const rect = element.getBoundingClientRect();
+	const viewHeight = Math.max(document.documentElement.clientHeight, window.innerHeight);
+
+	const top = Math.max(rect.top, 0);
+	const bottom = Math.min(rect.bottom, viewHeight);
+
+	const viewWidth = Math.max(document.documentElement.clientWidth, window.innerWidth);
+
+	const left = Math.max(rect.left, 0);
+	const right = Math.min(rect.right, viewWidth);
+
+	return {
+		bottom,
+		height: Math.max(0, bottom - top),
+		left,
+		right,
+		top,
+		width: Math.max(0, right - left),
+	};
+}

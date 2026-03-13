@@ -100,6 +100,7 @@ interface RouteRecordRaw {
 	├── useTable.ts (菜单表格包括表格、表单)
 	├── useTheme.ts (全局主题)
 	├── useTime.ts (获取本地时间)
+	├── useWatermark.ts (使用水印)
 	└── useWebSocket.ts (WebSocket)
 
 注释:useCreateScript, useDebounceCustomRef, useRequest 可放utils里
