@@ -10,6 +10,8 @@ import viteCompression from 'vite-plugin-compression';
 import Components from 'unplugin-vue-components/vite'; // 全部注册组件
 import AutoImport from 'unplugin-auto-import/vite'; // 自动引入
 import FullReload from 'vite-plugin-full-reload'; // 修改代码重新编译加载页面
+import vueDevTools from 'vite-plugin-vue-devtools'; // 开启vue3调试工具
+
 /**
  * 创建 vite 插件
  * @param viteEnv
@@ -19,6 +21,7 @@ export const createVitePlugins = (viteEnv: ViteEnv): (PluginOption | PluginOptio
 	return [
 		// vue
 		vue(),
+		vueDevTools(),
 		// vue 可以使用 jsx/tsx 语法
 		vueJsx(),
 		// 创建打包压缩配置
@@ -82,7 +85,7 @@ const createCompression = (viteEnv: ViteEnv): PluginOption | PluginOption[] => {
 				ext: '.gz',
 				algorithm: 'gzip',
 				deleteOriginFile: VITE_BUILD_COMPRESS_DELETE_ORIGIN_FILE,
-			})
+			}),
 		);
 	}
 	if (compressList.includes('brotli')) {
@@ -91,7 +94,7 @@ const createCompression = (viteEnv: ViteEnv): PluginOption | PluginOption[] => {
 				ext: '.br',
 				algorithm: 'brotliCompress',
 				deleteOriginFile: VITE_BUILD_COMPRESS_DELETE_ORIGIN_FILE,
-			})
+			}),
 		);
 	}
 	return plugins;
