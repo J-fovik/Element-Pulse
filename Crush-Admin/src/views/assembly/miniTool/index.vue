@@ -109,10 +109,42 @@
 				</el-descriptions-item>
 			</el-descriptions>
 		</el-card>
+		<el-card shadow="hover" header="TreeSelect 树形选择器" class="mb20">
+			<el-alert
+				title="TreeSelect 是el-select和el-tree进行的二次封装，官方文档请查看 ：https://element-plus.org/zh-CN/component/tree.html"
+				type="warning"
+				:closable="false"
+			/>
+			<TreeSelect
+				v-model:value="selectedValue"
+				:data="address"
+				:props="treeProps"
+				:onlyLeaf="true"
+				@selectChanged="handleSelectChange"
+				class="my10"
+			></TreeSelect>
+			<el-descriptions title="配置项 📚" :column="1" border>
+				<el-descriptions-item label="value">
+					双向绑定的 value 值，使用示例： v-model:value="selectedValue">
+				</el-descriptions-item>
+				<el-descriptions-item label="data"> 树形数据数组 </el-descriptions-item>
+				<el-descriptions-item label="props">
+					树形组件的字段映射配置，默认是 code/name/children，可根据实际数据调整
+				</el-descriptions-item>
+				<el-descriptions-item label="props">
+					树形组件的字段映射配置，默认是 code/name/children/disabled，可根据实际数据调整
+				</el-descriptions-item>
+				<el-descriptions-item label="onlyLeaf"> 是否只选择叶子节点 </el-descriptions-item>
+				<el-descriptions-item label="clearable"> 是否可清除 </el-descriptions-item>
+				<el-descriptions-item label="accordion"> 是否开启手风琴模式 </el-descriptions-item>
+				<el-descriptions-item label="selectChanged"> 选中变化回调 </el-descriptions-item>
+			</el-descriptions>
+		</el-card>
 	</div>
 </template>
 
 <script setup lang="ts" name="miniTool">
+import { address } from '@/assets/json/address.json';
 const tagValue = ref('aaa,bbb,ccc');
 // 条形码数组
 const barcodeList = [
@@ -137,4 +169,17 @@ const barcodeList = [
 		},
 	},
 ];
+// 选择值
+const selectedValue = ref<any>('');
+// 字段映射配置（默认是 code/name/children，可根据实际数据调整）
+const treeProps = {
+	value: 'code', // 节点唯一标识字段
+	label: 'name', // 节点显示文字字段
+	children: 'children', // 子节点字段
+	disabled: 'disabled', // 是否禁用节点字段（可选）
+};
+// 选中变化回调
+const handleSelectChange = (node: any) => {
+	console.log('选中的节点：', node);
+};
 </script>

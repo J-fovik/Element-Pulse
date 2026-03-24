@@ -1,49 +1,61 @@
 <template>
-	<el-card shadow="hover">
-		<el-alert
-			title="Proportion 是自定义封装的比例条以及进度条的组件"
-			type="warning"
-			:closable="false"
-		/>
-		<el-card shadow="hover" header="比例条" class="mt20">
-			<div
-				v-for="(item, index) in list"
-				:key="index"
-				:class="index == list?.length - 1 ? '' : 'mb30'"
-			>
-				<div>{{ item.title }}</div>
-				<div class="flex items-center justify-between mt10">
-					<Proportion :width="item.width" class="flex-1" />
-					<div class="ml20">{{ item.width + '%' }}</div>
+	<div>
+		<el-card shadow="hover">
+			<el-alert
+				title="Proportion 是自定义封装的比例条以及进度条的组件"
+				type="warning"
+				:closable="false"
+			/>
+			<el-card shadow="hover" header="比例条" class="mt20">
+				<div
+					v-for="(item, index) in list"
+					:key="index"
+					:class="index == list?.length - 1 ? '' : 'mb30'"
+				>
+					<div>{{ item.title }}</div>
+					<div class="flex items-center justify-between mt10">
+						<Proportion :width="item.width" class="flex-1" />
+						<div class="ml20">{{ item.width + '%' }}</div>
+					</div>
 				</div>
-			</div>
+			</el-card>
+			<el-card shadow="hover" header="进度条" class="mt20">
+				<Proportion
+					:width="
+						(current / (list.length - 1)) * 100 > 0
+							? (current / (list.length - 1)) * 100
+							: 100 / list.length
+					"
+					background="#7C92FF"
+					:isAnimate="false"
+					:key="current"
+				/>
+				<div class="mt20">
+					<div>当前：{{ current + 1 }}</div>
+					<div class="mt5">最大：{{ list.length }}</div>
+				</div>
+				<div class="mt20">
+					<el-button :disabled="current < 1" @click="current--"> -</el-button>
+					<el-button :disabled="current >= list.length - 1" @click="current++">
+						+
+					</el-button>
+				</div>
+			</el-card>
+			<el-descriptions title="配置项 📚" :column="1" border class="my20">
+				<el-descriptions-item label="background"> 进度条背景 </el-descriptions-item>
+				<el-descriptions-item label="width"> 进度条宽度 </el-descriptions-item>
+				<el-descriptions-item label="isAnimate"> 是否有动画 </el-descriptions-item>
+			</el-descriptions>
 		</el-card>
 		<el-card shadow="hover" header="进度条" class="mt20">
-			<Proportion
-				:width="
-					(current / (list.length - 1)) * 100 > 0
-						? (current / (list.length - 1)) * 100
-						: 100 / list.length
-				"
-				background="#7C92FF"
-				:isAnimate="false"
-				:key="current"
+			<el-alert
+				title="Proportion 是自定义封装的进度条的组件"
+				type="warning"
+				:closable="false"
 			/>
-			<div class="mt20">
-				<div>当前：{{ current + 1 }}</div>
-				<div class="mt5">最大：{{ list.length }}</div>
-			</div>
-			<div class="mt20">
-				<el-button :disabled="current < 1" @click="current--"> -</el-button>
-				<el-button :disabled="current >= list.length - 1" @click="current++"> + </el-button>
-			</div>
+			<Progress class="mt20" :num="num"></Progress>
 		</el-card>
-		<el-descriptions title="配置项 📚" :column="1" border class="my20">
-			<el-descriptions-item label="background"> 进度条背景 </el-descriptions-item>
-			<el-descriptions-item label="width"> 进度条宽度 </el-descriptions-item>
-			<el-descriptions-item label="isAnimate"> 是否有动画 </el-descriptions-item>
-		</el-descriptions>
-	</el-card>
+	</div>
 </template>
 <script setup lang="ts" name="proportion">
 const list = ref([
@@ -54,4 +66,13 @@ const list = ref([
 	{ title: '名称5', content: '40%', width: '40' },
 ] as any);
 const current = ref(0);
+// 0-1之间的随机数，用于进度条演示效果
+const num = ref();
+// 随机小数
+const generateRandom = () => {
+	num.value = Math.random();
+};
+onMounted(() => {
+	generateRandom();
+});
 </script>
