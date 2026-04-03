@@ -65,7 +65,7 @@
 					<el-button
 						type="primary"
 						:icon="CirclePlus"
-						@click="$router.push(`/proTable/useTableDemo/detail/index`)"
+						@click="$router.push(`/proTable/useTableDemo1/detail/index`)"
 						>新增</el-button
 					>
 					<el-button
@@ -108,7 +108,7 @@
 								text
 								@click="
 									$router.push(
-										`/proTable/useTableDemo/detail/index?id=${row.id}&isReadOnly=true`
+										`/proTable/useTableDemo1/detail/index?id=${row.id}&isReadOnly=true`
 									)
 								"
 								>详情</el-button
@@ -117,7 +117,7 @@
 								type="primary"
 								text
 								@click="
-									$router.push(`/proTable/useTableDemo/detail/index?id=${row.id}`)
+									$router.push(`/proTable/useTableDemo1/detail/index?id=${row.id}`)
 								"
 								>编辑</el-button
 							>
@@ -143,7 +143,7 @@
 		</CustomTableMould>
 	</div>
 </template>
-<script setup lang="ts" name="useTableDemo">
+<script setup lang="ts" name="useTableDemo1">
 import { CirclePlus, Delete, FolderOpened } from '@element-plus/icons-vue';
 import { sleep } from '@/utils/other';
 import {

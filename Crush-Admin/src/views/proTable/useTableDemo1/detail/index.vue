@@ -86,7 +86,7 @@
 	</div>
 </template>
 
-<script setup lang="ts" name="useTableDemoDetail">
+<script setup lang="ts" name="useTableDemo1Detail">
 import dayjs from 'dayjs';
 import { disabledDate } from '@/utils/formatTime';
 import { validatePhoneOrLandline } from '@/utils/rules'; // 校验工具

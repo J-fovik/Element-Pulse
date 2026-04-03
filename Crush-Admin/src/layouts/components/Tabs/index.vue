@@ -56,8 +56,19 @@ watch(
 	() => route.fullPath,
 	() => {
 		// if (route.meta.isFull) return;
-		tabsMenuValue.value = route.fullPath;
-		const cur = userStore.flatMenuListGet().find((v: any) => v.path === route.fullPath);
+		// tabsMenuValue.value = route.fullPath;
+		// const cur = userStore.flatMenuListGet().find((v: any) => v.path === route.fullPath);
+
+		// 获取当前路由的原始模式（动态段保留 :id 形式）
+		const currentRawPath = route.matched[route.matched.length - 1]?.path;
+		const cur = userStore.flatMenuListGet().find((v: any) => {
+			// 优先匹配原始模式
+			if (currentRawPath && v.path === currentRawPath) return true;
+			// 兼容静态路径
+			return v.path === route.fullPath || v.path === route.path;
+		});
+		console.log(userStore.flatMenuListGet(), route.fullPath);
+		if (!cur) return; // 未找到匹配项时提前退出
 		const tabsParams = {
 			icon: route.meta.icon as string,
 			title: cur.meta.title ?? (route.meta.title as string),

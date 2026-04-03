@@ -34,7 +34,7 @@
 		{
 			"path": "/proTable",
 			"name": "proTable",
-			"redirect": "/proTable/useTableDemo",
+			"redirect": "/proTable/useTableDemo1",
 			"meta": {
 				"icon": "MessageBox",
 				"title": "表格菜单",
@@ -47,12 +47,12 @@
 			},
 			"children": [
 				{
-					"path": "/proTable/useTableDemo",
-					"name": "useTableDemo",
-					"component": "/proTable/useTableDemo/index",
+					"path": "/proTable/useTableDemo1",
+					"name": "useTableDemo1",
+					"component": "/proTable/useTableDemo1/index",
 					"meta": {
 						"icon": "Menu",
-						"title": "表格菜单Demo",
+						"title": "表格菜单Demo1",
 						"isLink": "",
 						"isHide": false,
 						"isFull": false,
@@ -62,13 +62,13 @@
 					},
 					"children": [
 						{
-							"path": "/proTable/useTableDemo/detail/:id",
-							"name": "useTableDemoDetail",
-							"component": "/proTable/useTableDemo/detail/index",
+							"path": "/proTable/useTableDemo1/detail/:id",
+							"name": "useTableDemo1Detail",
+							"component": "/proTable/useTableDemo1/detail/index",
 							"meta": {
 								"icon": "Menu",
-								"title": "表格菜单Demo详情",
-								"activeMenu": "/proTable/useTableDemo",
+								"title": "表格菜单Demo1详情",
+								"activeMenu": "/proTable/useTableDemo1",
 								"isLink": "",
 								"isHide": true,
 								"isFull": false,
@@ -255,6 +255,21 @@
 					"meta": {
 						"icon": "Menu",
 						"title": "滚动通知栏",
+						"isLink": "",
+						"isHide": false,
+						"isFull": false,
+						"isAffix": false,
+						"requiresAuth": true,
+						"isKeepAlive": true
+					}
+				},
+				{
+					"path": "/assembly/tableColumn",
+					"name": "tableColumn",
+					"component": "/assembly/tableColumn/index",
+					"meta": {
+						"icon": "Menu",
+						"title": "多功能表格",
 						"isLink": "",
 						"isHide": false,
 						"isFull": false,

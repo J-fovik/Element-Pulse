@@ -1,7 +1,7 @@
 export default {
 	path: '/proTable',
 	name: 'proTable',
-	redirect: '/proTable/useTableDemo',
+	redirect: '/proTable/useTableDemo1',
 	meta: {
 		icon: 'MessageBox',
 		order: 3,
@@ -15,13 +15,13 @@ export default {
 	},
 	children: [
 		{
-			path: '/proTable/useTableDemo',
-			name: 'useTableDemo',
-			component: () => import('@/views/proTable/useTableDemo/index.vue'),
+			path: '/proTable/useTableDemo1',
+			name: 'useTableDemo1',
+			component: () => import('@/views/proTable/useTableDemo1/index.vue'),
 			meta: {
 				icon: 'Menu',
 				requiresAuth: true,
-				title: '表格菜单Demo',
+				title: '表格菜单Demo1',
 				isLink: '',
 				isHide: false,
 				isFull: false,
@@ -30,14 +30,14 @@ export default {
 			},
 			children: [
 				{
-					path: '/proTable/useTableDemo/detail/:id',
-					name: 'useTableDemoDetail',
-					component: () => import('@/views/proTable/useTableDemo/detail/index.vue'),
+					path: '/proTable/useTableDemo1/detail/:id',
+					name: 'useTableDemo1Detail',
+					component: () => import('@/views/proTable/useTableDemo1/detail/index.vue'),
 					meta: {
 						icon: 'Menu',
 						requiresAuth: true,
-						title: '表格菜单Demo详情',
-						activeMenu: '/proTable/useTableDemo',
+						title: '表格菜单Demo1详情',
+						activeMenu: '/proTable/useTableDemo1',
 						isLink: '',
 						isHide: true,
 						isFull: false,

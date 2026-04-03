@@ -120,6 +120,21 @@ export default {
 			component: () => import('@/views/assembly/noticeBar/index.vue'),
 		},
 		{
+			path: '/assembly/tableColumn',
+			name: 'tableColumn',
+			meta: {
+				icon: 'Menu',
+				title: '多功能表格',
+				isLink: '',
+				isHide: false,
+				isFull: false,
+				isAffix: false,
+				requiresAuth: true,
+				isKeepAlive: true,
+			},
+			component: () => import('@/views/assembly/tableColumn/index.vue'),
+		},
+		{
 			path: '/assembly/tablePlus',
 			name: 'tablePlus',
 			meta: {

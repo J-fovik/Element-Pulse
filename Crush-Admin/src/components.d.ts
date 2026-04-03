@@ -41,6 +41,7 @@ declare module 'vue' {
     Statistic: typeof import('./components/Statistic/index.vue')['default']
     SvgIcon: typeof import('./components/SvgIcon/index.vue')['default']
     SwitchDark: typeof import('./components/SwitchDark/index.vue')['default']
+    TableColumn: typeof import('./components/TableColumn/index.vue')['default']
     TablePlus: typeof import('./components/TablePlus/index.vue')['default']
     TagInput: typeof import('./components/TagInput/index.vue')['default']
     TreeSelect: typeof import('./components/TreeSelect/index.vue')['default']
