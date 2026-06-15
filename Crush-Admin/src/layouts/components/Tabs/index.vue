@@ -70,7 +70,7 @@ watch(
 		console.log(userStore.flatMenuListGet(), route.fullPath);
 		if (!cur) return; // 未找到匹配项时提前退出
 		const tabsParams = {
-			icon: route.meta.icon as string,
+			icon: cur.meta.icon ?? (route.meta.icon as string),
 			title: cur.meta.title ?? (route.meta.title as string),
 			path: route.fullPath,
 			name: route.name as string,
