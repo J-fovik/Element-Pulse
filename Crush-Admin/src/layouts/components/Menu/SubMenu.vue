@@ -32,7 +32,26 @@ const handleClickMenu = (subItem: Menu.MenuOptions) => {
 		router.push(subItem.path);
 		window.open(subItem.meta.isLink, '_blank');
 	} else {
-		router.push(subItem.path);
+		// router.push(subItem.path);
+		// 1. 判断是否有 query，并且如果是字符串则转为对象
+		let parsedQuery = {};
+		if (subItem?.query) {
+			// 容错处理：如果是字符串则解析，如果已经是对象则直接使用
+			if (typeof subItem.query === 'string') {
+				try {
+					parsedQuery = JSON.parse(subItem.query);
+				} catch (error) {
+					console.error('菜单 query 参数解析失败:', error);
+				}
+			} else {
+				parsedQuery = subItem.query;
+			}
+		}
+		// 2. 跳转时传入解析后的对象
+		router.push({
+			path: subItem.path,
+			query: parsedQuery,
+		});
 	}
 };
 </script>
