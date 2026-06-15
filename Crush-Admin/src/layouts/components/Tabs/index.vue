@@ -58,7 +58,7 @@ watch(
 		// if (route.meta.isFull) return;
 		// tabsMenuValue.value = route.fullPath;
 		// const cur = userStore.flatMenuListGet().find((v: any) => v.path === route.fullPath);
-
+		tabsMenuValue.value = route.fullPath;
 		// 获取当前路由的原始模式（动态段保留 :id 形式）
 		const currentRawPath = route.matched[route.matched.length - 1]?.path;
 		const cur = userStore.flatMenuListGet().find((v: any) => {
