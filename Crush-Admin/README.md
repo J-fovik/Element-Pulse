@@ -119,6 +119,7 @@ interface RouteRecordRaw {
 	├── fileOperation.ts (文件相关)
 	├── formatTime.ts (时间日期相关)
 	├── getStyleSheets.ts (获取样式表)
+	├── jsencrypt.ts (加密解密相关)
 	├── loading.ts (全局loading样式)
 	├── mittBus.ts (mitt事件总线通讯)
 	├── objectOperation.ts (对象相关方法)
