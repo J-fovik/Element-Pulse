@@ -45,6 +45,21 @@ export default {
 			component: () => import('@/views/assembly/selectFilter/index.vue'),
 		},
 		{
+			path: '/assembly/splitter',
+			name: 'splitter',
+			meta: {
+				icon: 'Menu',
+				requiresAuth: true,
+				title: '分隔面板',
+				isLink: '',
+				isHide: false,
+				isFull: false,
+				isAffix: false,
+				isKeepAlive: true,
+			},
+			component: () => import('@/views/assembly/splitter/index.vue'),
+		},
+		{
 			path: '/assembly/treeSelector',
 			name: 'treeSelector',
 			meta: {
