@@ -38,6 +38,7 @@ declare module 'vue' {
     SearchItem: typeof import('./components/SearchItem/index.vue')['default']
     SelectFilter: typeof import('./components/SelectFilter/index.vue')['default']
     SelectIcon: typeof import('./components/SelectIcon/index.vue')['default']
+    Splitter: typeof import('./components/Splitter/index.vue')['default']
     Statistic: typeof import('./components/Statistic/index.vue')['default']
     SvgIcon: typeof import('./components/SvgIcon/index.vue')['default']
     SwitchDark: typeof import('./components/SwitchDark/index.vue')['default']

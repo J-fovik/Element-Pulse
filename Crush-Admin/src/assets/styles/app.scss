@@ -57,6 +57,14 @@ body,
 	border-radius: 6px;
 	box-shadow: 0 0 12px rgb(0 0 0 / 5%);
 }
+.card-tree {
+	box-sizing: border-box;
+	overflow-x: hidden;
+	background-color: var(--el-bg-color);
+	border: 1px solid var(--el-border-color-light);
+	border-radius: 6px;
+	box-shadow: 0 0 12px rgb(0 0 0 / 5%);
+}
 /* container (常用内容盒子) */
 .container {
 	display: flex;
@@ -324,7 +332,9 @@ body,
 	border-left-color: var(--el-color-primary) !important;
 }
 #nprogress .peg {
-	box-shadow: 0 0 10px var(--el-color-primary), 0 0 5px var(--el-color-primary) !important;
+	box-shadow:
+		0 0 10px var(--el-color-primary),
+		0 0 5px var(--el-color-primary) !important;
 }
 /* 字体大小全局样式
 ------------------------------- */

@@ -6,6 +6,9 @@
 		@selection-change="handleSelectionChange"
 		v-loading="loading"
 		:border="border"
+		:show-summary="showSummary"
+		@row-click="rowClick"
+		:summary-method="summaryMethod"
 	>
 		<el-table-column
 			type="selection"
@@ -47,6 +50,8 @@ const props = withDefaults(
 		tableData?: Array<any>; //表格数据
 		visibleColumnsData: Array<any>; // 可视表头
 		selectable?: ((row: any) => boolean) | undefined; // 选择函数,判断当前列是否可选
+		showSummary?: boolean; // 是否显示合计行
+		summaryMethod?: any; // 自定义合计方法
 	}>(),
 	{
 		loading: false,
@@ -55,12 +60,17 @@ const props = withDefaults(
 		tableData: () => [],
 		visibleColumnsData: () => [],
 		selectable: () => true,
-	}
+		showSummary: false,
+	},
 );
 // 给父组件传参
-const emits = defineEmits(['selectKeys']);
+const emits = defineEmits(['selectKeys', 'rowClick']);
 // 多选
 const handleSelectionChange = (e: any) => {
 	emits('selectKeys', e);
+};
+// 点击行事件
+const rowClick = (row: any, column: any, event: any) => {
+	emits('rowClick', row);
 };
 </script>

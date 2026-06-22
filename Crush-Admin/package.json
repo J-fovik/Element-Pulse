@@ -32,7 +32,7 @@
 		"echarts": "^5.5.0",
 		"echarts-liquidfill": "^3.1.0",
 		"echarts-wordcloud": "^2.1.0",
-		"element-plus": "^2.6.0",
+		"element-plus": "^2.14.2",
 		"gsap": "^3.12.5",
 		"js-cookie": "^3.0.5",
 		"jsbarcode": "^3.11.6",
