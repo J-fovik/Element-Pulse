@@ -24,6 +24,9 @@
 				</template>
 			</el-input>
 		</el-form-item>
+		<el-form-item>
+			<el-checkbox v-model="form.rememberMe">记住密码</el-checkbox>
+		</el-form-item>
 	</el-form>
 	<div class="login-btn">
 		<el-button :icon="CircleClose" round @click="resetForm"> 重置 </el-button>
@@ -41,7 +44,9 @@
 
 <script setup lang="ts" name="LoginForm">
 import md5 from 'md5';
+import Cookies from 'js-cookie';
 import { Session } from '@/utils/storage';
+import { encrypt, decrypt } from '@/utils/jsencrypt';
 import type { FormInstance } from 'element-plus';
 import { toast } from '@/utils/elementPlus';
 import { HOME_URL } from '@/config';
@@ -57,6 +62,7 @@ const APP_TITLE = import.meta.env.VITE_GLOB_APP_TITLE;
 const { form, formRef, resetForm } = useForm<any>(() => ({
 	username: '',
 	password: '',
+	rememberMe: false,
 }));
 /* 弹窗状态控制 */
 const [activeKey, setActiveKey] = useBasicsState<string | null>(null);
@@ -69,12 +75,30 @@ const rules = {
 	username: [{ required: true, message: '请输入用户名', trigger: 'blur' }],
 	password: [{ required: true, message: '请输入密码', trigger: 'blur' }],
 };
-
+// 获取Cookie
+const getCookie = () => {
+	const rememberMe = Cookies.get('rememberMe');
+	if (Boolean(rememberMe) === true) {
+		const username = Cookies.get('username');
+		const password = Cookies.get('password');
+		form.value = {
+			...form.value,
+			username: username === undefined ? form.value.username : username,
+			password: password === undefined ? form.value.password : decrypt(password),
+			rememberMe: rememberMe === undefined ? false : Boolean(rememberMe),
+		};
+	}
+};
 // 登录
 const login = (formEl: FormInstance | undefined) => {
 	if (!formEl) return;
 	formEl.validate(async (valid) => {
 		if (!valid) return;
+		if (form.value.rememberMe) {
+			Cookies.set('rememberMe', form.value.rememberMe);
+		} else {
+			Cookies.remove('rememberMe');
+		}
 		const { res, err } = await curryingRequest(
 			() =>
 				loginApi({
@@ -84,11 +108,18 @@ const login = (formEl: FormInstance | undefined) => {
 			{
 				before: () => setActiveKey('login'),
 				after: () => setActiveKey(null),
-			}
+			},
 		);
 		if (err) return;
 		// 设置用户信息
 		Session.set('userToken', res?.data.access_token);
+		Cookies.set('username', form.value.username);
+		const encryptedPwd = encrypt(form.value.password);
+		if (typeof encryptedPwd === 'string') {
+			Cookies.set('password', encryptedPwd);
+		} else {
+			Cookies.remove('password');
+		}
 		// 清空 tabs、keepAlive 数据
 		tabsStore.setTabs([]);
 		keepAliveStore.setKeepAliveName([]);
@@ -109,6 +140,7 @@ const onKeyUp = (e: any) => {
 // 添加键盘监听
 onMounted(() => {
 	document.addEventListener('keyup', onKeyUp);
+	getCookie();
 });
 // 移除键盘监听
 onBeforeUnmount(() => {
