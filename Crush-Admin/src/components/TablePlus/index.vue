@@ -71,6 +71,9 @@ const handleSelectionChange = (e: any) => {
 };
 // 点击行事件
 const rowClick = (row: any, column: any, event: any) => {
+	if (column.rawColumnKey == 'operate') {
+		return; // 阻止行点击事件，避免影响到插槽内的操作
+	}
 	emits('rowClick', row);
 };
 </script>
