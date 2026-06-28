@@ -46,7 +46,7 @@
 				@check="handleCheckChange"
 			>
 				<template #default="{ node, data }">
-					<div class="el-tree-node__label">
+					<div class="el-tree-node__label w-full">
 						<slot :row="{ node, data }">
 							<div class="flex items-center justify-between">
 								<div class="flex items-center">
@@ -58,10 +58,8 @@
 										<slot name="labelRight" :node="node" :data="data"></slot>
 									</div>
 								</div>
-								<div>
-									<div>
-										<slot name="operate" :node="node" :data="data"></slot>
-									</div>
+								<div @click.stop="">
+									<slot name="operate" :node="node" :data="data"></slot>
 								</div>
 							</div>
 						</slot>
