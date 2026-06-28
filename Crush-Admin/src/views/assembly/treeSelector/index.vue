@@ -23,7 +23,7 @@
 			@change="changeTreeFilterMany"
 		/>
 
-		<div class="descriptions-box card ml10">
+		<div class="descriptions-box card">
 			<el-alert
 				title="TreeSelector 是el-tree树形控件进行的二次封装，官方文档请查看 ：https://element-plus.org/zh-CN/component/tree.html"
 				type="warning"
