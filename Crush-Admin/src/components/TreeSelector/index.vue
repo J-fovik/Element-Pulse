@@ -46,11 +46,26 @@
 				@check="handleCheckChange"
 			>
 				<template #default="{ node, data }">
-					<span class="el-tree-node__label">
+					<div class="el-tree-node__label">
 						<slot :row="{ node, data }">
-							{{ node.label }}
+							<div class="flex items-center justify-between">
+								<div class="flex items-center">
+									<div>
+										<slot name="labelLeft" :node="node" :data="data"></slot>
+									</div>
+									<div class="ml5 mr5">{{ node.label }}</div>
+									<div>
+										<slot name="labelRight" :node="node" :data="data"></slot>
+									</div>
+								</div>
+								<div>
+									<div>
+										<slot name="operate" :node="node" :data="data"></slot>
+									</div>
+								</div>
+							</div>
 						</slot>
-					</span>
+					</div>
 				</template>
 			</el-tree>
 		</el-scrollbar>
@@ -86,7 +101,7 @@ const props = withDefaults(
 		id: 'id',
 		width: '220px',
 		icon: 'CaretRight',
-	}
+	},
 );
 // 树形控件实例
 const treeRef = ref<InstanceType<typeof ElTree>>();
@@ -114,7 +129,7 @@ onActivated(() => {
 watch(
 	() => props.defaultValue,
 	() => nextTick(() => setSelected()),
-	{ deep: true, immediate: true }
+	{ deep: true, immediate: true },
 );
 watch(filterText, (val) => {
 	treeRef.value!.filter(val);
@@ -164,9 +179,11 @@ defineExpose({ treeRef });
 .treeSelector {
 	box-sizing: border-box;
 	height: 100%;
+	padding: 10px !important;
+
 	.title {
-		margin: 0 0 15px;
-		font-size: 18px;
+		margin: 0 0 5px;
+		font-size: 15px;
 		font-weight: bold;
 		color: var(--el-color-info-dark-2);
 		letter-spacing: 0.5px;

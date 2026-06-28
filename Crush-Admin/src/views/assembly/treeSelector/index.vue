@@ -51,6 +51,15 @@
 				<el-descriptions-item label="defaultProps">
 					配置项，默认{ children: 'children', label: 'label', }
 				</el-descriptions-item>
+				<el-descriptions-item label="labelLeft">
+					左侧标签插槽 #labelLeft="{ node, data }"
+				</el-descriptions-item>
+				<el-descriptions-item label="labelRight">
+					右侧标签插槽 #labelRight="{ node, data }"
+				</el-descriptions-item>
+				<el-descriptions-item label="operate">
+					操作列插槽 #operate="{ node, data }"
+				</el-descriptions-item>
 			</el-descriptions>
 		</div>
 	</div>
