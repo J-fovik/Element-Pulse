@@ -58,7 +58,7 @@
 										<slot name="labelRight" :node="node" :data="data"></slot>
 									</div>
 								</div>
-								<div @click.stop="">
+								<div @click.stop="" class=mr5>
 									<slot name="operate" :node="node" :data="data"></slot>
 								</div>
 							</div>
