@@ -58,7 +58,7 @@
 										<slot name="labelRight" :node="node" :data="data"></slot>
 									</div>
 								</div>
-								<div @click.stop="" class=mr5>
+								<div @click.stop="" class="mr5">
 									<slot name="operate" :node="node" :data="data"></slot>
 								</div>
 							</div>
@@ -161,7 +161,7 @@ const emits = defineEmits(['change']);
 // 单选
 const handleNodeClick = (data: { [key: string]: any }) => {
 	if (props.multiple) return;
-	emits('change', data[props.id]);
+	emits('change', data[props.id], data);
 };
 
 // 多选
