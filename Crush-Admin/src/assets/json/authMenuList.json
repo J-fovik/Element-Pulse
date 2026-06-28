@@ -189,6 +189,21 @@
 					}
 				},
 				{
+					"path": "/assembly/splitter",
+					"name": "splitter",
+					"component": "/assembly/splitter/index",
+					"meta": {
+						"icon": "Menu",
+						"title": "分隔面板",
+						"isLink": "",
+						"isHide": false,
+						"isFull": false,
+						"isAffix": false,
+						"requiresAuth": true,
+						"isKeepAlive": true
+					}
+				},
+				{
 					"path": "/assembly/treeSelector",
 					"name": "treeSelector",
 					"component": "/assembly/treeSelector/index",
