@@ -33,7 +33,7 @@
 			<span> 树形筛选器 🍓🍇🍈🍉</span>
 			<div class="mt20">树形控件(单) ： {{ singleSelected }}</div>
 			<div class="mt20">树形控件(多) ： {{ manySelected }}</div>
-			<el-descriptions title="配置项 📚" :column="1" border class="mt20">
+			<el-descriptions title="配置项 📚" :column="2" border class="mt20">
 				<el-descriptions-item label="data"> 分类数据 </el-descriptions-item>
 				<el-descriptions-item label="title"> TreeSelector 标题 </el-descriptions-item>
 				<el-descriptions-item label="id"> 选择的id，默认 'id' </el-descriptions-item>
