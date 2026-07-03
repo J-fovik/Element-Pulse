@@ -1,4 +1,5 @@
 import { openWindow } from './window';
+import { utils, writeFile } from 'xlsx';
 
 interface DownloadOptions<T = string> {
 	fileName?: string;
@@ -673,4 +674,81 @@ export const rightRotate = (imageData: ImageData) => {
 		return newImageData;
 	}
 	return null;
+};
+
+/**
+ * JSON数据导出为Excel
+ * @param {Object} params - 导出参数
+ * @param {Array} params.header - 表头数组（如['配置编码','配置名称']）
+ * @param {Array} params.data - 数据二维数组（如[['001','配置1'],['002','配置2']]）
+ * @param {String} params.filename - 文件名（不含.xlsx）
+ */
+export function export_json_to_excel({ header, data, filename = 'excel-list' }) {
+	// 1. 构造工作表数据（表头+内容）
+	const wsData = [header, ...data];
+
+	// 2. 创建工作表
+	const ws = utils.aoa_to_sheet(wsData);
+
+	// 3. (可选优化) 自动设置列宽，防止内容被遮挡
+	// 计算每一列的最大宽度
+	const colWidths = wsData.map((row) =>
+		row.map((val) => {
+			// 先判断是否为null/undefined，然后计算字符长度
+			// 中文字符宽度较宽，这里简单处理，实际可能需要更精确计算
+			if (val == null) return 10;
+			const valStr = String(val);
+			// 一个中文字符算2个长度，英文算1个
+			const length = valStr.replace(/[\u0391-\uFFE5]/g, 'aa').length;
+			return Math.max(10, length + 2); // 最小宽度10，加一点padding
+		}),
+	);
+
+	// 取每一列的最大宽度
+	const result = colWidths[0].map((val, index) => {
+		return Math.max(...colWidths.map((row) => row[index]));
+	});
+
+	// 设置列宽
+	ws['!cols'] = result.map((w) => ({ wch: w }));
+
+	// 4. 创建工作簿并添加工作表
+	const wb = utils.book_new();
+	utils.book_append_sheet(wb, ws, 'Sheet1');
+
+	// 5. 导出文件
+	writeFile(wb, `${filename}.xlsx`);
+}
+const exportData = (data, columns, fileName) => {
+	if (!data || data.length === 0) {
+		ElMessage.warning('暂无数据可导出');
+		return;
+	}
+	// 1. 过滤掉不需要导出的列
+	const exportColumns = columns.filter(
+		(col) => col.key !== 'operate' && col.key !== 'sortTableNo',
+	);
+	// 2. 构造表头
+	const header = exportColumns.map((col) => col.title);
+	// 3. 构造数据体
+	const exportRows = data.map((row) => {
+		return exportColumns.map((col) => {
+			const value = row[col.key]; // 获取原始值
+			if (col.key === 'quantity') {
+				const unit = row.unit;
+				return `${value}${unit}`;
+			}
+			if (col.key === 'warnLevel') {
+				const cur = dictionaryStore.getDictionaryItem('warning_level', row[col.key]);
+				return cur.label;
+			}
+			return value;
+		});
+	});
+	// 5. 调用导出
+	export_json_to_excel({
+		header,
+		data: exportRows,
+		filename: fileName,
+	});
 };
