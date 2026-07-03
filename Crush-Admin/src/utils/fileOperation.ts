@@ -719,36 +719,37 @@ export function export_json_to_excel({ header, data, filename = 'excel-list' }) 
 	// 5. 导出文件
 	writeFile(wb, `${filename}.xlsx`);
 }
-const exportData = (data, columns, fileName) => {
-	if (!data || data.length === 0) {
-		ElMessage.warning('暂无数据可导出');
-		return;
-	}
-	// 1. 过滤掉不需要导出的列
-	const exportColumns = columns.filter(
-		(col) => col.key !== 'operate' && col.key !== 'sortTableNo',
-	);
-	// 2. 构造表头
-	const header = exportColumns.map((col) => col.title);
-	// 3. 构造数据体
-	const exportRows = data.map((row) => {
-		return exportColumns.map((col) => {
-			const value = row[col.key]; // 获取原始值
-			if (col.key === 'quantity') {
-				const unit = row.unit;
-				return `${value}${unit}`;
-			}
-			if (col.key === 'warnLevel') {
-				const cur = dictionaryStore.getDictionaryItem('warning_level', row[col.key]);
-				return cur.label;
-			}
-			return value;
-		});
-	});
-	// 5. 调用导出
-	export_json_to_excel({
-		header,
-		data: exportRows,
-		filename: fileName,
-	});
-};
+// // 示例
+// const exportData = (data, columns, fileName) => {
+// 	if (!data || data.length === 0) {
+// 		ElMessage.warning('暂无数据可导出');
+// 		return;
+// 	}
+// 	// 1. 过滤掉不需要导出的列
+// 	const exportColumns = columns.filter(
+// 		(col) => col.key !== 'operate' && col.key !== 'sortTableNo',
+// 	);
+// 	// 2. 构造表头
+// 	const header = exportColumns.map((col) => col.title);
+// 	// 3. 构造数据体
+// 	const exportRows = data.map((row) => {
+// 		return exportColumns.map((col) => {
+// 			const value = row[col.key]; // 获取原始值
+// 			if (col.key === 'quantity') {
+// 				const unit = row.unit;
+// 				return `${value}${unit}`;
+// 			}
+// 			if (col.key === 'warnLevel') {
+// 				const cur = dictionaryStore.getDictionaryItem('warning_level', row[col.key]);
+// 				return cur.label;
+// 			}
+// 			return value;
+// 		});
+// 	});
+// 	// 5. 调用导出
+// 	export_json_to_excel({
+// 		header,
+// 		data: exportRows,
+// 		filename: fileName,
+// 	});
+// };
