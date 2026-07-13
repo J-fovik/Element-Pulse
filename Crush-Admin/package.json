@@ -70,7 +70,7 @@
 		"vuedraggable": "^4.1.0",
 		"watermark-js-plus": "^1.6.3",
 		"xgplayer": "^3.0.20",
-		"xlsx": "^0.18.5"
+		"xlsx-js-style": "^1.2.0"
 	},
 	"devDependencies": {
 		"@types/md5": "^2.3.5",

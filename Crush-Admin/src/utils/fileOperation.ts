@@ -356,8 +356,6 @@ export const fileSuffix = (url: string, isSpot: boolean = true) => {
 	return (isSpot ? '.' : '') + url.split('.').at(-1);
 };
 
- 
-
 /**
  * 下载图片
  * @param {string} imageSrc 图片路径
@@ -690,17 +688,42 @@ export function export_json_to_excel({ header, data, filename = 'excel-list' }) 
 	// 2. 创建工作表
 	const ws = utils.aoa_to_sheet(wsData);
 
-	// 3. (可选优化) 自动设置列宽，防止内容被遮挡
-	// 计算每一列的最大宽度
+	// 3. 设置表头样式：背景色 #f5f7fa + 字体加粗
+	header.forEach((item, index) => {
+		// 获取单元格地址，如 "A1", "B1" (第一行，第index列)
+		const cellAddress = utils.encode_cell({ r: 0, c: index });
+
+		// 确保单元格存在
+		if (!ws[cellAddress]) ws[cellAddress] = { v: '' };
+
+		// 设置样式
+		ws[cellAddress].s = {
+			font: {
+				bold: true, // 字体加粗
+				// 字体颜色默认黑色即可，无需额外设置
+			},
+			fill: {
+				fgColor: { rgb: 'F5F7FA' }, // 背景色修改为 f5f7fa
+			},
+			alignment: {
+				horizontal: 'center', // 水平居中
+				vertical: 'center', // 垂直居中
+			},
+			border: {
+				// (可选) 给表头加个边框会让表格更清晰
+				bottom: { style: 'thin', color: { rgb: 'CCCCCC' } },
+			},
+		};
+	});
+
+	// 4. 自动设置列宽
 	const colWidths = wsData.map((row) =>
 		row.map((val) => {
-			// 先判断是否为null/undefined，然后计算字符长度
-			// 中文字符宽度较宽，这里简单处理，实际可能需要更精确计算
 			if (val == null) return 10;
 			const valStr = String(val);
 			// 一个中文字符算2个长度，英文算1个
 			const length = valStr.replace(/[\u0391-\uFFE5]/g, 'aa').length;
-			return Math.max(10, length + 2); // 最小宽度10，加一点padding
+			return Math.max(10, length + 2);
 		}),
 	);
 
@@ -709,14 +732,13 @@ export function export_json_to_excel({ header, data, filename = 'excel-list' }) 
 		return Math.max(...colWidths.map((row) => row[index]));
 	});
 
-	// 设置列宽
 	ws['!cols'] = result.map((w) => ({ wch: w }));
 
-	// 4. 创建工作簿并添加工作表
+	// 5. 创建工作簿并添加工作表
 	const wb = utils.book_new();
 	utils.book_append_sheet(wb, ws, 'Sheet1');
 
-	// 5. 导出文件
+	// 6. 导出文件
 	writeFile(wb, `${filename}.xlsx`);
 }
 // // 示例
