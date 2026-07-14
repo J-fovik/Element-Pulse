@@ -1,0 +1,68 @@
+{
+	"code": 200,
+	"data": [
+		{
+			"path": "/home",
+			"name": "Home",
+			"component": "/home/index",
+			"meta": {
+				"icon": "HomeFilled",
+				"title": "首页",
+				"isLink": "",
+				"isHide": false,
+				"isFull": false,
+				"isAffix": true,
+				"requiresAuth": true,
+				"isKeepAlive": true
+			}
+		},
+		{
+			"path": "/system",
+			"name": "System",
+			"redirect": "/system/menu",
+			"meta": {
+				"icon": "Menu",
+				"title": "系统管理",
+				"isLink": "",
+				"isHide": false,
+				"isFull": false,
+				"isAffix": false,
+				"requiresAuth": true,
+				"isKeepAlive": true
+			},
+			"children": [
+				{
+					"path": "/system/menu",
+					"name": "SystemMenu",
+					"component": "/system/menu/index",
+					"meta": {
+						"icon": "Menu",
+						"title": "菜单管理",
+						"isLink": "",
+						"isHide": false,
+						"isFull": false,
+						"isAffix": false,
+						"requiresAuth": true,
+						"isKeepAlive": true
+					}
+				},
+				{
+					"path": "/system/dept",
+					"name": "SystemDept",
+					"component": "/system/dept/index",
+					"meta": {
+						"icon": "Menu",
+						"title": "部门管理",
+						"isLink": "",
+						"isHide": false,
+						"isFull": false,
+						"isAffix": false,
+						"requiresAuth": true,
+						"isKeepAlive": true
+					}
+				}
+			]
+		}
+	],
+	"msg": "成功"
+}

@@ -1,6 +1,5 @@
 import { openWindow } from './window';
-import { utils, writeFile } from 'xlsx';
-
+import { utils, writeFile } from 'xlsx-js-style';
 interface DownloadOptions<T = string> {
 	fileName?: string;
 	source: T;

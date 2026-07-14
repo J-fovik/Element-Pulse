@@ -1,0 +1,77 @@
+/* 设置 notification、message 层级在 loading 之上 */
+.el-message,
+.el-notification {
+	z-index: 2070 !important;
+}
+/* el-alert */
+.el-alert {
+	border: 1px solid;
+}
+/* 当前页面最大化 css */
+.main-maximize {
+	.aside-split,
+	.el-aside,
+	.el-header,
+	.el-footer,
+	.tabs-box {
+		display: none !important;
+	}
+}
+// 消息提示框宽度问题
+.el-popover.el-popper {
+	width: 310px !important;
+}
+/* table的图片层级设置 */
+.el-table .el-table__cell {
+	z-index: initial !important;
+}
+// 输入框 时间选择器
+.el-input__inner,
+.el-input__prefix {
+	padding: 10px !important;
+}
+/* el-table 表头样式 */
+.el-table__header th {
+	font-weight: bold;
+	color: var(--el-text-color-primary);
+	background: var(--el-fill-color-light) !important;
+}
+// 设置 el-table 中 header 文字不换行，并省略
+.el-table__header .el-table__cell > .cell {
+	// white-space: nowrap;
+	white-space: wrap;
+}
+.el-drawer__header {
+	margin-bottom: 0px !important;
+}
+// 解决表格数据为空时样式不居中问题(仅在element-plus中)
+// .el-table__empty-block {
+// 	position: absolute;
+// 	top: 50%;
+// 	left: 50%;
+// 	transform: translate(-50%, -50%);
+// 	.table-empty {
+// 		line-height: 30px;
+// 	}
+// }
+// 时间日期选择器 和 数字输入框  宽度
+.el-date-editor.el-input,
+.el-date-editor.el-input__wrapper {
+	width: 100% !important;
+}
+.el-input-number .el-input__inner {
+	text-align: left !important;
+}
+// 单数行背景色
+.el-table__body tr:nth-child(odd) {
+	// background-color: #f5f7fa; // 浅灰色
+}
+
+// 双数行背景色
+.el-table__body tr:nth-child(even) {
+	background-color: #ecf2ff !important; // 白色
+}
+// hover 时与双数行颜色一致
+.el-table__body tr:hover {
+	background-color: #ecf2ff !important; // 与双数行相同的白色
+}
