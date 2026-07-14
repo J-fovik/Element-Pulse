@@ -67,7 +67,6 @@ watch(
 			// 兼容静态路径
 			return v.path === route.fullPath || v.path === route.path;
 		});
-		console.log(userStore.flatMenuListGet(), route.fullPath);
 		if (!cur) return; // 未找到匹配项时提前退出
 		const tabsParams = {
 			icon: cur.meta.icon ?? (route.meta.icon as string),

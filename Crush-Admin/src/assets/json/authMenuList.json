@@ -815,6 +815,60 @@
 							]
 						}
 					]
+				},
+				{
+					"path": "/menu/dynamicMenu/menu1",
+					"name": "dynamicMenu1",
+					"component": "/menu/dynamicMenu/index",
+					"meta": {
+						"icon": "Menu",
+						"title": "动态菜单1",
+						"isLink": "",
+						"isHide": false,
+						"isFull": false,
+						"isAffix": false,
+						"requiresAuth": true,
+						"isKeepAlive": true
+					},
+					"query": {
+						"title": "动态菜单1"
+					}
+				},
+				{
+					"path": "/menu/dynamicMenu/menu2",
+					"name": "dynamicMenu2",
+					"component": "/menu/dynamicMenu/index",
+					"meta": {
+						"icon": "Menu",
+						"title": "动态菜单2",
+						"isLink": "",
+						"isHide": false,
+						"isFull": false,
+						"isAffix": false,
+						"requiresAuth": true,
+						"isKeepAlive": true
+					},
+					"query": {
+						"title": "动态菜单2"
+					}
+				},
+				{
+					"path": "/menu/dynamicMenu/menu3",
+					"name": "dynamicMenu3",
+					"component": "/menu/dynamicMenu/index",
+					"meta": {
+						"icon": "Menu",
+						"title": "动态菜单3",
+						"isLink": "",
+						"isHide": false,
+						"isFull": false,
+						"isAffix": false,
+						"requiresAuth": true,
+						"isKeepAlive": true
+					},
+					"query": {
+						"title": "动态菜单3"
+					}
 				}
 			]
 		},

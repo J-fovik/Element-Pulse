@@ -24,6 +24,10 @@
 		</el-card>
 		<el-card shadow="hover" header="Container 容器" class="mb20">
 			<Container />
+			<el-descriptions title="配置项 📚" :column="1" border class="mt20">
+				<el-descriptions-item label="isTitle"> 是否展示标题 </el-descriptions-item>
+				<el-descriptions-item label="title">标题</el-descriptions-item>
+			</el-descriptions>
 		</el-card>
 		<el-card shadow="hover" header="Dot 热点" class="mb20">
 			<el-row :gutter="24">

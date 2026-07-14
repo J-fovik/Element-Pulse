@@ -108,5 +108,20 @@ export default {
 				},
 			],
 		},
+		{
+			path: '/menu/dynamicMenu/:menuId',
+			name: 'dynamicMenu',
+			meta: {
+				icon: 'Menu',
+				requiresAuth: true,
+				title: '动态菜单',
+				isLink: '',
+				isHide: false,
+				isFull: false,
+				isAffix: false,
+				isKeepAlive: true,
+			},
+			component: () => import('@/views/menu/dynamicMenu/index.vue'),
+		},
 	],
 };

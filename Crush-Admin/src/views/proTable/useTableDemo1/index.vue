@@ -85,6 +85,14 @@
 					>
 						导出兑换码
 					</el-button>
+					<el-button
+						type="danger"
+						:icon="FolderOpened"
+						plain
+						@click="exportData(tableData, visibleColumnsData, '导出数据.xlsx')"
+					>
+						导出
+					</el-button>
 				</el-space>
 			</template>
 			<template #table>
@@ -108,7 +116,7 @@
 								text
 								@click="
 									$router.push(
-										`/proTable/useTableDemo1/detail/index?id=${row.id}&isReadOnly=true`
+										`/proTable/useTableDemo1/detail/index?id=${row.id}&isReadOnly=true`,
 									)
 								"
 								>详情</el-button
@@ -117,7 +125,9 @@
 								type="primary"
 								text
 								@click="
-									$router.push(`/proTable/useTableDemo1/detail/index?id=${row.id}`)
+									$router.push(
+										`/proTable/useTableDemo1/detail/index?id=${row.id}`,
+									)
 								"
 								>编辑</el-button
 							>
@@ -146,6 +156,8 @@
 <script setup lang="ts" name="useTableDemo1">
 import { CirclePlus, Delete, FolderOpened } from '@element-plus/icons-vue';
 import { sleep } from '@/utils/other';
+import { ElMessage } from 'element-plus';
+import { export_json_to_excel } from '@/utils/fileOperation';
 import {
 	useForm,
 	useTable,
@@ -177,7 +189,7 @@ const { form, resetForm } = useForm(
 		type: '', // 类型
 		date: '', // 日期
 	}),
-	() => resetData()
+	() => resetData(),
 );
 // 表格hooks
 const {
@@ -212,7 +224,7 @@ const { data: typeList } = useAsyncWatchData<Array<any>>(
 		if (form.value.gender == '1') return TYPES_A_OPTIONS;
 		else return TYPES_B_OPTIONS;
 	},
-	{ watchSource: () => form.value.gender, defaultValue: [] }
+	{ watchSource: () => form.value.gender, defaultValue: [] },
 );
 // 判断当前列是否可以选择
 const selectable = (row: any) => {
@@ -236,12 +248,46 @@ const exportExcel = async () => {
 		{
 			after: () => setActiveKey(''),
 			before: () => setActiveKey('导出Excel'),
-		}
+		},
 	);
 	// 下载文件
 	if (res) {
 		downloadBlob(res, `兑换码一览表.xlsx`);
 	}
+};
+/**
+ * 导出Excel处理函数
+ * @param {Array} data - 表格数据源
+ * @param {Array} columns - 表头配置
+ * @param {String} fileName - 文件名
+ */
+const exportData = (data, columns, fileName) => {
+	if (!data || data.length === 0) {
+		ElMessage.warning('暂无数据可导出');
+		return;
+	}
+	// 1. 过滤掉不需要导出的列
+	const exportColumns = columns.filter(
+		(col) => col.key !== 'operate' && col.key !== 'sortTableNo',
+	);
+	// 2. 构造表头
+	const header = exportColumns.map((col) => col.title);
+	// 3. 构造数据体
+	const exportRows = data.map((row) => {
+		return exportColumns.map((col) => {
+			const value = row[col.key]; // 获取原始值
+			if (col.key === 'ID') {
+				return 'ID' + col.key;
+			}
+			return value;
+		});
+	});
+	// 5. 调用导出
+	export_json_to_excel({
+		header,
+		data: exportRows,
+		filename: fileName,
+	});
 };
 // 获取表格列表
 const {

@@ -2,7 +2,7 @@
 	<el-card shadow="hover">
 		<template #header>
 			<div class="flex items-center justify-between">
-				<div>{{ route.meta.title as any }}</div>
+				<div v-if="isTitle">{{ title ? title : (route.meta.title as any) }}</div>
 				<!-- 折叠按钮 -->
 				<template v-if="fold">
 					<el-button type="primary" link @click="setCollapsed(!collapsed)">
@@ -101,14 +101,18 @@ const props = withDefaults(
 		fold?: boolean; // 是否开启折叠控制
 		isQueryControl?: boolean; // 是否展示表单模块
 		isOperateControl?: boolean; // 是否展示操作模块
+		isTitle?: boolean; // 是否展示标题
 		tableColumns?: Array<any>; // 列展示
+		title?: string; // 标题
 	}>(),
 	{
 		fold: false,
 		isQueryControl: true,
 		isOperateControl: true,
+		isTitle: true,
 		tableColumns: () => [],
-	}
+		title: '',
+	},
 );
 // 展开折叠控制
 const isCollapsed = ref(false);

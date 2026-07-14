@@ -152,9 +152,33 @@ router.beforeEach(async (to) => {
 			}
 		}
 
-		// 权限控制
-		if (!collectKeySpecifiedValues(userStore.authMenuList)?.includes(to.name as any)) {
-			// 详情页面不做权限处理;
+		// // 权限控制
+		// if (!collectKeySpecifiedValues(userStore.authMenuList)?.includes(to.name as any)) {
+		// 	// 详情页面不做权限处理;
+		// 	if (!to.meta.activeMenu) {
+		// 		return {
+		// 			path: '/403',
+		// 			query: { redirect: to.fullPath },
+		// 		};
+		// 	}
+		// }
+		const authNames = collectKeySpecifiedValues(userStore.authMenuList) || [];
+		const prefixWhitelist = ['dynamicMenu']; // 白名单
+
+		function hasRoutePermission(routeName) {
+			if (authNames.includes(routeName)) return true;
+			for (const prefix of prefixWhitelist) {
+				if (
+					routeName.startsWith(prefix) &&
+					authNames.some((name) => name.startsWith(prefix))
+				) {
+					return true;
+				}
+			}
+			return false;
+		}
+
+		if (!hasRoutePermission(to.name)) {
 			if (!to.meta.activeMenu) {
 				return {
 					path: '/403',
