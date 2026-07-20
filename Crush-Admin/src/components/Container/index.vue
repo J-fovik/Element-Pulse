@@ -34,7 +34,7 @@ const currentTitle = computed(() => {
 	// 2. 调用查找函数
 	const foundMenuItem = findMenuItemByRouteName(menuList.value, currentRouteName);
 	// 3. 如果找到了菜单项，返回其 title，否则返回一个默认值或空字符串
-	return foundMenuItem ? foundMenuItem?.title : (route.name as string);
+	return foundMenuItem ? foundMenuItem?.title : (route.meta.title as string);
 });
 </script>
 <style lang="scss" scoped>
