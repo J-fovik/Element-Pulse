@@ -903,3 +903,31 @@ export function mapTree<T, V extends Record<string, any>>(
 		return mapperNode as V;
 	});
 }
+
+/**
+ * 根据路由名称，在嵌套的菜单列表中递归查找对应的菜单项
+ * @param menuList 菜单列表（嵌套数组）
+ * @param routeName 路由名称
+ * @returns 找到的菜单项对象，如果没找到则返回 null
+ */
+export function findMenuItemByRouteName(menuList: any[], routeName: string): any {
+	// 1. 遍历当前层级的所有菜单项
+	for (const menuItem of menuList) {
+		// 2. 检查当前菜单项的 name 是否匹配
+		if (menuItem.name === routeName) {
+			// 3. 如果匹配，返回整个菜单项对象
+			return menuItem;
+		}
+
+		// 4. 如果当前菜单项有子菜单，则递归调用函数查找子菜单
+		if (menuItem.children && menuItem.children.length > 0) {
+			const foundItem = findMenuItemByRouteName(menuItem.children, routeName);
+			// 5. 如果在子菜单中找到了，就返回结果
+			if (foundItem) {
+				return foundItem;
+			}
+		}
+	}
+	// 6. 如果遍历完所有项都没找到，返回 null
+	return null;
+}
