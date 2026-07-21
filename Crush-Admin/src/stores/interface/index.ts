@@ -24,6 +24,7 @@ export interface GlobalState {
 	tabs: boolean;
 	tabsIcon: boolean;
 	footer: boolean;
+	splitterSize: number | string;
 }
 
 /* tabsMenuProps */

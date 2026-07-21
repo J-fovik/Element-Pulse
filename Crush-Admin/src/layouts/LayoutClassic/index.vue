@@ -14,25 +14,36 @@
 			</div>
 		</el-header>
 		<el-container class="classic-content">
-			<el-aside>
-				<div class="aside-box" :style="{ width: isCollapse ? '65px' : '210px' }">
-					<el-scrollbar>
-						<el-menu
-							:router="false"
-							:default-active="activeMenu"
-							:collapse="isCollapse"
-							:unique-opened="accordion"
-							:collapse-transition="false"
-							style="z-index: 999; height: calc(100vh - 55px) !important"
-						>
-							<SubMenu :menu-list="menuList" />
-						</el-menu>
-					</el-scrollbar>
-				</div>
-			</el-aside>
-			<el-container class="classic-main">
-				<Main />
-			</el-container>
+			<el-splitter :key="isCollapse as any">
+				<el-splitter-panel
+					v-model:size="splitterSize"
+					:min="isCollapse ? 65 : 200"
+					:max="isCollapse ? 65 : '50%'"
+					@update:size="updateSize"
+				>
+					<el-aside>
+						<div class="aside-box" :style="{ width: isCollapse ? '65px' : '100%' }">
+							<el-scrollbar>
+								<el-menu
+									:router="false"
+									:default-active="activeMenu"
+									:collapse="isCollapse"
+									:unique-opened="accordion"
+									:collapse-transition="false"
+									style="z-index: 999; height: calc(100vh - 55px) !important"
+								>
+									<SubMenu :menu-list="menuList" />
+								</el-menu>
+							</el-scrollbar>
+						</div>
+					</el-aside>
+				</el-splitter-panel>
+				<el-splitter-panel>
+					<el-container class="classic-main">
+						<Main />
+					</el-container>
+				</el-splitter-panel>
+			</el-splitter>
 		</el-container>
 	</el-container>
 </template>
@@ -54,13 +65,35 @@ const userStore = useUserStore();
 const globalStore = useGlobalStore();
 
 // 是否手风琴、是否水平折叠收起菜单
-const { accordion, isCollapse } = storeToRefs(globalStore);
+const { accordion, isCollapse, splitterSize } = storeToRefs(globalStore);
 // 路由数组
 const menuList = computed(() => userStore.showMenuListGet());
 // 活跃菜单
 const activeMenu = computed(
-	() => (route.meta.activeMenu ? route.meta.activeMenu : route.path) as string
+	() => (route.meta.activeMenu ? route.meta.activeMenu : route.path) as string,
 );
+// 更新侧边栏宽度触发折叠菜单状态变化
+const updateSize = (val: string | number) => {
+	const size = typeof val === 'string' ? Number(val) : val;
+	if (size <= 66) {
+		isCollapse.value = true;
+	} else {
+		isCollapse.value = false;
+	}
+};
+watch(isCollapse, async (newVal) => {
+	await nextTick();
+	if (newVal) {
+		splitterSize.value = 65;
+	} else {
+		splitterSize.value = 200;
+	}
+});
+if (isCollapse.value) {
+	splitterSize.value = 65;
+} else {
+	splitterSize.value = 200;
+}
 </script>
 
 <style scoped lang="scss">
@@ -119,5 +152,8 @@ const activeMenu = computed(
 			flex-direction: column;
 		}
 	}
+}
+:deep(.el-splitter-panel) {
+	overflow: hidden;
 }
 </style>

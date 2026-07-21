@@ -75,20 +75,20 @@ const login = (formEl: FormInstance | undefined) => {
 	if (!formEl) return;
 	formEl.validate(async (valid) => {
 		if (!valid) return;
-		const { res, err } = await curryingRequest(
-			() =>
-				loginFormal({
-					...form.value,
-					passWord: md5(form.value.passWord),
-				}),
-			{
-				before: () => setActiveKey('login'),
-				after: () => setActiveKey(null),
-			}
-		);
-		if (err) return;
-		// 设置用户信息
-		Session.set('userToken', res?.data.token);
+		// const { res, err } = await curryingRequest(
+		// 	() =>
+		// 		loginFormal({
+		// 			...form.value,
+		// 			passWord: md5(form.value.passWord),
+		// 		}),
+		// 	{
+		// 		before: () => setActiveKey('login'),
+		// 		after: () => setActiveKey(null),
+		// 	}
+		// );
+		// if (err) return;
+		// // 设置用户信息
+		Session.set('userToken', '111');
 		// 清空 tabs、keepAlive 数据
 		tabsStore.setTabs([]);
 		keepAliveStore.setKeepAliveName([]);

@@ -47,6 +47,8 @@ export const useGlobalStore = defineStore({
 		tabsIcon: true,
 		// 页脚
 		footer: false,
+		// 分割器大小
+		splitterSize: 200,
 	}),
 	getters: {},
 	actions: {

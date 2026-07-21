@@ -1,6 +1,6 @@
 <template>
 	<el-splitter>
-		<el-splitter-panel size="15%" min="200" :collapsible="true">
+		<el-splitter-panel size="15%" min="200" max="50%" :collapsible="true">
 			<slot name="left"></slot>
 		</el-splitter-panel>
 		<el-splitter-panel>
