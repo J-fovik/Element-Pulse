@@ -109,7 +109,7 @@ export default {
 			],
 		},
 		{
-			path: '/menu/dynamicMenu/:menuId',
+			path: '/menu/dynamicMenu/:pathMatch(.*)*', // 动态路由匹配规则，匹配任意路径
 			name: 'dynamicMenu',
 			meta: {
 				icon: 'Menu',
